@@ -18,6 +18,7 @@ import com.vaadin.data.util.converter.Converter;
  * Utility class for convert to and from the expression model.
  * 
  * @author rporcio
+ * @deprecated use {@link VisualizationDslUtil} instead
  */
 public class VisualizationDslConverter implements Converter<String, Expression> {
 
@@ -27,7 +28,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 	@Override
 	public Expression convertToModel(String dsl, Class<? extends Expression> targetType, Locale locale) throws com.vaadin.data.util.converter.Converter.ConversionException {
 
-		dsl = dsl.toString().replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "").trim();
+		dsl = dsl.toString().replaceAll("&nbsp;", "").replaceAll("<br>", "").trim();
 
 		String[] components = dsl.split("\\|");
 
@@ -64,37 +65,37 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 				sb.append(" + ");
 			}
 		}
-		sb.append(":\r\n");
+		sb.append(":<br>");
 
 		Iterator<Relationship> relationshipIterator = expression.getStandaloneRelationships().getRelationships().iterator();
 		while (relationshipIterator.hasNext()) {
 			Relationship relationship = relationshipIterator.next();
-			sb.append(" ");
+			sb.append("&nbsp;");
 			sb.append(relationship.getType().getId() + " | " + relationship.getType().getTerm() + " |");
 			sb.append(" = ");
 			sb.append(relationship.getDestination().getId() + " | " + relationship.getDestination().getTerm() + " |");
 			if (relationshipIterator.hasNext()) {
 				sb.append(",");
 			}
-			sb.append("\r\n");
+			sb.append("<br>");
 		}
 
 		Iterator<RelationshipGroup> groupsIterator = expression.getRelationshipGroups().iterator();
 		while (groupsIterator.hasNext()) {
 			Iterator<Relationship> groupIterator = groupsIterator.next().getRelationships().iterator();
-			sb.append(" {\r\n");
+			sb.append("&nbsp;{<br>");
 			while (groupIterator.hasNext()) {
 				Relationship relationship = groupIterator.next();
-				sb.append("\t");
+				sb.append("&nbsp;&nbsp;&nbsp;");
 				sb.append(relationship.getType().getId() + " | " + relationship.getType().getTerm() + " |");
 				sb.append(" = ");
 				sb.append(relationship.getDestination().getId() + " | " + relationship.getDestination().getTerm() + " |");
 				if (groupIterator.hasNext()) {
 					sb.append(",");
-					sb.append("\r\n");
+					sb.append("<br>");
 				}
 			}
-			sb.append("\r\n }\r\n");
+			sb.append("<br>&nbsp;}<br>");
 		}
 
 		return sb.toString();
@@ -158,6 +159,10 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 			for (Relationship oldRelationship : expression.getStandaloneRelationships().getRelationships()) {
 				for (Relationship newRelationship : relationships) {
 					updateRelationship(newRelationship, oldRelationship);
+					
+					if (null == newRelationship.getId()) {
+						//TODO add id generiton method
+					}
 				}
 			}
 			
@@ -226,6 +231,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 			newRelationship.setDefined(oldRelationship.isDefined());
 			newRelationship.getType().setDefined(oldRelationship.getType().isDefined());
 			newRelationship.getDestination().setDefined(oldRelationship.getDestination().isDefined());
+			newRelationship.setId(oldRelationship.getId());
 		}
 	}
 
@@ -234,7 +240,6 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 		relationship.setType(createNewConcept(typeId, typeTerm));
 		relationship.setDestination(createNewConcept(destinationId, destinationTerm));
 		relationship.setDefined(false);
-		;
 		relationship.setGroup(0);
 
 		return relationship;

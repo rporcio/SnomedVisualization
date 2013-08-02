@@ -1,11 +1,12 @@
 package snomed.visualization.vaadin.util;
 
+import java.util.Random;
+
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
-import snomed.visualization.vaadin.ui.VisualizationConcept;
 import snomed.visualization.vaadin.ui.VisualizationRelationshipWizard;
 
 import com.vaadin.data.Item;
@@ -13,6 +14,11 @@ import com.vaadin.data.fieldgroup.FieldGroup.CommitEvent;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitHandler;
 
+/**
+ * Commit handler to handle the new relationship commit whcih comes from the wizard.
+ * 
+ * @author rporcio
+ */
 public class VisulizationRelationshipWizardCommitHandler implements CommitHandler {
 
 		private static final long serialVersionUID = -7255938137665580357L;
@@ -34,8 +40,8 @@ public class VisulizationRelationshipWizardCommitHandler implements CommitHandle
 			Item item = commitEvent.getFieldBinder().getItemDataSource();
 			
 			boolean relationshipDefiend = (Boolean) item.getItemProperty("defined").getValue();
-			VisualizationConcept type = (VisualizationConcept) item.getItemProperty("type").getValue();
-			String group = (String) item.getItemProperty("group").getValue();
+			Concept type = (Concept) item.getItemProperty("type").getValue();
+			int group = (Integer) item.getItemProperty("group").getValue();
 			boolean destinationDefined = (Boolean) item.getItemProperty("destination.defined").getValue();
 			String destinationId = (String) item.getItemProperty("destination.id").getValue();
 			String destinationTerm = (String) item.getItemProperty("destination.term").getValue();
@@ -65,21 +71,21 @@ public class VisulizationRelationshipWizardCommitHandler implements CommitHandle
 				relationship.setType(typeConcept);
 				relationship.setDestination(destinationConcept);
 				
-				if (group.equals("Standalone")) {
+				//TODO
+				relationship.setGroup(0);
+				relationship.setId(generateRandomItemIndentifier());
+				
+				if (group == -1) {
 					expression.getStandaloneRelationships().getRelationships().add(relationship);
-				} else  if (group.equals("New")) {
+				} else  if (group == -2) {
 					RelationshipGroup relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 					relationshipGroup.getRelationships().add(relationship);
 					expression.getRelationshipGroups().add(relationshipGroup);
 				} else {
-					expression.getRelationshipGroups().get(Integer.parseInt(group)).getRelationships().add(relationship);
+					expression.getRelationshipGroups().get(group).getRelationships().add(relationship);
 				}
 				
 			}
-			
-			visualizationRelationshipWizard.getVisualizationView().setExpression(expression);
-			visualizationRelationshipWizard.getVisualizationView().showExpression();
-			
 		}
 		
 		private boolean isValid() {
@@ -108,6 +114,14 @@ public class VisulizationRelationshipWizardCommitHandler implements CommitHandle
 			}
 			
 			return true;
+		}
+		
+		// TODO remove
+		private String generateRandomItemIndentifier() {
+			Random random = new Random();
+			// nextInt excludes top value, add 1 to make it inclusive
+			int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
+			return Integer.toString(randomNum);
 		}
 		
 	}

@@ -71,6 +71,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("0");
 		expression.getStandaloneRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -92,6 +93,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("1");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -110,6 +112,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("2");
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -133,6 +136,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("3");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -151,6 +155,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("4");
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -174,6 +179,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("5");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -192,6 +198,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("6");
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -214,6 +221,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("7");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -232,6 +240,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("8");
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -255,6 +264,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("9");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -273,6 +283,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("10");
 		
 		relationshipGroup.getRelationships().add(relationship);
 

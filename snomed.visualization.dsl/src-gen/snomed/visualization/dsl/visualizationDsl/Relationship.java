@@ -98,5 +98,17 @@ public interface Relationship extends EObject
    * @generated NOT
    */
   int getGroup();
+  
+  /**
+   * @param id
+   * @generated NOT
+   */
+  void setId(String id);
+  
+  /**
+   * @return
+   * @generated NOT
+   */
+  String getId();
 
 } // Relationship

@@ -1,0 +1,130 @@
+package snomed.visualization.vaadin.util;
+
+import org.eclipse.emf.ecore.EObject;
+
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.Notification.Type;
+
+import snomed.visualization.dsl.visualizationDsl.Concept;
+import snomed.visualization.dsl.visualizationDsl.Relationship;
+import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
+import snomed.visualization.vaadin.VisualizationModifyEvent;
+import snomed.visualization.vaadin.VisualizationModifyListener;
+import snomed.visualization.vaadin.client.model.VisualizationModifyType;
+
+/**
+ * Listener class to handle the modify event that comes from the client.
+ * 
+ * @author rporcio
+ */
+public class VisualiaztionModifyListener implements VisualizationModifyListener {
+
+	private VisualizationDiagramUtil diagramUtil;
+
+	public VisualiaztionModifyListener(VisualizationDiagramUtil visualizationDiagramUtil) {
+		this.diagramUtil = visualizationDiagramUtil;
+	}
+
+	@Override
+	public void handleModify(VisualizationModifyEvent event) {
+		if (diagramUtil.canEdit()) {
+			if (event.getModifyType().equals(VisualizationModifyType.CHARACTERISTIC_TYPE)) {
+				EObject object = changeCharacteristicType(event);
+				if (object instanceof Concept) {
+					diagramUtil.getDiagramElements().get(event.getId()).getState().getComponentModel().setDefined(((Concept) object).isDefined());
+				} else if(object instanceof Relationship) {
+					diagramUtil.getDiagramElements().get(event.getId()).getState().getComponentModel().setDefined(((Relationship) object).isDefined());
+				}
+			} else {
+				deleteDiagramElement(event);
+			}
+		} else {
+			Notification.show("Error", "\nThe expression grammar contains errors. Fix these errors before editing the diagram.", Type.ERROR_MESSAGE);
+		}
+	}
+	
+	private EObject changeCharacteristicType(VisualizationModifyEvent event) {
+		String id = event.getId();
+		
+		if (diagramUtil.getExpression().getConcept().getId().equals(id)) {
+			diagramUtil.getExpression().getConcept().setDefined(!diagramUtil.getExpression().getConcept().isDefined());
+			
+			return diagramUtil.getExpression().getConcept();
+		}
+		
+		for (Concept concept : diagramUtil.getExpression().getIsaRelationships().getRelationships()) {
+			if (concept.getId().equals(id)) {
+				concept.setDefined(!concept.isDefined());
+				
+				return concept;
+			}
+		}
+		
+		for (Relationship relationship : diagramUtil.getExpression().getStandaloneRelationships().getRelationships()) {
+			if (relationship.getDestination().getId().equals(id)) {
+				relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
+				
+				return relationship.getDestination();
+			} else if (relationship.getId().equals(id)) {
+				relationship.setDefined(!relationship.isDefined());
+				
+				return relationship;
+			}
+		}
+		
+		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getRelationshipGroups()) {
+			for (Relationship relationship : relationshipGroup.getRelationships()) {
+				if (relationship.getDestination().getId().equals(id)) {
+					relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
+					
+					return relationship.getDestination();
+				} else if (relationship.getId().equals(id)) {
+					relationship.setDefined(!relationship.isDefined());
+					
+					return relationship;
+				}
+			}
+		}
+		
+		return null;
+	}
+
+	private void deleteDiagramElement(VisualizationModifyEvent event) {
+		String id = event.getId();
+		
+		if (diagramUtil.getExpression().getConcept().getId().equals(id)) {
+			// TODO cannot delete
+		}
+		
+		for (Concept concept : diagramUtil.getExpression().getIsaRelationships().getRelationships()) {
+			if (concept.getId().equals(id)) {
+				diagramUtil.getExpression().getIsaRelationships().getRelationships().remove(concept);
+				
+				return;
+			}
+		}
+		
+		for (Relationship relationship : diagramUtil.getExpression().getStandaloneRelationships().getRelationships()) {
+			if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
+				diagramUtil.getExpression().getStandaloneRelationships().getRelationships().remove(relationship);
+				
+				return;
+			}
+		}
+		
+		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getRelationshipGroups()) {
+			for (Relationship relationship : relationshipGroup.getRelationships()) {
+				if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
+					relationshipGroup.getRelationships().remove(relationship);
+					
+					if (0 == relationshipGroup.getRelationships().size()) {
+						diagramUtil.getExpression().getRelationshipGroups().remove(relationshipGroup);
+					}
+					
+					return;
+				}
+			}
+		}
+	}
+
+}

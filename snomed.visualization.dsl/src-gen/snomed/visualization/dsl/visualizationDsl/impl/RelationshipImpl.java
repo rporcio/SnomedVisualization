@@ -60,6 +60,11 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    * @generated NOT
    */
   private int group;
+  
+  /**
+   * @generated NOT
+   */
+  private String id;
 
   /**
    * <!-- begin-user-doc -->
@@ -302,6 +307,22 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
   @Override
   public int getGroup() {
 	  return group;
+  }
+  
+  /**
+   * @generated NOT
+   */
+  @Override
+  public void setId(String id) {
+	  this.id = id;
+  }
+
+  /**
+   * @generated NOT
+   */
+  @Override
+  public String getId() {
+	  return id;
   }
 
 } //RelationshipImpl

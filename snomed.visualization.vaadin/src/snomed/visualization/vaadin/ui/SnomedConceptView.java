@@ -4,6 +4,11 @@ import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Tree;
 
+/**
+ * View that contains the two example concept which are selectable.
+ * 
+ * @author rporcio
+ */
 public class SnomedConceptView extends Tree implements ItemClickListener{
 
 	private static final long serialVersionUID = 4487216916434702499L;

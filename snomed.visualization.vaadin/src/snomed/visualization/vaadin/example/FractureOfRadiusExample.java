@@ -46,6 +46,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
+		relationship.setId("0");
 		expression.getStandaloneRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -63,6 +64,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
+		relationship.setId("1");
 		expression.getStandaloneRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -80,6 +82,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
+		relationship.setId("2");
 		expression.getStandaloneRelationships().getRelationships().add(relationship);
 
 		// Relationship group
@@ -99,6 +102,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("3");
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -117,6 +121,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
+		relationship.setId("4");
 
 		relationshipGroup.getRelationships().add(relationship);
 

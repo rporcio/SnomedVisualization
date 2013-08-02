@@ -21,4 +21,16 @@
 	.my-scroll {
 		overflow: auto;
 	}
+	
+	/* Hides the toolbar of the RichTextArea */
+	.gwt-RichTextToolbar { 
+		display: none;
+	}
+	
+	.v-caption {
+		overflow: hidden;
+		white-space: nowrap;
+		font-size: 12px;
+		font-weight: bold;
+	}
 }

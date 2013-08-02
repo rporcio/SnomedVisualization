@@ -1,17 +1,16 @@
 package snomed.visualization.vaadin.util;
 
-import java.util.List;
-
-import snomed.visualization.vaadin.ui.VisualizationConcept;
+import snomed.visualization.dsl.visualizationDsl.Concept;
+import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
 import snomed.visualization.vaadin.ui.VisualizationView;
 
-import com.google.common.collect.Lists;
 import com.vaadin.data.fieldgroup.FieldGroupFieldFactory;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Field;
 import com.vaadin.ui.TextField;
 
 /**
+ * Wizard factory to build expression specific fields for the new relationship wizard.
  * 
  * @author rporcio
  */
@@ -27,18 +26,30 @@ public class VisualizationRelationshipWizardFactory implements FieldGroupFieldFa
 		@SuppressWarnings({ "rawtypes", "unchecked" })
 		@Override
 		public <T extends Field> T createField(Class<?> dataType, Class<T> fieldType) {
-			if (VisualizationConcept.class.isAssignableFrom(dataType)) {
+			if (Concept.class.isAssignableFrom(dataType)) {
 				ComboBox comboBox = new ComboBox();
 				comboBox.setSizeFull();
-				List<VisualizationConcept> concepts = Lists.newArrayList();
-				concepts.add(new VisualizationConcept(false, "116680003", "Is a"));	
-				concepts.add(new VisualizationConcept(false, "363698007", "Finding site"));
-				concepts.add(new VisualizationConcept(false, "116676008", "Associated morphology"));
+
+				Concept concept = VisualizationDslFactory.eINSTANCE.createConcept();
+				concept.setDefined(false);
+				concept.setId("116680003");
+				concept.setTerm("Is a");
+				comboBox.addItem(concept);
+				comboBox.setItemCaption(concept, concept.getTerm());
 				
-				for (VisualizationConcept concept : concepts) {
-					comboBox.addItem(concept);
-					comboBox.setItemCaption(concept, concept.getTerm());
-				}
+				concept = VisualizationDslFactory.eINSTANCE.createConcept();
+				concept.setDefined(false);
+				concept.setId("363698007");
+				concept.setTerm("Finding site");
+				comboBox.addItem(concept);
+				comboBox.setItemCaption(concept, concept.getTerm());
+				
+				concept = VisualizationDslFactory.eINSTANCE.createConcept();
+				concept.setDefined(false);
+				concept.setId("116676008");
+				concept.setTerm("Associated morphology");
+				comboBox.addItem(concept);
+				comboBox.setItemCaption(concept, concept.getTerm());
 				
 				return (T) comboBox;
 			} else if (Boolean.class.isAssignableFrom(dataType)) {
@@ -59,10 +70,12 @@ public class VisualizationRelationshipWizardFactory implements FieldGroupFieldFa
 					ComboBox comboBox = new ComboBox();
 					comboBox.setSizeFull();
 					for (int i = 0; i < visualizationView.getExpression().getRelationshipGroups().size(); i++) {
-						comboBox.addItem("" + i);
+						comboBox.addItem(i);
 					}
-					comboBox.addItem("New");
-					comboBox.addItem("Standalone");
+					comboBox.addItem(-2);
+					comboBox.setItemCaption(-2, "New group");
+					comboBox.addItem(-1);
+					comboBox.setItemCaption(-1, "Ungrouped");
 					
 					return (T) comboBox;
 				} else {

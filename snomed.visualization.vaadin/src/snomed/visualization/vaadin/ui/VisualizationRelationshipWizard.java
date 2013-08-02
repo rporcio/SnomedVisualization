@@ -1,11 +1,13 @@
 package snomed.visualization.vaadin.ui;
 
-import snomed.visualization.vaadin.util.VisualizationRelationship;
+import snomed.visualization.dsl.visualizationDsl.Concept;
+import snomed.visualization.dsl.visualizationDsl.Relationship;
+import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
 import snomed.visualization.vaadin.util.VisualizationRelationshipWizardFactory;
+import snomed.visualization.vaadin.util.VisualizationWizardValidatorGrouper;
 import snomed.visualization.vaadin.util.VisulizationRelationshipWizardCommitHandler;
 
 import com.vaadin.data.Property;
-import com.vaadin.data.Validator;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
@@ -14,6 +16,7 @@ import com.vaadin.data.util.BeanItem;
 import com.vaadin.event.FieldEvents;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -28,12 +31,14 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 /**
+ * Sub Window class for adding new relationship to the expression.
  * 
  * @author rporcio
  */
 public class VisualizationRelationshipWizard extends Window {
 
 	private static final long serialVersionUID = -2138817225506143109L;
+	
 	private VisualizationView visualizationView;
 	private VerticalLayout layout;
 	private ComboBox defined;
@@ -44,105 +49,7 @@ public class VisualizationRelationshipWizard extends Window {
 	private TextField destinationTerm;
 	private Button okButton;
 	private Button cancelButton;
-	private BeanFieldGroup<VisualizationRelationship> binder;
-	
-	private Validator relationshipCharacteristicTypeValidator = new Validator() {
-		
-		private static final long serialVersionUID = 1175395657929423394L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			if (null == value) {
-				throw new InvalidValueException("Relationship characteristic type cannot be empty.");
-			}
-		}
-	};
-	
-	private Validator relationshipTypeValidator = new Validator() {
-		
-		private static final long serialVersionUID = 1175395657929423394L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			if (null == value) {
-				throw new InvalidValueException("Relationship type cannot be empty");
-			}
-		}
-	};
-	
-	private Validator relationshipGroupValidator = new Validator() {
-		
-		private static final long serialVersionUID = 1175395657929423394L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			if (null == value) {
-				throw new InvalidValueException("Relationship group cannot be empty.");
-			}
-		}
-	};
-	
-	private Validator destinationConceptCharacteristicTypeValidator = new Validator() {
-		
-		private static final long serialVersionUID = 7950514394733019663L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			if (null == value) {
-				throw new InvalidValueException("Destination concept characteristic type cannot be empty.");
-			}
-		}
-	};
-	
-	private Validator destinationConceptIdValidator = new Validator() {
-		
-		private static final long serialVersionUID = 1175395657929423394L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			String id = value.toString();
-			
-			if (id.isEmpty()) {
-				throw new InvalidValueException("ID cannot be empty.");
-			} else if (!id.matches("\\d*")) {
-				throw new InvalidValueException("ID can only contains number.");
-			} else if (id.length() < 6 || id.length() > 18) {
-				throw new InvalidValueException("Lenght cannot be less than 6 or more than 18.");
-			}
-		}
-	};
-	
-	private Validator destinationConceptTermValidator = new Validator() {
-		
-		private static final long serialVersionUID = 1175395657929423394L;
-
-		@Override
-		public void validate(Object value) throws InvalidValueException {
-			if (value.toString().isEmpty()) {
-				throw new InvalidValueException("Term cannot be empty.");
-			}
-		}
-	};
-	
-	private ClickListener clickListener = new ClickListener() {
-		
-		private static final long serialVersionUID = -7656628027480996690L;
-
-		@Override
-		public void buttonClick(ClickEvent event) {
-			if (event.getButton().equals(cancelButton)) {
-				close();
-			} else {
-				try {
-					addValidators();
-					binder.commit();
-					close();
-				} catch (CommitException e) {
-					new Notification("Error", "One or more validation error are exist.", Type.ERROR_MESSAGE).show(visualizationView.getVisualizationUI().getPage());
-				}
-			}
-		}
-	};
+	private BeanFieldGroup<Relationship> binder;
 	
 	private ValueChangeListener valueChangeListener = new Property.ValueChangeListener() {
 		
@@ -161,7 +68,7 @@ public class VisualizationRelationshipWizard extends Window {
 
 		@Override
 		public void valueChange(ValueChangeEvent event) {
-			if (((VisualizationConcept) relationshipType.getValue()).getId().equals("116680003")) {
+			if (((Concept) relationshipType.getValue()).getId().equals("116680003")) {
 				defined.setEnabled(false);
 				relationshipGroup.setEnabled(false);
 			} else {
@@ -182,8 +89,31 @@ public class VisualizationRelationshipWizard extends Window {
 		}
 	};
 	
+	private ClickListener clickListener = new ClickListener() {
+
+		private static final long serialVersionUID = -7656628027480996690L;
+
+		@Override
+		public void buttonClick(ClickEvent event) {
+			if (event.getButton().equals(cancelButton)) {
+				close();
+			} else {
+				try {
+					addValidators();
+					binder.commit();
+					close();
+				} catch (CommitException e) {
+					new Notification("Error", "One or more validation error are exist.", Type.ERROR_MESSAGE).show(Page.getCurrent());
+				}
+			}
+		}
+	};
+	
+	private VisualizationWizardValidatorGrouper validatorGrouper;
+	
 	public VisualizationRelationshipWizard(VisualizationView visualizationView) {
 		this.visualizationView = visualizationView;
+		validatorGrouper = new VisualizationWizardValidatorGrouper();
 		
 		layout = new VerticalLayout();
 		
@@ -198,61 +128,6 @@ public class VisualizationRelationshipWizard extends Window {
 		createContent();
 	}
 
-	private void createContent() {
-		final BeanItem<VisualizationRelationship> beanItem = new BeanItem<VisualizationRelationship>(new VisualizationRelationship());
-		binder = new BeanFieldGroup<VisualizationRelationship>(VisualizationRelationship.class);
-		binder.setItemDataSource(beanItem);
-		
-		binder.setFieldFactory(new VisualizationRelationshipWizardFactory(visualizationView));
-		binder.addCommitHandler(new VisulizationRelationshipWizardCommitHandler(this));
-		
-		relationshipType = binder.buildAndBind("Relationship type", "type", ComboBox.class);
-		relationshipGroup = binder.buildAndBind("Relationship group", "group", ComboBox.class);
-		defined = binder.buildAndBind("Relationship characteristic type", "defined", ComboBox.class);
-		destinationDefined = (ComboBox) binder.buildAndBind("Destination characteristic type", "destination.defined");
-		destinationId = (TextField) binder.buildAndBind("Destination concept ID", "destination.id");
-		destinationTerm = (TextField) binder.buildAndBind("Destination concept term", "destination.term");
-		
-		layout.addComponent(relationshipType);
-		layout.addComponent(relationshipGroup);
-		layout.addComponent(defined);
-		layout.addComponent(destinationDefined);
-		layout.addComponent(destinationId);
-		layout.addComponent(destinationTerm);
-		
-		okButton = new Button("Ok");
-		cancelButton = new Button("Cancel");
-		
-		HorizontalLayout horizontalLayout = new HorizontalLayout();
-		horizontalLayout.setSpacing(true);
-		horizontalLayout.setMargin(true);
-		horizontalLayout.setSizeFull();
-		horizontalLayout.addComponent(cancelButton);
-		horizontalLayout.addComponent(okButton);
-		horizontalLayout.setExpandRatio(cancelButton, 1.0f);
-		horizontalLayout.setExpandRatio(okButton, 1.0f);
-		horizontalLayout.setComponentAlignment(cancelButton, Alignment.BOTTOM_RIGHT);
-		layout.addComponent(horizontalLayout);
-		
-		cancelButton.addClickListener(clickListener);
-		okButton.addClickListener(clickListener);
-		
-		defined.setImmediate(true);
-		relationshipType.setImmediate(true);
-		relationshipGroup.setImmediate(true);
-		destinationDefined.setImmediate(true);
-		destinationId.setImmediate(true);
-		destinationTerm.setImmediate(true);
-		
-		defined.addValueChangeListener(valueChangeListener);
-		relationshipType.addValueChangeListener(valueChangeListener);
-		relationshipType.addValueChangeListener(relationshipTypeValueChangeListener);
-		relationshipGroup.addValueChangeListener(valueChangeListener);
-		destinationDefined.addValueChangeListener(valueChangeListener);
-		destinationId.addTextChangeListener(textChangeListener);
-		destinationTerm.addTextChangeListener(textChangeListener);
-	}
-	
 	public ComboBox getDefined() {
 		return defined;
 	}
@@ -309,33 +184,92 @@ public class VisualizationRelationshipWizard extends Window {
 		this.visualizationView = visualizationView;
 	}
 
-	public BeanFieldGroup<VisualizationRelationship> getBinder() {
+	public BeanFieldGroup<Relationship> getBinder() {
 		return binder;
 	}
 
-	public void setBinder(BeanFieldGroup<VisualizationRelationship> binder) {
+	public void setBinder(BeanFieldGroup<Relationship> binder) {
 		this.binder = binder;
 	}
 	
-	private void addValidators() {
-		defined.removeValidator(relationshipCharacteristicTypeValidator);
-		relationshipType.removeValidator(relationshipTypeValidator);
-		relationshipGroup.removeValidator(relationshipGroupValidator);
-		destinationDefined.removeValidator(destinationConceptCharacteristicTypeValidator);
-		destinationId.removeValidator(destinationConceptIdValidator);
-		destinationTerm.removeValidator(destinationConceptTermValidator);
+	private void createContent() {
+		Relationship relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
+		Concept destination = VisualizationDslFactory.eINSTANCE.createConcept();
+		relationship.setDestination(destination);
 		
-		relationshipType.addValidator(relationshipTypeValidator);
-		if (null != relationshipType.getValue() && !((VisualizationConcept) relationshipType.getValue()).getId().equals("116680003")) {
-			defined.addValidator(relationshipCharacteristicTypeValidator);
-			relationshipGroup.addValidator(relationshipGroupValidator);
+		final BeanItem<Relationship> beanItem = new BeanItem<Relationship>(relationship);
+		binder = new BeanFieldGroup<Relationship>(Relationship.class);
+		binder.setItemDataSource(beanItem);
+		
+		binder.setFieldFactory(new VisualizationRelationshipWizardFactory(visualizationView));
+		binder.addCommitHandler(new VisulizationRelationshipWizardCommitHandler(this));
+		
+		relationshipType = binder.buildAndBind("Relationship type", "type", ComboBox.class);
+		relationshipGroup = binder.buildAndBind("Relationship group", "group", ComboBox.class);
+		defined = binder.buildAndBind("Relationship characteristic type", "defined", ComboBox.class);
+		destinationDefined = (ComboBox) binder.buildAndBind("Destination characteristic type", "destination.defined");
+		destinationId = (TextField) binder.buildAndBind("Destination concept ID", "destination.id");
+		destinationTerm = (TextField) binder.buildAndBind("Destination concept term", "destination.term");
+		
+		layout.addComponent(relationshipType);
+		layout.addComponent(relationshipGroup);
+		layout.addComponent(defined);
+		layout.addComponent(destinationDefined);
+		layout.addComponent(destinationId);
+		layout.addComponent(destinationTerm);
+		
+		okButton = new Button("Ok");
+		cancelButton = new Button("Cancel");
+		
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		horizontalLayout.setSpacing(true);
+		horizontalLayout.setMargin(true);
+		horizontalLayout.setSizeFull();
+		horizontalLayout.addComponent(cancelButton);
+		horizontalLayout.addComponent(okButton);
+		horizontalLayout.setExpandRatio(cancelButton, 1.0f);
+		horizontalLayout.setExpandRatio(okButton, 1.0f);
+		horizontalLayout.setComponentAlignment(cancelButton, Alignment.BOTTOM_RIGHT);
+		layout.addComponent(horizontalLayout);
+		
+		cancelButton.addClickListener(clickListener);
+		okButton.addClickListener(clickListener);
+		
+		defined.setImmediate(true);
+		relationshipType.setImmediate(true);
+		relationshipGroup.setImmediate(true);
+		destinationDefined.setImmediate(true);
+		destinationId.setImmediate(true);
+		destinationTerm.setImmediate(true);
+		
+		defined.addValueChangeListener(valueChangeListener);
+		relationshipType.addValueChangeListener(valueChangeListener);
+		relationshipType.addValueChangeListener(relationshipTypeValueChangeListener);
+		relationshipGroup.addValueChangeListener(valueChangeListener);
+		destinationDefined.addValueChangeListener(valueChangeListener);
+		destinationId.addTextChangeListener(textChangeListener);
+		destinationTerm.addTextChangeListener(textChangeListener);
+	}
+	
+	private void addValidators() {
+		defined.removeValidator(validatorGrouper.getRelationshipCharacteristicTypeValidator());
+		relationshipType.removeValidator(validatorGrouper.getRelationshipTypeValidator());
+		relationshipGroup.removeValidator(validatorGrouper.getRelationshipGroupValidator());
+		destinationDefined.removeValidator(validatorGrouper.getDestinationConceptCharacteristicTypeValidator());
+		destinationId.removeValidator(validatorGrouper.getDestinationConceptIdValidator());
+		destinationTerm.removeValidator(validatorGrouper.getDestinationConceptTermValidator());
+		
+		relationshipType.addValidator(validatorGrouper.getRelationshipTypeValidator());
+		if (null != relationshipType.getValue() && !((Concept) relationshipType.getValue()).getId().equals("116680003")) {
+			defined.addValidator(validatorGrouper.getRelationshipCharacteristicTypeValidator());
+			relationshipGroup.addValidator(validatorGrouper.getRelationshipGroupValidator());
 		} else if (null == relationshipType.getValue()) {
-			defined.addValidator(relationshipCharacteristicTypeValidator);
-			relationshipGroup.addValidator(relationshipGroupValidator);
+			defined.addValidator(validatorGrouper.getRelationshipCharacteristicTypeValidator());
+			relationshipGroup.addValidator(validatorGrouper.getRelationshipGroupValidator());
 		}
-		destinationDefined.addValidator(destinationConceptCharacteristicTypeValidator);
-		destinationId.addValidator(destinationConceptIdValidator);
-		destinationTerm.addValidator(destinationConceptTermValidator);
+		destinationDefined.addValidator(validatorGrouper.getDestinationConceptCharacteristicTypeValidator());
+		destinationId.addValidator(validatorGrouper.getDestinationConceptIdValidator());
+		destinationTerm.addValidator(validatorGrouper.getDestinationConceptTermValidator());
 	}
 	
 	private void validate() {

@@ -3,6 +3,7 @@ package snomed.visualization.vaadin.ui;
 
 import javax.servlet.annotation.WebServlet;
 
+import snomed.visualization.dsl.VisualizationDslStandaloneSetup;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.vaadin.example.FractureOfRadiusExample;
 import snomed.visualization.vaadin.example.TetralogyOfFallotExample;
@@ -15,6 +16,10 @@ import com.vaadin.ui.HorizontalSplitPanel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
+/**
+ * 
+ * @author rporcio
+ */
 @SuppressWarnings("serial")
 @Theme("SnomedVisualization")
 public class VisualizationUI extends UI {
@@ -44,13 +49,15 @@ public class VisualizationUI extends UI {
 		visualizationView = new VisualizationView(this);
 		
 		splitPanel.setFirstComponent(snomedConceptView);
-		splitPanel.setSecondComponent(visualizationView);
 
 		mainWindow.addComponent(splitPanel);
 		mainWindow.setExpandRatio(splitPanel, 1f);
 		
 		visualizeConcept("Fracture of radius");
 	
+		// TODO better place?
+		// create the injector and do the setup during initialization to prevent the long load before the first dsl validation
+		VisualizationDslStandaloneSetup.doSetup();
 	}
 
 	public void visualizeConcept(String id) {
@@ -61,8 +68,9 @@ public class VisualizationUI extends UI {
 			expression = TetralogyOfFallotExample.createTetralogyOfFallotExample();
 		}
 		
-		visualizationView.setExpression(expression);
-		visualizationView.showExpression();
+		splitPanel.setSecondComponent(visualizationView);
+		
+		visualizationView.visualize(expression);
 	}
 
 }

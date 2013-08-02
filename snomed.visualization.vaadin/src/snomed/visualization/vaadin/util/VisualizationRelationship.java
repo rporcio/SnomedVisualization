@@ -2,11 +2,13 @@ package snomed.visualization.vaadin.util;
 
 import java.io.Serializable;
 
-import snomed.visualization.vaadin.ui.VisualizationConcept;
+import snomed.visualization.dsl.visualizationDsl.Relationship;
 
 /**
+ * POJO model which represents a relationship for the new relationship wizard.
  * 
  * @author rporcio
+ * @deprecated use dsl {@link Relationship} instead
  */
 public class VisualizationRelationship implements Serializable {
 

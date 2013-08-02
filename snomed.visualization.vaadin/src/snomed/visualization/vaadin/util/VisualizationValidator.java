@@ -1,12 +1,24 @@
 package snomed.visualization.vaadin.util;
 
+import java.util.Iterator;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.nodemodel.SyntaxErrorMessage;
+import org.eclipse.xtext.parser.IParseResult;
+
+import snomed.visualization.dsl.VisualizationDslStandaloneSetup;
+import snomed.visualization.dsl.parser.antlr.VisualizationDslParser;
+
 import com.vaadin.data.Validator;
 
 /**
  * Validator class to validate the content of the text area which contains the
- * the textual domain specific language of the expression.
+ * the expression in text format.
  * 
  * @author rporcio
+ * @deprecated use {@link VisualizationDslUtil} instead
  */
 public class VisualizationValidator implements Validator {
 
@@ -42,7 +54,28 @@ public class VisualizationValidator implements Validator {
 		state = CharacterState.ID;
 		componentState = ComponentState.ISA; 
 		
-		String dsl = value.toString().replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "").replaceAll("\t", "").trim();
+		String dsl = value.toString().replaceAll("&nbsp;", "").replaceAll("<br>", "").trim();
+		
+		VisualizationDslParser parser = VisualizationDslStandaloneSetup.getInstance().getParser();
+		IParseResult result = parser.doParse(dsl);
+		
+		boolean syntaxErrors = result.hasSyntaxErrors();
+		Iterable<INode> errors = result.getSyntaxErrors();
+		Iterator<INode> iterator = errors.iterator();
+		while (iterator.hasNext()) {
+			INode next = iterator.next();
+			String text = next.getText();
+			SyntaxErrorMessage syntaxErrorMessage = next.getSyntaxErrorMessage();
+			String message = syntaxErrorMessage.getMessage();
+			int totalStartLine = next.getTotalStartLine();
+			int totalEndLine = next.getTotalEndLine();
+			int totalOffset = next.getTotalOffset();
+			int totalEndOffset = next.getTotalEndOffset();
+			int totalLength = next.getTotalLength();
+			EObject grammarElement = next.getGrammarElement();
+			Iterable<ILeafNode> leafNodes = next.getLeafNodes();
+			System.out.println();
+		}
 		
 		for (char c : dsl.toCharArray()) {
 			switch (state) {
