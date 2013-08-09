@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Visualization
+Bundle-SymbolicName: snomed.visualization;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: snomed.visualization.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ snomed.visualization.dsl;bundle-version="1.0.0",
+ snomed.visualization.dsl.ui;bundle-version="1.0.0",
+ org.eclipse.gef;bundle-version="3.9.0",
+ org.eclipse.ui.forms;bundle-version="3.6.0",
+ org.eclipse.jface.text;bundle-version="3.8.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
