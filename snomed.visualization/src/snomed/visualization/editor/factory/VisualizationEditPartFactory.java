@@ -23,7 +23,7 @@ public class VisualizationEditPartFactory implements EditPartFactory {
 		EditPart editPart = null;
 		
 		if (model instanceof Expression) {
-			editPart = new VisualizationCanvasEditPart();
+			editPart = new VisualizationCanvasEditPart(visualizationEditor);
 		} else if (model instanceof VisualizationDiagramElement) {
 			editPart = new VisualizationDiagramEditPart(visualizationEditor);
 		} else if (model instanceof VisualizationDiagramConnection) {

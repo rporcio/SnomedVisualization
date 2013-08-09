@@ -53,7 +53,7 @@ public class VisualizationDiagramUtil {
 		diagramElements = Maps.newHashMap();
 		coordinates = Lists.newArrayList();
 		
-		if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+		if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 			depth = 70;
 		} else {
 			depth = 5;
@@ -65,7 +65,7 @@ public class VisualizationDiagramUtil {
 		visualizeUngroupedRelationships();
 		
 		VisualizationDiagramConnection diagramConnection = new VisualizationDiagramConnection();
-		if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+		if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 			diagramConnection.setState(zoom, zoom * depth / 100, zoom * 8, coordinates);
 		} else {
 			diagramConnection.setState(zoom, zoom * depth / 100, zoom * 7, coordinates);
@@ -93,7 +93,7 @@ public class VisualizationDiagramUtil {
 		if (null != getExpression().getConcept()) {
 			VisualizationDiagramElement component = new VisualizationDiagramElement();
 
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				component.setState(new VisualizationDiagramElementModel(getExpression().getConcept().isDefined(), getExpression().getConcept().getId(), getExpression().getConcept().getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
 				diagramView.addComponent(component, getCssCoordinates(5, 5));
 				
@@ -104,7 +104,7 @@ public class VisualizationDiagramUtil {
 			
 			if (getExpression().getIsaRelationships().getRelationships().size() > 0 || getExpression().getRelationshipGroups().size() > 0 || getExpression().getStandaloneRelationships().getRelationships().size() > 0) {
 				
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					component = new VisualizationDiagramElement();
 					component.setState(new VisualizationDiagramElementModel(false, null, "=", VisualizationComponentType.GROUP, zoom), characteristicIcon, deletionIcon);
 					diagramView.addComponent(component, getCssCoordinates(zoom * 0.6, zoom * 0.75));
@@ -112,21 +112,18 @@ public class VisualizationDiagramUtil {
 				
 				component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(false, null, null, VisualizationComponentType.CONJUCTION, zoom), characteristicIcon, deletionIcon);
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
-					diagramView.addComponent(component, getCssCoordinates(zoom * 1.5, zoom * depth / 100 + zoom * 0.25 - 10));
-				} else {
-					diagramView.addComponent(component, getCssCoordinates(zoom * 0.5, zoom * depth / 100 + zoom * 0.25 - 10));
-				}
 
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+					diagramView.addComponent(component, getCssCoordinates(zoom * 1.5, zoom * depth / 100 + zoom * 0.25 - 10));
+					
 					addNewConnection(null, zoom / 5, (int) (zoom * 0.55), zoom / 5, (int) (zoom * 0.95));
 					addNewConnection(ConnectionType.REGULAR, zoom / 5, (int) (zoom * 0.95),	(int) (zoom * 0.6), (int) (zoom * 0.95));
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 0.6) + zoom / 5 * 2, (int) (zoom * 0.95), (int) (zoom * 1.5), (int) (zoom * 0.95));
 					addNewConnection(null, (int) (zoom * 1.5), (int) (zoom * 0.95), zoom * 2, (int) (zoom * 0.95));
 				} else {
+					diagramView.addComponent(component, getCssCoordinates(zoom * 0.5, zoom * depth / 100 + zoom * 0.25 - 10));
 					addNewConnection(null, (int) (zoom * 0.5), zoom * depth / 100 + (int)(zoom * 0.25), zoom, zoom * depth / 100 + (int)(zoom * 0.25));
 				}
-				
 			}
 		}
 	}
@@ -138,7 +135,7 @@ public class VisualizationDiagramUtil {
 		for (Concept concept : getExpression().getIsaRelationships().getRelationships()) {
 			VisualizationDiagramElement component = new VisualizationDiagramElement();
 			
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				x = (int) (zoom * 2.5);
 			} else {
 				x = (int) (zoom * 1.5);
@@ -152,7 +149,7 @@ public class VisualizationDiagramUtil {
 			diagramElements.put(component.getState().getComponentModel().getId(), component);
 			
 			
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(ConnectionType.ISA, zoom * 2, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
 			} else {
 				addNewConnection(ConnectionType.ISA, zoom, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
@@ -163,7 +160,7 @@ public class VisualizationDiagramUtil {
 		
 		if (!getExpression().getIsaRelationships().getRelationships().isEmpty() && getExpression().getRelationshipGroups().isEmpty() 
 				&& (null == getExpression().getStandaloneRelationships() || getExpression().getStandaloneRelationships().getRelationships().isEmpty())) {
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int)(zoom * 0.95), zoom * 2, y + (int)(zoom * 0.25));
 			} else {
 				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + (int)(zoom * 0.25));
@@ -179,7 +176,7 @@ public class VisualizationDiagramUtil {
 		int xDestination;
 		
 		for (RelationshipGroup relationshipGroup : getExpression().getRelationshipGroups()) {
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				xGroup = (int) (zoom * 2.5);
 			} else {
 				xGroup = (int) (zoom * 1.5);
@@ -191,7 +188,7 @@ public class VisualizationDiagramUtil {
 			component.setState(new VisualizationDiagramElementModel(false, null, null, VisualizationComponentType.GROUP, zoom), characteristicIcon, deletionIcon);
 			diagramView.addComponent(component, getCssCoordinates(xGroup, y + zoom / 20));
 			
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xGroup, y + zoom / 4);
 				addNewConnection(null, zoom * 2 + (int)(zoom * 0.9), y + zoom / 4, zoom * 3, y + zoom / 4);
 			} else {
@@ -200,7 +197,7 @@ public class VisualizationDiagramUtil {
 			}
 			
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 3.5);
 					xDestination = zoom * 6;
 				} else {
@@ -222,7 +219,7 @@ public class VisualizationDiagramUtil {
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(ConnectionType.REGULAR, zoom * 3, y + zoom / 4, xType, y + zoom / 4);
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 5.5), y + zoom / 4, xDestination, y + zoom / 4);
 					addNewConnection(null, zoom * 3, yStart, zoom * 3, y + zoom / 4);
@@ -237,7 +234,7 @@ public class VisualizationDiagramUtil {
 		}
 		
 		if ((null == getExpression().getStandaloneRelationships() || getExpression().getStandaloneRelationships().getRelationships().isEmpty()) && !getExpression().getRelationshipGroups().isEmpty()) {
-			if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
 			} else {
 				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, yStart);
@@ -252,7 +249,7 @@ public class VisualizationDiagramUtil {
 		
 		if (null != getExpression().getStandaloneRelationships()) {
 			for (Relationship relationship : getExpression().getStandaloneRelationships().getRelationships()) {
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 2.5);
 					xDestination = zoom * 5;
 				} else {
@@ -274,7 +271,7 @@ public class VisualizationDiagramUtil {
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xType, y+ zoom / 4);
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 4.5), y + zoom / 4, xDestination, y + zoom / 4);
 				} else {
@@ -286,7 +283,7 @@ public class VisualizationDiagramUtil {
 			}
 			
 			if (!getExpression().getStandaloneRelationships().getRelationships().isEmpty()) {
-				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
 				} else {
 					addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + zoom / 4);

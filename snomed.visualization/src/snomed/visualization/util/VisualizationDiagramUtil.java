@@ -10,14 +10,19 @@ import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.model.VisualizationConnectionCoordinate;
+import snomed.visualization.model.VisualizationConnectionCoordinate.ConnectionType;
 import snomed.visualization.model.VisualizationDiagramConnection;
 import snomed.visualization.model.VisualizationDiagramElement;
-import snomed.visualization.model.VisualizationConnectionCoordinate.ConnectionType;
 import snomed.visualization.model.VisualizationDiagramElement.VisualizationComponentType;
 
 import com.google.common.collect.Lists;
 
 public class VisualizationDiagramUtil {
+	
+	private enum DiagramType {
+		EXPRESSION,
+		DEFINITION
+	}
 	
 	private int zoom;
 	private int depth;
@@ -25,14 +30,24 @@ public class VisualizationDiagramUtil {
 	private List<VisualizationConnectionCoordinate> connectionCoordinates;
 	private List<Object> elements;
 	
+	private DiagramType diagramType;
+	
+	public VisualizationDiagramUtil() {
+		zoom = 100;
+		diagramType = DiagramType.DEFINITION;
+	}
+	
 	public static Color getColor(int red, int green, int blue) {
 		return new Color(org.eclipse.swt.widgets.Display.getDefault(), red, green, blue);
 	}
 
 	public List<?> createDiagramElements(Expression expression) {
-		zoom = 100;
-		depth = 70;
-
+		if (diagramType == DiagramType.DEFINITION) {
+			depth = 70;
+		} else {
+			depth = 5;
+		}
+		
 		elements = Lists.newArrayList();
 		connectionCoordinates = Lists.newArrayList();
 
@@ -41,7 +56,11 @@ public class VisualizationDiagramUtil {
 		createGroupedRelationshipElements(expression);
 		createUngroupedRelationshipElements(expression);
 
-		elements.add(0, new VisualizationDiagramConnection(zoom, new Rectangle(0, 0, zoom * 8, zoom * depth / 100), connectionCoordinates));
+		if (diagramType == DiagramType.DEFINITION) {
+			elements.add(0, new VisualizationDiagramConnection(zoom, new Rectangle(0, 0, zoom * 8, zoom * depth / 100), connectionCoordinates));
+		} else {
+			elements.add(0, new VisualizationDiagramConnection(zoom, new Rectangle(0, 0, zoom * 7, zoom * depth / 100), connectionCoordinates));
+		}
 
 		return elements;
 	}
@@ -112,21 +131,50 @@ public class VisualizationDiagramUtil {
 		}
 	}
 	
+	public void increaseZoom() {
+		if (zoom < 150) {
+			zoom += 5;
+		}
+	}
+	
+	public void decreaseZoom() {
+		if (zoom > 70) {
+			zoom -= 5;
+		}
+	}
+	
+	public void changeDiagramType() {
+		if (diagramType == DiagramType.DEFINITION) {
+			diagramType = DiagramType.EXPRESSION;
+		} else {
+			diagramType = DiagramType.DEFINITION;
+		}
+	}
+	
 	private void createConceptElement(Expression expression) {
-		Concept concept = expression.getConcept();
-		elements.add(new VisualizationDiagramElement(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(5, 5, zoom * 2, zoom / 2), zoom));
+		if (diagramType == DiagramType.DEFINITION) {
+			Concept concept = expression.getConcept();
+			elements.add(new VisualizationDiagramElement(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(5, 5, zoom * 2, zoom / 2), zoom));
+		}
+		
 
 		if (expression.getIsaRelationships().getRelationships().size() > 0 || expression.getRelationshipGroups().size() > 0 || expression.getStandaloneRelationships().getRelationships().size() > 0) {
-			elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
-					(int) (zoom / 2.5)), zoom));
-
-			elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 1.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
-					10), zoom));
-
-			addNewConnection(null, zoom / 5, (int) (zoom * 0.55), zoom / 5, (int) (zoom * 0.95));
-			addNewConnection(ConnectionType.REGULAR, zoom / 5, (int) (zoom * 0.95), (int) (zoom * 0.6), (int) (zoom * 0.95));
-			addNewConnection(ConnectionType.REGULAR, (int) (zoom * 0.6) + zoom / 5 * 2, (int) (zoom * 0.95), (int) (zoom * 1.5), (int) (zoom * 0.95));
-			addNewConnection(null, (int) (zoom * 1.5), (int) (zoom * 0.95), zoom * 2, (int) (zoom * 0.95));
+			if (diagramType == DiagramType.DEFINITION) {
+				elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
+						(int) (zoom / 2.5)), zoom));
+				elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 1.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
+						10), zoom));
+				
+				addNewConnection(null, zoom / 5, (int) (zoom * 0.55), zoom / 5, (int) (zoom * 0.95));
+				addNewConnection(ConnectionType.REGULAR, zoom / 5, (int) (zoom * 0.95), (int) (zoom * 0.6), (int) (zoom * 0.95));
+				addNewConnection(ConnectionType.REGULAR, (int) (zoom * 0.6) + zoom / 5 * 2, (int) (zoom * 0.95), (int) (zoom * 1.5), (int) (zoom * 0.95));
+				addNewConnection(null, (int) (zoom * 1.5), (int) (zoom * 0.95), zoom * 2, (int) (zoom * 0.95));
+			} else {
+				elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 0.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
+						10), zoom));
+				
+				addNewConnection(null, (int) (zoom * 0.5), zoom * depth / 100 + (int)(zoom * 0.25), zoom, zoom * depth / 100 + (int)(zoom * 0.25));
+			}
 		}
 
 	}
@@ -136,19 +184,33 @@ public class VisualizationDiagramUtil {
 		int y = 0;
 
 		for (Concept concept : expression.getIsaRelationships().getRelationships()) {
-			x = (int) (zoom * 2.5);
-			y = zoom * depth / 100;
+			if (diagramType == DiagramType.DEFINITION) {
+				x = (int) (zoom * 2.5);
+				y = zoom * depth / 100;
+			} else {
+				x = (int) (zoom * 1.5);
+				y = zoom * depth / 100;
+			}
 
 			elements.add(new VisualizationDiagramElement(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(x, y, zoom * 2, zoom / 2), zoom));
 
-			addNewConnection(ConnectionType.ISA, zoom * 2, y + (int) (zoom * 0.25), x, y + (int) (zoom * 0.25));
+			if (diagramType == DiagramType.DEFINITION) {
+				addNewConnection(ConnectionType.ISA, zoom * 2, y + (int) (zoom * 0.25), x, y + (int) (zoom * 0.25));
+			} else {
+				addNewConnection(ConnectionType.ISA, zoom, y + (int) (zoom * 0.25), x, y + (int) (zoom * 0.25));
+			}
+			
 
 			depth += 70;
 		}
 
 		if (!expression.getIsaRelationships().getRelationships().isEmpty() && expression.getRelationshipGroups().isEmpty()
 				&& (null == expression.getStandaloneRelationships() || expression.getStandaloneRelationships().getRelationships().isEmpty())) {
-			addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + (int) (zoom * 0.25));
+			if (diagramType == DiagramType.DEFINITION) {
+				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + (int) (zoom * 0.25));
+			} else {
+				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + (int) (zoom * 0.25));
+			}
 		}
 	}
 
@@ -160,18 +222,34 @@ public class VisualizationDiagramUtil {
 		int xDestination;
 
 		for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
-			xGroup = (int) (zoom * 2.5);
+			if (diagramType == DiagramType.DEFINITION) {
+				xGroup = (int) (zoom * 2.5);
+			} else {
+				xGroup = (int) (zoom * 1.5);
+			}
+			
 			y = zoom * depth / 100;
 			yStart = y + zoom / 4;
 
 			elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.GROUP, new Rectangle(xGroup, y + zoom / 20, (int) (zoom / 2.5), (int) (zoom / 2.5)), zoom));
 
-			addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xGroup, y + zoom / 4);
-			addNewConnection(null, zoom * 2 + (int) (zoom * 0.9), y + zoom / 4, zoom * 3, y + zoom / 4);
+			if (diagramType == DiagramType.DEFINITION) {
+				addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xGroup, y + zoom / 4);
+				addNewConnection(null, zoom * 2 + (int)(zoom * 0.9), y + zoom / 4, zoom * 3, y + zoom / 4);
+			} else {
+				addNewConnection(ConnectionType.REGULAR, zoom, y + zoom / 4, xGroup, y + zoom / 4);
+				addNewConnection(null, zoom + (int)(zoom * 0.9), y + zoom / 4, zoom * 2, y + zoom / 4);
+			}
 
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
-				xType = (int) (zoom * 3.5);
-				xDestination = zoom * 6;
+				if (diagramType == DiagramType.DEFINITION) {
+					xType = (int) (zoom * 3.5);
+					xDestination = zoom * 6;
+				} else {
+					xType = (int) (zoom * 2.5);
+					xDestination = zoom * 5;
+				}
+
 				y = zoom * depth / 100;
 
 				elements.add(new VisualizationDiagramElement(relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
@@ -179,16 +257,26 @@ public class VisualizationDiagramUtil {
 				elements.add(new VisualizationDiagramElement(relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(),
 						VisualizationComponentType.CONCEPT, new Rectangle(xDestination, y, zoom * 2, zoom / 2), zoom));
 
-				addNewConnection(ConnectionType.REGULAR, zoom * 3, y + zoom / 4, xType, y + zoom / 4);
-				addNewConnection(ConnectionType.REGULAR, (int) (zoom * 5.5), y + zoom / 4, xDestination, y + zoom / 4);
-				addNewConnection(null, zoom * 3, yStart, zoom * 3, y + zoom / 4);
+				if (diagramType == DiagramType.DEFINITION) {
+					addNewConnection(ConnectionType.REGULAR, zoom * 3, y + zoom / 4, xType, y + zoom / 4);
+					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 5.5), y + zoom / 4, xDestination, y + zoom / 4);
+					addNewConnection(null, zoom * 3, yStart, zoom * 3, y + zoom / 4);
+				} else {
+					addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xType, y + zoom / 4);
+					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 4.5), y + zoom / 4, xDestination, y + zoom / 4);
+					addNewConnection(null, zoom * 2, yStart, zoom * 2, y + zoom / 4);
+				}
 
 				depth += 70;
 			}
 		}
 
 		if ((null == expression.getStandaloneRelationships() || expression.getStandaloneRelationships().getRelationships().isEmpty()) && !expression.getRelationshipGroups().isEmpty()) {
-			addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
+			if (diagramType == DiagramType.DEFINITION) {
+				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
+			} else {
+				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, yStart);
+			}
 		}
 	}
 
@@ -199,8 +287,14 @@ public class VisualizationDiagramUtil {
 
 		if (null != expression.getStandaloneRelationships()) {
 			for (Relationship relationship : expression.getStandaloneRelationships().getRelationships()) {
-				xType = (int) (zoom * 2.5);
-				xDestination = zoom * 5;
+				if (diagramType == DiagramType.DEFINITION) {
+					xType = (int) (zoom * 2.5);
+					xDestination = zoom * 5;
+				} else {
+					xType = (int) (zoom * 1.5);
+					xDestination = zoom * 4;
+				}
+				
 				y = zoom * depth / 100;
 				
 				elements.add(new VisualizationDiagramElement(relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
@@ -208,14 +302,24 @@ public class VisualizationDiagramUtil {
 				elements.add(new VisualizationDiagramElement(relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(),
 						VisualizationComponentType.CONCEPT, new Rectangle(xDestination, y, zoom * 2, zoom / 2), zoom));
 				
-				addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xType, y + zoom / 4);
-				addNewConnection(ConnectionType.REGULAR, (int) (zoom * 4.5), y + zoom / 4, xDestination, y + zoom / 4);
+				
+				if (diagramType == DiagramType.DEFINITION) {
+					addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xType, y + zoom / 4);
+					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 4.5), y + zoom / 4, xDestination, y + zoom / 4);
+				} else {
+					addNewConnection(ConnectionType.REGULAR, zoom, y + zoom / 4, xType, y + zoom / 4);
+					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 3.5), y + zoom / 4, xDestination, y + zoom / 4);
+				}
 				
 				depth += 70;
 			}
 			
 			if (!expression.getStandaloneRelationships().getRelationships().isEmpty()) {
-				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
+				if (diagramType == DiagramType.DEFINITION) {
+					addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
+				} else {
+					addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + zoom / 4);
+				}
 			}
 		}
 	}

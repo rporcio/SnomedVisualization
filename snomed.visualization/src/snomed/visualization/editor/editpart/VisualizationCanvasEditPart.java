@@ -12,9 +12,15 @@ import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
-import snomed.visualization.util.VisualizationDiagramUtil;
+import snomed.visualization.editor.VisualizationEditor;
 
 public class VisualizationCanvasEditPart extends AbstractGraphicalEditPart {
+
+	private VisualizationEditor visualizationEditor;
+
+	public VisualizationCanvasEditPart(VisualizationEditor visualizationEditor) {
+		this.visualizationEditor = visualizationEditor;
+	}
 
 	@Override
 	protected IFigure createFigure() {
@@ -41,8 +47,7 @@ public class VisualizationCanvasEditPart extends AbstractGraphicalEditPart {
 	protected List<?> getModelChildren() {
 		Expression expression = (Expression) getModel();
 		
-		VisualizationDiagramUtil util = new VisualizationDiagramUtil();
-		return util.createDiagramElements(expression);
+		return visualizationEditor.getDiagramUtil().createDiagramElements(expression);
 	}
 
 }

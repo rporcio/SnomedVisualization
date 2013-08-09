@@ -13,6 +13,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.DefaultEditDomain;
 import org.eclipse.gef.ui.parts.GraphicalEditor;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
@@ -36,6 +38,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.nodemodel.INode;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
@@ -148,6 +151,51 @@ public class VisualizationEditor extends GraphicalEditor {
 			
 		}
 	};
+	
+	private Action changeDiagramTypeAction = new Action("Change diagram type", IAction.AS_PUSH_BUTTON) {
+		@Override
+		public void run() {
+			diagramUtil.changeDiagramType();
+			
+			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
+				getGraphicalViewer().getFocusEditPart().refresh();
+			} else {
+				getGraphicalViewer().getFocusEditPart().getParent().refresh();
+			}
+		}
+	};
+	
+	private Action zoomInAction = new Action("Zoom in", IAction.AS_PUSH_BUTTON) {
+		@Override
+		public void run() {
+			diagramUtil.increaseZoom();
+			
+			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
+				getGraphicalViewer().getFocusEditPart().refresh();
+			} else {
+				getGraphicalViewer().getFocusEditPart().getParent().refresh();
+			}
+		}
+	};
+	
+	private Action zoomOutAction = new Action("Zoom out", IAction.AS_PUSH_BUTTON) {
+		@Override
+		public void run() {
+			diagramUtil.decreaseZoom();
+			
+			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
+				getGraphicalViewer().getFocusEditPart().refresh();
+			} else {
+				getGraphicalViewer().getFocusEditPart().getParent().refresh();
+			}
+		}
+	};
+	
+	private Action newRelationshipAction = new Action("New relationship", IAction.AS_PUSH_BUTTON) {
+		@Override
+		public void run() {
+		}
+	};
 
 	public VisualizationEditor() {
 		diagramUtil = new VisualizationDiagramUtil();
@@ -215,6 +263,16 @@ public class VisualizationEditor extends GraphicalEditor {
 		
 		styledText.setText(dslUtil.convertToPresentation(expression));
 		styledText.addModifyListener(modifyListener);
+		
+		changeDiagramTypeAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/change-diagram-type.png"));
+		zoomInAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-in.png"));
+		zoomOutAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-out.png"));
+		newRelationshipAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/new-relationship.png"));
+		form.getToolBarManager().add(zoomInAction);
+		form.getToolBarManager().add(zoomOutAction);
+		form.getToolBarManager().add(newRelationshipAction);
+		form.getToolBarManager().add(changeDiagramTypeAction);
+		form.getToolBarManager().update(true);
 	}
 
 	@Override
@@ -241,6 +299,10 @@ public class VisualizationEditor extends GraphicalEditor {
 		} else if (propertyName.equals("characteristic")) {
 			diagramUtil.changeCharacteristicType(id, expression);
 		}
+	}
+	
+	public VisualizationDiagramUtil getDiagramUtil() {
+		return diagramUtil;
 	}
 
 	private void updateMessageManager(final List<String> errorMessages) {
