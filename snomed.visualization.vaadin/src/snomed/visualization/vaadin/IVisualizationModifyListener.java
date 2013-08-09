@@ -4,8 +4,8 @@ import java.lang.reflect.Method;
 
 import com.vaadin.util.ReflectTools;
 
-public interface VisualizationModifyListener {
-	static Method METHOD = ReflectTools.findMethod(VisualizationModifyListener.class,
+public interface IVisualizationModifyListener {
+	static Method METHOD = ReflectTools.findMethod(IVisualizationModifyListener.class,
             "handleModify", VisualizationModifyEvent.class);
 	
 	void handleModify(VisualizationModifyEvent event);

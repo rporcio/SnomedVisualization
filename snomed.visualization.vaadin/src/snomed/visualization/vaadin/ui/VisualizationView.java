@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
+import snomed.visualization.vaadin.wizard.VisualizationRelationshipWizard;
 
 import com.vaadin.event.MouseEvents;
 import com.vaadin.event.MouseEvents.ClickListener;

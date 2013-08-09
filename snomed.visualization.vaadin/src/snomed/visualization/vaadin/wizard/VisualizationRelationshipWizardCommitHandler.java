@@ -1,4 +1,4 @@
-package snomed.visualization.vaadin.util;
+package snomed.visualization.vaadin.wizard;
 
 import java.util.Random;
 
@@ -7,7 +7,6 @@ import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
-import snomed.visualization.vaadin.ui.VisualizationRelationshipWizard;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.fieldgroup.FieldGroup.CommitEvent;
@@ -19,12 +18,12 @@ import com.vaadin.data.fieldgroup.FieldGroup.CommitHandler;
  * 
  * @author rporcio
  */
-public class VisulizationRelationshipWizardCommitHandler implements CommitHandler {
+public class VisualizationRelationshipWizardCommitHandler implements CommitHandler {
 
 		private static final long serialVersionUID = -7255938137665580357L;
 		private VisualizationRelationshipWizard visualizationRelationshipWizard;
 
-		public VisulizationRelationshipWizardCommitHandler(VisualizationRelationshipWizard visualizationRelationshipWizard) {
+		public VisualizationRelationshipWizardCommitHandler(VisualizationRelationshipWizard visualizationRelationshipWizard) {
 			this.visualizationRelationshipWizard = visualizationRelationshipWizard;
 		}
 

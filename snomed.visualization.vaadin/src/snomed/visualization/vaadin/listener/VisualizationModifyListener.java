@@ -1,4 +1,4 @@
-package snomed.visualization.vaadin.util;
+package snomed.visualization.vaadin.listener;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -9,19 +9,20 @@ import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.vaadin.VisualizationModifyEvent;
-import snomed.visualization.vaadin.VisualizationModifyListener;
+import snomed.visualization.vaadin.IVisualizationModifyListener;
 import snomed.visualization.vaadin.client.model.VisualizationModifyType;
+import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
 
 /**
  * Listener class to handle the modify event that comes from the client.
  * 
  * @author rporcio
  */
-public class VisualiaztionModifyListener implements VisualizationModifyListener {
+public class VisualizationModifyListener implements IVisualizationModifyListener {
 
 	private VisualizationDiagramUtil diagramUtil;
 
-	public VisualiaztionModifyListener(VisualizationDiagramUtil visualizationDiagramUtil) {
+	public VisualizationModifyListener(VisualizationDiagramUtil visualizationDiagramUtil) {
 		this.diagramUtil = visualizationDiagramUtil;
 	}
 

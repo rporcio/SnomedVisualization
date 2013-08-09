@@ -1,11 +1,9 @@
-package snomed.visualization.vaadin.ui;
+package snomed.visualization.vaadin.wizard;
 
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
-import snomed.visualization.vaadin.util.VisualizationRelationshipWizardFactory;
-import snomed.visualization.vaadin.util.VisualizationWizardValidatorGrouper;
-import snomed.visualization.vaadin.util.VisulizationRelationshipWizardCommitHandler;
+import snomed.visualization.vaadin.ui.VisualizationView;
 
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -202,7 +200,7 @@ public class VisualizationRelationshipWizard extends Window {
 		binder.setItemDataSource(beanItem);
 		
 		binder.setFieldFactory(new VisualizationRelationshipWizardFactory(visualizationView));
-		binder.addCommitHandler(new VisulizationRelationshipWizardCommitHandler(this));
+		binder.addCommitHandler(new VisualizationRelationshipWizardCommitHandler(this));
 		
 		relationshipType = binder.buildAndBind("Relationship type", "type", ComboBox.class);
 		relationshipGroup = binder.buildAndBind("Relationship group", "group", ComboBox.class);

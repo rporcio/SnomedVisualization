@@ -40,7 +40,7 @@ public class VisualizationDslView extends RichTextArea {
 	public VisualizationDslView(VisualizationView visualizationView) {
 		this.visualizationView = visualizationView;
 		this.dslUtil = new VisualizationDslUtil();
-		this.warningNotification = new Notification("Errors in the grammar", "", Type.ERROR_MESSAGE);
+		this.warningNotification = new Notification("Errors in the expression", "", Type.ERROR_MESSAGE);
 		this.warningNotification.setPosition(Position.BOTTOM_RIGHT);
 		this.containsErrors = false;
 		

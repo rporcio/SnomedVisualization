@@ -39,11 +39,11 @@ public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent
 		markAsDirty();
 	}
 	
-	public void addModifyListener(VisualizationModifyListener listener) {
-		super.addListener(VisualizationModifyEvent.class, listener, VisualizationModifyListener.METHOD);
+	public void addModifyListener(IVisualizationModifyListener listener) {
+		super.addListener(VisualizationModifyEvent.class, listener, IVisualizationModifyListener.METHOD);
 	}
 	
-	public void removeModifyListener(VisualizationModifyListener listener) {
-		super.removeListener(VisualizationModifyEvent.class, listener, VisualizationModifyListener.METHOD);
+	public void removeModifyListener(IVisualizationModifyListener listener) {
+		super.removeListener(VisualizationModifyEvent.class, listener, IVisualizationModifyListener.METHOD);
 	}
 }

@@ -1,4 +1,4 @@
-package snomed.visualization.vaadin.util;
+package snomed.visualization.vaadin.wizard;
 
 import com.vaadin.data.Validator;
 

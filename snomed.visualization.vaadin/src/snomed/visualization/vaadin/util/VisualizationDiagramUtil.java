@@ -13,6 +13,7 @@ import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinat
 import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinate.ConnectionType;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
+import snomed.visualization.vaadin.listener.VisualizationModifyListener;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView.DiagramType;
 
@@ -35,14 +36,14 @@ public class VisualizationDiagramUtil {
 	private final VisualizationDiagramView diagramView;
 	private ResourceReference characteristicIcon;
 	private ResourceReference deletionIcon;
-	private VisualiaztionModifyListener modifyListener;
+	private VisualizationModifyListener modifyListener;
 	
 	public VisualizationDiagramUtil(VisualizationDiagramView diagramView) {
 		this.diagramView = diagramView;
 		this.zoom = 100;
 		this.characteristicIcon = new ResourceReference(new ThemeResource("icons/changetype.png"), null, "");
 		this.deletionIcon = new ResourceReference(new ThemeResource("icons/trash.png"), null, "");
-		this.modifyListener = new VisualiaztionModifyListener(this);
+		this.modifyListener = new VisualizationModifyListener(this);
 	}
 
 	/**
@@ -60,8 +61,8 @@ public class VisualizationDiagramUtil {
 		
 		visualizeConcept();
 		visualizeIsaConcepts();
-		visualizeRelationshipGroups();
-		visualizeStandaloneRelationships();
+		visualizeGroupedRelationships();
+		visualizeUngroupedRelationships();
 		
 		VisualizationDiagramConnection diagramConnection = new VisualizationDiagramConnection();
 		if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
@@ -102,7 +103,6 @@ public class VisualizationDiagramUtil {
 
 			
 			if (getExpression().getIsaRelationships().getRelationships().size() > 0 || getExpression().getRelationshipGroups().size() > 0 || getExpression().getStandaloneRelationships().getRelationships().size() > 0) {
-				
 				
 				if (diagramView.getDiagramType().equals(DiagramType.DEFINITION)) {
 					component = new VisualizationDiagramElement();
@@ -171,7 +171,7 @@ public class VisualizationDiagramUtil {
 		}
 	}
 	
-	private void visualizeRelationshipGroups() {
+	private void visualizeGroupedRelationships() {
 		int y = 0;
 		int xGroup = 0;
 		int yStart = 0;
@@ -245,7 +245,7 @@ public class VisualizationDiagramUtil {
 		}
 	}
 	
-	private void visualizeStandaloneRelationships() {
+	private void visualizeUngroupedRelationships() {
 		int xType;
 		int xDestination;
 		int y = 0;

@@ -1,4 +1,4 @@
-package snomed.visualization.vaadin.util;
+package snomed.visualization.vaadin.wizard;
 
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
