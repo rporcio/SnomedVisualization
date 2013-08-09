@@ -133,6 +133,8 @@ public class VisualizationDiagramElementFigure extends Figure {
 		} else if (diagramElement.getType() == VisualizationComponentType.CONJUCTION) {
 			innerShape = new Ellipse();
 			innerShape.setAntialias(5);
+			
+			((Ellipse) innerShape).setLineWidth(5);
 		}
 		
 
