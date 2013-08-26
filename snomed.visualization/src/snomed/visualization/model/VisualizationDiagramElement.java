@@ -2,7 +2,11 @@ package snomed.visualization.model;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
-
+/**
+ * Represents an element of the diagram.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramElement {
 	public enum VisualizationComponentType {
 		CONCEPT,

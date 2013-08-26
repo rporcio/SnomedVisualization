@@ -17,6 +17,11 @@ import snomed.visualization.dsl.visualizationDsl.impl.ModelImpl;
 
 import com.google.common.collect.Lists;
 
+/**
+ * Utility class to provide dsl specific methods.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDslUtil {
 
 	public Expression convertToExpression(String dsl) {
@@ -159,10 +164,10 @@ public class VisualizationDslUtil {
 	}
 	
 	// TODO remove
-		private String generateRandomItemIndentifier() {
-			Random random = new Random();
-			// nextInt excludes top value, add 1 to make it inclusive
-			int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
-			return Integer.toString(randomNum);
-		}
+	private String generateRandomItemIndentifier() {
+		Random random = new Random();
+		// nextInt excludes top value, add 1 to make it inclusive
+		int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
+		return Integer.toString(randomNum);
+	}
 }

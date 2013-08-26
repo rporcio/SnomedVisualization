@@ -21,6 +21,11 @@ import snomed.visualization.model.VisualizationDiagramElement;
 import snomed.visualization.model.VisualizationDiagramElement.VisualizationComponentType;
 import snomed.visualization.util.VisualizationDiagramUtil;
 
+/**
+ * Represents a figure element on the canvas. 
+ *
+ * @author rporcio
+ */
 public class VisualizationDiagramElementFigure extends Figure {
 
 	private Shape innerShape;
@@ -29,11 +34,10 @@ public class VisualizationDiagramElementFigure extends Figure {
 	private boolean mouseOver;
 	
 	private final VisualizationDiagramElement diagramElement;
-	private final ImageFigure deletionIcon;
-	private final ImageFigure characteristicIcon;
+	private ImageFigure deletionIcon;
+	private ImageFigure characteristicIcon;
 	
 	private MouseMotionListener motionListener = new MouseMotionListener() {
-		
 		@Override
 		public void mouseMoved(MouseEvent me) {
 		}
@@ -68,7 +72,6 @@ public class VisualizationDiagramElementFigure extends Figure {
 	};
 	
 	MouseListener mouseListener = new MouseListener() {
-		
 		@Override
 		public void mouseReleased(MouseEvent me) {
 		}
@@ -96,75 +99,50 @@ public class VisualizationDiagramElementFigure extends Figure {
 		}
 	};
 	
-	
+	/**
+	 * Creates a diagram element based on the given model.
+	 * 
+	 * @param diagramElement the model which represents a diagram element.
+	 */
 	public VisualizationDiagramElementFigure(VisualizationDiagramElement diagramElement) {
 		this.diagramElement = diagramElement;
 		
 		setLayoutManager(new XYLayout());
+		initializeBasedElements();
 		
 		if (diagramElement.getType() == VisualizationComponentType.CONCEPT) {
-			innerShape = new RectangleFigure();
-			outerShape = new RectangleFigure();
-			
-			if (diagramElement.isDefined()) {
-				innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(153,204,255));
-			} else {
-				innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(204,204,255));
-			}
+			createConceptFigure();
 		} else if (diagramElement.getType() == VisualizationComponentType.RELATIONSHIP) {
-			innerShape = new RoundedRectangle();
-			outerShape = new RoundedRectangle();
-			
-			if (diagramElement.isDefined()) {
-				innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(255,255,204));
-			} else {
-				innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(204,204,153));
-			}
-			
-			int corner = diagramElement.getZoom()/3;
-			
-			innerShape.setAntialias(5);
-			((RoundedRectangle) innerShape).setCornerDimensions(new Dimension(corner, corner));
-			outerShape.setAntialias(5);
-			((RoundedRectangle) outerShape).setCornerDimensions(new Dimension(corner, corner));
+			createRelationshipFigure();
 		} else if (diagramElement.getType() == VisualizationComponentType.GROUP) {
 			innerShape = new Ellipse();
 			innerShape.setAntialias(5);
+			
+			add(innerShape);
 		} else if (diagramElement.getType() == VisualizationComponentType.CONJUCTION) {
 			innerShape = new Ellipse();
 			innerShape.setAntialias(5);
 			
 			((Ellipse) innerShape).setLineWidth(5);
+			
+			add(innerShape);
 		}
 		
-
+		
+		
+	}
+	
+	private void initializeBasedElements() {
 		term = new Label(diagramElement.getTerm());
 		deletionIcon = new ImageFigure(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/trash.png").createImage());
 		deletionIcon.setAlignment(PositionConstants.EAST);
 		characteristicIcon = new ImageFigure(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/changetype.png").createImage());
 		characteristicIcon.setAlignment(PositionConstants.EAST);
 		
-		if (diagramElement.getType() != VisualizationComponentType.GROUP && diagramElement.getType() != VisualizationComponentType.CONJUCTION) {
-			add(outerShape);
-			add(innerShape);
-			add(term);
-			
-			String tooltipTerm = diagramElement.getId() + " | " + diagramElement.getTerm() + " |"; 
-			outerShape.setToolTip(new Label(tooltipTerm));
-			innerShape.setToolTip(new Label(tooltipTerm));
-			term.setToolTip(new Label(tooltipTerm));
-			characteristicIcon.setToolTip(new Label(tooltipTerm));
-			deletionIcon.setToolTip(new Label(tooltipTerm));
-		} else {
-			add(innerShape);
-		}
-		
-		
 		addMouseMotionListener(motionListener);
 		addMouseListener(mouseListener);
-		
 	}
-	
+
 	@Override
 	protected void paintFigure(Graphics graphics) {
 		Rectangle rectangle = getBounds().getCopy();
@@ -187,9 +165,55 @@ public class VisualizationDiagramElementFigure extends Figure {
 		
 		
 	}
-
+	
 	public VisualizationDiagramElement getDiagramElement() {
 		return diagramElement;
+	}
+	
+	private void createConceptFigure() {
+		innerShape = new RectangleFigure();
+		outerShape = new RectangleFigure();
+		
+		if (diagramElement.isDefined()) {
+			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(153,204,255));
+		} else {
+			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(204,204,255));
+		}
+		
+		addToCanvas();
+	}
+	
+	private void createRelationshipFigure() {
+		innerShape = new RoundedRectangle();
+		outerShape = new RoundedRectangle();
+		
+		if (diagramElement.isDefined()) {
+			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(255,255,204));
+		} else {
+			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(204,204,153));
+		}
+		
+		int corner = diagramElement.getZoom()/3;
+		
+		innerShape.setAntialias(5);
+		((RoundedRectangle) innerShape).setCornerDimensions(new Dimension(corner, corner));
+		outerShape.setAntialias(5);
+		((RoundedRectangle) outerShape).setCornerDimensions(new Dimension(corner, corner));
+		
+		addToCanvas();
+	}
+	
+	private void addToCanvas() {
+		add(outerShape);
+		add(innerShape);
+		add(term);
+		
+		String tooltipTerm = diagramElement.getId() + " | " + diagramElement.getTerm() + " |"; 
+		outerShape.setToolTip(new Label(tooltipTerm));
+		innerShape.setToolTip(new Label(tooltipTerm));
+		term.setToolTip(new Label(tooltipTerm));
+		characteristicIcon.setToolTip(new Label(tooltipTerm));
+		deletionIcon.setToolTip(new Label(tooltipTerm));
 	}
 
 }

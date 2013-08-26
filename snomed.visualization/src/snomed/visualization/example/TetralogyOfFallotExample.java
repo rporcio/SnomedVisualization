@@ -6,6 +6,11 @@ import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
 
+/**
+ * Class to create the Tetralogy of fallot expression for the application.
+ * 
+ * @author rporcio
+ */
 public class TetralogyOfFallotExample {
 
 	public static Expression createTetralogyOfFallotExample() {

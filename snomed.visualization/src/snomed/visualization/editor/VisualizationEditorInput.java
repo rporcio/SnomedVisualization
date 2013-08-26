@@ -6,6 +6,11 @@ import org.eclipse.ui.IPersistableElement;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
 
+/**
+ * Editor input for the {@link VisualizationEditor}.
+ * 
+ * @author rporcio
+ */
 public class VisualizationEditorInput implements IEditorInput {
 
 	private Expression expression;

@@ -14,6 +14,11 @@ import org.eclipse.gef.requests.CreateRequest;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.editor.VisualizationEditor;
 
+/**
+ * EditPart to create the main canvas of the diagram where the elements will be drawn.
+ * 
+ * @author rporcio
+ */
 public class VisualizationCanvasEditPart extends AbstractGraphicalEditPart {
 
 	private VisualizationEditor visualizationEditor;
@@ -28,7 +33,6 @@ public class VisualizationCanvasEditPart extends AbstractGraphicalEditPart {
 		layer.setLayoutManager(new FreeformLayout());
 		
 		return layer;
-		
 	}
 
 	@Override
@@ -37,7 +41,6 @@ public class VisualizationCanvasEditPart extends AbstractGraphicalEditPart {
 			
 			@Override
 			protected Command getCreateCommand(CreateRequest request) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		});

@@ -3,7 +3,9 @@ package snomed.visualization.util;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.PlatformUI;
 
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
@@ -17,6 +19,11 @@ import snomed.visualization.model.VisualizationDiagramElement.VisualizationCompo
 
 import com.google.common.collect.Lists;
 
+/**
+ * Utility class to provide diagram specific methods.
+ * 
+ * @author Porcio Roland
+ */
 public class VisualizationDiagramUtil {
 	
 	private enum DiagramType {
@@ -97,7 +104,16 @@ public class VisualizationDiagramUtil {
 
 	public void deleteDiagramElement(final String id, Expression expression) {
 		if (expression.getConcept().getId().equals(id)) {
-			// TODO cannot delete
+			PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			    public void run() {
+				    MessageDialog.openInformation(
+				    		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
+				    		"Information", 
+				    		"Main element of the diagram cannot be deleted!");
+				}
+			});
+			
+			return;
 		}
 		
 		for (Concept concept : expression.getIsaRelationships().getRelationships()) {

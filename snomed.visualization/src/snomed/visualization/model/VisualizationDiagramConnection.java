@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
+/**
+ * Container class to contain all the connections of the diagram.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramConnection {
 	
 	private Rectangle constraint;

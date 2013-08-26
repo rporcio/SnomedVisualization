@@ -1,7 +1,6 @@
 package snomed.visualization.editor;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,11 +15,9 @@ import org.eclipse.gef.ui.parts.GraphicalEditor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -30,16 +27,17 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.forms.HyperlinkSettings;
 import org.eclipse.ui.forms.IMessage;
 import org.eclipse.ui.forms.IMessageManager;
 import org.eclipse.ui.forms.ManagedForm;
 import org.eclipse.ui.forms.editor.FormPage;
+import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.nodemodel.INode;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
@@ -49,12 +47,16 @@ import snomed.visualization.hyperlink.CustomInformationPresenter;
 import snomed.visualization.hyperlink.CustomInformationPresenter.IShowInformationCallback;
 import snomed.visualization.hyperlink.FormHeaderMessageConfigurationStrategy;
 import snomed.visualization.hyperlink.NullMessageToolTipManager;
+import snomed.visualization.listener.VisualizationDslEditorModifyListener;
 import snomed.visualization.util.VisualizationDiagramUtil;
 import snomed.visualization.util.VisualizationDslUtil;
+import snomed.visualization.wizard.VisualizationRelationshipWizard;
 
-import com.google.common.collect.Lists;
-
-
+/**
+ * Editor to visualize the expression in dsl and diagram view.
+ * 
+ * @author rporcio
+ */
 public class VisualizationEditor extends GraphicalEditor {
 	
 	public static final String ID = "snomed.visualization.editor";
@@ -67,8 +69,11 @@ public class VisualizationEditor extends GraphicalEditor {
 	private VisualizationDiagramUtil diagramUtil;
 	private VisualizationDslUtil dslUtil;
 	
+	private VisualizationDslEditorModifyListener dslEditorModifyListener;
+	
 	private final AtomicBoolean providerConfigured = new AtomicBoolean(false);
 	private CustomInformationPresenter presenter;
+	
 	private final IShowInformationCallback callback = new IShowInformationCallback() {
 		@Override public Object getInput() {
 			return createFormTextContent(getValidationMessages());
@@ -76,22 +81,15 @@ public class VisualizationEditor extends GraphicalEditor {
 	};
 	
 	private Job refreshJob = new Job("Refresh visual model") {
-		
 		@Override
 		protected IStatus run(IProgressMonitor monitor) {
-			
 			Display.getDefault().asyncExec(new Runnable() {
-				
 				@Override
 				public void run() {
 					expression = dslUtil.updatePreviousExpression(expression, styledText.getText());
 					getGraphicalViewer().setContents(expression);
 					addContentAdapter();
-					if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
-						getGraphicalViewer().getFocusEditPart().refresh();
-					} else {
-						getGraphicalViewer().getFocusEditPart().getParent().refresh();
-					}
+					refreshDiagram();
 				}
 			});
 			
@@ -99,55 +97,15 @@ public class VisualizationEditor extends GraphicalEditor {
 		}
 	};
 	
-	private ModifyListener modifyListener = new ModifyListener() {
-		
-		@Override
-		public void modifyText(ModifyEvent e) {
-			if (dslUtil.isValid(styledText.getText())) {
-				if (refreshJob.getState() == Job.WAITING || refreshJob.getState() == Job.SLEEPING) {
-					refreshJob.cancel();
-				}
-				
-				styledText.setStyleRanges(new StyleRange[0]);
-				
-				refreshJob.schedule(500);
-//				updateMessageManager(new ArrayList<String>());
-			} else {
-				List<String> errorMessages = Lists.newArrayList();
-				List<StyleRange> ranges = Lists.newArrayList();
-				Iterable<INode> syntaxErrors = dslUtil.getSyntaxErrors(styledText.getText());
-				Iterator<INode> iterator = syntaxErrors.iterator();
-				while (iterator.hasNext()) {
-					INode syntaxError = iterator.next();
-					errorMessages.add(syntaxError.getSyntaxErrorMessage().getMessage());
-					StyleRange range = new StyleRange();
-					range.start = syntaxError.getTotalOffset();
-					range.length = syntaxError.getTotalEndOffset() - syntaxError.getTotalOffset();
-					range.foreground = Display.getDefault().getSystemColor(SWT.COLOR_RED);
-					range.underline = true;
-					
-					ranges.add(range);
-				}
-				
-				styledText.setStyleRanges(ranges.toArray(new StyleRange[0]));
-//				updateMessageManager(errorMessages);
-			}
-		}
-	};
-	
 	private EContentAdapter adapter = new EContentAdapter() {
 		public void notifyChanged(Notification notification) {
 			super.notifyChanged(notification);
 			
-			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
-				getGraphicalViewer().getFocusEditPart().refresh();
-			} else {
-				getGraphicalViewer().getFocusEditPart().getParent().refresh();
-			}
+			refreshDiagram();
 			
-			styledText.removeModifyListener(modifyListener);
+			styledText.removeModifyListener(dslEditorModifyListener);
 			styledText.setText(dslUtil.convertToPresentation(expression));
-			styledText.addModifyListener(modifyListener);
+			styledText.addModifyListener(dslEditorModifyListener);
 			
 		}
 	};
@@ -156,12 +114,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		@Override
 		public void run() {
 			diagramUtil.changeDiagramType();
-			
-			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
-				getGraphicalViewer().getFocusEditPart().refresh();
-			} else {
-				getGraphicalViewer().getFocusEditPart().getParent().refresh();
-			}
+			refreshDiagram();
 		}
 	};
 	
@@ -169,12 +122,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		@Override
 		public void run() {
 			diagramUtil.increaseZoom();
-			
-			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
-				getGraphicalViewer().getFocusEditPart().refresh();
-			} else {
-				getGraphicalViewer().getFocusEditPart().getParent().refresh();
-			}
+			refreshDiagram();
 		}
 	};
 	
@@ -182,18 +130,14 @@ public class VisualizationEditor extends GraphicalEditor {
 		@Override
 		public void run() {
 			diagramUtil.decreaseZoom();
-			
-			if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
-				getGraphicalViewer().getFocusEditPart().refresh();
-			} else {
-				getGraphicalViewer().getFocusEditPart().getParent().refresh();
-			}
+			refreshDiagram();
 		}
 	};
 	
 	private Action newRelationshipAction = new Action("New relationship", IAction.AS_PUSH_BUTTON) {
 		@Override
 		public void run() {
+			new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), new VisualizationRelationshipWizard(expression)).open();
 		}
 	};
 
@@ -249,20 +193,18 @@ public class VisualizationEditor extends GraphicalEditor {
 		
 		toolkit.decorateFormHeading(form.getForm());
 		
-//		getToolkit().getHyperlinkGroup().setHyperlinkUnderlineMode(HyperlinkSettings.UNDERLINE_HOVER);
-//		getForm().addMessageHyperlinkListener(new HyperlinkAdapter());
-		
 		Composite composite = form.getBody();
-		composite.setLayout(new GridLayout(2, false));
+		composite.setLayout(new GridLayout(1, true));
 		composite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		
-		super.createPartControl(composite);
+		super.createPartControl(parent);
+		
+		dslEditorModifyListener = new VisualizationDslEditorModifyListener(this);
 		
 		styledText = new StyledText(composite, SWT.BORDER);
 		styledText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
-		
 		styledText.setText(dslUtil.convertToPresentation(expression));
-		styledText.addModifyListener(modifyListener);
+		styledText.addModifyListener(dslEditorModifyListener);
 		
 		changeDiagramTypeAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/change-diagram-type.png"));
 		zoomInAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-in.png"));
@@ -273,6 +215,9 @@ public class VisualizationEditor extends GraphicalEditor {
 		form.getToolBarManager().add(newRelationshipAction);
 		form.getToolBarManager().add(changeDiagramTypeAction);
 		form.getToolBarManager().update(true);
+		
+		getToolkit().getHyperlinkGroup().setHyperlinkUnderlineMode(HyperlinkSettings.UNDERLINE_HOVER);
+		getForm().addMessageHyperlinkListener(new HyperlinkAdapter());
 	}
 
 	@Override
@@ -286,7 +231,7 @@ public class VisualizationEditor extends GraphicalEditor {
 	@Override
 	public void dispose() {
 		if (!styledText.isDisposed()) {
-			styledText.removeModifyListener(modifyListener);
+			styledText.removeModifyListener(dslEditorModifyListener);
 		}
 		
 		disposePresenter(presenter);
@@ -298,14 +243,28 @@ public class VisualizationEditor extends GraphicalEditor {
 			diagramUtil.deleteDiagramElement(id, expression);
 		} else if (propertyName.equals("characteristic")) {
 			diagramUtil.changeCharacteristicType(id, expression);
+			refreshDiagram();
 		}
 	}
 	
+
 	public VisualizationDiagramUtil getDiagramUtil() {
 		return diagramUtil;
 	}
+	
+	public VisualizationDslUtil getDslUtil() {
+		return dslUtil;
+	}
+	
+	public StyledText getStyledText() {
+		return styledText;
+	}
 
-	private void updateMessageManager(final List<String> errorMessages) {
+	public Job getRefreshJob() {
+		return refreshJob;
+	}
+
+	public void updateMessageManager(final List<String> errorMessages) {
 		Display.getCurrent().asyncExec(new Runnable() {
 			
 			@SuppressWarnings({ "restriction", "unused" })
@@ -330,7 +289,6 @@ public class VisualizationEditor extends GraphicalEditor {
 						break;
 					}
 				}
-
 				
 				getMessageManager().update();
 				
@@ -351,6 +309,18 @@ public class VisualizationEditor extends GraphicalEditor {
 				getHeading().setMessageToolTipManager(NullMessageToolTipManager.INSTANCE);
 			}
 		});
+	}
+	
+	public IMessageManager getMessageManager() {
+		return getManagedForm().getMessageManager();
+	}
+	
+	private void refreshDiagram() {
+		if (getGraphicalViewer().getFocusEditPart() instanceof VisualizationCanvasEditPart) {
+			getGraphicalViewer().getFocusEditPart().refresh();
+		} else {
+			getGraphicalViewer().getFocusEditPart().getParent().refresh();
+		}
 	}
 	
 	private String createFormTextContent(final IMessage[] messages) {
@@ -412,10 +382,6 @@ public class VisualizationEditor extends GraphicalEditor {
 				return (Hyperlink) control;
 		}
 		return null;
-	}
-	
-	private IMessageManager getMessageManager() {
-		return getManagedForm().getMessageManager();
 	}
 	
 	@SuppressWarnings("restriction")

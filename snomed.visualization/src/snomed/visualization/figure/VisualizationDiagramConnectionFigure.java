@@ -11,6 +11,11 @@ import snomed.visualization.model.VisualizationConnectionCoordinate;
 import snomed.visualization.model.VisualizationConnectionCoordinate.ConnectionType;
 import snomed.visualization.model.VisualizationDiagramConnection;
 
+/**
+ * Represents the diagram connections between the diagram elements on the canvas.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramConnectionFigure extends Figure {
 	
 	private VisualizationDiagramConnection visualizationDiagramConnection;

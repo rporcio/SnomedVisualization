@@ -10,6 +10,9 @@ Require-Bundle: org.eclipse.ui,
  snomed.visualization.dsl.ui;bundle-version="1.0.0",
  org.eclipse.gef;bundle-version="3.9.0",
  org.eclipse.ui.forms;bundle-version="3.6.0",
- org.eclipse.jface.text;bundle-version="3.8.100"
+ org.eclipse.jface.text;bundle-version="3.8.100",
+ org.eclipse.core.databinding;bundle-version="1.4.1",
+ org.eclipse.jface.databinding;bundle-version="1.6.200",
+ org.eclipse.core.databinding.beans;bundle-version="1.2.200"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

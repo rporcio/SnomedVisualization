@@ -10,6 +10,11 @@ import snomed.visualization.editor.editpart.VisualizationDiagramEditPart;
 import snomed.visualization.model.VisualizationDiagramConnection;
 import snomed.visualization.model.VisualizationDiagramElement;
 
+/**
+ * EditPartFactory to create the EditParts for the diagram part of the editor.
+ * 
+ * @author rporcio
+ */
 public class VisualizationEditPartFactory implements EditPartFactory {
 
 	private VisualizationEditor visualizationEditor;

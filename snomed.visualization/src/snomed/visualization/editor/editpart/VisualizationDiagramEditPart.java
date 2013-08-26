@@ -12,6 +12,11 @@ import snomed.visualization.figure.VisualizationDiagramElementFigure;
 import snomed.visualization.model.VisualizationDiagramConnection;
 import snomed.visualization.model.VisualizationDiagramElement;
 
+/**
+ * EditPart to create the figure on the canvas.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramEditPart extends AbstractGraphicalEditPart {
 	
 	private VisualizationEditor visualizationEditor;

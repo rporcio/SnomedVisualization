@@ -1,12 +1,16 @@
 package snomed.visualization.example;
 
-
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
 
+/**
+ * Class to create the Fracture of radius expression for the application.
+ * 
+ * @author rporcio
+ */
 public class FractureOfRadiusExample {
 
 	public static Expression createFactureOfRadiusExpression() {

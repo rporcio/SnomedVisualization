@@ -1,7 +1,10 @@
 package snomed.visualization.model;
 
-
-
+/**
+ * Represents a connection on the diagram.
+ * 
+ * @author rporcio
+ */
 public class VisualizationConnectionCoordinate {
 
 	public enum ConnectionType {
