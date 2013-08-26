@@ -239,7 +239,12 @@ public class ConceptImpl extends MinimalEObjectImpl.Container implements Concept
 
 	@Override
 	public void setDefined(boolean defined) {
+		boolean oldDefined = this.defined;
 		this.defined = defined;
+		
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, 3, oldDefined, this.defined));
+		}
 	}
 
 } //ConceptImpl

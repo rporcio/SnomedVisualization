@@ -273,8 +273,12 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
 
 	@Override
 	public void setDefined(boolean defined) {
+		boolean oldDefined = this.defined;
 		this.defined = defined;
-
+		
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, 3, oldDefined, this.defined));
+		}
 	}
 
 	@Override
