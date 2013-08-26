@@ -75,40 +75,13 @@ public interface Relationship extends EObject
    */
   void setDestination(Concept value);
   
-  /**
-   * @param value
-   * @generated NOT
-   */
-  void setDefined(boolean value);
-  
-  /**
-   * @return
-   * @generated NOT
-   */
   boolean isDefined();
+  void setDefined(boolean defined);
   
-  /**
-   * @param group
-   * @generated NOT
-   */
+  int getGroup();
   void setGroup(int group);
   
-  /**
-   * @return
-   * @generated NOT
-   */
-  int getGroup();
-  
-  /**
-   * @param id
-   * @generated NOT
-   */
-  void setId(String id);
-  
-  /**
-   * @return
-   * @generated NOT
-   */
   String getId();
+  void setId(String id);
 
 } // Relationship

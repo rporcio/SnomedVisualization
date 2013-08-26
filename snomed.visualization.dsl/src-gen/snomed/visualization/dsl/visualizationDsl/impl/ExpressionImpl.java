@@ -2,7 +2,6 @@
  */
 package snomed.visualization.dsl.visualizationDsl.impl;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -30,18 +29,18 @@ import snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl#getIsaRelationships <em>Isa Relationships</em>}</li>
- *   <li>{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl#getStandaloneRelationships <em>Standalone Relationships</em>}</li>
- *   <li>{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl#getRelationshipGroups <em>Relationship Groups</em>}</li>
+ *   <li>{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl#getUngroupedRelationships <em>Ungrouped Relationships</em>}</li>
+ *   <li>{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl#getGroupedRelationships <em>Grouped Relationships</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression, Serializable
+public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expression
 {
-	private static final long serialVersionUID = -3836226762748849833L;
-
-/**
+	protected Concept concept;
+	
+  /**
    * The cached value of the '{@link #getIsaRelationships() <em>Isa Relationships</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -52,29 +51,24 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
   protected IsaRelationships isaRelationships;
 
   /**
-   * The cached value of the '{@link #getStandaloneRelationships() <em>Standalone Relationships</em>}' containment reference.
+   * The cached value of the '{@link #getUngroupedRelationships() <em>Ungrouped Relationships</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStandaloneRelationships()
+   * @see #getUngroupedRelationships()
    * @generated
    * @ordered
    */
-  protected Relationships standaloneRelationships;
+  protected Relationships ungroupedRelationships;
 
   /**
-   * The cached value of the '{@link #getRelationshipGroups() <em>Relationship Groups</em>}' containment reference list.
+   * The cached value of the '{@link #getGroupedRelationships() <em>Grouped Relationships</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRelationshipGroups()
+   * @see #getGroupedRelationships()
    * @generated
    * @ordered
    */
-  protected EList<RelationshipGroup> relationshipGroups;
-
-  /**
-   * @generated NOT
-   */
-  private Concept concept;
+  protected EList<RelationshipGroup> groupedRelationships;
 
   /**
    * <!-- begin-user-doc -->
@@ -150,9 +144,9 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public Relationships getStandaloneRelationships()
+  public Relationships getUngroupedRelationships()
   {
-    return standaloneRelationships;
+    return ungroupedRelationships;
   }
 
   /**
@@ -160,13 +154,13 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetStandaloneRelationships(Relationships newStandaloneRelationships, NotificationChain msgs)
+  public NotificationChain basicSetUngroupedRelationships(Relationships newUngroupedRelationships, NotificationChain msgs)
   {
-    Relationships oldStandaloneRelationships = standaloneRelationships;
-    standaloneRelationships = newStandaloneRelationships;
+    Relationships oldUngroupedRelationships = ungroupedRelationships;
+    ungroupedRelationships = newUngroupedRelationships;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS, oldStandaloneRelationships, newStandaloneRelationships);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS, oldUngroupedRelationships, newUngroupedRelationships);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -177,20 +171,20 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setStandaloneRelationships(Relationships newStandaloneRelationships)
+  public void setUngroupedRelationships(Relationships newUngroupedRelationships)
   {
-    if (newStandaloneRelationships != standaloneRelationships)
+    if (newUngroupedRelationships != ungroupedRelationships)
     {
       NotificationChain msgs = null;
-      if (standaloneRelationships != null)
-        msgs = ((InternalEObject)standaloneRelationships).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS, null, msgs);
-      if (newStandaloneRelationships != null)
-        msgs = ((InternalEObject)newStandaloneRelationships).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS, null, msgs);
-      msgs = basicSetStandaloneRelationships(newStandaloneRelationships, msgs);
+      if (ungroupedRelationships != null)
+        msgs = ((InternalEObject)ungroupedRelationships).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS, null, msgs);
+      if (newUngroupedRelationships != null)
+        msgs = ((InternalEObject)newUngroupedRelationships).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS, null, msgs);
+      msgs = basicSetUngroupedRelationships(newUngroupedRelationships, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS, newStandaloneRelationships, newStandaloneRelationships));
+      eNotify(new ENotificationImpl(this, Notification.SET, VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS, newUngroupedRelationships, newUngroupedRelationships));
   }
 
   /**
@@ -198,13 +192,13 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RelationshipGroup> getRelationshipGroups()
+  public EList<RelationshipGroup> getGroupedRelationships()
   {
-    if (relationshipGroups == null)
+    if (groupedRelationships == null)
     {
-      relationshipGroups = new EObjectContainmentEList<RelationshipGroup>(RelationshipGroup.class, this, VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS);
+      groupedRelationships = new EObjectContainmentEList<RelationshipGroup>(RelationshipGroup.class, this, VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS);
     }
-    return relationshipGroups;
+    return groupedRelationships;
   }
 
   /**
@@ -219,10 +213,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case VisualizationDslPackage.EXPRESSION__ISA_RELATIONSHIPS:
         return basicSetIsaRelationships(null, msgs);
-      case VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS:
-        return basicSetStandaloneRelationships(null, msgs);
-      case VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS:
-        return ((InternalEList<?>)getRelationshipGroups()).basicRemove(otherEnd, msgs);
+      case VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS:
+        return basicSetUngroupedRelationships(null, msgs);
+      case VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS:
+        return ((InternalEList<?>)getGroupedRelationships()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -239,10 +233,10 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case VisualizationDslPackage.EXPRESSION__ISA_RELATIONSHIPS:
         return getIsaRelationships();
-      case VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS:
-        return getStandaloneRelationships();
-      case VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS:
-        return getRelationshipGroups();
+      case VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS:
+        return getUngroupedRelationships();
+      case VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS:
+        return getGroupedRelationships();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -261,12 +255,12 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       case VisualizationDslPackage.EXPRESSION__ISA_RELATIONSHIPS:
         setIsaRelationships((IsaRelationships)newValue);
         return;
-      case VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS:
-        setStandaloneRelationships((Relationships)newValue);
+      case VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS:
+        setUngroupedRelationships((Relationships)newValue);
         return;
-      case VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS:
-        getRelationshipGroups().clear();
-        getRelationshipGroups().addAll((Collection<? extends RelationshipGroup>)newValue);
+      case VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS:
+        getGroupedRelationships().clear();
+        getGroupedRelationships().addAll((Collection<? extends RelationshipGroup>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -285,11 +279,11 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
       case VisualizationDslPackage.EXPRESSION__ISA_RELATIONSHIPS:
         setIsaRelationships((IsaRelationships)null);
         return;
-      case VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS:
-        setStandaloneRelationships((Relationships)null);
+      case VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS:
+        setUngroupedRelationships((Relationships)null);
         return;
-      case VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS:
-        getRelationshipGroups().clear();
+      case VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS:
+        getGroupedRelationships().clear();
         return;
     }
     super.eUnset(featureID);
@@ -307,28 +301,22 @@ public class ExpressionImpl extends MinimalEObjectImpl.Container implements Expr
     {
       case VisualizationDslPackage.EXPRESSION__ISA_RELATIONSHIPS:
         return isaRelationships != null;
-      case VisualizationDslPackage.EXPRESSION__STANDALONE_RELATIONSHIPS:
-        return standaloneRelationships != null;
-      case VisualizationDslPackage.EXPRESSION__RELATIONSHIP_GROUPS:
-        return relationshipGroups != null && !relationshipGroups.isEmpty();
+      case VisualizationDslPackage.EXPRESSION__UNGROUPED_RELATIONSHIPS:
+        return ungroupedRelationships != null;
+      case VisualizationDslPackage.EXPRESSION__GROUPED_RELATIONSHIPS:
+        return groupedRelationships != null && !groupedRelationships.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public Concept getConcept() {
-	  return concept;
-  }
+@Override
+public Concept getConcept() {
+	return this.concept;
+}
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public void setConcept(Concept value) {
-	  this.concept = value;
-  }
+@Override
+public void setConcept(Concept concept) {
+	this.concept = concept;
+}
 
 } //ExpressionImpl

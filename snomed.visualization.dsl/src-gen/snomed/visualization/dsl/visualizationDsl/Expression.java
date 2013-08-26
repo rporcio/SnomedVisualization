@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link snomed.visualization.dsl.visualizationDsl.Expression#getIsaRelationships <em>Isa Relationships</em>}</li>
- *   <li>{@link snomed.visualization.dsl.visualizationDsl.Expression#getStandaloneRelationships <em>Standalone Relationships</em>}</li>
- *   <li>{@link snomed.visualization.dsl.visualizationDsl.Expression#getRelationshipGroups <em>Relationship Groups</em>}</li>
+ *   <li>{@link snomed.visualization.dsl.visualizationDsl.Expression#getUngroupedRelationships <em>Ungrouped Relationships</em>}</li>
+ *   <li>{@link snomed.visualization.dsl.visualizationDsl.Expression#getGroupedRelationships <em>Grouped Relationships</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,57 +53,48 @@ public interface Expression extends EObject
   void setIsaRelationships(IsaRelationships value);
 
   /**
-   * Returns the value of the '<em><b>Standalone Relationships</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ungrouped Relationships</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Standalone Relationships</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Ungrouped Relationships</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Standalone Relationships</em>' containment reference.
-   * @see #setStandaloneRelationships(Relationships)
-   * @see snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage#getExpression_StandaloneRelationships()
+   * @return the value of the '<em>Ungrouped Relationships</em>' containment reference.
+   * @see #setUngroupedRelationships(Relationships)
+   * @see snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage#getExpression_UngroupedRelationships()
    * @model containment="true"
    * @generated
    */
-  Relationships getStandaloneRelationships();
+  Relationships getUngroupedRelationships();
 
   /**
-   * Sets the value of the '{@link snomed.visualization.dsl.visualizationDsl.Expression#getStandaloneRelationships <em>Standalone Relationships</em>}' containment reference.
+   * Sets the value of the '{@link snomed.visualization.dsl.visualizationDsl.Expression#getUngroupedRelationships <em>Ungrouped Relationships</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Standalone Relationships</em>' containment reference.
-   * @see #getStandaloneRelationships()
+   * @param value the new value of the '<em>Ungrouped Relationships</em>' containment reference.
+   * @see #getUngroupedRelationships()
    * @generated
    */
-  void setStandaloneRelationships(Relationships value);
+  void setUngroupedRelationships(Relationships value);
 
   /**
-   * Returns the value of the '<em><b>Relationship Groups</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Grouped Relationships</b></em>' containment reference list.
    * The list contents are of type {@link snomed.visualization.dsl.visualizationDsl.RelationshipGroup}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Relationship Groups</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Grouped Relationships</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Relationship Groups</em>' containment reference list.
-   * @see snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage#getExpression_RelationshipGroups()
+   * @return the value of the '<em>Grouped Relationships</em>' containment reference list.
+   * @see snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage#getExpression_GroupedRelationships()
    * @model containment="true"
    * @generated
    */
-  EList<RelationshipGroup> getRelationshipGroups();
+  EList<RelationshipGroup> getGroupedRelationships();
   
-  /**
-   * @return
-   * @generated NOT
-   */
   Concept getConcept();
-  
-  /**
-   * @param value
-   * @generated NOT
-   */
-  void setConcept(Concept value);
+  void setConcept(Concept concept);
 
 } // Expression

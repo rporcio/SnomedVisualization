@@ -75,17 +75,7 @@ public interface Concept extends EObject
    */
   void setTerm(String value);
   
-  /**
-   * @param value
-   * @return
-   * @generated NOT
-   */
-  void setDefined(boolean value);
-  
-  /**
-   * @return
-   * @generated NOT
-   */
   boolean isDefined();
+  void setDefined(boolean defined);
 
 } // Concept

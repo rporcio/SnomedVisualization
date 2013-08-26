@@ -4,10 +4,8 @@ package snomed.visualization.dsl.visualizationDsl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
@@ -51,20 +49,11 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    */
   protected Concept destination;
 
-  /**
-   * @generated NOT
-   */
-  private boolean defined;
+	protected boolean defined;
 
-  /**
-   * @generated NOT
-   */
-  private int group;
-  
-  /**
-   * @generated NOT
-   */
-  private String id;
+	protected int group;
+
+	protected String id;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,52 +266,35 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
     return super.eIsSet(featureID);
   }
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public void setDefined(boolean value) {
-	  this.defined = value;
-  }
+	@Override
+	public boolean isDefined() {
+		return defined;
+	}
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public boolean isDefined() {
-	  return defined;
-  }
+	@Override
+	public void setDefined(boolean defined) {
+		this.defined = defined;
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public void setGroup(int group) {
-	  this.group = group;
-  }
+	}
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public int getGroup() {
-	  return group;
-  }
-  
-  /**
-   * @generated NOT
-   */
-  @Override
-  public void setId(String id) {
-	  this.id = id;
-  }
+	@Override
+	public int getGroup() {
+		return group;
+	}
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public String getId() {
-	  return id;
-  }
+	@Override
+	public void setGroup(int group) {
+		this.group = group;
+	}
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(String id) {
+		this.id = id;
+	}
 
 } //RelationshipImpl

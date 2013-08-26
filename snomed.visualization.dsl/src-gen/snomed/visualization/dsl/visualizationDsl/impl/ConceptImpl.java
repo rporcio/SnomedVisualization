@@ -68,10 +68,7 @@ public class ConceptImpl extends MinimalEObjectImpl.Container implements Concept
    */
   protected String term = TERM_EDEFAULT;
 
-  /**
-   * @generated NOT
-   */
-  private boolean defined;
+  protected boolean defined;
 
   /**
    * <!-- begin-user-doc -->
@@ -235,20 +232,14 @@ public class ConceptImpl extends MinimalEObjectImpl.Container implements Concept
     return result.toString();
   }
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public void setDefined(boolean value) {
-	  this.defined = value;
-  }
+	@Override
+	public boolean isDefined() {
+		return defined;
+	}
 
-  /**
-   * @generated NOT
-   */
-  @Override
-  public boolean isDefined() {
-	  return defined;
-  }
+	@Override
+	public void setDefined(boolean defined) {
+		this.defined = defined;
+	}
 
 } //ConceptImpl
