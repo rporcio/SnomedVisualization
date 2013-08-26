@@ -77,7 +77,7 @@ public class VisualizationRelationshipWizardPage extends WizardPage {
 		
 		new Label(composite, SWT.NONE).setText("Relationship group");
 		groupCombo = new Combo(composite, SWT.NONE);
-		String[] items = new String[((VisualizationRelationshipWizard) getWizard()).getExpression().getRelationshipGroups().size()+2];
+		String[] items = new String[((VisualizationRelationshipWizard) getWizard()).getExpression().getGroupedRelationships().size()+2];
 		items[0] = "Ungrouped";
 		items[1] = "New group";
 		for(int i = 2; i < items.length; i++) {

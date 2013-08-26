@@ -83,7 +83,7 @@ public class VisualizationDiagramUtil {
 			}
 		}
 		
-		for (Relationship relationship : expression.getStandaloneRelationships().getRelationships()) {
+		for (Relationship relationship : expression.getUngroupedRelationships().getRelationships()) {
 			if (relationship.getDestination().getId().equals(id)) {
 				relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
 			} else if (relationship.getId().equals(id)) {
@@ -91,7 +91,7 @@ public class VisualizationDiagramUtil {
 			}
 		}
 		
-		for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
 				if (relationship.getDestination().getId().equals(id)) {
 					relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
@@ -124,21 +124,21 @@ public class VisualizationDiagramUtil {
 			}
 		}
 		
-		for (Relationship relationship : expression.getStandaloneRelationships().getRelationships()) {
+		for (Relationship relationship : expression.getUngroupedRelationships().getRelationships()) {
 			if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
-				expression.getStandaloneRelationships().getRelationships().remove(relationship);
+				expression.getUngroupedRelationships().getRelationships().remove(relationship);
 				
 				return;
 			}
 		}
 		
-		for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
 				if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
 					relationshipGroup.getRelationships().remove(relationship);
 					
 					if (0 == relationshipGroup.getRelationships().size()) {
-						expression.getRelationshipGroups().remove(relationshipGroup);
+						expression.getGroupedRelationships().remove(relationshipGroup);
 					}
 					
 					return;
@@ -174,7 +174,7 @@ public class VisualizationDiagramUtil {
 		}
 		
 
-		if (expression.getIsaRelationships().getRelationships().size() > 0 || expression.getRelationshipGroups().size() > 0 || expression.getStandaloneRelationships().getRelationships().size() > 0) {
+		if (expression.getIsaRelationships().getRelationships().size() > 0 || expression.getGroupedRelationships().size() > 0 || expression.getUngroupedRelationships().getRelationships().size() > 0) {
 			if (diagramType == DiagramType.DEFINITION) {
 				elements.add(new VisualizationDiagramElement(false, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
 						(int) (zoom / 2.5)), zoom));
@@ -220,8 +220,8 @@ public class VisualizationDiagramUtil {
 			depth += 70;
 		}
 
-		if (!expression.getIsaRelationships().getRelationships().isEmpty() && expression.getRelationshipGroups().isEmpty()
-				&& (null == expression.getStandaloneRelationships() || expression.getStandaloneRelationships().getRelationships().isEmpty())) {
+		if (!expression.getIsaRelationships().getRelationships().isEmpty() && expression.getGroupedRelationships().isEmpty()
+				&& (null == expression.getUngroupedRelationships() || expression.getUngroupedRelationships().getRelationships().isEmpty())) {
 			if (diagramType == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + (int) (zoom * 0.25));
 			} else {
@@ -237,7 +237,7 @@ public class VisualizationDiagramUtil {
 		int xType;
 		int xDestination;
 
-		for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
 			if (diagramType == DiagramType.DEFINITION) {
 				xGroup = (int) (zoom * 2.5);
 			} else {
@@ -287,7 +287,7 @@ public class VisualizationDiagramUtil {
 			}
 		}
 
-		if ((null == expression.getStandaloneRelationships() || expression.getStandaloneRelationships().getRelationships().isEmpty()) && !expression.getRelationshipGroups().isEmpty()) {
+		if ((null == expression.getUngroupedRelationships() || expression.getUngroupedRelationships().getRelationships().isEmpty()) && !expression.getGroupedRelationships().isEmpty()) {
 			if (diagramType == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
 			} else {
@@ -301,8 +301,8 @@ public class VisualizationDiagramUtil {
 		int xDestination;
 		int y = 0;
 
-		if (null != expression.getStandaloneRelationships()) {
-			for (Relationship relationship : expression.getStandaloneRelationships().getRelationships()) {
+		if (null != expression.getUngroupedRelationships()) {
+			for (Relationship relationship : expression.getUngroupedRelationships().getRelationships()) {
 				if (diagramType == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 2.5);
 					xDestination = zoom * 5;
@@ -330,7 +330,7 @@ public class VisualizationDiagramUtil {
 				depth += 70;
 			}
 			
-			if (!expression.getStandaloneRelationships().getRelationships().isEmpty()) {
+			if (!expression.getUngroupedRelationships().getRelationships().isEmpty()) {
 				if (diagramType == DiagramType.DEFINITION) {
 					addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
 				} else {

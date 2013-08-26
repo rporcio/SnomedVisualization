@@ -436,10 +436,10 @@ public class VisualizationEditor extends GraphicalEditor {
 		expression.eAdapters().add(adapter);
 		expression.getConcept().eAdapters().add(adapter);
 		expression.getIsaRelationships().eAdapters().add(adapter);
-		if (null != expression.getStandaloneRelationships()) {
-			expression.getStandaloneRelationships().eAdapters().add(adapter);
+		if (null != expression.getUngroupedRelationships()) {
+			expression.getUngroupedRelationships().eAdapters().add(adapter);
 		}
-		for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
 			relationshipGroup.eAdapters().add(adapter);
 		}
 	}

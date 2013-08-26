@@ -43,13 +43,13 @@ public class VisualizationRelationshipWizard extends Wizard {
 			int group = wizardPage.getRelationshipGroup();
 			
 			if (0 == group) {
-				expression.getStandaloneRelationships().getRelationships().add(relationship);
+				expression.getUngroupedRelationships().getRelationships().add(relationship);
 			} else if (1 == group) {
 				RelationshipGroup relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 				relationshipGroup.getRelationships().add(relationship);
-				expression.getRelationshipGroups().add(relationshipGroup);
+				expression.getGroupedRelationships().add(relationshipGroup);
 			} else {
-				expression.getRelationshipGroups().get(group-2).getRelationships().add(getRelationship());
+				expression.getGroupedRelationships().get(group-2).getRelationships().add(getRelationship());
 			}
 		}
 		

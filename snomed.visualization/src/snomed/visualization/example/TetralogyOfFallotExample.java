@@ -16,7 +16,7 @@ public class TetralogyOfFallotExample {
 	public static Expression createTetralogyOfFallotExample() {
 		Expression expression = VisualizationDslFactory.eINSTANCE.createExpression();
 		expression.setIsaRelationships(VisualizationDslFactory.eINSTANCE.createIsaRelationships());
-		expression.setStandaloneRelationships(VisualizationDslFactory.eINSTANCE.createRelationships());
+		expression.setUngroupedRelationships(VisualizationDslFactory.eINSTANCE.createRelationships());
 
 		Concept concept = VisualizationDslFactory.eINSTANCE.createConcept();
 		concept.setId("86299006");
@@ -77,7 +77,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDefined(true);
 		relationship.setGroup(0);
 		relationship.setId("0");
-		expression.getStandaloneRelationships().getRelationships().add(relationship);
+		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 
@@ -121,10 +121,8 @@ public class TetralogyOfFallotExample {
 		
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
+		expression.getGroupedRelationships().add(relationshipGroup);
 
-		
-		
 		relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 
@@ -164,9 +162,7 @@ public class TetralogyOfFallotExample {
 		
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
-		
-		
+		expression.getGroupedRelationships().add(relationshipGroup);
 		
 		relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -207,8 +203,7 @@ public class TetralogyOfFallotExample {
 		
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
-		
+		expression.getGroupedRelationships().add(relationshipGroup);
 		
 		relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -249,9 +244,7 @@ public class TetralogyOfFallotExample {
 		
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
-		
-		
+		expression.getGroupedRelationships().add(relationshipGroup);
 		
 		relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -292,7 +285,7 @@ public class TetralogyOfFallotExample {
 		
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
+		expression.getGroupedRelationships().add(relationshipGroup);
 
 		return expression;
 	}

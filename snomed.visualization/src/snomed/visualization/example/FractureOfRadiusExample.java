@@ -16,7 +16,7 @@ public class FractureOfRadiusExample {
 	public static Expression createFactureOfRadiusExpression() {
 		Expression expression = VisualizationDslFactory.eINSTANCE.createExpression();
 		expression.setIsaRelationships(VisualizationDslFactory.eINSTANCE.createIsaRelationships());
-		expression.setStandaloneRelationships(VisualizationDslFactory.eINSTANCE.createRelationships());
+		expression.setUngroupedRelationships(VisualizationDslFactory.eINSTANCE.createRelationships());
 
 		Concept concept = VisualizationDslFactory.eINSTANCE.createConcept();
 		concept.setId("12676007");
@@ -52,7 +52,7 @@ public class FractureOfRadiusExample {
 		relationship.setDefined(false);
 		relationship.setGroup(0);
 		relationship.setId("0");
-		expression.getStandaloneRelationships().getRelationships().add(relationship);
+		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 
@@ -70,7 +70,7 @@ public class FractureOfRadiusExample {
 		relationship.setDefined(false);
 		relationship.setGroup(0);
 		relationship.setId("1");
-		expression.getStandaloneRelationships().getRelationships().add(relationship);
+		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 
@@ -88,7 +88,7 @@ public class FractureOfRadiusExample {
 		relationship.setDefined(false);
 		relationship.setGroup(0);
 		relationship.setId("2");
-		expression.getStandaloneRelationships().getRelationships().add(relationship);
+		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		// Relationship group
 		RelationshipGroup relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
@@ -130,7 +130,7 @@ public class FractureOfRadiusExample {
 
 		relationshipGroup.getRelationships().add(relationship);
 
-		expression.getRelationshipGroups().add(relationshipGroup);
+		expression.getGroupedRelationships().add(relationshipGroup);
 
 		return expression;
 	}
