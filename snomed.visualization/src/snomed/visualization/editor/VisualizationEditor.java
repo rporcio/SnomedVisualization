@@ -1,6 +1,7 @@
 package snomed.visualization.editor;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -15,9 +16,13 @@ import org.eclipse.gef.ui.parts.GraphicalEditor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -38,6 +43,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.nodemodel.INode;
 
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
@@ -47,10 +53,11 @@ import snomed.visualization.hyperlink.CustomInformationPresenter;
 import snomed.visualization.hyperlink.CustomInformationPresenter.IShowInformationCallback;
 import snomed.visualization.hyperlink.FormHeaderMessageConfigurationStrategy;
 import snomed.visualization.hyperlink.NullMessageToolTipManager;
-import snomed.visualization.listener.VisualizationDslEditorModifyListener;
 import snomed.visualization.util.VisualizationDiagramUtil;
 import snomed.visualization.util.VisualizationDslUtil;
 import snomed.visualization.wizard.VisualizationRelationshipWizard;
+
+import com.google.common.collect.Lists;
 
 /**
  * Editor to visualize the expression in dsl and diagram view.
@@ -69,7 +76,12 @@ public class VisualizationEditor extends GraphicalEditor {
 	private VisualizationDiagramUtil diagramUtil;
 	private VisualizationDslUtil dslUtil;
 	
-	private VisualizationDslEditorModifyListener dslEditorModifyListener;
+	private ModifyListener dslEditorModifyListener = new ModifyListener() {
+		@Override
+		public void modifyText(ModifyEvent e) {
+			refreshDsl(false);
+		}
+	};
 	
 	private final AtomicBoolean providerConfigured = new AtomicBoolean(false);
 	private CustomInformationPresenter presenter;
@@ -102,11 +114,7 @@ public class VisualizationEditor extends GraphicalEditor {
 			super.notifyChanged(notification);
 			
 			refreshDiagram();
-			
-			styledText.removeModifyListener(dslEditorModifyListener);
-			styledText.setText(dslUtil.convertToPresentation(expression));
-			styledText.addModifyListener(dslEditorModifyListener);
-			
+			refreshDsl(true);
 		}
 	};
 	
@@ -199,8 +207,6 @@ public class VisualizationEditor extends GraphicalEditor {
 		
 		super.createPartControl(parent);
 		
-		dslEditorModifyListener = new VisualizationDslEditorModifyListener(this);
-		
 		styledText = new StyledText(composite, SWT.BORDER);
 		styledText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		styledText.setText(dslUtil.convertToPresentation(expression));
@@ -239,11 +245,17 @@ public class VisualizationEditor extends GraphicalEditor {
 	}
 	
 	public void handleDiagramChanges(String propertyName, String id) {
-		if (propertyName.equals("deletion")) {
-			diagramUtil.deleteDiagramElement(id, expression);
-		} else if (propertyName.equals("characteristic")) {
-			diagramUtil.changeCharacteristicType(id, expression);
-			refreshDiagram();
+		if (dslUtil.isValid(styledText.getText())) {
+			if (propertyName.equals("deletion")) {
+				diagramUtil.deleteDiagramElement(id, expression);
+			} else if (propertyName.equals("characteristic")) {
+				diagramUtil.changeCharacteristicType(id, expression);
+			}
+		} else {
+			 MessageDialog.openError(
+			    		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
+			    		"Dsl contains errors", 
+			    		"Cannot edit diagram until all error are fixed in the dsl!");
 		}
 	}
 	
@@ -252,19 +264,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		return diagramUtil;
 	}
 	
-	public VisualizationDslUtil getDslUtil() {
-		return dslUtil;
-	}
-	
-	public StyledText getStyledText() {
-		return styledText;
-	}
-
-	public Job getRefreshJob() {
-		return refreshJob;
-	}
-
-	public void updateMessageManager(final List<String> errorMessages) {
+	private void updateMessageManager(final List<String> errorMessages) {
 		Display.getCurrent().asyncExec(new Runnable() {
 			
 			@SuppressWarnings({ "restriction", "unused" })
@@ -311,7 +311,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		});
 	}
 	
-	public IMessageManager getMessageManager() {
+	private IMessageManager getMessageManager() {
 		return getManagedForm().getMessageManager();
 	}
 	
@@ -321,6 +321,47 @@ public class VisualizationEditor extends GraphicalEditor {
 		} else {
 			getGraphicalViewer().getFocusEditPart().getParent().refresh();
 		}
+	}
+	
+	private void refreshDsl(boolean diagramToDslChange) {
+		styledText.removeModifyListener(dslEditorModifyListener);
+		
+		if (diagramToDslChange) {
+			styledText.setText(dslUtil.convertToPresentation(expression));
+		}
+		
+		if (dslUtil.isValid(styledText.getText())) {
+			if (refreshJob.getState() == Job.WAITING || refreshJob.getState() == Job.SLEEPING) {
+				refreshJob.cancel();
+			}
+			
+			styledText.setStyleRanges(new StyleRange[0]);
+			refreshJob.schedule(500);
+			getMessageManager().removeAllMessages();
+			getMessageManager().update();
+		} else {
+			List<String> errorMessages = Lists.newArrayList();
+			List<StyleRange> ranges = Lists.newArrayList();
+			Iterable<INode> syntaxErrors = dslUtil.getSyntaxErrors(styledText.getText());
+			Iterator<INode> iterator = syntaxErrors.iterator();
+			while (iterator.hasNext()) {
+				INode syntaxError = iterator.next();
+				errorMessages.add(syntaxError.getSyntaxErrorMessage().getMessage());
+				StyleRange range = new StyleRange();
+				range.start = syntaxError.getTotalOffset();
+				range.length = syntaxError.getTotalEndOffset() - syntaxError.getTotalOffset();
+				range.foreground = Display.getDefault().getSystemColor(SWT.COLOR_RED);
+				range.underline = true;
+				
+				ranges.add(range);
+			}
+			
+			styledText.setStyleRanges(ranges.toArray(new StyleRange[0]));
+			updateMessageManager(errorMessages);
+		}
+		
+		
+		styledText.addModifyListener(dslEditorModifyListener);
 	}
 	
 	private String createFormTextContent(final IMessage[] messages) {
