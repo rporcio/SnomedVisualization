@@ -69,7 +69,7 @@ public class VisualizationRelationshipWizardFactory implements FieldGroupFieldFa
 				if (ComboBox.class.isAssignableFrom(fieldType)) {
 					ComboBox comboBox = new ComboBox();
 					comboBox.setSizeFull();
-					for (int i = 0; i < visualizationView.getExpression().getRelationshipGroups().size(); i++) {
+					for (int i = 0; i < visualizationView.getExpression().getGroupedRelationships().size(); i++) {
 						comboBox.addItem(i);
 					}
 					comboBox.addItem(-2);

@@ -75,13 +75,13 @@ public class VisualizationRelationshipWizardCommitHandler implements CommitHandl
 				relationship.setId(generateRandomItemIndentifier());
 				
 				if (group == -1) {
-					expression.getStandaloneRelationships().getRelationships().add(relationship);
+					expression.getUngroupedRelationships().getRelationships().add(relationship);
 				} else  if (group == -2) {
 					RelationshipGroup relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 					relationshipGroup.getRelationships().add(relationship);
-					expression.getRelationshipGroups().add(relationshipGroup);
+					expression.getGroupedRelationships().add(relationshipGroup);
 				} else {
-					expression.getRelationshipGroups().get(group).getRelationships().add(relationship);
+					expression.getGroupedRelationships().get(group).getRelationships().add(relationship);
 				}
 				
 			}

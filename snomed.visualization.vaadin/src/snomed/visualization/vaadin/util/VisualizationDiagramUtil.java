@@ -102,7 +102,7 @@ public class VisualizationDiagramUtil {
 			}
 
 			
-			if (getExpression().getIsaRelationships().getRelationships().size() > 0 || getExpression().getRelationshipGroups().size() > 0 || getExpression().getStandaloneRelationships().getRelationships().size() > 0) {
+			if (getExpression().getIsaRelationships().getRelationships().size() > 0 || getExpression().getGroupedRelationships().size() > 0 || getExpression().getUngroupedRelationships().getRelationships().size() > 0) {
 				
 				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					component = new VisualizationDiagramElement();
@@ -158,8 +158,8 @@ public class VisualizationDiagramUtil {
 			depth += 70;
 		}
 		
-		if (!getExpression().getIsaRelationships().getRelationships().isEmpty() && getExpression().getRelationshipGroups().isEmpty() 
-				&& (null == getExpression().getStandaloneRelationships() || getExpression().getStandaloneRelationships().getRelationships().isEmpty())) {
+		if (!getExpression().getIsaRelationships().getRelationships().isEmpty() && getExpression().getGroupedRelationships().isEmpty() 
+				&& (null == getExpression().getUngroupedRelationships() || getExpression().getUngroupedRelationships().getRelationships().isEmpty())) {
 			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int)(zoom * 0.95), zoom * 2, y + (int)(zoom * 0.25));
 			} else {
@@ -175,7 +175,7 @@ public class VisualizationDiagramUtil {
 		int xType;
 		int xDestination;
 		
-		for (RelationshipGroup relationshipGroup : getExpression().getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : getExpression().getGroupedRelationships()) {
 			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				xGroup = (int) (zoom * 2.5);
 			} else {
@@ -233,7 +233,7 @@ public class VisualizationDiagramUtil {
 			}
 		}
 		
-		if ((null == getExpression().getStandaloneRelationships() || getExpression().getStandaloneRelationships().getRelationships().isEmpty()) && !getExpression().getRelationshipGroups().isEmpty()) {
+		if ((null == getExpression().getUngroupedRelationships() || getExpression().getUngroupedRelationships().getRelationships().isEmpty()) && !getExpression().getGroupedRelationships().isEmpty()) {
 			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
 			} else {
@@ -247,8 +247,8 @@ public class VisualizationDiagramUtil {
 		int xDestination;
 		int y = 0;
 		
-		if (null != getExpression().getStandaloneRelationships()) {
-			for (Relationship relationship : getExpression().getStandaloneRelationships().getRelationships()) {
+		if (null != getExpression().getUngroupedRelationships()) {
+			for (Relationship relationship : getExpression().getUngroupedRelationships().getRelationships()) {
 				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 2.5);
 					xDestination = zoom * 5;
@@ -282,7 +282,7 @@ public class VisualizationDiagramUtil {
 				depth += 70;
 			}
 			
-			if (!getExpression().getStandaloneRelationships().getRelationships().isEmpty()) {
+			if (!getExpression().getUngroupedRelationships().getRelationships().isEmpty()) {
 				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
 				} else {

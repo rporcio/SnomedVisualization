@@ -61,7 +61,7 @@ public class VisualizationModifyListener implements IVisualizationModifyListener
 			}
 		}
 		
-		for (Relationship relationship : diagramUtil.getExpression().getStandaloneRelationships().getRelationships()) {
+		for (Relationship relationship : diagramUtil.getExpression().getUngroupedRelationships().getRelationships()) {
 			if (relationship.getDestination().getId().equals(id)) {
 				relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
 				
@@ -73,7 +73,7 @@ public class VisualizationModifyListener implements IVisualizationModifyListener
 			}
 		}
 		
-		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getGroupedRelationships()) {
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
 				if (relationship.getDestination().getId().equals(id)) {
 					relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
@@ -105,21 +105,21 @@ public class VisualizationModifyListener implements IVisualizationModifyListener
 			}
 		}
 		
-		for (Relationship relationship : diagramUtil.getExpression().getStandaloneRelationships().getRelationships()) {
+		for (Relationship relationship : diagramUtil.getExpression().getUngroupedRelationships().getRelationships()) {
 			if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
-				diagramUtil.getExpression().getStandaloneRelationships().getRelationships().remove(relationship);
+				diagramUtil.getExpression().getUngroupedRelationships().getRelationships().remove(relationship);
 				
 				return;
 			}
 		}
 		
-		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getRelationshipGroups()) {
+		for (RelationshipGroup relationshipGroup : diagramUtil.getExpression().getGroupedRelationships()) {
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
 				if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
 					relationshipGroup.getRelationships().remove(relationship);
 					
 					if (0 == relationshipGroup.getRelationships().size()) {
-						diagramUtil.getExpression().getRelationshipGroups().remove(relationshipGroup);
+						diagramUtil.getExpression().getGroupedRelationships().remove(relationshipGroup);
 					}
 					
 					return;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
@@ -67,7 +68,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 		}
 		sb.append(":<br>");
 
-		Iterator<Relationship> relationshipIterator = expression.getStandaloneRelationships().getRelationships().iterator();
+		Iterator<Relationship> relationshipIterator = expression.getUngroupedRelationships().getRelationships().iterator();
 		while (relationshipIterator.hasNext()) {
 			Relationship relationship = relationshipIterator.next();
 			sb.append("&nbsp;");
@@ -80,7 +81,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 			sb.append("<br>");
 		}
 
-		Iterator<RelationshipGroup> groupsIterator = expression.getRelationshipGroups().iterator();
+		Iterator<RelationshipGroup> groupsIterator = expression.getGroupedRelationships().iterator();
 		while (groupsIterator.hasNext()) {
 			Iterator<Relationship> groupIterator = groupsIterator.next().getRelationships().iterator();
 			sb.append("&nbsp;{<br>");
@@ -140,7 +141,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 
 	private void convertStandaloneRelationships(int startIndex, int endIndex, String[] components) {
 		if (startIndex == endIndex) {
-			expression.getStandaloneRelationships().getRelationships().clear();
+			expression.getUngroupedRelationships().getRelationships().clear();
 		} else {
 			if (endIndex == 0) {
 				endIndex = components.length;
@@ -156,25 +157,25 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 				relationships.add(createNewRelationship(typeId, typeTerm, destinationId, destinationTerm));
 			}
 			
-			for (Relationship oldRelationship : expression.getStandaloneRelationships().getRelationships()) {
+			for (Relationship oldRelationship : expression.getUngroupedRelationships().getRelationships()) {
 				for (Relationship newRelationship : relationships) {
 					updateRelationship(newRelationship, oldRelationship);
 					
 					if (null == newRelationship.getId()) {
-						//TODO add id generiton method
+						newRelationship.setId(generateRandomItemIndentifier());
 					}
 				}
 			}
 			
-			expression.getStandaloneRelationships().getRelationships().clear();
-			expression.getStandaloneRelationships().getRelationships().addAll(relationships);
+			expression.getUngroupedRelationships().getRelationships().clear();
+			expression.getUngroupedRelationships().getRelationships().addAll(relationships);
 			
 		}
 	}
 
 	private void convertRelationshipGroups(int startIndex, String[] components) {
 		if (startIndex == components.length || startIndex == 0) {
-			expression.getRelationshipGroups().clear();
+			expression.getGroupedRelationships().clear();
 		} else {
 
 			List<List<Relationship>> relationshipGroups = Lists.newArrayList();
@@ -198,7 +199,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 			
 			relationshipGroups.add(relationships);
 
-			for (RelationshipGroup relationshipGroup : expression.getRelationshipGroups()) {
+			for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
 				for (Relationship oldRelationship : relationshipGroup.getRelationships()) {
 					Iterator<List<Relationship>> iterator = relationshipGroups.iterator();
 					while (iterator.hasNext()) {
@@ -209,7 +210,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 				}
 			}
 			
-			expression.getRelationshipGroups().clear();
+			expression.getGroupedRelationships().clear();
 			
 			
 			Iterator<List<Relationship>> iterator = relationshipGroups.iterator();
@@ -220,7 +221,7 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 				
 				relationshipGroup.getRelationships().addAll(newRelationships);
 				
-				expression.getRelationshipGroups().add(relationshipGroup);
+				expression.getGroupedRelationships().add(relationshipGroup);
 			}
 		}
 
@@ -253,5 +254,13 @@ public class VisualizationDslConverter implements Converter<String, Expression> 
 
 		return concept;
 	}
+	
+	// TODO remove
+		private String generateRandomItemIndentifier() {
+			Random random = new Random();
+			// nextInt excludes top value, add 1 to make it inclusive
+			int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
+			return Integer.toString(randomNum);
+		}
 
 }

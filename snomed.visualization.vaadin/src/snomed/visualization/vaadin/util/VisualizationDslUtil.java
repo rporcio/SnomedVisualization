@@ -61,12 +61,12 @@ public class VisualizationDslUtil implements Serializable {
 			}
 		}
 		
-		if ((null != expression.getStandaloneRelationships() && expression.getStandaloneRelationships().getRelationships().size() > 0) || !expression.getRelationshipGroups().isEmpty()) {
+		if ((null != expression.getUngroupedRelationships() && expression.getUngroupedRelationships().getRelationships().size() > 0) || !expression.getGroupedRelationships().isEmpty()) {
 			sb.append(":");
 		}
 
-		if (null != expression.getStandaloneRelationships()) {
-			Iterator<Relationship> relationshipIterator = expression.getStandaloneRelationships().getRelationships().iterator();
+		if (null != expression.getUngroupedRelationships()) {
+			Iterator<Relationship> relationshipIterator = expression.getUngroupedRelationships().getRelationships().iterator();
 			while (relationshipIterator.hasNext()) {
 				Relationship relationship = relationshipIterator.next();
 				sb.append(relationship.getType().getId() + " | " + relationship.getType().getTerm() + " |");
@@ -78,7 +78,7 @@ public class VisualizationDslUtil implements Serializable {
 			}
 		}
 
-		Iterator<RelationshipGroup> groupsIterator = expression.getRelationshipGroups().iterator();
+		Iterator<RelationshipGroup> groupsIterator = expression.getGroupedRelationships().iterator();
 		while (groupsIterator.hasNext()) {
 			Iterator<Relationship> groupIterator = groupsIterator.next().getRelationships().iterator();
 			boolean notEmpty = false;
@@ -194,9 +194,9 @@ public class VisualizationDslUtil implements Serializable {
 			}
 		}
 		
-		if (null != newExpression.getStandaloneRelationships() && null != oldExpression.getStandaloneRelationships()) {
-			for (Relationship newRelationship : newExpression.getStandaloneRelationships().getRelationships()) {
-				for (Relationship oldRelationship : oldExpression.getStandaloneRelationships().getRelationships()) {
+		if (null != newExpression.getUngroupedRelationships() && null != oldExpression.getUngroupedRelationships()) {
+			for (Relationship newRelationship : newExpression.getUngroupedRelationships().getRelationships()) {
+				for (Relationship oldRelationship : oldExpression.getUngroupedRelationships().getRelationships()) {
 					updateRelationship(newRelationship, oldRelationship);
 				}
 				
@@ -208,13 +208,13 @@ public class VisualizationDslUtil implements Serializable {
 		
 		List<Relationship> oldRelationships = Lists.newArrayList();
 		
-		for (RelationshipGroup oldRelationshipGroup : oldExpression.getRelationshipGroups()) {
+		for (RelationshipGroup oldRelationshipGroup : oldExpression.getGroupedRelationships()) {
 			for (Relationship oldRelationship : oldRelationshipGroup.getRelationships()) {
 				oldRelationships.add(oldRelationship);
 			}
 		}
 		
-		for (RelationshipGroup newRelationshipGroup : newExpression.getRelationshipGroups()) {
+		for (RelationshipGroup newRelationshipGroup : newExpression.getGroupedRelationships()) {
 			for (Relationship newRelationship : newRelationshipGroup.getRelationships()) {
 				for (Relationship oldRelationship : oldRelationships) {
 					updateRelationship(newRelationship, oldRelationship);
