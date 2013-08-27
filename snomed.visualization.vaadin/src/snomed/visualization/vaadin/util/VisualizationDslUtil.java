@@ -14,7 +14,6 @@ import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
-import snomed.visualization.dsl.visualizationDsl.impl.ModelImpl;
 
 import com.google.gwt.thirdparty.guava.common.collect.Lists;
 
@@ -41,7 +40,7 @@ public class VisualizationDslUtil implements Serializable {
 	 */
 	public Expression convertToExpression(String dsl) {
 		VisualizationDslParser dslParser = VisualizationDslStandaloneSetup.getInstance().getParser();
-		return ((ModelImpl)dslParser.doParse(dsl).getRootASTElement()).getExpression();
+		return ((Expression) dslParser.doParse(dsl).getRootASTElement());
 	}
 	
 	/**
