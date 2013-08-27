@@ -93,19 +93,29 @@ public class VisualizationDiagramUtil {
 	public void changeCharacteristicType(final String id, Expression expression) {
 		if (expression.getConcept().getId().equals(id)) {
 			expression.getConcept().setDefined(expression.getConcept().isDefined());
+			
+			return;
 		}
 		
 		for (Concept concept : expression.getIsaRelationships().getRelationships()) {
 			if (concept.getId().equals(id)) {
 				concept.setDefined(!concept.isDefined());
+				
+				return;
 			}
 		}
 		
-		for (Relationship relationship : expression.getUngroupedRelationships().getRelationships()) {
-			if (relationship.getDestination().getId().equals(id)) {
-				relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
-			} else if (relationship.getId().equals(id)) {
-				relationship.setDefined(!relationship.isDefined());
+		if (null != expression.getUngroupedRelationships()) {
+			for (Relationship relationship : expression.getUngroupedRelationships().getRelationships()) {
+				if (relationship.getDestination().getId().equals(id)) {
+					relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
+					
+					return;
+				} else if (relationship.getId().equals(id)) {
+					relationship.setDefined(!relationship.isDefined());
+					
+					return;
+				}
 			}
 		}
 		
@@ -113,8 +123,12 @@ public class VisualizationDiagramUtil {
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
 				if (relationship.getDestination().getId().equals(id)) {
 					relationship.getDestination().setDefined(!relationship.getDestination().isDefined());
+					
+					return;
 				} else if (relationship.getId().equals(id)) {
 					relationship.setDefined(!relationship.isDefined());
+					
+					return;
 				}
 			}
 		}

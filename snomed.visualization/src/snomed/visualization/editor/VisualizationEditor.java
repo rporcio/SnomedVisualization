@@ -207,7 +207,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		
 		super.createPartControl(parent);
 		
-		styledText = new StyledText(composite, SWT.BORDER);
+		styledText = new StyledText(composite, SWT.BORDER | SWT.H_SCROLL | SWT.RESIZE);
 		styledText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		styledText.setText(dslUtil.convertToPresentation(expression));
 		styledText.addModifyListener(dslEditorModifyListener);
@@ -216,6 +216,7 @@ public class VisualizationEditor extends GraphicalEditor {
 		zoomInAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-in.png"));
 		zoomOutAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-out.png"));
 		newRelationshipAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/new-relationship.png"));
+		
 		form.getToolBarManager().add(zoomInAction);
 		form.getToolBarManager().add(zoomOutAction);
 		form.getToolBarManager().add(newRelationshipAction);
