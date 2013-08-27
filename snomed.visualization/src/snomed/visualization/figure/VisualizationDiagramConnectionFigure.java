@@ -7,8 +7,8 @@ import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 
-import snomed.visualization.model.VisualizationConnectionCoordinate;
-import snomed.visualization.model.VisualizationConnectionCoordinate.ConnectionType;
+import snomed.visualization.model.VisualizationConnection;
+import snomed.visualization.model.VisualizationConnection.ConnectionType;
 import snomed.visualization.model.VisualizationDiagramConnection;
 
 /**
@@ -26,9 +26,8 @@ public class VisualizationDiagramConnectionFigure extends Figure {
 	
 	@Override
 	protected void paintFigure(Graphics graphics) {
-		
-		for (VisualizationConnectionCoordinate coordinate : visualizationDiagramConnection.getConnectionCoordinates()) {
-			if (null == coordinate.getType()) {
+		for (VisualizationConnection coordinate : visualizationDiagramConnection.getDiagramConnections()) {
+			if (null == coordinate.getConnectionType()) {
 				PolylineConnection connection = new PolylineConnection();
 				connection.setEndpoints(new Point(coordinate.getBeginX(), coordinate.getBeginY()), new Point(coordinate.getEndX(), coordinate.getEndY()));
 				add(connection);
@@ -37,7 +36,7 @@ public class VisualizationDiagramConnectionFigure extends Figure {
 				connection.setEndpoints(new Point(coordinate.getBeginX(), coordinate.getBeginY()), new Point(coordinate.getEndX() - visualizationDiagramConnection.getZoom() / 5, coordinate.getEndY()));
 				add(connection);
 				
-				if (coordinate.getType() == ConnectionType.ISA) {
+				if (coordinate.getConnectionType() == ConnectionType.ISA) {
 					PolylineConnection triangle = new PolylineConnection();
 					
 					PointList trianglePointList = new PointList();
@@ -48,7 +47,7 @@ public class VisualizationDiagramConnectionFigure extends Figure {
 					
 					triangle.setPoints(trianglePointList);
 					add(triangle);
-				} else if (coordinate.getType() == ConnectionType.REGULAR) {
+				} else if (coordinate.getConnectionType() == ConnectionType.REGULAR) {
 					PolylineConnection triangle = new PolylineConnection();
 					triangle.setEndpoints(new Point(coordinate.getEndX() - visualizationDiagramConnection.getZoom() / 5, coordinate.getEndY()), new Point(coordinate.getEndX(), coordinate.getEndY()));
 					

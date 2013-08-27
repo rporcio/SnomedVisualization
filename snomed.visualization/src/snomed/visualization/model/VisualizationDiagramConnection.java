@@ -11,37 +11,25 @@ import org.eclipse.draw2d.geometry.Rectangle;
  */
 public class VisualizationDiagramConnection {
 	
-	private Rectangle constraint;
-	private List<VisualizationConnectionCoordinate> connectionCoordinates;
-	private int zoom;
+	private final Rectangle constraint;
+	private final List<VisualizationConnection> diagramConnections;
+	private final int zoom;
 
-	public VisualizationDiagramConnection(int zoom, Rectangle constraint, List<VisualizationConnectionCoordinate> connectionCoordinates) {
+	public VisualizationDiagramConnection(int zoom, Rectangle constraint, List<VisualizationConnection> diagramConnections) {
 		this.zoom = zoom;
 		this.constraint = constraint;
-		this.connectionCoordinates = connectionCoordinates;
+		this.diagramConnections = diagramConnections;
 	}
 
 	public Rectangle getConstraint() {
 		return constraint;
 	}
 
-	public void setConstraint(Rectangle constraint) {
-		this.constraint = constraint;
-	}
-
-	public List<VisualizationConnectionCoordinate> getConnectionCoordinates() {
-		return connectionCoordinates;
-	}
-
-	public void setConnectionCoordinates(List<VisualizationConnectionCoordinate> connectionCoordinates) {
-		this.connectionCoordinates = connectionCoordinates;
+	public List<VisualizationConnection> getDiagramConnections() {
+		return diagramConnections;
 	}
 
 	public int getZoom() {
 		return zoom;
-	}
-
-	public void setZoom(int zoom) {
-		this.zoom = zoom;
 	}
 }

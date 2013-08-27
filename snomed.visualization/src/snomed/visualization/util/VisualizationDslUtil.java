@@ -34,7 +34,7 @@ public class VisualizationDslUtil {
 		Iterator<Concept> isaIterator = expression.getIsaRelationships().getRelationships().iterator();
 		while (isaIterator.hasNext()) {
 			Concept concept = isaIterator.next();
-			sb.append(concept.getId() + " | " + concept.getTerm() + " |");
+			sb.append(concept.getId() + "|" + concept.getTerm() + "|");
 			if (isaIterator.hasNext()) {
 				sb.append(" + ");
 			}
@@ -49,9 +49,9 @@ public class VisualizationDslUtil {
 			while (relationshipIterator.hasNext()) {
 				sb.append("  ");
 				Relationship relationship = relationshipIterator.next();
-				sb.append(relationship.getType().getId() + " | " + relationship.getType().getTerm() + " |");
+				sb.append(relationship.getType().getId() + "|" + relationship.getType().getTerm() + "|");
 				sb.append(" = ");
-				sb.append(relationship.getDestination().getId() + " | " + relationship.getDestination().getTerm() + " |");
+				sb.append(relationship.getDestination().getId() + "|" + relationship.getDestination().getTerm() + "|");
 				if (relationshipIterator.hasNext()) {
 					sb.append(",\n");
 				}
@@ -75,9 +75,9 @@ public class VisualizationDslUtil {
 			while (groupIterator.hasNext()) {
 				Relationship relationship = groupIterator.next();
 				sb.append("\t");
-				sb.append(relationship.getType().getId() + " | " + relationship.getType().getTerm() + " |");
+				sb.append(relationship.getType().getId() + "|" + relationship.getType().getTerm() + "|");
 				sb.append(" = ");
-				sb.append(relationship.getDestination().getId() + " | " + relationship.getDestination().getTerm() + " |");
+				sb.append(relationship.getDestination().getId() + "|" + relationship.getDestination().getTerm() + "|");
 				if (groupIterator.hasNext()) {
 					sb.append(",\n");
 				}

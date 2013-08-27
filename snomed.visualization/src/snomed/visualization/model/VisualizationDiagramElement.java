@@ -15,6 +15,7 @@ public class VisualizationDiagramElement {
 		CONJUCTION
 	}
 	
+	private boolean mainConcept;
 	private boolean defined;
 	private String id;
 	private String term;
@@ -22,7 +23,8 @@ public class VisualizationDiagramElement {
 	private VisualizationComponentType type;
 	private int zoom;
 	
-	public VisualizationDiagramElement(final boolean defined, final String id, final String term, final VisualizationComponentType type, final Rectangle constraint, final int zoom) {
+	public VisualizationDiagramElement(final boolean mainConcept, final boolean defined, final String id, final String term, final VisualizationComponentType type, final Rectangle constraint, final int zoom) {
+		this.mainConcept = mainConcept;
 		this.defined = defined;
 		this.id = id;
 		this.term = term;
@@ -31,6 +33,10 @@ public class VisualizationDiagramElement {
 		this.zoom = zoom;
 	}
 
+	public boolean isMainConcept() {
+		return mainConcept;
+	}
+	
 	public boolean isDefined() {
 		return defined;
 	}

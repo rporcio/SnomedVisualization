@@ -50,9 +50,11 @@ public class VisualizationDiagramElementFigure extends Figure {
 		public void mouseExited(MouseEvent me) {
 			if (mouseOver) {
 				mouseOver = false;
-				remove(deletionIcon);
-				remove(characteristicIcon);
-				repaint();
+				if (!diagramElement.isMainConcept()) {
+					remove(deletionIcon);
+					remove(characteristicIcon);
+					repaint();
+				}
 			}
 		}
 		
@@ -60,9 +62,11 @@ public class VisualizationDiagramElementFigure extends Figure {
 		public void mouseEntered(MouseEvent me) {
 			if (!mouseOver) {
 				mouseOver = true;
-				add(deletionIcon);
-				add(characteristicIcon);
-				repaint();
+				if (!diagramElement.isMainConcept()) {
+					add(deletionIcon);
+					add(characteristicIcon);
+					repaint();
+				}
 			}
 		}
 		
@@ -87,7 +91,7 @@ public class VisualizationDiagramElementFigure extends Figure {
 				if (me.x > width) {
 					if (me.y > height - 16) {
 						firePropertyChange("characteristic", null, null);
-					} else if (me.y < height - 16 && me.y > height - 32) {
+					} else if (me.y < height - 16 && me.y > height - 32 && !diagramElement.isMainConcept()) {
 						firePropertyChange("deletion", null, null);
 					}
 				}
@@ -108,7 +112,7 @@ public class VisualizationDiagramElementFigure extends Figure {
 		this.diagramElement = diagramElement;
 		
 		setLayoutManager(new XYLayout());
-		initializeBasedElements();
+		initializeSecondaryElements();
 		
 		if (diagramElement.getType() == VisualizationComponentType.CONCEPT) {
 			createConceptFigure();
@@ -127,12 +131,9 @@ public class VisualizationDiagramElementFigure extends Figure {
 			
 			add(innerShape);
 		}
-		
-		
-		
 	}
 	
-	private void initializeBasedElements() {
+	private void initializeSecondaryElements() {
 		term = new Label(diagramElement.getTerm());
 		deletionIcon = new ImageFigure(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/trash.png").createImage());
 		deletionIcon.setAlignment(PositionConstants.EAST);
@@ -158,8 +159,10 @@ public class VisualizationDiagramElementFigure extends Figure {
 			setConstraint(term, new Rectangle(0, 0, rectangle.width, rectangle.height));
 			
 			if (mouseOver) {
-				setConstraint(deletionIcon, new Rectangle(0, 0, rectangle.width, rectangle.height-10));
-				setConstraint(characteristicIcon, new Rectangle(0, 0, rectangle.width, rectangle.height+30));
+				if (!diagramElement.isMainConcept()) {
+					setConstraint(deletionIcon, new Rectangle(0, 0, rectangle.width, rectangle.height-10));
+					setConstraint(characteristicIcon, new Rectangle(0, 0, rectangle.width, rectangle.height+30));
+				}
 			}
 		} 
 		
