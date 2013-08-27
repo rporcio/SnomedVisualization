@@ -17,16 +17,18 @@ public class VisualizationDiagramElement {
 	
 	private boolean mainConcept;
 	private boolean defined;
-	private String id;
+	private String conceptId;
+	private String relationshipId;
 	private String term;
 	private Rectangle constraint;
 	private VisualizationComponentType type;
 	private int zoom;
 	
-	public VisualizationDiagramElement(final boolean mainConcept, final boolean defined, final String id, final String term, final VisualizationComponentType type, final Rectangle constraint, final int zoom) {
+	public VisualizationDiagramElement(final boolean mainConcept, final boolean defined, final String conceptId, final String relationshipId, final String term, final VisualizationComponentType type, final Rectangle constraint, final int zoom) {
 		this.mainConcept = mainConcept;
 		this.defined = defined;
-		this.id = id;
+		this.conceptId = conceptId;
+		this.relationshipId = relationshipId;
 		this.term = term;
 		this.type = type;
 		this.constraint = constraint;
@@ -45,12 +47,20 @@ public class VisualizationDiagramElement {
 		this.defined = defined;
 	}
 	
-	public String getId() {
-		return id;
+	public String getConceptId() {
+		return conceptId;
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setConceptId(String conceptId) {
+		this.conceptId = conceptId;
+	}
+	
+	public String getRelationshipId() {
+		return relationshipId;
+	}
+	
+	public void setRelationshipId(String relationshipId) {
+		this.relationshipId = relationshipId;
 	}
 	
 	public String getTerm() {

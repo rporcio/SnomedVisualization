@@ -11,6 +11,7 @@ import snomed.visualization.figure.VisualizationDiagramConnectionFigure;
 import snomed.visualization.figure.VisualizationDiagramElementFigure;
 import snomed.visualization.model.VisualizationDiagramConnection;
 import snomed.visualization.model.VisualizationDiagramElement;
+import snomed.visualization.model.VisualizationDiagramElement.VisualizationComponentType;
 
 /**
  * EditPart to create the figure on the canvas.
@@ -28,7 +29,11 @@ public class VisualizationDiagramEditPart extends AbstractGraphicalEditPart {
 			if (evt.getSource() instanceof VisualizationDiagramElementFigure && !evt.getPropertyName().equals("parent")) {
 				VisualizationDiagramElementFigure figure = (VisualizationDiagramElementFigure) evt.getSource();
 				
-				visualizationEditor.handleDiagramChanges(evt.getPropertyName(), figure.getDiagramElement().getId());
+				if (figure.getDiagramElement().getType() == VisualizationComponentType.CONCEPT) {
+					visualizationEditor.handleDiagramChanges(evt.getPropertyName(), figure.getDiagramElement().getConceptId());
+				} else {
+					visualizationEditor.handleDiagramChanges(evt.getPropertyName(), figure.getDiagramElement().getRelationshipId());
+				}
 			}
 		}
 	};

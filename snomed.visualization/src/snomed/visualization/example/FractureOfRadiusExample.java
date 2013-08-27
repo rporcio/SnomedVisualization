@@ -1,5 +1,7 @@
 package snomed.visualization.example;
 
+import java.util.Random;
+
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
@@ -51,7 +53,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
-		relationship.setId("0");
+		relationship.setId(generateId());
 		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -69,7 +71,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
-		relationship.setId("1");
+		relationship.setId(generateId());
 		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -87,7 +89,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(false);
 		relationship.setGroup(0);
-		relationship.setId("2");
+		relationship.setId(generateId());
 		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		// Relationship group
@@ -107,7 +109,7 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("3");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -126,12 +128,20 @@ public class FractureOfRadiusExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("4");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
 		expression.getGroupedRelationships().add(relationshipGroup);
 
 		return expression;
+	}
+	
+	// TODO remove
+	private static String generateId() {
+		Random random = new Random();
+		// nextInt excludes top value, add 1 to make it inclusive
+		int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
+		return Integer.toString(randomNum);
 	}
 }

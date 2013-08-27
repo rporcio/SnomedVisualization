@@ -211,7 +211,7 @@ public class VisualizationDiagramUtil {
 		// we draw the main concept only if the diagram type is definition
 		if (diagramType == DiagramType.DEFINITION) {
 			Concept concept = expression.getConcept();
-			diagramElements.add(new VisualizationDiagramElement(true, concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(5, 5, zoom * 2, zoom / 2), zoom));
+			diagramElements.add(new VisualizationDiagramElement(true, concept.isDefined(), concept.getId(), null, concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(5, 5, zoom * 2, zoom / 2), zoom));
 		}
 		
 		// if there are other elements, draw the based elements
@@ -219,9 +219,9 @@ public class VisualizationDiagramUtil {
 				(null != expression.getGroupedRelationships() && expression.getGroupedRelationships().size() > 0) || 
 				(null != expression.getUngroupedRelationships() && expression.getUngroupedRelationships().getRelationships().size() > 0)) {
 			if (diagramType == DiagramType.DEFINITION) {
-				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
+				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
 						(int) (zoom / 2.5)), zoom));
-				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 1.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
+				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 1.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
 						10), zoom));
 				
 				addNewConnection(null, zoom / 5, (int) (zoom * 0.55), zoom / 5, (int) (zoom * 0.95));
@@ -229,7 +229,7 @@ public class VisualizationDiagramUtil {
 				addNewConnection(ConnectionType.REGULAR, (int) (zoom * 0.6) + zoom / 5 * 2, (int) (zoom * 0.95), (int) (zoom * 1.5), (int) (zoom * 0.95));
 				addNewConnection(null, (int) (zoom * 1.5), (int) (zoom * 0.95), zoom * 2, (int) (zoom * 0.95));
 			} else {
-				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, VisualizationComponentType.CONJUCTION, 
+				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.CONJUCTION, 
 						new Rectangle((int) (zoom * 0.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,	10), zoom));
 				
 				addNewConnection(null, (int) (zoom * 0.5), zoom * depth / 100 + (int)(zoom * 0.25), zoom, zoom * depth / 100 + (int)(zoom * 0.25));
@@ -250,7 +250,7 @@ public class VisualizationDiagramUtil {
 				y = zoom * depth / 100;
 			}
 
-			diagramElements.add(new VisualizationDiagramElement(false, concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(x, y, zoom * 2, zoom / 2), zoom));
+			diagramElements.add(new VisualizationDiagramElement(false, concept.isDefined(), concept.getId(), null, concept.getTerm(), VisualizationComponentType.CONCEPT, new Rectangle(x, y, zoom * 2, zoom / 2), zoom));
 
 			if (diagramType == DiagramType.DEFINITION) {
 				addNewConnection(ConnectionType.ISA, zoom * 2, y + (int) (zoom * 0.25), x, y + (int) (zoom * 0.25));
@@ -291,7 +291,7 @@ public class VisualizationDiagramUtil {
 			y = zoom * depth / 100;
 			yStart = y + zoom / 4;
 
-			diagramElements.add(new VisualizationDiagramElement(false, false, null, null, VisualizationComponentType.GROUP, new Rectangle(xGroup, y + zoom / 20, (int) (zoom / 2.5), (int) (zoom / 2.5)), zoom));
+			diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.GROUP, new Rectangle(xGroup, y + zoom / 20, (int) (zoom / 2.5), (int) (zoom / 2.5)), zoom));
 
 			if (diagramType == DiagramType.DEFINITION) {
 				addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xGroup, y + zoom / 4);
@@ -312,9 +312,9 @@ public class VisualizationDiagramUtil {
 
 				y = zoom * depth / 100;
 
-				diagramElements.add(new VisualizationDiagramElement(false, relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
+				diagramElements.add(new VisualizationDiagramElement(false, relationship.isDefined(), relationship.getType().getId(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
 						xType, y, zoom * 2, zoom / 2), zoom));
-				diagramElements.add(new VisualizationDiagramElement(false, relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(),
+				diagramElements.add(new VisualizationDiagramElement(false, relationship.getDestination().isDefined(), relationship.getDestination().getId(), null, relationship.getDestination().getTerm(),
 						VisualizationComponentType.CONCEPT, new Rectangle(xDestination, y, zoom * 2, zoom / 2), zoom));
 
 				if (diagramType == DiagramType.DEFINITION) {
@@ -360,9 +360,9 @@ public class VisualizationDiagramUtil {
 				
 				y = zoom * depth / 100;
 				
-				diagramElements.add(new VisualizationDiagramElement(false, relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
+				diagramElements.add(new VisualizationDiagramElement(false, relationship.isDefined(), relationship.getType().getId(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, new Rectangle(
 						xType, y, zoom * 2, zoom / 2), zoom));
-				diagramElements.add(new VisualizationDiagramElement(false, relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(),
+				diagramElements.add(new VisualizationDiagramElement(false, relationship.getDestination().isDefined(), relationship.getDestination().getId(), null, relationship.getDestination().getTerm(),
 						VisualizationComponentType.CONCEPT, new Rectangle(xDestination, y, zoom * 2, zoom / 2), zoom));
 				
 				

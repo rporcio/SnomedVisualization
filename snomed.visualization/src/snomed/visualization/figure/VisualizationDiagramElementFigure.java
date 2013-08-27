@@ -211,7 +211,7 @@ public class VisualizationDiagramElementFigure extends Figure {
 		add(innerShape);
 		add(term);
 		
-		String tooltipTerm = diagramElement.getId() + " | " + diagramElement.getTerm() + " |"; 
+		String tooltipTerm = diagramElement.getConceptId() + " | " + diagramElement.getTerm() + " |"; 
 		outerShape.setToolTip(new Label(tooltipTerm));
 		innerShape.setToolTip(new Label(tooltipTerm));
 		term.setToolTip(new Label(tooltipTerm));

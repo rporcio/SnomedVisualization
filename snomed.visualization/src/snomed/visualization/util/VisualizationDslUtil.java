@@ -42,7 +42,7 @@ public class VisualizationDslUtil {
 			return dsl;
 		} catch (InvalidConcreteSyntaxException e) {
 			// TODO
-			// the serializer cannot create the string presentation if one of the elements is empty :(
+			// the serializer cannot create the string presentation if one of the elements is empty, therefore the old mechanism is required
 			dsl = createOldPresentation(expression);
 		}
 		
