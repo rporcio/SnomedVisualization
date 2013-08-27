@@ -3,17 +3,21 @@
 */
 package snomed.visualization.dsl;
 
+import org.eclipse.xtext.serializer.impl.Serializer;
+
 import snomed.visualization.dsl.parser.antlr.VisualizationDslParser;
 
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
  */
+@SuppressWarnings("restriction")
 public class VisualizationDslStandaloneSetup extends VisualizationDslStandaloneSetupGenerated{
 
 private static VisualizationDslStandaloneSetup instance;
 	
 	private VisualizationDslParser parser;
+	private Serializer serializer;
 	
 	public static VisualizationDslStandaloneSetup getInstance() {
 		if (null == instance) {
@@ -37,6 +41,11 @@ private static VisualizationDslStandaloneSetup instance;
 	
 	private VisualizationDslStandaloneSetup() {
 		parser = createInjectorAndDoEMFRegistration().getInstance(VisualizationDslParser.class);
+		serializer = createInjectorAndDoEMFRegistration().getInstance(Serializer.class);
+	}
+
+	public Serializer getSerializer() {
+		return serializer;
 	}
 }
 

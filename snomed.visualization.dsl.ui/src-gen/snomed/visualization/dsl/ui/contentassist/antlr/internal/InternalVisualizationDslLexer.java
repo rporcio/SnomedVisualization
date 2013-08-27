@@ -12,22 +12,22 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalVisualizationDslLexer extends Lexer {
-    public static final int RULE_ID=4;
-    public static final int RULE_STRING=7;
-    public static final int T__16=16;
-    public static final int T__15=15;
-    public static final int T__18=18;
-    public static final int T__17=17;
-    public static final int T__12=12;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int RULE_TERM=5;
-    public static final int RULE_INT=6;
-    public static final int RULE_WS=10;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int RULE_CLOSING_CURLY_BRACKET=7;
+    public static final int RULE_ID=12;
+    public static final int RULE_COLON=4;
+    public static final int RULE_STRING=17;
+    public static final int RULE_PIPE=10;
+    public static final int RULE_OPENING_CURLY_BRACKET=6;
+    public static final int RULE_ANY_OTHER=18;
+    public static final int RULE_EQUAL_SIGN=9;
+    public static final int RULE_TERM=13;
+    public static final int RULE_INT=16;
+    public static final int RULE_PLUS_SIGN=5;
+    public static final int RULE_COMMA=8;
+    public static final int RULE_WS=11;
+    public static final int RULE_SL_COMMENT=15;
     public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=8;
+    public static final int RULE_ML_COMMENT=14;
 
     // delegates
     // delegators
@@ -42,156 +42,16 @@ public class InternalVisualizationDslLexer extends Lexer {
     }
     public String getGrammarFileName() { return "../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g"; }
 
-    // $ANTLR start "T__12"
-    public final void mT__12() throws RecognitionException {
-        try {
-            int _type = T__12;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:11:7: ( ':' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:11:9: ':'
-            {
-            match(':'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__12"
-
-    // $ANTLR start "T__13"
-    public final void mT__13() throws RecognitionException {
-        try {
-            int _type = T__13;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:12:7: ( '+' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:12:9: '+'
-            {
-            match('+'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__13"
-
-    // $ANTLR start "T__14"
-    public final void mT__14() throws RecognitionException {
-        try {
-            int _type = T__14;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:13:7: ( '{' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:13:9: '{'
-            {
-            match('{'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__14"
-
-    // $ANTLR start "T__15"
-    public final void mT__15() throws RecognitionException {
-        try {
-            int _type = T__15;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:14:7: ( '}' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:14:9: '}'
-            {
-            match('}'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__15"
-
-    // $ANTLR start "T__16"
-    public final void mT__16() throws RecognitionException {
-        try {
-            int _type = T__16;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:15:7: ( ',' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:15:9: ','
-            {
-            match(','); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__16"
-
-    // $ANTLR start "T__17"
-    public final void mT__17() throws RecognitionException {
-        try {
-            int _type = T__17;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:16:7: ( '=' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:16:9: '='
-            {
-            match('='); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__17"
-
-    // $ANTLR start "T__18"
-    public final void mT__18() throws RecognitionException {
-        try {
-            int _type = T__18;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:17:7: ( '|' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:17:9: '|'
-            {
-            match('|'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__18"
-
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1284:9: ( '1' .. '9' ( '0' .. '9' )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1284:11: '1' .. '9' ( '0' .. '9' )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1293:9: ( '1' .. '9' ( '0' .. '9' )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1293:11: '1' .. '9' ( '0' .. '9' )*
             {
             matchRange('1','9'); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1284:20: ( '0' .. '9' )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1293:20: ( '0' .. '9' )*
             loop1:
             do {
                 int alt1=2;
@@ -204,7 +64,7 @@ public class InternalVisualizationDslLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1284:21: '0' .. '9'
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1293:21: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -232,8 +92,8 @@ public class InternalVisualizationDslLexer extends Lexer {
         try {
             int _type = RULE_TERM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1286:11: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1286:13: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1295:11: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1295:13: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -244,7 +104,7 @@ public class InternalVisualizationDslLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1286:33: ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1295:33: ( 'a' .. 'z' | 'A' .. 'Z' | ' ' )*
             loop2:
             do {
                 int alt2=2;
@@ -288,202 +148,22 @@ public class InternalVisualizationDslLexer extends Lexer {
     }
     // $ANTLR end "RULE_TERM"
 
-    // $ANTLR start "RULE_INT"
-    public final void mRULE_INT() throws RecognitionException {
+    // $ANTLR start "RULE_WS"
+    public final void mRULE_WS() throws RecognitionException {
         try {
-            int _type = RULE_INT;
+            int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1288:10: ( ( '0' .. '9' )+ )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1288:12: ( '0' .. '9' )+
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1297:9: ( ( ' ' | '\\t' | '\\n' | '\\r' ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1297:11: ( ' ' | '\\t' | '\\n' | '\\r' )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1288:12: ( '0' .. '9' )+
-            int cnt3=0;
-            loop3:
-            do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+            if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
+                input.consume();
 
-                if ( ((LA3_0>='0' && LA3_0<='9')) ) {
-                    alt3=1;
-                }
-
-
-                switch (alt3) {
-            	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1288:13: '0' .. '9'
-            	    {
-            	    matchRange('0','9'); 
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt3 >= 1 ) break loop3;
-                        EarlyExitException eee =
-                            new EarlyExitException(3, input);
-                        throw eee;
-                }
-                cnt3++;
-            } while (true);
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "RULE_INT"
-
-    // $ANTLR start "RULE_STRING"
-    public final void mRULE_STRING() throws RecognitionException {
-        try {
-            int _type = RULE_STRING;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
-            int alt6=2;
-            int LA6_0 = input.LA(1);
-
-            if ( (LA6_0=='\"') ) {
-                alt6=1;
-            }
-            else if ( (LA6_0=='\'') ) {
-                alt6=2;
             }
             else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
-
-                throw nvae;
-            }
-            switch (alt6) {
-                case 1 :
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
-                    {
-                    match('\"'); 
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
-                    loop4:
-                    do {
-                        int alt4=3;
-                        int LA4_0 = input.LA(1);
-
-                        if ( (LA4_0=='\\') ) {
-                            alt4=1;
-                        }
-                        else if ( ((LA4_0>='\u0000' && LA4_0<='!')||(LA4_0>='#' && LA4_0<='[')||(LA4_0>=']' && LA4_0<='\uFFFF')) ) {
-                            alt4=2;
-                        }
-
-
-                        switch (alt4) {
-                    	case 1 :
-                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
-                    	    {
-                    	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
-
-                    	    }
-                    	    break;
-                    	case 2 :
-                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:66: ~ ( ( '\\\\' | '\"' ) )
-                    	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop4;
-                        }
-                    } while (true);
-
-                    match('\"'); 
-
-                    }
-                    break;
-                case 2 :
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
-                    {
-                    match('\''); 
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
-                    loop5:
-                    do {
-                        int alt5=3;
-                        int LA5_0 = input.LA(1);
-
-                        if ( (LA5_0=='\\') ) {
-                            alt5=1;
-                        }
-                        else if ( ((LA5_0>='\u0000' && LA5_0<='&')||(LA5_0>='(' && LA5_0<='[')||(LA5_0>=']' && LA5_0<='\uFFFF')) ) {
-                            alt5=2;
-                        }
-
-
-                        switch (alt5) {
-                    	case 1 :
-                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
-                    	    {
-                    	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
-
-                    	    }
-                    	    break;
-                    	case 2 :
-                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1290:137: ~ ( ( '\\\\' | '\\'' ) )
-                    	    {
-                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop5;
-                        }
-                    } while (true);
-
-                    match('\''); 
-
-                    }
-                    break;
-
-            }
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;}
 
 
             }
@@ -494,44 +174,44 @@ public class InternalVisualizationDslLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "RULE_STRING"
+    // $ANTLR end "RULE_WS"
 
     // $ANTLR start "RULE_ML_COMMENT"
     public final void mRULE_ML_COMMENT() throws RecognitionException {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1292:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1292:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1299:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1299:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1292:24: ( options {greedy=false; } : . )*
-            loop7:
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1299:24: ( options {greedy=false; } : . )*
+            loop3:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                if ( (LA7_0=='*') ) {
-                    int LA7_1 = input.LA(2);
+                if ( (LA3_0=='*') ) {
+                    int LA3_1 = input.LA(2);
 
-                    if ( (LA7_1=='/') ) {
-                        alt7=2;
+                    if ( (LA3_1=='/') ) {
+                        alt3=2;
                     }
-                    else if ( ((LA7_1>='\u0000' && LA7_1<='.')||(LA7_1>='0' && LA7_1<='\uFFFF')) ) {
-                        alt7=1;
+                    else if ( ((LA3_1>='\u0000' && LA3_1<='.')||(LA3_1>='0' && LA3_1<='\uFFFF')) ) {
+                        alt3=1;
                     }
 
 
                 }
-                else if ( ((LA7_0>='\u0000' && LA7_0<=')')||(LA7_0>='+' && LA7_0<='\uFFFF')) ) {
-                    alt7=1;
+                else if ( ((LA3_0>='\u0000' && LA3_0<=')')||(LA3_0>='+' && LA3_0<='\uFFFF')) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt3) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1292:52: .
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1299:52: .
             	    {
             	    matchAny(); 
 
@@ -539,7 +219,7 @@ public class InternalVisualizationDslLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop3;
                 }
             } while (true);
 
@@ -561,25 +241,25 @@ public class InternalVisualizationDslLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:24: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop8:
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            loop4:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( ((LA8_0>='\u0000' && LA8_0<='\t')||(LA8_0>='\u000B' && LA8_0<='\f')||(LA8_0>='\u000E' && LA8_0<='\uFFFF')) ) {
-                    alt8=1;
+                if ( ((LA4_0>='\u0000' && LA4_0<='\t')||(LA4_0>='\u000B' && LA4_0<='\f')||(LA4_0>='\u000E' && LA4_0<='\uFFFF')) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt4) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -595,31 +275,31 @@ public class InternalVisualizationDslLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop4;
                 }
             } while (true);
 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:40: ( ( '\\r' )? '\\n' )?
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:40: ( ( '\\r' )? '\\n' )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA10_0=='\n'||LA10_0=='\r') ) {
-                alt10=1;
+            if ( (LA6_0=='\n'||LA6_0=='\r') ) {
+                alt6=1;
             }
-            switch (alt10) {
+            switch (alt6) {
                 case 1 :
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:41: ( '\\r' )? '\\n'
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:41: ( '\\r' )? '\\n'
                     {
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:41: ( '\\r' )?
-                    int alt9=2;
-                    int LA9_0 = input.LA(1);
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:41: ( '\\r' )?
+                    int alt5=2;
+                    int LA5_0 = input.LA(1);
 
-                    if ( (LA9_0=='\r') ) {
-                        alt9=1;
+                    if ( (LA5_0=='\r') ) {
+                        alt5=1;
                     }
-                    switch (alt9) {
+                    switch (alt5) {
                         case 1 :
-                            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1294:41: '\\r'
+                            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1301:41: '\\r'
                             {
                             match('\r'); 
 
@@ -646,50 +326,182 @@ public class InternalVisualizationDslLexer extends Lexer {
     }
     // $ANTLR end "RULE_SL_COMMENT"
 
-    // $ANTLR start "RULE_WS"
-    public final void mRULE_WS() throws RecognitionException {
+    // $ANTLR start "RULE_PIPE"
+    public final void mRULE_PIPE() throws RecognitionException {
         try {
-            int _type = RULE_WS;
+            int _type = RULE_PIPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1296:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1296:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1303:11: ( '|' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1303:13: '|'
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1296:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt11=0;
-            loop11:
-            do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+            match('|'); 
 
-                if ( ((LA11_0>='\t' && LA11_0<='\n')||LA11_0=='\r'||LA11_0==' ') ) {
-                    alt11=1;
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_PIPE"
+
+    // $ANTLR start "RULE_COLON"
+    public final void mRULE_COLON() throws RecognitionException {
+        try {
+            int _type = RULE_COLON;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1305:12: ( ':' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1305:14: ':'
+            {
+            match(':'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_COLON"
+
+    // $ANTLR start "RULE_OPENING_CURLY_BRACKET"
+    public final void mRULE_OPENING_CURLY_BRACKET() throws RecognitionException {
+        try {
+            int _type = RULE_OPENING_CURLY_BRACKET;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1307:28: ( '{' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1307:30: '{'
+            {
+            match('{'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_OPENING_CURLY_BRACKET"
+
+    // $ANTLR start "RULE_CLOSING_CURLY_BRACKET"
+    public final void mRULE_CLOSING_CURLY_BRACKET() throws RecognitionException {
+        try {
+            int _type = RULE_CLOSING_CURLY_BRACKET;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1309:28: ( '}' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1309:30: '}'
+            {
+            match('}'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_CLOSING_CURLY_BRACKET"
+
+    // $ANTLR start "RULE_EQUAL_SIGN"
+    public final void mRULE_EQUAL_SIGN() throws RecognitionException {
+        try {
+            int _type = RULE_EQUAL_SIGN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1311:17: ( '=' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1311:19: '='
+            {
+            match('='); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_EQUAL_SIGN"
+
+    // $ANTLR start "RULE_COMMA"
+    public final void mRULE_COMMA() throws RecognitionException {
+        try {
+            int _type = RULE_COMMA;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1313:12: ( ',' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1313:14: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_COMMA"
+
+    // $ANTLR start "RULE_PLUS_SIGN"
+    public final void mRULE_PLUS_SIGN() throws RecognitionException {
+        try {
+            int _type = RULE_PLUS_SIGN;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1315:16: ( '+' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1315:18: '+'
+            {
+            match('+'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_PLUS_SIGN"
+
+    // $ANTLR start "RULE_INT"
+    public final void mRULE_INT() throws RecognitionException {
+        try {
+            int _type = RULE_INT;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1317:10: ( ( '0' .. '9' )+ )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1317:12: ( '0' .. '9' )+
+            {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1317:12: ( '0' .. '9' )+
+            int cnt7=0;
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
+
+                if ( ((LA7_0>='0' && LA7_0<='9')) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt7) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1317:13: '0' .. '9'
             	    {
-            	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
-            	        input.consume();
-
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;}
-
+            	    matchRange('0','9'); 
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt11 >= 1 ) break loop11;
+            	    if ( cnt7 >= 1 ) break loop7;
                         EarlyExitException eee =
-                            new EarlyExitException(11, input);
+                            new EarlyExitException(7, input);
                         throw eee;
                 }
-                cnt11++;
+                cnt7++;
             } while (true);
 
 
@@ -701,15 +513,174 @@ public class InternalVisualizationDslLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "RULE_WS"
+    // $ANTLR end "RULE_INT"
+
+    // $ANTLR start "RULE_STRING"
+    public final void mRULE_STRING() throws RecognitionException {
+        try {
+            int _type = RULE_STRING;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            int alt10=2;
+            int LA10_0 = input.LA(1);
+
+            if ( (LA10_0=='\"') ) {
+                alt10=1;
+            }
+            else if ( (LA10_0=='\'') ) {
+                alt10=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 10, 0, input);
+
+                throw nvae;
+            }
+            switch (alt10) {
+                case 1 :
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    {
+                    match('\"'); 
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    loop8:
+                    do {
+                        int alt8=3;
+                        int LA8_0 = input.LA(1);
+
+                        if ( (LA8_0=='\\') ) {
+                            alt8=1;
+                        }
+                        else if ( ((LA8_0>='\u0000' && LA8_0<='!')||(LA8_0>='#' && LA8_0<='[')||(LA8_0>=']' && LA8_0<='\uFFFF')) ) {
+                            alt8=2;
+                        }
+
+
+                        switch (alt8) {
+                    	case 1 :
+                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    {
+                    	    match('\\'); 
+                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
+
+                    	    }
+                    	    break;
+                    	case 2 :
+                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    {
+                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop8;
+                        }
+                    } while (true);
+
+                    match('\"'); 
+
+                    }
+                    break;
+                case 2 :
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    {
+                    match('\''); 
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    loop9:
+                    do {
+                        int alt9=3;
+                        int LA9_0 = input.LA(1);
+
+                        if ( (LA9_0=='\\') ) {
+                            alt9=1;
+                        }
+                        else if ( ((LA9_0>='\u0000' && LA9_0<='&')||(LA9_0>='(' && LA9_0<='[')||(LA9_0>=']' && LA9_0<='\uFFFF')) ) {
+                            alt9=2;
+                        }
+
+
+                        switch (alt9) {
+                    	case 1 :
+                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    {
+                    	    match('\\'); 
+                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
+
+                    	    }
+                    	    break;
+                    	case 2 :
+                    	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1319:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    {
+                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop9;
+                        }
+                    } while (true);
+
+                    match('\''); 
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "RULE_STRING"
 
     // $ANTLR start "RULE_ANY_OTHER"
     public final void mRULE_ANY_OTHER() throws RecognitionException {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1298:16: ( . )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1298:18: .
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1321:16: ( . )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1321:18: .
             {
             matchAny(); 
 
@@ -724,110 +695,110 @@ public class InternalVisualizationDslLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_TERM | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=15;
-        alt12 = dfa12.predict(input);
-        switch (alt12) {
+        // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:8: ( RULE_ID | RULE_TERM | RULE_WS | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_PIPE | RULE_COLON | RULE_OPENING_CURLY_BRACKET | RULE_CLOSING_CURLY_BRACKET | RULE_EQUAL_SIGN | RULE_COMMA | RULE_PLUS_SIGN | RULE_INT | RULE_STRING | RULE_ANY_OTHER )
+        int alt11=15;
+        alt11 = dfa11.predict(input);
+        switch (alt11) {
             case 1 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:10: T__12
-                {
-                mT__12(); 
-
-                }
-                break;
-            case 2 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:16: T__13
-                {
-                mT__13(); 
-
-                }
-                break;
-            case 3 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:22: T__14
-                {
-                mT__14(); 
-
-                }
-                break;
-            case 4 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:28: T__15
-                {
-                mT__15(); 
-
-                }
-                break;
-            case 5 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:34: T__16
-                {
-                mT__16(); 
-
-                }
-                break;
-            case 6 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:40: T__17
-                {
-                mT__17(); 
-
-                }
-                break;
-            case 7 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:46: T__18
-                {
-                mT__18(); 
-
-                }
-                break;
-            case 8 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:52: RULE_ID
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:10: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 9 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:60: RULE_TERM
+            case 2 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:18: RULE_TERM
                 {
                 mRULE_TERM(); 
 
                 }
                 break;
-            case 10 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:70: RULE_INT
-                {
-                mRULE_INT(); 
-
-                }
-                break;
-            case 11 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:79: RULE_STRING
-                {
-                mRULE_STRING(); 
-
-                }
-                break;
-            case 12 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:91: RULE_ML_COMMENT
-                {
-                mRULE_ML_COMMENT(); 
-
-                }
-                break;
-            case 13 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:107: RULE_SL_COMMENT
-                {
-                mRULE_SL_COMMENT(); 
-
-                }
-                break;
-            case 14 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:123: RULE_WS
+            case 3 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:28: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
+            case 4 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:36: RULE_ML_COMMENT
+                {
+                mRULE_ML_COMMENT(); 
+
+                }
+                break;
+            case 5 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:52: RULE_SL_COMMENT
+                {
+                mRULE_SL_COMMENT(); 
+
+                }
+                break;
+            case 6 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:68: RULE_PIPE
+                {
+                mRULE_PIPE(); 
+
+                }
+                break;
+            case 7 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:78: RULE_COLON
+                {
+                mRULE_COLON(); 
+
+                }
+                break;
+            case 8 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:89: RULE_OPENING_CURLY_BRACKET
+                {
+                mRULE_OPENING_CURLY_BRACKET(); 
+
+                }
+                break;
+            case 9 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:116: RULE_CLOSING_CURLY_BRACKET
+                {
+                mRULE_CLOSING_CURLY_BRACKET(); 
+
+                }
+                break;
+            case 10 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:143: RULE_EQUAL_SIGN
+                {
+                mRULE_EQUAL_SIGN(); 
+
+                }
+                break;
+            case 11 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:159: RULE_COMMA
+                {
+                mRULE_COMMA(); 
+
+                }
+                break;
+            case 12 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:170: RULE_PLUS_SIGN
+                {
+                mRULE_PLUS_SIGN(); 
+
+                }
+                break;
+            case 13 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:185: RULE_INT
+                {
+                mRULE_INT(); 
+
+                }
+                break;
+            case 14 :
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:194: RULE_STRING
+                {
+                mRULE_STRING(); 
+
+                }
+                break;
             case 15 :
-                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:131: RULE_ANY_OTHER
+                // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1:206: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -839,38 +810,29 @@ public class InternalVisualizationDslLexer extends Lexer {
     }
 
 
-    protected DFA12 dfa12 = new DFA12(this);
-    static final String DFA12_eotS =
-        "\10\uffff\1\27\2\uffff\3\17\12\uffff\1\27\6\uffff";
-    static final String DFA12_eofS =
+    protected DFA11 dfa11 = new DFA11(this);
+    static final String DFA11_eotS =
+        "\1\uffff\1\20\2\uffff\1\17\10\uffff\2\17\2\uffff\1\20\15\uffff";
+    static final String DFA11_eofS =
         "\37\uffff";
-    static final String DFA12_minS =
-        "\1\0\7\uffff\1\60\2\uffff\2\0\1\52\12\uffff\1\60\6\uffff";
-    static final String DFA12_maxS =
-        "\1\uffff\7\uffff\1\71\2\uffff\2\uffff\1\57\12\uffff\1\71\6\uffff";
-    static final String DFA12_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\uffff\1\11\1\12\3\uffff"+
-        "\1\16\1\17\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\uffff\1\11\1\12\1"+
-        "\13\1\14\1\15\1\16";
-    static final String DFA12_specialS =
-        "\1\1\12\uffff\1\2\1\0\22\uffff}>";
-    static final String[] DFA12_transitionS = {
-            "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\13\4\17\1\14\3\17\1"+
-            "\2\1\5\2\17\1\15\1\12\11\10\1\1\2\17\1\6\3\17\32\11\6\17\32"+
-            "\11\1\3\1\7\1\4\uff82\17",
+    static final String DFA11_minS =
+        "\1\0\1\60\2\uffff\1\52\10\uffff\2\0\2\uffff\1\60\15\uffff";
+    static final String DFA11_maxS =
+        "\1\uffff\1\71\2\uffff\1\57\10\uffff\2\uffff\2\uffff\1\71\15\uffff";
+    static final String DFA11_acceptS =
+        "\2\uffff\1\2\1\3\1\uffff\1\6\1\7\1\10\1\11\1\12\1\13\1\14\1\15"+
+        "\2\uffff\1\17\1\1\1\uffff\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11\1\12"+
+        "\1\13\1\14\1\15\1\16";
+    static final String DFA11_specialS =
+        "\1\0\14\uffff\1\2\1\1\20\uffff}>";
+    static final String[] DFA11_transitionS = {
+            "\11\17\2\3\2\17\1\3\22\17\1\3\1\17\1\15\4\17\1\16\3\17\1\13"+
+            "\1\12\2\17\1\4\1\14\11\1\1\6\2\17\1\11\3\17\32\2\6\17\32\2\1"+
+            "\7\1\5\1\10\uff82\17",
+            "\12\21",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\12\30",
-            "",
-            "",
-            "\0\33",
-            "\0\33",
-            "\1\34\4\uffff\1\35",
+            "\1\24\4\uffff\1\25",
             "",
             "",
             "",
@@ -879,9 +841,18 @@ public class InternalVisualizationDslLexer extends Lexer {
             "",
             "",
             "",
+            "\0\36",
+            "\0\36",
             "",
             "",
-            "\12\30",
+            "\12\21",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -890,93 +861,93 @@ public class InternalVisualizationDslLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA12_eot = DFA.unpackEncodedString(DFA12_eotS);
-    static final short[] DFA12_eof = DFA.unpackEncodedString(DFA12_eofS);
-    static final char[] DFA12_min = DFA.unpackEncodedStringToUnsignedChars(DFA12_minS);
-    static final char[] DFA12_max = DFA.unpackEncodedStringToUnsignedChars(DFA12_maxS);
-    static final short[] DFA12_accept = DFA.unpackEncodedString(DFA12_acceptS);
-    static final short[] DFA12_special = DFA.unpackEncodedString(DFA12_specialS);
-    static final short[][] DFA12_transition;
+    static final short[] DFA11_eot = DFA.unpackEncodedString(DFA11_eotS);
+    static final short[] DFA11_eof = DFA.unpackEncodedString(DFA11_eofS);
+    static final char[] DFA11_min = DFA.unpackEncodedStringToUnsignedChars(DFA11_minS);
+    static final char[] DFA11_max = DFA.unpackEncodedStringToUnsignedChars(DFA11_maxS);
+    static final short[] DFA11_accept = DFA.unpackEncodedString(DFA11_acceptS);
+    static final short[] DFA11_special = DFA.unpackEncodedString(DFA11_specialS);
+    static final short[][] DFA11_transition;
 
     static {
-        int numStates = DFA12_transitionS.length;
-        DFA12_transition = new short[numStates][];
+        int numStates = DFA11_transitionS.length;
+        DFA11_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA12_transition[i] = DFA.unpackEncodedString(DFA12_transitionS[i]);
+            DFA11_transition[i] = DFA.unpackEncodedString(DFA11_transitionS[i]);
         }
     }
 
-    class DFA12 extends DFA {
+    class DFA11 extends DFA {
 
-        public DFA12(BaseRecognizer recognizer) {
+        public DFA11(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 12;
-            this.eot = DFA12_eot;
-            this.eof = DFA12_eof;
-            this.min = DFA12_min;
-            this.max = DFA12_max;
-            this.accept = DFA12_accept;
-            this.special = DFA12_special;
-            this.transition = DFA12_transition;
+            this.decisionNumber = 11;
+            this.eot = DFA11_eot;
+            this.eof = DFA11_eof;
+            this.min = DFA11_min;
+            this.max = DFA11_max;
+            this.accept = DFA11_accept;
+            this.special = DFA11_special;
+            this.transition = DFA11_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_TERM | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( RULE_ID | RULE_TERM | RULE_WS | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_PIPE | RULE_COLON | RULE_OPENING_CURLY_BRACKET | RULE_CLOSING_CURLY_BRACKET | RULE_EQUAL_SIGN | RULE_COMMA | RULE_PLUS_SIGN | RULE_INT | RULE_STRING | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_12 = input.LA(1);
+                        int LA11_0 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 27;}
+                        if ( ((LA11_0>='1' && LA11_0<='9')) ) {s = 1;}
+
+                        else if ( ((LA11_0>='A' && LA11_0<='Z')||(LA11_0>='a' && LA11_0<='z')) ) {s = 2;}
+
+                        else if ( ((LA11_0>='\t' && LA11_0<='\n')||LA11_0=='\r'||LA11_0==' ') ) {s = 3;}
+
+                        else if ( (LA11_0=='/') ) {s = 4;}
+
+                        else if ( (LA11_0=='|') ) {s = 5;}
+
+                        else if ( (LA11_0==':') ) {s = 6;}
+
+                        else if ( (LA11_0=='{') ) {s = 7;}
+
+                        else if ( (LA11_0=='}') ) {s = 8;}
+
+                        else if ( (LA11_0=='=') ) {s = 9;}
+
+                        else if ( (LA11_0==',') ) {s = 10;}
+
+                        else if ( (LA11_0=='+') ) {s = 11;}
+
+                        else if ( (LA11_0=='0') ) {s = 12;}
+
+                        else if ( (LA11_0=='\"') ) {s = 13;}
+
+                        else if ( (LA11_0=='\'') ) {s = 14;}
+
+                        else if ( ((LA11_0>='\u0000' && LA11_0<='\b')||(LA11_0>='\u000B' && LA11_0<='\f')||(LA11_0>='\u000E' && LA11_0<='\u001F')||LA11_0=='!'||(LA11_0>='#' && LA11_0<='&')||(LA11_0>='(' && LA11_0<='*')||(LA11_0>='-' && LA11_0<='.')||(LA11_0>=';' && LA11_0<='<')||(LA11_0>='>' && LA11_0<='@')||(LA11_0>='[' && LA11_0<='`')||(LA11_0>='~' && LA11_0<='\uFFFF')) ) {s = 15;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA11_14 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA11_14>='\u0000' && LA11_14<='\uFFFF')) ) {s = 30;}
 
                         else s = 15;
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
-                        int LA12_0 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA12_0==':') ) {s = 1;}
-
-                        else if ( (LA12_0=='+') ) {s = 2;}
-
-                        else if ( (LA12_0=='{') ) {s = 3;}
-
-                        else if ( (LA12_0=='}') ) {s = 4;}
-
-                        else if ( (LA12_0==',') ) {s = 5;}
-
-                        else if ( (LA12_0=='=') ) {s = 6;}
-
-                        else if ( (LA12_0=='|') ) {s = 7;}
-
-                        else if ( ((LA12_0>='1' && LA12_0<='9')) ) {s = 8;}
-
-                        else if ( ((LA12_0>='A' && LA12_0<='Z')||(LA12_0>='a' && LA12_0<='z')) ) {s = 9;}
-
-                        else if ( (LA12_0=='0') ) {s = 10;}
-
-                        else if ( (LA12_0=='\"') ) {s = 11;}
-
-                        else if ( (LA12_0=='\'') ) {s = 12;}
-
-                        else if ( (LA12_0=='/') ) {s = 13;}
-
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 14;}
-
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='*')||(LA12_0>='-' && LA12_0<='.')||(LA12_0>=';' && LA12_0<='<')||(LA12_0>='>' && LA12_0<='@')||(LA12_0>='[' && LA12_0<='`')||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 15;}
-
-                        if ( s>=0 ) return s;
-                        break;
                     case 2 : 
-                        int LA12_11 = input.LA(1);
+                        int LA11_13 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_11>='\u0000' && LA12_11<='\uFFFF')) ) {s = 27;}
+                        if ( ((LA11_13>='\u0000' && LA11_13<='\uFFFF')) ) {s = 30;}
 
                         else s = 15;
 
@@ -984,7 +955,7 @@ public class InternalVisualizationDslLexer extends Lexer {
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 12, _s, input);
+                new NoViableAltException(getDescription(), 11, _s, input);
             error(nvae);
             throw nvae;
         }

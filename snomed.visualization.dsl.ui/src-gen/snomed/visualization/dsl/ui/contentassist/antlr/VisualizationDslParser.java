@@ -47,7 +47,6 @@ public class VisualizationDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRelationshipsAccess().getGroup_1(), "rule__Relationships__Group_1__0");
 					put(grammarAccess.getRelationshipAccess().getGroup(), "rule__Relationship__Group__0");
 					put(grammarAccess.getConceptAccess().getGroup(), "rule__Concept__Group__0");
-					put(grammarAccess.getModelAccess().getExpressionAssignment(), "rule__Model__ExpressionAssignment");
 					put(grammarAccess.getExpressionAccess().getIsaRelationshipsAssignment_0(), "rule__Expression__IsaRelationshipsAssignment_0");
 					put(grammarAccess.getExpressionAccess().getUngroupedRelationshipsAssignment_1_1(), "rule__Expression__UngroupedRelationshipsAssignment_1_1");
 					put(grammarAccess.getExpressionAccess().getGroupedRelationshipsAssignment_1_2(), "rule__Expression__GroupedRelationshipsAssignment_1_2");
@@ -60,7 +59,7 @@ public class VisualizationDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRelationshipAccess().getTypeAssignment_0(), "rule__Relationship__TypeAssignment_0");
 					put(grammarAccess.getRelationshipAccess().getDestinationAssignment_2(), "rule__Relationship__DestinationAssignment_2");
 					put(grammarAccess.getConceptAccess().getIdAssignment_0(), "rule__Concept__IdAssignment_0");
-					put(grammarAccess.getConceptAccess().getTermAssignment_2(), "rule__Concept__TermAssignment_2");
+					put(grammarAccess.getConceptAccess().getTermAssignment_3(), "rule__Concept__TermAssignment_3");
 				}
 			};
 		}
@@ -71,7 +70,7 @@ public class VisualizationDslParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			snomed.visualization.dsl.ui.contentassist.antlr.internal.InternalVisualizationDslParser typedParser = (snomed.visualization.dsl.ui.contentassist.antlr.internal.InternalVisualizationDslParser) parser;
-			typedParser.entryRuleModel();
+			typedParser.entryRuleExpression();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

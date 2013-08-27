@@ -18,43 +18,28 @@ import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Model");
-		private final Assignment cExpressionAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cExpressionExpressionParserRuleCall_0 = (RuleCall)cExpressionAssignment.eContents().get(0);
-		
-		//Model:
-		//
-		//	expression=Expression;
-		public ParserRule getRule() { return rule; }
-
-		//expression=Expression
-		public Assignment getExpressionAssignment() { return cExpressionAssignment; }
-
-		//Expression
-		public RuleCall getExpressionExpressionParserRuleCall_0() { return cExpressionExpressionParserRuleCall_0; }
-	}
-
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Expression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cIsaRelationshipsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cIsaRelationshipsIsaRelationshipsParserRuleCall_0_0 = (RuleCall)cIsaRelationshipsAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cColonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cCOLONTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Assignment cUngroupedRelationshipsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cUngroupedRelationshipsRelationshipsParserRuleCall_1_1_0 = (RuleCall)cUngroupedRelationshipsAssignment_1_1.eContents().get(0);
 		private final Assignment cGroupedRelationshipsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cGroupedRelationshipsRelationshipGroupParserRuleCall_1_2_0 = (RuleCall)cGroupedRelationshipsAssignment_1_2.eContents().get(0);
 		
-		//Expression:
+		//Expression hidden(WS, SL_COMMENT, ML_COMMENT):
 		//
-		//	isaRelationships=IsaRelationships (":" ungroupedRelationships=Relationships*
+		//	isaRelationships=IsaRelationships (COLON ungroupedRelationships=Relationships*
 		//
 		//	groupedRelationships+=RelationshipGroup*)?;
 		public ParserRule getRule() { return rule; }
 
-		//isaRelationships=IsaRelationships (":" ungroupedRelationships=Relationships* groupedRelationships+=RelationshipGroup*)?
+		//isaRelationships=IsaRelationships (COLON ungroupedRelationships=Relationships*
+		//
+		//groupedRelationships+=RelationshipGroup*)?
 		public Group getGroup() { return cGroup; }
 
 		//isaRelationships=IsaRelationships
@@ -63,11 +48,11 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//IsaRelationships
 		public RuleCall getIsaRelationshipsIsaRelationshipsParserRuleCall_0_0() { return cIsaRelationshipsIsaRelationshipsParserRuleCall_0_0; }
 
-		//(":" ungroupedRelationships=Relationships* groupedRelationships+=RelationshipGroup*)?
+		//(COLON ungroupedRelationships=Relationships* groupedRelationships+=RelationshipGroup*)?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//":"
-		public Keyword getColonKeyword_1_0() { return cColonKeyword_1_0; }
+		//COLON
+		public RuleCall getCOLONTerminalRuleCall_1_0() { return cCOLONTerminalRuleCall_1_0; }
 
 		//ungroupedRelationships=Relationships*
 		public Assignment getUngroupedRelationshipsAssignment_1_1() { return cUngroupedRelationshipsAssignment_1_1; }
@@ -88,16 +73,16 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cRelationshipsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cRelationshipsConceptParserRuleCall_0_0 = (RuleCall)cRelationshipsAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cPlusSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cPLUS_SIGNTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Assignment cRelationshipsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRelationshipsConceptParserRuleCall_1_1_0 = (RuleCall)cRelationshipsAssignment_1_1.eContents().get(0);
 		
 		//IsaRelationships:
 		//
-		//	relationships+=Concept ("+" relationships+=Concept)*;
+		//	relationships+=Concept (PLUS_SIGN relationships+=Concept)*;
 		public ParserRule getRule() { return rule; }
 
-		//relationships+=Concept ("+" relationships+=Concept)*
+		//relationships+=Concept (PLUS_SIGN relationships+=Concept)*
 		public Group getGroup() { return cGroup; }
 
 		//relationships+=Concept
@@ -106,11 +91,11 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Concept
 		public RuleCall getRelationshipsConceptParserRuleCall_0_0() { return cRelationshipsConceptParserRuleCall_0_0; }
 
-		//("+" relationships+=Concept)*
+		//(PLUS_SIGN relationships+=Concept)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"+"
-		public Keyword getPlusSignKeyword_1_0() { return cPlusSignKeyword_1_0; }
+		//PLUS_SIGN
+		public RuleCall getPLUS_SIGNTerminalRuleCall_1_0() { return cPLUS_SIGNTerminalRuleCall_1_0; }
 
 		//relationships+=Concept
 		public Assignment getRelationshipsAssignment_1_1() { return cRelationshipsAssignment_1_1; }
@@ -122,25 +107,25 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 	public class RelationshipGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RelationshipGroup");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cOPENING_CURLY_BRACKETTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cRelationshipsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cRelationshipsRelationshipParserRuleCall_1_0 = (RuleCall)cRelationshipsAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cCOMMATerminalRuleCall_2_0 = (RuleCall)cGroup_2.eContents().get(0);
 		private final Assignment cRelationshipsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRelationshipsRelationshipParserRuleCall_2_1_0 = (RuleCall)cRelationshipsAssignment_2_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final RuleCall cCLOSING_CURLY_BRACKETTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//RelationshipGroup:
 		//
-		//	"{" relationships+=Relationship ("," relationships+=Relationship)* "}";
+		//	OPENING_CURLY_BRACKET relationships+=Relationship (COMMA relationships+=Relationship)* CLOSING_CURLY_BRACKET;
 		public ParserRule getRule() { return rule; }
 
-		//"{" relationships+=Relationship ("," relationships+=Relationship)* "}"
+		//OPENING_CURLY_BRACKET relationships+=Relationship (COMMA relationships+=Relationship)* CLOSING_CURLY_BRACKET
 		public Group getGroup() { return cGroup; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		//OPENING_CURLY_BRACKET
+		public RuleCall getOPENING_CURLY_BRACKETTerminalRuleCall_0() { return cOPENING_CURLY_BRACKETTerminalRuleCall_0; }
 
 		//relationships+=Relationship
 		public Assignment getRelationshipsAssignment_1() { return cRelationshipsAssignment_1; }
@@ -148,11 +133,11 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Relationship
 		public RuleCall getRelationshipsRelationshipParserRuleCall_1_0() { return cRelationshipsRelationshipParserRuleCall_1_0; }
 
-		//("," relationships+=Relationship)*
+		//(COMMA relationships+=Relationship)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//","
-		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		//COMMA
+		public RuleCall getCOMMATerminalRuleCall_2_0() { return cCOMMATerminalRuleCall_2_0; }
 
 		//relationships+=Relationship
 		public Assignment getRelationshipsAssignment_2_1() { return cRelationshipsAssignment_2_1; }
@@ -160,8 +145,8 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Relationship
 		public RuleCall getRelationshipsRelationshipParserRuleCall_2_1_0() { return cRelationshipsRelationshipParserRuleCall_2_1_0; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		//CLOSING_CURLY_BRACKET
+		public RuleCall getCLOSING_CURLY_BRACKETTerminalRuleCall_3() { return cCLOSING_CURLY_BRACKETTerminalRuleCall_3; }
 	}
 
 	public class RelationshipsElements extends AbstractParserRuleElementFinder {
@@ -170,16 +155,16 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final Assignment cRelationshipsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cRelationshipsRelationshipParserRuleCall_0_0 = (RuleCall)cRelationshipsAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cCOMMATerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Assignment cRelationshipsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRelationshipsRelationshipParserRuleCall_1_1_0 = (RuleCall)cRelationshipsAssignment_1_1.eContents().get(0);
 		
 		//Relationships:
 		//
-		//	relationships+=Relationship ("," relationships+=Relationship)*;
+		//	relationships+=Relationship (COMMA relationships+=Relationship)*;
 		public ParserRule getRule() { return rule; }
 
-		//relationships+=Relationship ("," relationships+=Relationship)*
+		//relationships+=Relationship (COMMA relationships+=Relationship)*
 		public Group getGroup() { return cGroup; }
 
 		//relationships+=Relationship
@@ -188,11 +173,11 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Relationship
 		public RuleCall getRelationshipsRelationshipParserRuleCall_0_0() { return cRelationshipsRelationshipParserRuleCall_0_0; }
 
-		//("," relationships+=Relationship)*
+		//(COMMA relationships+=Relationship)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//","
-		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		//COMMA
+		public RuleCall getCOMMATerminalRuleCall_1_0() { return cCOMMATerminalRuleCall_1_0; }
 
 		//relationships+=Relationship
 		public Assignment getRelationshipsAssignment_1_1() { return cRelationshipsAssignment_1_1; }
@@ -206,16 +191,16 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeConceptParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cEQUAL_SIGNTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Assignment cDestinationAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cDestinationConceptParserRuleCall_2_0 = (RuleCall)cDestinationAssignment_2.eContents().get(0);
 		
 		//Relationship:
 		//
-		//	type=Concept "=" destination=Concept;
+		//	type=Concept EQUAL_SIGN destination=Concept;
 		public ParserRule getRule() { return rule; }
 
-		//type=Concept "=" destination=Concept
+		//type=Concept EQUAL_SIGN destination=Concept
 		public Group getGroup() { return cGroup; }
 
 		//type=Concept
@@ -224,8 +209,8 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//Concept
 		public RuleCall getTypeConceptParserRuleCall_0_0() { return cTypeConceptParserRuleCall_0_0; }
 
-		//"="
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		//EQUAL_SIGN
+		public RuleCall getEQUAL_SIGNTerminalRuleCall_1() { return cEQUAL_SIGNTerminalRuleCall_1; }
 
 		//destination=Concept
 		public Assignment getDestinationAssignment_2() { return cDestinationAssignment_2; }
@@ -239,17 +224,19 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cIdAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cIdIDTerminalRuleCall_0_0 = (RuleCall)cIdAssignment_0.eContents().get(0);
-		private final Keyword cVerticalLineKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTermAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTermTERMTerminalRuleCall_2_0 = (RuleCall)cTermAssignment_2.eContents().get(0);
-		private final Keyword cVerticalLineKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final RuleCall cPIPETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final RuleCall cWSTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cTermAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTermTERMTerminalRuleCall_3_0 = (RuleCall)cTermAssignment_3.eContents().get(0);
+		private final RuleCall cPIPETerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final RuleCall cWSTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
 		//Concept:
 		//
-		//	id=ID "|" term=TERM "|";
+		//	id=ID PIPE WS* term=TERM PIPE WS*;
 		public ParserRule getRule() { return rule; }
 
-		//id=ID "|" term=TERM "|"
+		//id=ID PIPE WS* term=TERM PIPE WS*
 		public Group getGroup() { return cGroup; }
 
 		//id=ID
@@ -258,21 +245,26 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		//ID
 		public RuleCall getIdIDTerminalRuleCall_0_0() { return cIdIDTerminalRuleCall_0_0; }
 
-		//"|"
-		public Keyword getVerticalLineKeyword_1() { return cVerticalLineKeyword_1; }
+		//PIPE
+		public RuleCall getPIPETerminalRuleCall_1() { return cPIPETerminalRuleCall_1; }
+
+		//WS*
+		public RuleCall getWSTerminalRuleCall_2() { return cWSTerminalRuleCall_2; }
 
 		//term=TERM
-		public Assignment getTermAssignment_2() { return cTermAssignment_2; }
+		public Assignment getTermAssignment_3() { return cTermAssignment_3; }
 
 		//TERM
-		public RuleCall getTermTERMTerminalRuleCall_2_0() { return cTermTERMTerminalRuleCall_2_0; }
+		public RuleCall getTermTERMTerminalRuleCall_3_0() { return cTermTERMTerminalRuleCall_3_0; }
 
-		//"|"
-		public Keyword getVerticalLineKeyword_3() { return cVerticalLineKeyword_3; }
+		//PIPE
+		public RuleCall getPIPETerminalRuleCall_4() { return cPIPETerminalRuleCall_4; }
+
+		//WS*
+		public RuleCall getWSTerminalRuleCall_5() { return cWSTerminalRuleCall_5; }
 	}
 	
 	
-	private ModelElements pModel;
 	private ExpressionElements pExpression;
 	private IsaRelationshipsElements pIsaRelationships;
 	private RelationshipGroupElements pRelationshipGroup;
@@ -281,6 +273,16 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 	private ConceptElements pConcept;
 	private TerminalRule tID;
 	private TerminalRule tTERM;
+	private TerminalRule tWS;
+	private TerminalRule tML_COMMENT;
+	private TerminalRule tSL_COMMENT;
+	private TerminalRule tPIPE;
+	private TerminalRule tCOLON;
+	private TerminalRule tOPENING_CURLY_BRACKET;
+	private TerminalRule tCLOSING_CURLY_BRACKET;
+	private TerminalRule tEQUAL_SIGN;
+	private TerminalRule tCOMMA;
+	private TerminalRule tPLUS_SIGN;
 	
 	private final Grammar grammar;
 
@@ -320,20 +322,9 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 	}
 
 	
-	//Model:
+	//Expression hidden(WS, SL_COMMENT, ML_COMMENT):
 	//
-	//	expression=Expression;
-	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
-	}
-	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
-	}
-
-	//Expression:
-	//
-	//	isaRelationships=IsaRelationships (":" ungroupedRelationships=Relationships*
+	//	isaRelationships=IsaRelationships (COLON ungroupedRelationships=Relationships*
 	//
 	//	groupedRelationships+=RelationshipGroup*)?;
 	public ExpressionElements getExpressionAccess() {
@@ -346,7 +337,7 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 
 	//IsaRelationships:
 	//
-	//	relationships+=Concept ("+" relationships+=Concept)*;
+	//	relationships+=Concept (PLUS_SIGN relationships+=Concept)*;
 	public IsaRelationshipsElements getIsaRelationshipsAccess() {
 		return (pIsaRelationships != null) ? pIsaRelationships : (pIsaRelationships = new IsaRelationshipsElements());
 	}
@@ -357,7 +348,7 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 
 	//RelationshipGroup:
 	//
-	//	"{" relationships+=Relationship ("," relationships+=Relationship)* "}";
+	//	OPENING_CURLY_BRACKET relationships+=Relationship (COMMA relationships+=Relationship)* CLOSING_CURLY_BRACKET;
 	public RelationshipGroupElements getRelationshipGroupAccess() {
 		return (pRelationshipGroup != null) ? pRelationshipGroup : (pRelationshipGroup = new RelationshipGroupElements());
 	}
@@ -368,7 +359,7 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 
 	//Relationships:
 	//
-	//	relationships+=Relationship ("," relationships+=Relationship)*;
+	//	relationships+=Relationship (COMMA relationships+=Relationship)*;
 	public RelationshipsElements getRelationshipsAccess() {
 		return (pRelationships != null) ? pRelationships : (pRelationships = new RelationshipsElements());
 	}
@@ -379,7 +370,7 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 
 	//Relationship:
 	//
-	//	type=Concept "=" destination=Concept;
+	//	type=Concept EQUAL_SIGN destination=Concept;
 	public RelationshipElements getRelationshipAccess() {
 		return (pRelationship != null) ? pRelationship : (pRelationship = new RelationshipElements());
 	}
@@ -390,7 +381,7 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 
 	//Concept:
 	//
-	//	id=ID "|" term=TERM "|";
+	//	id=ID PIPE WS* term=TERM PIPE WS*;
 	public ConceptElements getConceptAccess() {
 		return (pConcept != null) ? pConcept : (pConcept = new ConceptElements());
 	}
@@ -413,6 +404,76 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 		return (tTERM != null) ? tTERM : (tTERM = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "TERM"));
 	} 
 
+	//terminal WS:
+	//
+	//	" " | "\t" | "\n" | "\r";
+	public TerminalRule getWSRule() {
+		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
+	} 
+
+	//terminal ML_COMMENT:
+	//
+	//	"/ *"->"* /";
+	public TerminalRule getML_COMMENTRule() {
+		return (tML_COMMENT != null) ? tML_COMMENT : (tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ML_COMMENT"));
+	} 
+
+	//terminal SL_COMMENT:
+	//
+	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	public TerminalRule getSL_COMMENTRule() {
+		return (tSL_COMMENT != null) ? tSL_COMMENT : (tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL_COMMENT"));
+	} 
+
+	//terminal PIPE:
+	//
+	//	"|";
+	public TerminalRule getPIPERule() {
+		return (tPIPE != null) ? tPIPE : (tPIPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PIPE"));
+	} 
+
+	//terminal COLON:
+	//
+	//	":";
+	public TerminalRule getCOLONRule() {
+		return (tCOLON != null) ? tCOLON : (tCOLON = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COLON"));
+	} 
+
+	//terminal OPENING_CURLY_BRACKET:
+	//
+	//	"{";
+	public TerminalRule getOPENING_CURLY_BRACKETRule() {
+		return (tOPENING_CURLY_BRACKET != null) ? tOPENING_CURLY_BRACKET : (tOPENING_CURLY_BRACKET = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "OPENING_CURLY_BRACKET"));
+	} 
+
+	//terminal CLOSING_CURLY_BRACKET:
+	//
+	//	"}";
+	public TerminalRule getCLOSING_CURLY_BRACKETRule() {
+		return (tCLOSING_CURLY_BRACKET != null) ? tCLOSING_CURLY_BRACKET : (tCLOSING_CURLY_BRACKET = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CLOSING_CURLY_BRACKET"));
+	} 
+
+	//terminal EQUAL_SIGN:
+	//
+	//	"=";
+	public TerminalRule getEQUAL_SIGNRule() {
+		return (tEQUAL_SIGN != null) ? tEQUAL_SIGN : (tEQUAL_SIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EQUAL_SIGN"));
+	} 
+
+	//terminal COMMA:
+	//
+	//	",";
+	public TerminalRule getCOMMARule() {
+		return (tCOMMA != null) ? tCOMMA : (tCOMMA = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "COMMA"));
+	} 
+
+	//terminal PLUS_SIGN:
+	//
+	//	"+";
+	public TerminalRule getPLUS_SIGNRule() {
+		return (tPLUS_SIGN != null) ? tPLUS_SIGN : (tPLUS_SIGN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PLUS_SIGN"));
+	} 
+
 	//terminal INT returns ecore::EInt:
 	//
 	//	"0".."9"+;
@@ -427,27 +488,6 @@ public class VisualizationDslGrammarAccess extends AbstractGrammarElementFinder 
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
-	} 
-
-	//terminal ML_COMMENT:
-	//
-	//	"/ *"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaTerminals.getML_COMMENTRule();
-	} 
-
-	//terminal SL_COMMENT:
-	//
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
-	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
-	} 
-
-	//terminal WS:
-	//
-	//	(" " | "\t" | "\r" | "\n")+;
-	public TerminalRule getWSRule() {
-		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:

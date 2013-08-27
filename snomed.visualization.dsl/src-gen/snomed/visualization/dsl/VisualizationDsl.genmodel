@@ -7,9 +7,6 @@
     editorPluginID="snomed.visualization.dsl.editor" runtimeVersion="2.9">
   <genPackages prefix="VisualizationDsl" basePackage="snomed.visualization.dsl" disposableProviderFactory="true"
       fileExtensions="vdsl" ecorePackage="VisualizationDsl.ecore#/">
-    <genClasses ecoreClass="VisualizationDsl.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VisualizationDsl.ecore#//Model/expression"/>
-    </genClasses>
     <genClasses ecoreClass="VisualizationDsl.ecore#//Expression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VisualizationDsl.ecore#//Expression/isaRelationships"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference VisualizationDsl.ecore#//Expression/ungroupedRelationships"/>

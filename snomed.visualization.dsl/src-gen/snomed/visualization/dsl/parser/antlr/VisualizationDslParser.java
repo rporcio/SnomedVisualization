@@ -25,7 +25,7 @@ public class VisualizationDslParser extends org.eclipse.xtext.parser.antlr.Abstr
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "Expression";
 	}
 	
 	public VisualizationDslGrammarAccess getGrammarAccess() {

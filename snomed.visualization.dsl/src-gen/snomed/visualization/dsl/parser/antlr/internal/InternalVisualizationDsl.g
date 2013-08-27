@@ -44,7 +44,7 @@ import snomed.visualization.dsl.services.VisualizationDslGrammarAccess;
     
     @Override
     protected String getFirstRuleName() {
-    	return "Model";	
+    	return "Expression";	
    	}
    	
    	@Override
@@ -63,57 +63,25 @@ import snomed.visualization.dsl.services.VisualizationDslGrammarAccess;
 
 
 
-// Entry rule entryRuleModel
-entryRuleModel returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getModelRule()); }
-	 iv_ruleModel=ruleModel 
-	 { $current=$iv_ruleModel.current; } 
-	 EOF 
-;
-
-// Rule Model
-ruleModel returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getExpressionExpressionParserRuleCall_0()); 
-	    }
-		lv_expression_0_0=ruleExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
-	        }
-       		set(
-       			$current, 
-       			"expression",
-        		lv_expression_0_0, 
-        		"Expression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)
-;
-
-
-
-
-
 // Entry rule entryRuleExpression
 entryRuleExpression returns [EObject current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
+	}
 	:
 	{ newCompositeNode(grammarAccess.getExpressionRule()); }
 	 iv_ruleExpression=ruleExpression 
 	 { $current=$iv_ruleExpression.current; } 
 	 EOF 
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 // Rule Expression
 ruleExpression returns [EObject current=null] 
     @init { enterRule(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
     }
     @after { leaveRule(); }:
 ((
@@ -134,9 +102,9 @@ ruleExpression returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_1=':' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getExpressionAccess().getColonKeyword_1_0());
+)(this_COLON_1=RULE_COLON
+    { 
+    newLeafNode(this_COLON_1, grammarAccess.getExpressionAccess().getCOLONTerminalRuleCall_1_0()); 
     }
 (
 (
@@ -176,6 +144,9 @@ ruleExpression returns [EObject current=null]
 )
 )*)?)
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 
 
@@ -213,9 +184,9 @@ ruleIsaRelationships returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_1='+' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getIsaRelationshipsAccess().getPlusSignKeyword_1_0());
+)(this_PLUS_SIGN_1=RULE_PLUS_SIGN
+    { 
+    newLeafNode(this_PLUS_SIGN_1, grammarAccess.getIsaRelationshipsAccess().getPLUS_SIGNTerminalRuleCall_1_0()); 
     }
 (
 (
@@ -256,9 +227,9 @@ ruleRelationshipGroup returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='{' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getRelationshipGroupAccess().getLeftCurlyBracketKeyword_0());
+(this_OPENING_CURLY_BRACKET_0=RULE_OPENING_CURLY_BRACKET
+    { 
+    newLeafNode(this_OPENING_CURLY_BRACKET_0, grammarAccess.getRelationshipGroupAccess().getOPENING_CURLY_BRACKETTerminalRuleCall_0()); 
     }
 (
 (
@@ -278,9 +249,9 @@ ruleRelationshipGroup returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_2=',' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getRelationshipGroupAccess().getCommaKeyword_2_0());
+)(this_COMMA_2=RULE_COMMA
+    { 
+    newLeafNode(this_COMMA_2, grammarAccess.getRelationshipGroupAccess().getCOMMATerminalRuleCall_2_0()); 
     }
 (
 (
@@ -300,9 +271,9 @@ ruleRelationshipGroup returns [EObject current=null]
 	    }
 
 )
-))*	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getRelationshipGroupAccess().getRightCurlyBracketKeyword_3());
+))*this_CLOSING_CURLY_BRACKET_4=RULE_CLOSING_CURLY_BRACKET
+    { 
+    newLeafNode(this_CLOSING_CURLY_BRACKET_4, grammarAccess.getRelationshipGroupAccess().getCLOSING_CURLY_BRACKETTerminalRuleCall_3()); 
     }
 )
 ;
@@ -343,9 +314,9 @@ ruleRelationships returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_1=',' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getRelationshipsAccess().getCommaKeyword_1_0());
+)(this_COMMA_1=RULE_COMMA
+    { 
+    newLeafNode(this_COMMA_1, grammarAccess.getRelationshipsAccess().getCOMMATerminalRuleCall_1_0()); 
     }
 (
 (
@@ -404,9 +375,9 @@ ruleRelationship returns [EObject current=null]
 	    }
 
 )
-)	otherlv_1='=' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getRelationshipAccess().getEqualsSignKeyword_1());
+)this_EQUAL_SIGN_1=RULE_EQUAL_SIGN
+    { 
+    newLeafNode(this_EQUAL_SIGN_1, grammarAccess.getRelationshipAccess().getEQUAL_SIGNTerminalRuleCall_1()); 
     }
 (
 (
@@ -465,15 +436,19 @@ ruleConcept returns [EObject current=null]
 	    }
 
 )
-)	otherlv_1='|' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getConceptAccess().getVerticalLineKeyword_1());
+)this_PIPE_1=RULE_PIPE
+    { 
+    newLeafNode(this_PIPE_1, grammarAccess.getConceptAccess().getPIPETerminalRuleCall_1()); 
     }
+(this_WS_2=RULE_WS
+    { 
+    newLeafNode(this_WS_2, grammarAccess.getConceptAccess().getWSTerminalRuleCall_2()); 
+    }
+)*(
 (
-(
-		lv_term_2_0=RULE_TERM
+		lv_term_3_0=RULE_TERM
 		{
-			newLeafNode(lv_term_2_0, grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_2_0()); 
+			newLeafNode(lv_term_3_0, grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -482,16 +457,20 @@ ruleConcept returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"term",
-        		lv_term_2_0, 
+        		lv_term_3_0, 
         		"TERM");
 	    }
 
 )
-)	otherlv_3='|' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getConceptAccess().getVerticalLineKeyword_3());
+)this_PIPE_4=RULE_PIPE
+    { 
+    newLeafNode(this_PIPE_4, grammarAccess.getConceptAccess().getPIPETerminalRuleCall_4()); 
     }
-)
+(this_WS_5=RULE_WS
+    { 
+    newLeafNode(this_WS_5, grammarAccess.getConceptAccess().getWSTerminalRuleCall_5()); 
+    }
+)*)
 ;
 
 
@@ -502,15 +481,29 @@ RULE_ID : '1'..'9' ('0'..'9')*;
 
 RULE_TERM : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|' ')*;
 
-RULE_INT : ('0'..'9')+;
-
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_WS : (' '|'\t'|'\n'|'\r');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-RULE_WS : (' '|'\t'|'\r'|'\n')+;
+RULE_PIPE : '|';
+
+RULE_COLON : ':';
+
+RULE_OPENING_CURLY_BRACKET : '{';
+
+RULE_CLOSING_CURLY_BRACKET : '}';
+
+RULE_EQUAL_SIGN : '=';
+
+RULE_COMMA : ',';
+
+RULE_PLUS_SIGN : '+';
+
+RULE_INT : ('0'..'9')+;
+
+RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
 
 RULE_ANY_OTHER : .;
 

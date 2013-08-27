@@ -64,7 +64,6 @@ public class VisualizationDslFactoryImpl extends EFactoryImpl implements Visuali
   {
     switch (eClass.getClassifierID())
     {
-      case VisualizationDslPackage.MODEL: return createModel();
       case VisualizationDslPackage.EXPRESSION: return createExpression();
       case VisualizationDslPackage.ISA_RELATIONSHIPS: return createIsaRelationships();
       case VisualizationDslPackage.RELATIONSHIP_GROUP: return createRelationshipGroup();
@@ -74,17 +73,6 @@ public class VisualizationDslFactoryImpl extends EFactoryImpl implements Visuali
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Model createModel()
-  {
-    ModelImpl model = new ModelImpl();
-    return model;
   }
 
   /**

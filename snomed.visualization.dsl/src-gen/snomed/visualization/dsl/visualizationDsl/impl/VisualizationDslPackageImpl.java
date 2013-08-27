@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.IsaRelationships;
-import snomed.visualization.dsl.visualizationDsl.Model;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.Relationships;
@@ -27,13 +26,6 @@ import snomed.visualization.dsl.visualizationDsl.VisualizationDslPackage;
  */
 public class VisualizationDslPackageImpl extends EPackageImpl implements VisualizationDslPackage
 {
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass modelEClass = null;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -137,26 +129,6 @@ public class VisualizationDslPackageImpl extends EPackageImpl implements Visuali
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(VisualizationDslPackage.eNS_URI, theVisualizationDslPackage);
     return theVisualizationDslPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getModel()
-  {
-    return modelEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModel_Expression()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -349,9 +321,6 @@ public class VisualizationDslPackageImpl extends EPackageImpl implements Visuali
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__EXPRESSION);
-
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__ISA_RELATIONSHIPS);
     createEReference(expressionEClass, EXPRESSION__UNGROUPED_RELATIONSHIPS);
@@ -406,9 +375,6 @@ public class VisualizationDslPackageImpl extends EPackageImpl implements Visuali
     // Add supertypes to classes
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Expression(), this.getExpression(), null, "expression", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_IsaRelationships(), this.getIsaRelationships(), null, "isaRelationships", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_UngroupedRelationships(), this.getRelationships(), null, "ungroupedRelationships", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

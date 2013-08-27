@@ -22,24 +22,24 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalVisualizationDslParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_TERM", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "':'", "'+'", "'{'", "'}'", "','", "'='", "'|'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_COLON", "RULE_PLUS_SIGN", "RULE_OPENING_CURLY_BRACKET", "RULE_CLOSING_CURLY_BRACKET", "RULE_COMMA", "RULE_EQUAL_SIGN", "RULE_PIPE", "RULE_WS", "RULE_ID", "RULE_TERM", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_INT", "RULE_STRING", "RULE_ANY_OTHER"
     };
-    public static final int RULE_ID=4;
-    public static final int RULE_STRING=7;
-    public static final int T__16=16;
-    public static final int T__15=15;
-    public static final int T__18=18;
-    public static final int T__17=17;
-    public static final int T__12=12;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int RULE_INT=6;
-    public static final int RULE_TERM=5;
-    public static final int RULE_WS=10;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int RULE_CLOSING_CURLY_BRACKET=7;
+    public static final int RULE_ID=12;
+    public static final int RULE_COLON=4;
+    public static final int RULE_STRING=17;
+    public static final int RULE_PIPE=10;
+    public static final int RULE_ANY_OTHER=18;
+    public static final int RULE_OPENING_CURLY_BRACKET=6;
+    public static final int RULE_EQUAL_SIGN=9;
+    public static final int RULE_INT=16;
+    public static final int RULE_TERM=13;
+    public static final int RULE_COMMA=8;
+    public static final int RULE_PLUS_SIGN=5;
+    public static final int RULE_WS=11;
+    public static final int RULE_SL_COMMENT=15;
     public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=8;
+    public static final int RULE_ML_COMMENT=14;
 
     // delegates
     // delegators
@@ -78,98 +78,24 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
 
-    // $ANTLR start "entryRuleModel"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:60:1: entryRuleModel : ruleModel EOF ;
-    public final void entryRuleModel() throws RecognitionException {
-        try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:61:1: ( ruleModel EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:62:1: ruleModel EOF
-            {
-             before(grammarAccess.getModelRule()); 
-            pushFollow(FOLLOW_ruleModel_in_entryRuleModel61);
-            ruleModel();
-
-            state._fsp--;
-
-             after(grammarAccess.getModelRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModel68); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleModel"
-
-
-    // $ANTLR start "ruleModel"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:69:1: ruleModel : ( ( rule__Model__ExpressionAssignment ) ) ;
-    public final void ruleModel() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:73:2: ( ( ( rule__Model__ExpressionAssignment ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:74:1: ( ( rule__Model__ExpressionAssignment ) )
-            {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:74:1: ( ( rule__Model__ExpressionAssignment ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:75:1: ( rule__Model__ExpressionAssignment )
-            {
-             before(grammarAccess.getModelAccess().getExpressionAssignment()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:76:1: ( rule__Model__ExpressionAssignment )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:76:2: rule__Model__ExpressionAssignment
-            {
-            pushFollow(FOLLOW_rule__Model__ExpressionAssignment_in_ruleModel94);
-            rule__Model__ExpressionAssignment();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getModelAccess().getExpressionAssignment()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleModel"
-
-
     // $ANTLR start "entryRuleExpression"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:88:1: entryRuleExpression : ruleExpression EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:60:1: entryRuleExpression : ruleExpression EOF ;
     public final void entryRuleExpression() throws RecognitionException {
+
+        	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
+
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:89:1: ( ruleExpression EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:90:1: ruleExpression EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:64:1: ( ruleExpression EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:65:1: ruleExpression EOF
             {
              before(grammarAccess.getExpressionRule()); 
-            pushFollow(FOLLOW_ruleExpression_in_entryRuleExpression121);
+            pushFollow(FOLLOW_ruleExpression_in_entryRuleExpression66);
             ruleExpression();
 
             state._fsp--;
 
              after(grammarAccess.getExpressionRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleExpression128); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleExpression73); 
 
             }
 
@@ -179,6 +105,9 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
             recover(input,re);
         }
         finally {
+
+            	myHiddenTokenState.restore();
+
         }
         return ;
     }
@@ -186,23 +115,24 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleExpression"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:97:1: ruleExpression : ( ( rule__Expression__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:75:1: ruleExpression : ( ( rule__Expression__Group__0 ) ) ;
     public final void ruleExpression() throws RecognitionException {
 
+        		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS", "RULE_SL_COMMENT", "RULE_ML_COMMENT");
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:101:2: ( ( ( rule__Expression__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:102:1: ( ( rule__Expression__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:80:2: ( ( ( rule__Expression__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:81:1: ( ( rule__Expression__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:102:1: ( ( rule__Expression__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:103:1: ( rule__Expression__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:81:1: ( ( rule__Expression__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:82:1: ( rule__Expression__Group__0 )
             {
              before(grammarAccess.getExpressionAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:104:1: ( rule__Expression__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:104:2: rule__Expression__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:83:1: ( rule__Expression__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:83:2: rule__Expression__Group__0
             {
-            pushFollow(FOLLOW_rule__Expression__Group__0_in_ruleExpression154);
+            pushFollow(FOLLOW_rule__Expression__Group__0_in_ruleExpression103);
             rule__Expression__Group__0();
 
             state._fsp--;
@@ -225,6 +155,7 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
         finally {
 
             	restoreStackSize(stackSize);
+            	myHiddenTokenState.restore();
 
         }
         return ;
@@ -233,20 +164,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "entryRuleIsaRelationships"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:116:1: entryRuleIsaRelationships : ruleIsaRelationships EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:96:1: entryRuleIsaRelationships : ruleIsaRelationships EOF ;
     public final void entryRuleIsaRelationships() throws RecognitionException {
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:117:1: ( ruleIsaRelationships EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:118:1: ruleIsaRelationships EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:97:1: ( ruleIsaRelationships EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:98:1: ruleIsaRelationships EOF
             {
              before(grammarAccess.getIsaRelationshipsRule()); 
-            pushFollow(FOLLOW_ruleIsaRelationships_in_entryRuleIsaRelationships181);
+            pushFollow(FOLLOW_ruleIsaRelationships_in_entryRuleIsaRelationships130);
             ruleIsaRelationships();
 
             state._fsp--;
 
              after(grammarAccess.getIsaRelationshipsRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIsaRelationships188); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIsaRelationships137); 
 
             }
 
@@ -263,23 +194,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleIsaRelationships"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:125:1: ruleIsaRelationships : ( ( rule__IsaRelationships__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:105:1: ruleIsaRelationships : ( ( rule__IsaRelationships__Group__0 ) ) ;
     public final void ruleIsaRelationships() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:129:2: ( ( ( rule__IsaRelationships__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:130:1: ( ( rule__IsaRelationships__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:109:2: ( ( ( rule__IsaRelationships__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:110:1: ( ( rule__IsaRelationships__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:130:1: ( ( rule__IsaRelationships__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:131:1: ( rule__IsaRelationships__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:110:1: ( ( rule__IsaRelationships__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:111:1: ( rule__IsaRelationships__Group__0 )
             {
              before(grammarAccess.getIsaRelationshipsAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:132:1: ( rule__IsaRelationships__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:132:2: rule__IsaRelationships__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:112:1: ( rule__IsaRelationships__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:112:2: rule__IsaRelationships__Group__0
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__Group__0_in_ruleIsaRelationships214);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group__0_in_ruleIsaRelationships163);
             rule__IsaRelationships__Group__0();
 
             state._fsp--;
@@ -310,20 +241,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "entryRuleRelationshipGroup"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:144:1: entryRuleRelationshipGroup : ruleRelationshipGroup EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:124:1: entryRuleRelationshipGroup : ruleRelationshipGroup EOF ;
     public final void entryRuleRelationshipGroup() throws RecognitionException {
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:145:1: ( ruleRelationshipGroup EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:146:1: ruleRelationshipGroup EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:125:1: ( ruleRelationshipGroup EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:126:1: ruleRelationshipGroup EOF
             {
              before(grammarAccess.getRelationshipGroupRule()); 
-            pushFollow(FOLLOW_ruleRelationshipGroup_in_entryRuleRelationshipGroup241);
+            pushFollow(FOLLOW_ruleRelationshipGroup_in_entryRuleRelationshipGroup190);
             ruleRelationshipGroup();
 
             state._fsp--;
 
              after(grammarAccess.getRelationshipGroupRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationshipGroup248); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationshipGroup197); 
 
             }
 
@@ -340,23 +271,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleRelationshipGroup"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:153:1: ruleRelationshipGroup : ( ( rule__RelationshipGroup__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:133:1: ruleRelationshipGroup : ( ( rule__RelationshipGroup__Group__0 ) ) ;
     public final void ruleRelationshipGroup() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:157:2: ( ( ( rule__RelationshipGroup__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:158:1: ( ( rule__RelationshipGroup__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:137:2: ( ( ( rule__RelationshipGroup__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:138:1: ( ( rule__RelationshipGroup__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:158:1: ( ( rule__RelationshipGroup__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:159:1: ( rule__RelationshipGroup__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:138:1: ( ( rule__RelationshipGroup__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:139:1: ( rule__RelationshipGroup__Group__0 )
             {
              before(grammarAccess.getRelationshipGroupAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:160:1: ( rule__RelationshipGroup__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:160:2: rule__RelationshipGroup__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:140:1: ( rule__RelationshipGroup__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:140:2: rule__RelationshipGroup__Group__0
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__0_in_ruleRelationshipGroup274);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__0_in_ruleRelationshipGroup223);
             rule__RelationshipGroup__Group__0();
 
             state._fsp--;
@@ -387,20 +318,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "entryRuleRelationships"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:172:1: entryRuleRelationships : ruleRelationships EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:152:1: entryRuleRelationships : ruleRelationships EOF ;
     public final void entryRuleRelationships() throws RecognitionException {
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:173:1: ( ruleRelationships EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:174:1: ruleRelationships EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:153:1: ( ruleRelationships EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:154:1: ruleRelationships EOF
             {
              before(grammarAccess.getRelationshipsRule()); 
-            pushFollow(FOLLOW_ruleRelationships_in_entryRuleRelationships301);
+            pushFollow(FOLLOW_ruleRelationships_in_entryRuleRelationships250);
             ruleRelationships();
 
             state._fsp--;
 
              after(grammarAccess.getRelationshipsRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationships308); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationships257); 
 
             }
 
@@ -417,23 +348,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleRelationships"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:181:1: ruleRelationships : ( ( rule__Relationships__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:161:1: ruleRelationships : ( ( rule__Relationships__Group__0 ) ) ;
     public final void ruleRelationships() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:185:2: ( ( ( rule__Relationships__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:186:1: ( ( rule__Relationships__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:165:2: ( ( ( rule__Relationships__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:166:1: ( ( rule__Relationships__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:186:1: ( ( rule__Relationships__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:187:1: ( rule__Relationships__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:166:1: ( ( rule__Relationships__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:167:1: ( rule__Relationships__Group__0 )
             {
              before(grammarAccess.getRelationshipsAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:188:1: ( rule__Relationships__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:188:2: rule__Relationships__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:168:1: ( rule__Relationships__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:168:2: rule__Relationships__Group__0
             {
-            pushFollow(FOLLOW_rule__Relationships__Group__0_in_ruleRelationships334);
+            pushFollow(FOLLOW_rule__Relationships__Group__0_in_ruleRelationships283);
             rule__Relationships__Group__0();
 
             state._fsp--;
@@ -464,20 +395,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "entryRuleRelationship"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:200:1: entryRuleRelationship : ruleRelationship EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:180:1: entryRuleRelationship : ruleRelationship EOF ;
     public final void entryRuleRelationship() throws RecognitionException {
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:201:1: ( ruleRelationship EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:202:1: ruleRelationship EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:181:1: ( ruleRelationship EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:182:1: ruleRelationship EOF
             {
              before(grammarAccess.getRelationshipRule()); 
-            pushFollow(FOLLOW_ruleRelationship_in_entryRuleRelationship361);
+            pushFollow(FOLLOW_ruleRelationship_in_entryRuleRelationship310);
             ruleRelationship();
 
             state._fsp--;
 
              after(grammarAccess.getRelationshipRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationship368); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRelationship317); 
 
             }
 
@@ -494,23 +425,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleRelationship"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:209:1: ruleRelationship : ( ( rule__Relationship__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:189:1: ruleRelationship : ( ( rule__Relationship__Group__0 ) ) ;
     public final void ruleRelationship() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:213:2: ( ( ( rule__Relationship__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:214:1: ( ( rule__Relationship__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:193:2: ( ( ( rule__Relationship__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:194:1: ( ( rule__Relationship__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:214:1: ( ( rule__Relationship__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:215:1: ( rule__Relationship__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:194:1: ( ( rule__Relationship__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:195:1: ( rule__Relationship__Group__0 )
             {
              before(grammarAccess.getRelationshipAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:216:1: ( rule__Relationship__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:216:2: rule__Relationship__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:196:1: ( rule__Relationship__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:196:2: rule__Relationship__Group__0
             {
-            pushFollow(FOLLOW_rule__Relationship__Group__0_in_ruleRelationship394);
+            pushFollow(FOLLOW_rule__Relationship__Group__0_in_ruleRelationship343);
             rule__Relationship__Group__0();
 
             state._fsp--;
@@ -541,20 +472,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "entryRuleConcept"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:228:1: entryRuleConcept : ruleConcept EOF ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:208:1: entryRuleConcept : ruleConcept EOF ;
     public final void entryRuleConcept() throws RecognitionException {
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:229:1: ( ruleConcept EOF )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:230:1: ruleConcept EOF
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:209:1: ( ruleConcept EOF )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:210:1: ruleConcept EOF
             {
              before(grammarAccess.getConceptRule()); 
-            pushFollow(FOLLOW_ruleConcept_in_entryRuleConcept421);
+            pushFollow(FOLLOW_ruleConcept_in_entryRuleConcept370);
             ruleConcept();
 
             state._fsp--;
 
              after(grammarAccess.getConceptRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConcept428); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConcept377); 
 
             }
 
@@ -571,23 +502,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "ruleConcept"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:237:1: ruleConcept : ( ( rule__Concept__Group__0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:217:1: ruleConcept : ( ( rule__Concept__Group__0 ) ) ;
     public final void ruleConcept() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:241:2: ( ( ( rule__Concept__Group__0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:242:1: ( ( rule__Concept__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:221:2: ( ( ( rule__Concept__Group__0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:222:1: ( ( rule__Concept__Group__0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:242:1: ( ( rule__Concept__Group__0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:243:1: ( rule__Concept__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:222:1: ( ( rule__Concept__Group__0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:223:1: ( rule__Concept__Group__0 )
             {
              before(grammarAccess.getConceptAccess().getGroup()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:244:1: ( rule__Concept__Group__0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:244:2: rule__Concept__Group__0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:224:1: ( rule__Concept__Group__0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:224:2: rule__Concept__Group__0
             {
-            pushFollow(FOLLOW_rule__Concept__Group__0_in_ruleConcept454);
+            pushFollow(FOLLOW_rule__Concept__Group__0_in_ruleConcept403);
             rule__Concept__Group__0();
 
             state._fsp--;
@@ -618,21 +549,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:258:1: rule__Expression__Group__0 : rule__Expression__Group__0__Impl rule__Expression__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:238:1: rule__Expression__Group__0 : rule__Expression__Group__0__Impl rule__Expression__Group__1 ;
     public final void rule__Expression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:262:1: ( rule__Expression__Group__0__Impl rule__Expression__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:263:2: rule__Expression__Group__0__Impl rule__Expression__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:242:1: ( rule__Expression__Group__0__Impl rule__Expression__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:243:2: rule__Expression__Group__0__Impl rule__Expression__Group__1
             {
-            pushFollow(FOLLOW_rule__Expression__Group__0__Impl_in_rule__Expression__Group__0488);
+            pushFollow(FOLLOW_rule__Expression__Group__0__Impl_in_rule__Expression__Group__0437);
             rule__Expression__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Expression__Group__1_in_rule__Expression__Group__0491);
+            pushFollow(FOLLOW_rule__Expression__Group__1_in_rule__Expression__Group__0440);
             rule__Expression__Group__1();
 
             state._fsp--;
@@ -656,23 +587,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:270:1: rule__Expression__Group__0__Impl : ( ( rule__Expression__IsaRelationshipsAssignment_0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:250:1: rule__Expression__Group__0__Impl : ( ( rule__Expression__IsaRelationshipsAssignment_0 ) ) ;
     public final void rule__Expression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:274:1: ( ( ( rule__Expression__IsaRelationshipsAssignment_0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:275:1: ( ( rule__Expression__IsaRelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:254:1: ( ( ( rule__Expression__IsaRelationshipsAssignment_0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:255:1: ( ( rule__Expression__IsaRelationshipsAssignment_0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:275:1: ( ( rule__Expression__IsaRelationshipsAssignment_0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:276:1: ( rule__Expression__IsaRelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:255:1: ( ( rule__Expression__IsaRelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:256:1: ( rule__Expression__IsaRelationshipsAssignment_0 )
             {
              before(grammarAccess.getExpressionAccess().getIsaRelationshipsAssignment_0()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:277:1: ( rule__Expression__IsaRelationshipsAssignment_0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:277:2: rule__Expression__IsaRelationshipsAssignment_0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:257:1: ( rule__Expression__IsaRelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:257:2: rule__Expression__IsaRelationshipsAssignment_0
             {
-            pushFollow(FOLLOW_rule__Expression__IsaRelationshipsAssignment_0_in_rule__Expression__Group__0__Impl518);
+            pushFollow(FOLLOW_rule__Expression__IsaRelationshipsAssignment_0_in_rule__Expression__Group__0__Impl467);
             rule__Expression__IsaRelationshipsAssignment_0();
 
             state._fsp--;
@@ -703,16 +634,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:287:1: rule__Expression__Group__1 : rule__Expression__Group__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:267:1: rule__Expression__Group__1 : rule__Expression__Group__1__Impl ;
     public final void rule__Expression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:291:1: ( rule__Expression__Group__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:292:2: rule__Expression__Group__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:271:1: ( rule__Expression__Group__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:272:2: rule__Expression__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Expression__Group__1__Impl_in_rule__Expression__Group__1548);
+            pushFollow(FOLLOW_rule__Expression__Group__1__Impl_in_rule__Expression__Group__1497);
             rule__Expression__Group__1__Impl();
 
             state._fsp--;
@@ -736,31 +667,31 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:298:1: rule__Expression__Group__1__Impl : ( ( rule__Expression__Group_1__0 )? ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:278:1: rule__Expression__Group__1__Impl : ( ( rule__Expression__Group_1__0 )? ) ;
     public final void rule__Expression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:302:1: ( ( ( rule__Expression__Group_1__0 )? ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:303:1: ( ( rule__Expression__Group_1__0 )? )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:282:1: ( ( ( rule__Expression__Group_1__0 )? ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:283:1: ( ( rule__Expression__Group_1__0 )? )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:303:1: ( ( rule__Expression__Group_1__0 )? )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:304:1: ( rule__Expression__Group_1__0 )?
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:283:1: ( ( rule__Expression__Group_1__0 )? )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:284:1: ( rule__Expression__Group_1__0 )?
             {
              before(grammarAccess.getExpressionAccess().getGroup_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:305:1: ( rule__Expression__Group_1__0 )?
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:285:1: ( rule__Expression__Group_1__0 )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==12) ) {
+            if ( (LA1_0==RULE_COLON) ) {
                 alt1=1;
             }
             switch (alt1) {
                 case 1 :
-                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:305:2: rule__Expression__Group_1__0
+                    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:285:2: rule__Expression__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__Expression__Group_1__0_in_rule__Expression__Group__1__Impl575);
+                    pushFollow(FOLLOW_rule__Expression__Group_1__0_in_rule__Expression__Group__1__Impl524);
                     rule__Expression__Group_1__0();
 
                     state._fsp--;
@@ -794,21 +725,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:319:1: rule__Expression__Group_1__0 : rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:299:1: rule__Expression__Group_1__0 : rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 ;
     public final void rule__Expression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:323:1: ( rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:324:2: rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:303:1: ( rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:304:2: rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1
             {
-            pushFollow(FOLLOW_rule__Expression__Group_1__0__Impl_in_rule__Expression__Group_1__0610);
+            pushFollow(FOLLOW_rule__Expression__Group_1__0__Impl_in_rule__Expression__Group_1__0559);
             rule__Expression__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Expression__Group_1__1_in_rule__Expression__Group_1__0613);
+            pushFollow(FOLLOW_rule__Expression__Group_1__1_in_rule__Expression__Group_1__0562);
             rule__Expression__Group_1__1();
 
             state._fsp--;
@@ -832,21 +763,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:331:1: rule__Expression__Group_1__0__Impl : ( ':' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:311:1: rule__Expression__Group_1__0__Impl : ( RULE_COLON ) ;
     public final void rule__Expression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:335:1: ( ( ':' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:336:1: ( ':' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:315:1: ( ( RULE_COLON ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:316:1: ( RULE_COLON )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:336:1: ( ':' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:337:1: ':'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:316:1: ( RULE_COLON )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:317:1: RULE_COLON
             {
-             before(grammarAccess.getExpressionAccess().getColonKeyword_1_0()); 
-            match(input,12,FOLLOW_12_in_rule__Expression__Group_1__0__Impl641); 
-             after(grammarAccess.getExpressionAccess().getColonKeyword_1_0()); 
+             before(grammarAccess.getExpressionAccess().getCOLONTerminalRuleCall_1_0()); 
+            match(input,RULE_COLON,FOLLOW_RULE_COLON_in_rule__Expression__Group_1__0__Impl589); 
+             after(grammarAccess.getExpressionAccess().getCOLONTerminalRuleCall_1_0()); 
 
             }
 
@@ -869,21 +800,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:350:1: rule__Expression__Group_1__1 : rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:328:1: rule__Expression__Group_1__1 : rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 ;
     public final void rule__Expression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:354:1: ( rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:355:2: rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:332:1: ( rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:333:2: rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2
             {
-            pushFollow(FOLLOW_rule__Expression__Group_1__1__Impl_in_rule__Expression__Group_1__1672);
+            pushFollow(FOLLOW_rule__Expression__Group_1__1__Impl_in_rule__Expression__Group_1__1618);
             rule__Expression__Group_1__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Expression__Group_1__2_in_rule__Expression__Group_1__1675);
+            pushFollow(FOLLOW_rule__Expression__Group_1__2_in_rule__Expression__Group_1__1621);
             rule__Expression__Group_1__2();
 
             state._fsp--;
@@ -907,20 +838,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:362:1: rule__Expression__Group_1__1__Impl : ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:340:1: rule__Expression__Group_1__1__Impl : ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* ) ;
     public final void rule__Expression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:366:1: ( ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:367:1: ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:344:1: ( ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:345:1: ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:367:1: ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:368:1: ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:345:1: ( ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:346:1: ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )*
             {
              before(grammarAccess.getExpressionAccess().getUngroupedRelationshipsAssignment_1_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:369:1: ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:347:1: ( rule__Expression__UngroupedRelationshipsAssignment_1_1 )*
             loop2:
             do {
                 int alt2=2;
@@ -933,9 +864,9 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
                 switch (alt2) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:369:2: rule__Expression__UngroupedRelationshipsAssignment_1_1
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:347:2: rule__Expression__UngroupedRelationshipsAssignment_1_1
             	    {
-            	    pushFollow(FOLLOW_rule__Expression__UngroupedRelationshipsAssignment_1_1_in_rule__Expression__Group_1__1__Impl702);
+            	    pushFollow(FOLLOW_rule__Expression__UngroupedRelationshipsAssignment_1_1_in_rule__Expression__Group_1__1__Impl648);
             	    rule__Expression__UngroupedRelationshipsAssignment_1_1();
 
             	    state._fsp--;
@@ -972,16 +903,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:379:1: rule__Expression__Group_1__2 : rule__Expression__Group_1__2__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:357:1: rule__Expression__Group_1__2 : rule__Expression__Group_1__2__Impl ;
     public final void rule__Expression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:383:1: ( rule__Expression__Group_1__2__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:384:2: rule__Expression__Group_1__2__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:361:1: ( rule__Expression__Group_1__2__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:362:2: rule__Expression__Group_1__2__Impl
             {
-            pushFollow(FOLLOW_rule__Expression__Group_1__2__Impl_in_rule__Expression__Group_1__2733);
+            pushFollow(FOLLOW_rule__Expression__Group_1__2__Impl_in_rule__Expression__Group_1__2679);
             rule__Expression__Group_1__2__Impl();
 
             state._fsp--;
@@ -1005,35 +936,35 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__Group_1__2__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:390:1: rule__Expression__Group_1__2__Impl : ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:368:1: rule__Expression__Group_1__2__Impl : ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* ) ;
     public final void rule__Expression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:394:1: ( ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:395:1: ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:372:1: ( ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:373:1: ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:395:1: ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:396:1: ( rule__Expression__GroupedRelationshipsAssignment_1_2 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:373:1: ( ( rule__Expression__GroupedRelationshipsAssignment_1_2 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:374:1: ( rule__Expression__GroupedRelationshipsAssignment_1_2 )*
             {
              before(grammarAccess.getExpressionAccess().getGroupedRelationshipsAssignment_1_2()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:397:1: ( rule__Expression__GroupedRelationshipsAssignment_1_2 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:375:1: ( rule__Expression__GroupedRelationshipsAssignment_1_2 )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==14) ) {
+                if ( (LA3_0==RULE_OPENING_CURLY_BRACKET) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:397:2: rule__Expression__GroupedRelationshipsAssignment_1_2
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:375:2: rule__Expression__GroupedRelationshipsAssignment_1_2
             	    {
-            	    pushFollow(FOLLOW_rule__Expression__GroupedRelationshipsAssignment_1_2_in_rule__Expression__Group_1__2__Impl760);
+            	    pushFollow(FOLLOW_rule__Expression__GroupedRelationshipsAssignment_1_2_in_rule__Expression__Group_1__2__Impl706);
             	    rule__Expression__GroupedRelationshipsAssignment_1_2();
 
             	    state._fsp--;
@@ -1070,21 +1001,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:413:1: rule__IsaRelationships__Group__0 : rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:391:1: rule__IsaRelationships__Group__0 : rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1 ;
     public final void rule__IsaRelationships__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:417:1: ( rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:418:2: rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:395:1: ( rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:396:2: rule__IsaRelationships__Group__0__Impl rule__IsaRelationships__Group__1
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__Group__0__Impl_in_rule__IsaRelationships__Group__0797);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group__0__Impl_in_rule__IsaRelationships__Group__0743);
             rule__IsaRelationships__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__IsaRelationships__Group__1_in_rule__IsaRelationships__Group__0800);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group__1_in_rule__IsaRelationships__Group__0746);
             rule__IsaRelationships__Group__1();
 
             state._fsp--;
@@ -1108,23 +1039,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:425:1: rule__IsaRelationships__Group__0__Impl : ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:403:1: rule__IsaRelationships__Group__0__Impl : ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) ) ;
     public final void rule__IsaRelationships__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:429:1: ( ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:430:1: ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:407:1: ( ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:408:1: ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:430:1: ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:431:1: ( rule__IsaRelationships__RelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:408:1: ( ( rule__IsaRelationships__RelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:409:1: ( rule__IsaRelationships__RelationshipsAssignment_0 )
             {
              before(grammarAccess.getIsaRelationshipsAccess().getRelationshipsAssignment_0()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:432:1: ( rule__IsaRelationships__RelationshipsAssignment_0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:432:2: rule__IsaRelationships__RelationshipsAssignment_0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:410:1: ( rule__IsaRelationships__RelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:410:2: rule__IsaRelationships__RelationshipsAssignment_0
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__RelationshipsAssignment_0_in_rule__IsaRelationships__Group__0__Impl827);
+            pushFollow(FOLLOW_rule__IsaRelationships__RelationshipsAssignment_0_in_rule__IsaRelationships__Group__0__Impl773);
             rule__IsaRelationships__RelationshipsAssignment_0();
 
             state._fsp--;
@@ -1155,16 +1086,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:442:1: rule__IsaRelationships__Group__1 : rule__IsaRelationships__Group__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:420:1: rule__IsaRelationships__Group__1 : rule__IsaRelationships__Group__1__Impl ;
     public final void rule__IsaRelationships__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:446:1: ( rule__IsaRelationships__Group__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:447:2: rule__IsaRelationships__Group__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:424:1: ( rule__IsaRelationships__Group__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:425:2: rule__IsaRelationships__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__Group__1__Impl_in_rule__IsaRelationships__Group__1857);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group__1__Impl_in_rule__IsaRelationships__Group__1803);
             rule__IsaRelationships__Group__1__Impl();
 
             state._fsp--;
@@ -1188,35 +1119,35 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:453:1: rule__IsaRelationships__Group__1__Impl : ( ( rule__IsaRelationships__Group_1__0 )* ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:431:1: rule__IsaRelationships__Group__1__Impl : ( ( rule__IsaRelationships__Group_1__0 )* ) ;
     public final void rule__IsaRelationships__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:457:1: ( ( ( rule__IsaRelationships__Group_1__0 )* ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:458:1: ( ( rule__IsaRelationships__Group_1__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:435:1: ( ( ( rule__IsaRelationships__Group_1__0 )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:436:1: ( ( rule__IsaRelationships__Group_1__0 )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:458:1: ( ( rule__IsaRelationships__Group_1__0 )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:459:1: ( rule__IsaRelationships__Group_1__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:436:1: ( ( rule__IsaRelationships__Group_1__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:437:1: ( rule__IsaRelationships__Group_1__0 )*
             {
              before(grammarAccess.getIsaRelationshipsAccess().getGroup_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:460:1: ( rule__IsaRelationships__Group_1__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:438:1: ( rule__IsaRelationships__Group_1__0 )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==13) ) {
+                if ( (LA4_0==RULE_PLUS_SIGN) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:460:2: rule__IsaRelationships__Group_1__0
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:438:2: rule__IsaRelationships__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__IsaRelationships__Group_1__0_in_rule__IsaRelationships__Group__1__Impl884);
+            	    pushFollow(FOLLOW_rule__IsaRelationships__Group_1__0_in_rule__IsaRelationships__Group__1__Impl830);
             	    rule__IsaRelationships__Group_1__0();
 
             	    state._fsp--;
@@ -1253,21 +1184,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group_1__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:474:1: rule__IsaRelationships__Group_1__0 : rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:452:1: rule__IsaRelationships__Group_1__0 : rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1 ;
     public final void rule__IsaRelationships__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:478:1: ( rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:479:2: rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:456:1: ( rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:457:2: rule__IsaRelationships__Group_1__0__Impl rule__IsaRelationships__Group_1__1
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__0__Impl_in_rule__IsaRelationships__Group_1__0919);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__0__Impl_in_rule__IsaRelationships__Group_1__0865);
             rule__IsaRelationships__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__1_in_rule__IsaRelationships__Group_1__0922);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__1_in_rule__IsaRelationships__Group_1__0868);
             rule__IsaRelationships__Group_1__1();
 
             state._fsp--;
@@ -1291,21 +1222,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group_1__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:486:1: rule__IsaRelationships__Group_1__0__Impl : ( '+' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:464:1: rule__IsaRelationships__Group_1__0__Impl : ( RULE_PLUS_SIGN ) ;
     public final void rule__IsaRelationships__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:490:1: ( ( '+' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:491:1: ( '+' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:468:1: ( ( RULE_PLUS_SIGN ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:469:1: ( RULE_PLUS_SIGN )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:491:1: ( '+' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:492:1: '+'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:469:1: ( RULE_PLUS_SIGN )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:470:1: RULE_PLUS_SIGN
             {
-             before(grammarAccess.getIsaRelationshipsAccess().getPlusSignKeyword_1_0()); 
-            match(input,13,FOLLOW_13_in_rule__IsaRelationships__Group_1__0__Impl950); 
-             after(grammarAccess.getIsaRelationshipsAccess().getPlusSignKeyword_1_0()); 
+             before(grammarAccess.getIsaRelationshipsAccess().getPLUS_SIGNTerminalRuleCall_1_0()); 
+            match(input,RULE_PLUS_SIGN,FOLLOW_RULE_PLUS_SIGN_in_rule__IsaRelationships__Group_1__0__Impl895); 
+             after(grammarAccess.getIsaRelationshipsAccess().getPLUS_SIGNTerminalRuleCall_1_0()); 
 
             }
 
@@ -1328,16 +1259,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group_1__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:505:1: rule__IsaRelationships__Group_1__1 : rule__IsaRelationships__Group_1__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:481:1: rule__IsaRelationships__Group_1__1 : rule__IsaRelationships__Group_1__1__Impl ;
     public final void rule__IsaRelationships__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:509:1: ( rule__IsaRelationships__Group_1__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:510:2: rule__IsaRelationships__Group_1__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:485:1: ( rule__IsaRelationships__Group_1__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:486:2: rule__IsaRelationships__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__1__Impl_in_rule__IsaRelationships__Group_1__1981);
+            pushFollow(FOLLOW_rule__IsaRelationships__Group_1__1__Impl_in_rule__IsaRelationships__Group_1__1924);
             rule__IsaRelationships__Group_1__1__Impl();
 
             state._fsp--;
@@ -1361,23 +1292,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__Group_1__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:516:1: rule__IsaRelationships__Group_1__1__Impl : ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:492:1: rule__IsaRelationships__Group_1__1__Impl : ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) ) ;
     public final void rule__IsaRelationships__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:520:1: ( ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:521:1: ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:496:1: ( ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:497:1: ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:521:1: ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:522:1: ( rule__IsaRelationships__RelationshipsAssignment_1_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:497:1: ( ( rule__IsaRelationships__RelationshipsAssignment_1_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:498:1: ( rule__IsaRelationships__RelationshipsAssignment_1_1 )
             {
              before(grammarAccess.getIsaRelationshipsAccess().getRelationshipsAssignment_1_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:523:1: ( rule__IsaRelationships__RelationshipsAssignment_1_1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:523:2: rule__IsaRelationships__RelationshipsAssignment_1_1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:499:1: ( rule__IsaRelationships__RelationshipsAssignment_1_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:499:2: rule__IsaRelationships__RelationshipsAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__IsaRelationships__RelationshipsAssignment_1_1_in_rule__IsaRelationships__Group_1__1__Impl1008);
+            pushFollow(FOLLOW_rule__IsaRelationships__RelationshipsAssignment_1_1_in_rule__IsaRelationships__Group_1__1__Impl951);
             rule__IsaRelationships__RelationshipsAssignment_1_1();
 
             state._fsp--;
@@ -1408,21 +1339,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:537:1: rule__RelationshipGroup__Group__0 : rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:513:1: rule__RelationshipGroup__Group__0 : rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1 ;
     public final void rule__RelationshipGroup__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:541:1: ( rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:542:2: rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:517:1: ( rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:518:2: rule__RelationshipGroup__Group__0__Impl rule__RelationshipGroup__Group__1
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__0__Impl_in_rule__RelationshipGroup__Group__01042);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__0__Impl_in_rule__RelationshipGroup__Group__0985);
             rule__RelationshipGroup__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__1_in_rule__RelationshipGroup__Group__01045);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__1_in_rule__RelationshipGroup__Group__0988);
             rule__RelationshipGroup__Group__1();
 
             state._fsp--;
@@ -1446,21 +1377,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:549:1: rule__RelationshipGroup__Group__0__Impl : ( '{' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:525:1: rule__RelationshipGroup__Group__0__Impl : ( RULE_OPENING_CURLY_BRACKET ) ;
     public final void rule__RelationshipGroup__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:553:1: ( ( '{' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:554:1: ( '{' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:529:1: ( ( RULE_OPENING_CURLY_BRACKET ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:530:1: ( RULE_OPENING_CURLY_BRACKET )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:554:1: ( '{' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:555:1: '{'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:530:1: ( RULE_OPENING_CURLY_BRACKET )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:531:1: RULE_OPENING_CURLY_BRACKET
             {
-             before(grammarAccess.getRelationshipGroupAccess().getLeftCurlyBracketKeyword_0()); 
-            match(input,14,FOLLOW_14_in_rule__RelationshipGroup__Group__0__Impl1073); 
-             after(grammarAccess.getRelationshipGroupAccess().getLeftCurlyBracketKeyword_0()); 
+             before(grammarAccess.getRelationshipGroupAccess().getOPENING_CURLY_BRACKETTerminalRuleCall_0()); 
+            match(input,RULE_OPENING_CURLY_BRACKET,FOLLOW_RULE_OPENING_CURLY_BRACKET_in_rule__RelationshipGroup__Group__0__Impl1015); 
+             after(grammarAccess.getRelationshipGroupAccess().getOPENING_CURLY_BRACKETTerminalRuleCall_0()); 
 
             }
 
@@ -1483,21 +1414,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:568:1: rule__RelationshipGroup__Group__1 : rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:542:1: rule__RelationshipGroup__Group__1 : rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2 ;
     public final void rule__RelationshipGroup__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:572:1: ( rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:573:2: rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:546:1: ( rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:547:2: rule__RelationshipGroup__Group__1__Impl rule__RelationshipGroup__Group__2
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__1__Impl_in_rule__RelationshipGroup__Group__11104);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__1__Impl_in_rule__RelationshipGroup__Group__11044);
             rule__RelationshipGroup__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__2_in_rule__RelationshipGroup__Group__11107);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__2_in_rule__RelationshipGroup__Group__11047);
             rule__RelationshipGroup__Group__2();
 
             state._fsp--;
@@ -1521,23 +1452,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:580:1: rule__RelationshipGroup__Group__1__Impl : ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:554:1: rule__RelationshipGroup__Group__1__Impl : ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) ) ;
     public final void rule__RelationshipGroup__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:584:1: ( ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:585:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:558:1: ( ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:559:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:585:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:586:1: ( rule__RelationshipGroup__RelationshipsAssignment_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:559:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:560:1: ( rule__RelationshipGroup__RelationshipsAssignment_1 )
             {
              before(grammarAccess.getRelationshipGroupAccess().getRelationshipsAssignment_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:587:1: ( rule__RelationshipGroup__RelationshipsAssignment_1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:587:2: rule__RelationshipGroup__RelationshipsAssignment_1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:561:1: ( rule__RelationshipGroup__RelationshipsAssignment_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:561:2: rule__RelationshipGroup__RelationshipsAssignment_1
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_1_in_rule__RelationshipGroup__Group__1__Impl1134);
+            pushFollow(FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_1_in_rule__RelationshipGroup__Group__1__Impl1074);
             rule__RelationshipGroup__RelationshipsAssignment_1();
 
             state._fsp--;
@@ -1568,21 +1499,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:597:1: rule__RelationshipGroup__Group__2 : rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:571:1: rule__RelationshipGroup__Group__2 : rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3 ;
     public final void rule__RelationshipGroup__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:601:1: ( rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:602:2: rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:575:1: ( rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:576:2: rule__RelationshipGroup__Group__2__Impl rule__RelationshipGroup__Group__3
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__2__Impl_in_rule__RelationshipGroup__Group__21164);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__2__Impl_in_rule__RelationshipGroup__Group__21104);
             rule__RelationshipGroup__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__3_in_rule__RelationshipGroup__Group__21167);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__3_in_rule__RelationshipGroup__Group__21107);
             rule__RelationshipGroup__Group__3();
 
             state._fsp--;
@@ -1606,35 +1537,35 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__2__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:609:1: rule__RelationshipGroup__Group__2__Impl : ( ( rule__RelationshipGroup__Group_2__0 )* ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:583:1: rule__RelationshipGroup__Group__2__Impl : ( ( rule__RelationshipGroup__Group_2__0 )* ) ;
     public final void rule__RelationshipGroup__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:613:1: ( ( ( rule__RelationshipGroup__Group_2__0 )* ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:614:1: ( ( rule__RelationshipGroup__Group_2__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:587:1: ( ( ( rule__RelationshipGroup__Group_2__0 )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:588:1: ( ( rule__RelationshipGroup__Group_2__0 )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:614:1: ( ( rule__RelationshipGroup__Group_2__0 )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:615:1: ( rule__RelationshipGroup__Group_2__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:588:1: ( ( rule__RelationshipGroup__Group_2__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:589:1: ( rule__RelationshipGroup__Group_2__0 )*
             {
              before(grammarAccess.getRelationshipGroupAccess().getGroup_2()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:616:1: ( rule__RelationshipGroup__Group_2__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:590:1: ( rule__RelationshipGroup__Group_2__0 )*
             loop5:
             do {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==16) ) {
+                if ( (LA5_0==RULE_COMMA) ) {
                     alt5=1;
                 }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:616:2: rule__RelationshipGroup__Group_2__0
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:590:2: rule__RelationshipGroup__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__0_in_rule__RelationshipGroup__Group__2__Impl1194);
+            	    pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__0_in_rule__RelationshipGroup__Group__2__Impl1134);
             	    rule__RelationshipGroup__Group_2__0();
 
             	    state._fsp--;
@@ -1671,16 +1602,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__3"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:626:1: rule__RelationshipGroup__Group__3 : rule__RelationshipGroup__Group__3__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:600:1: rule__RelationshipGroup__Group__3 : rule__RelationshipGroup__Group__3__Impl ;
     public final void rule__RelationshipGroup__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:630:1: ( rule__RelationshipGroup__Group__3__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:631:2: rule__RelationshipGroup__Group__3__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:604:1: ( rule__RelationshipGroup__Group__3__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:605:2: rule__RelationshipGroup__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group__3__Impl_in_rule__RelationshipGroup__Group__31225);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group__3__Impl_in_rule__RelationshipGroup__Group__31165);
             rule__RelationshipGroup__Group__3__Impl();
 
             state._fsp--;
@@ -1704,21 +1635,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group__3__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:637:1: rule__RelationshipGroup__Group__3__Impl : ( '}' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:611:1: rule__RelationshipGroup__Group__3__Impl : ( RULE_CLOSING_CURLY_BRACKET ) ;
     public final void rule__RelationshipGroup__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:641:1: ( ( '}' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:642:1: ( '}' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:615:1: ( ( RULE_CLOSING_CURLY_BRACKET ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:616:1: ( RULE_CLOSING_CURLY_BRACKET )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:642:1: ( '}' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:643:1: '}'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:616:1: ( RULE_CLOSING_CURLY_BRACKET )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:617:1: RULE_CLOSING_CURLY_BRACKET
             {
-             before(grammarAccess.getRelationshipGroupAccess().getRightCurlyBracketKeyword_3()); 
-            match(input,15,FOLLOW_15_in_rule__RelationshipGroup__Group__3__Impl1253); 
-             after(grammarAccess.getRelationshipGroupAccess().getRightCurlyBracketKeyword_3()); 
+             before(grammarAccess.getRelationshipGroupAccess().getCLOSING_CURLY_BRACKETTerminalRuleCall_3()); 
+            match(input,RULE_CLOSING_CURLY_BRACKET,FOLLOW_RULE_CLOSING_CURLY_BRACKET_in_rule__RelationshipGroup__Group__3__Impl1192); 
+             after(grammarAccess.getRelationshipGroupAccess().getCLOSING_CURLY_BRACKETTerminalRuleCall_3()); 
 
             }
 
@@ -1741,21 +1672,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group_2__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:664:1: rule__RelationshipGroup__Group_2__0 : rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:636:1: rule__RelationshipGroup__Group_2__0 : rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1 ;
     public final void rule__RelationshipGroup__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:668:1: ( rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:669:2: rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:640:1: ( rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:641:2: rule__RelationshipGroup__Group_2__0__Impl rule__RelationshipGroup__Group_2__1
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__0__Impl_in_rule__RelationshipGroup__Group_2__01292);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__0__Impl_in_rule__RelationshipGroup__Group_2__01229);
             rule__RelationshipGroup__Group_2__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__1_in_rule__RelationshipGroup__Group_2__01295);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__1_in_rule__RelationshipGroup__Group_2__01232);
             rule__RelationshipGroup__Group_2__1();
 
             state._fsp--;
@@ -1779,21 +1710,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group_2__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:676:1: rule__RelationshipGroup__Group_2__0__Impl : ( ',' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:648:1: rule__RelationshipGroup__Group_2__0__Impl : ( RULE_COMMA ) ;
     public final void rule__RelationshipGroup__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:680:1: ( ( ',' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:681:1: ( ',' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:652:1: ( ( RULE_COMMA ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:653:1: ( RULE_COMMA )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:681:1: ( ',' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:682:1: ','
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:653:1: ( RULE_COMMA )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:654:1: RULE_COMMA
             {
-             before(grammarAccess.getRelationshipGroupAccess().getCommaKeyword_2_0()); 
-            match(input,16,FOLLOW_16_in_rule__RelationshipGroup__Group_2__0__Impl1323); 
-             after(grammarAccess.getRelationshipGroupAccess().getCommaKeyword_2_0()); 
+             before(grammarAccess.getRelationshipGroupAccess().getCOMMATerminalRuleCall_2_0()); 
+            match(input,RULE_COMMA,FOLLOW_RULE_COMMA_in_rule__RelationshipGroup__Group_2__0__Impl1259); 
+             after(grammarAccess.getRelationshipGroupAccess().getCOMMATerminalRuleCall_2_0()); 
 
             }
 
@@ -1816,16 +1747,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group_2__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:695:1: rule__RelationshipGroup__Group_2__1 : rule__RelationshipGroup__Group_2__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:665:1: rule__RelationshipGroup__Group_2__1 : rule__RelationshipGroup__Group_2__1__Impl ;
     public final void rule__RelationshipGroup__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:699:1: ( rule__RelationshipGroup__Group_2__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:700:2: rule__RelationshipGroup__Group_2__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:669:1: ( rule__RelationshipGroup__Group_2__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:670:2: rule__RelationshipGroup__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__1__Impl_in_rule__RelationshipGroup__Group_2__11354);
+            pushFollow(FOLLOW_rule__RelationshipGroup__Group_2__1__Impl_in_rule__RelationshipGroup__Group_2__11288);
             rule__RelationshipGroup__Group_2__1__Impl();
 
             state._fsp--;
@@ -1849,23 +1780,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__Group_2__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:706:1: rule__RelationshipGroup__Group_2__1__Impl : ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:676:1: rule__RelationshipGroup__Group_2__1__Impl : ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) ) ;
     public final void rule__RelationshipGroup__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:710:1: ( ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:711:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:680:1: ( ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:681:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:711:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:712:1: ( rule__RelationshipGroup__RelationshipsAssignment_2_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:681:1: ( ( rule__RelationshipGroup__RelationshipsAssignment_2_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:682:1: ( rule__RelationshipGroup__RelationshipsAssignment_2_1 )
             {
              before(grammarAccess.getRelationshipGroupAccess().getRelationshipsAssignment_2_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:713:1: ( rule__RelationshipGroup__RelationshipsAssignment_2_1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:713:2: rule__RelationshipGroup__RelationshipsAssignment_2_1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:683:1: ( rule__RelationshipGroup__RelationshipsAssignment_2_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:683:2: rule__RelationshipGroup__RelationshipsAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_2_1_in_rule__RelationshipGroup__Group_2__1__Impl1381);
+            pushFollow(FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_2_1_in_rule__RelationshipGroup__Group_2__1__Impl1315);
             rule__RelationshipGroup__RelationshipsAssignment_2_1();
 
             state._fsp--;
@@ -1896,21 +1827,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:727:1: rule__Relationships__Group__0 : rule__Relationships__Group__0__Impl rule__Relationships__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:697:1: rule__Relationships__Group__0 : rule__Relationships__Group__0__Impl rule__Relationships__Group__1 ;
     public final void rule__Relationships__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:731:1: ( rule__Relationships__Group__0__Impl rule__Relationships__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:732:2: rule__Relationships__Group__0__Impl rule__Relationships__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:701:1: ( rule__Relationships__Group__0__Impl rule__Relationships__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:702:2: rule__Relationships__Group__0__Impl rule__Relationships__Group__1
             {
-            pushFollow(FOLLOW_rule__Relationships__Group__0__Impl_in_rule__Relationships__Group__01415);
+            pushFollow(FOLLOW_rule__Relationships__Group__0__Impl_in_rule__Relationships__Group__01349);
             rule__Relationships__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Relationships__Group__1_in_rule__Relationships__Group__01418);
+            pushFollow(FOLLOW_rule__Relationships__Group__1_in_rule__Relationships__Group__01352);
             rule__Relationships__Group__1();
 
             state._fsp--;
@@ -1934,23 +1865,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:739:1: rule__Relationships__Group__0__Impl : ( ( rule__Relationships__RelationshipsAssignment_0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:709:1: rule__Relationships__Group__0__Impl : ( ( rule__Relationships__RelationshipsAssignment_0 ) ) ;
     public final void rule__Relationships__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:743:1: ( ( ( rule__Relationships__RelationshipsAssignment_0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:744:1: ( ( rule__Relationships__RelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:713:1: ( ( ( rule__Relationships__RelationshipsAssignment_0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:714:1: ( ( rule__Relationships__RelationshipsAssignment_0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:744:1: ( ( rule__Relationships__RelationshipsAssignment_0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:745:1: ( rule__Relationships__RelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:714:1: ( ( rule__Relationships__RelationshipsAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:715:1: ( rule__Relationships__RelationshipsAssignment_0 )
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsAssignment_0()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:746:1: ( rule__Relationships__RelationshipsAssignment_0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:746:2: rule__Relationships__RelationshipsAssignment_0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:716:1: ( rule__Relationships__RelationshipsAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:716:2: rule__Relationships__RelationshipsAssignment_0
             {
-            pushFollow(FOLLOW_rule__Relationships__RelationshipsAssignment_0_in_rule__Relationships__Group__0__Impl1445);
+            pushFollow(FOLLOW_rule__Relationships__RelationshipsAssignment_0_in_rule__Relationships__Group__0__Impl1379);
             rule__Relationships__RelationshipsAssignment_0();
 
             state._fsp--;
@@ -1981,16 +1912,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:756:1: rule__Relationships__Group__1 : rule__Relationships__Group__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:726:1: rule__Relationships__Group__1 : rule__Relationships__Group__1__Impl ;
     public final void rule__Relationships__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:760:1: ( rule__Relationships__Group__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:761:2: rule__Relationships__Group__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:730:1: ( rule__Relationships__Group__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:731:2: rule__Relationships__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Relationships__Group__1__Impl_in_rule__Relationships__Group__11475);
+            pushFollow(FOLLOW_rule__Relationships__Group__1__Impl_in_rule__Relationships__Group__11409);
             rule__Relationships__Group__1__Impl();
 
             state._fsp--;
@@ -2014,35 +1945,35 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:767:1: rule__Relationships__Group__1__Impl : ( ( rule__Relationships__Group_1__0 )* ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:737:1: rule__Relationships__Group__1__Impl : ( ( rule__Relationships__Group_1__0 )* ) ;
     public final void rule__Relationships__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:771:1: ( ( ( rule__Relationships__Group_1__0 )* ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:772:1: ( ( rule__Relationships__Group_1__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:741:1: ( ( ( rule__Relationships__Group_1__0 )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:742:1: ( ( rule__Relationships__Group_1__0 )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:772:1: ( ( rule__Relationships__Group_1__0 )* )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:773:1: ( rule__Relationships__Group_1__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:742:1: ( ( rule__Relationships__Group_1__0 )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:743:1: ( rule__Relationships__Group_1__0 )*
             {
              before(grammarAccess.getRelationshipsAccess().getGroup_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:774:1: ( rule__Relationships__Group_1__0 )*
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:744:1: ( rule__Relationships__Group_1__0 )*
             loop6:
             do {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==16) ) {
+                if ( (LA6_0==RULE_COMMA) ) {
                     alt6=1;
                 }
 
 
                 switch (alt6) {
             	case 1 :
-            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:774:2: rule__Relationships__Group_1__0
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:744:2: rule__Relationships__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__Relationships__Group_1__0_in_rule__Relationships__Group__1__Impl1502);
+            	    pushFollow(FOLLOW_rule__Relationships__Group_1__0_in_rule__Relationships__Group__1__Impl1436);
             	    rule__Relationships__Group_1__0();
 
             	    state._fsp--;
@@ -2079,21 +2010,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group_1__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:788:1: rule__Relationships__Group_1__0 : rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:758:1: rule__Relationships__Group_1__0 : rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1 ;
     public final void rule__Relationships__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:792:1: ( rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:793:2: rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:762:1: ( rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:763:2: rule__Relationships__Group_1__0__Impl rule__Relationships__Group_1__1
             {
-            pushFollow(FOLLOW_rule__Relationships__Group_1__0__Impl_in_rule__Relationships__Group_1__01537);
+            pushFollow(FOLLOW_rule__Relationships__Group_1__0__Impl_in_rule__Relationships__Group_1__01471);
             rule__Relationships__Group_1__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Relationships__Group_1__1_in_rule__Relationships__Group_1__01540);
+            pushFollow(FOLLOW_rule__Relationships__Group_1__1_in_rule__Relationships__Group_1__01474);
             rule__Relationships__Group_1__1();
 
             state._fsp--;
@@ -2117,21 +2048,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group_1__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:800:1: rule__Relationships__Group_1__0__Impl : ( ',' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:770:1: rule__Relationships__Group_1__0__Impl : ( RULE_COMMA ) ;
     public final void rule__Relationships__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:804:1: ( ( ',' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:805:1: ( ',' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:774:1: ( ( RULE_COMMA ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:775:1: ( RULE_COMMA )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:805:1: ( ',' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:806:1: ','
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:775:1: ( RULE_COMMA )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:776:1: RULE_COMMA
             {
-             before(grammarAccess.getRelationshipsAccess().getCommaKeyword_1_0()); 
-            match(input,16,FOLLOW_16_in_rule__Relationships__Group_1__0__Impl1568); 
-             after(grammarAccess.getRelationshipsAccess().getCommaKeyword_1_0()); 
+             before(grammarAccess.getRelationshipsAccess().getCOMMATerminalRuleCall_1_0()); 
+            match(input,RULE_COMMA,FOLLOW_RULE_COMMA_in_rule__Relationships__Group_1__0__Impl1501); 
+             after(grammarAccess.getRelationshipsAccess().getCOMMATerminalRuleCall_1_0()); 
 
             }
 
@@ -2154,16 +2085,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group_1__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:819:1: rule__Relationships__Group_1__1 : rule__Relationships__Group_1__1__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:787:1: rule__Relationships__Group_1__1 : rule__Relationships__Group_1__1__Impl ;
     public final void rule__Relationships__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:823:1: ( rule__Relationships__Group_1__1__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:824:2: rule__Relationships__Group_1__1__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:791:1: ( rule__Relationships__Group_1__1__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:792:2: rule__Relationships__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__Relationships__Group_1__1__Impl_in_rule__Relationships__Group_1__11599);
+            pushFollow(FOLLOW_rule__Relationships__Group_1__1__Impl_in_rule__Relationships__Group_1__11530);
             rule__Relationships__Group_1__1__Impl();
 
             state._fsp--;
@@ -2187,23 +2118,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__Group_1__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:830:1: rule__Relationships__Group_1__1__Impl : ( ( rule__Relationships__RelationshipsAssignment_1_1 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:798:1: rule__Relationships__Group_1__1__Impl : ( ( rule__Relationships__RelationshipsAssignment_1_1 ) ) ;
     public final void rule__Relationships__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:834:1: ( ( ( rule__Relationships__RelationshipsAssignment_1_1 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:835:1: ( ( rule__Relationships__RelationshipsAssignment_1_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:802:1: ( ( ( rule__Relationships__RelationshipsAssignment_1_1 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:803:1: ( ( rule__Relationships__RelationshipsAssignment_1_1 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:835:1: ( ( rule__Relationships__RelationshipsAssignment_1_1 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:836:1: ( rule__Relationships__RelationshipsAssignment_1_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:803:1: ( ( rule__Relationships__RelationshipsAssignment_1_1 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:804:1: ( rule__Relationships__RelationshipsAssignment_1_1 )
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsAssignment_1_1()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:837:1: ( rule__Relationships__RelationshipsAssignment_1_1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:837:2: rule__Relationships__RelationshipsAssignment_1_1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:805:1: ( rule__Relationships__RelationshipsAssignment_1_1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:805:2: rule__Relationships__RelationshipsAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__Relationships__RelationshipsAssignment_1_1_in_rule__Relationships__Group_1__1__Impl1626);
+            pushFollow(FOLLOW_rule__Relationships__RelationshipsAssignment_1_1_in_rule__Relationships__Group_1__1__Impl1557);
             rule__Relationships__RelationshipsAssignment_1_1();
 
             state._fsp--;
@@ -2234,21 +2165,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:851:1: rule__Relationship__Group__0 : rule__Relationship__Group__0__Impl rule__Relationship__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:819:1: rule__Relationship__Group__0 : rule__Relationship__Group__0__Impl rule__Relationship__Group__1 ;
     public final void rule__Relationship__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:855:1: ( rule__Relationship__Group__0__Impl rule__Relationship__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:856:2: rule__Relationship__Group__0__Impl rule__Relationship__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:823:1: ( rule__Relationship__Group__0__Impl rule__Relationship__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:824:2: rule__Relationship__Group__0__Impl rule__Relationship__Group__1
             {
-            pushFollow(FOLLOW_rule__Relationship__Group__0__Impl_in_rule__Relationship__Group__01660);
+            pushFollow(FOLLOW_rule__Relationship__Group__0__Impl_in_rule__Relationship__Group__01591);
             rule__Relationship__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Relationship__Group__1_in_rule__Relationship__Group__01663);
+            pushFollow(FOLLOW_rule__Relationship__Group__1_in_rule__Relationship__Group__01594);
             rule__Relationship__Group__1();
 
             state._fsp--;
@@ -2272,23 +2203,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:863:1: rule__Relationship__Group__0__Impl : ( ( rule__Relationship__TypeAssignment_0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:831:1: rule__Relationship__Group__0__Impl : ( ( rule__Relationship__TypeAssignment_0 ) ) ;
     public final void rule__Relationship__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:867:1: ( ( ( rule__Relationship__TypeAssignment_0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:868:1: ( ( rule__Relationship__TypeAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:835:1: ( ( ( rule__Relationship__TypeAssignment_0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:836:1: ( ( rule__Relationship__TypeAssignment_0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:868:1: ( ( rule__Relationship__TypeAssignment_0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:869:1: ( rule__Relationship__TypeAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:836:1: ( ( rule__Relationship__TypeAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:837:1: ( rule__Relationship__TypeAssignment_0 )
             {
              before(grammarAccess.getRelationshipAccess().getTypeAssignment_0()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:870:1: ( rule__Relationship__TypeAssignment_0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:870:2: rule__Relationship__TypeAssignment_0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:838:1: ( rule__Relationship__TypeAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:838:2: rule__Relationship__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__Relationship__TypeAssignment_0_in_rule__Relationship__Group__0__Impl1690);
+            pushFollow(FOLLOW_rule__Relationship__TypeAssignment_0_in_rule__Relationship__Group__0__Impl1621);
             rule__Relationship__TypeAssignment_0();
 
             state._fsp--;
@@ -2319,21 +2250,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:880:1: rule__Relationship__Group__1 : rule__Relationship__Group__1__Impl rule__Relationship__Group__2 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:848:1: rule__Relationship__Group__1 : rule__Relationship__Group__1__Impl rule__Relationship__Group__2 ;
     public final void rule__Relationship__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:884:1: ( rule__Relationship__Group__1__Impl rule__Relationship__Group__2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:885:2: rule__Relationship__Group__1__Impl rule__Relationship__Group__2
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:852:1: ( rule__Relationship__Group__1__Impl rule__Relationship__Group__2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:853:2: rule__Relationship__Group__1__Impl rule__Relationship__Group__2
             {
-            pushFollow(FOLLOW_rule__Relationship__Group__1__Impl_in_rule__Relationship__Group__11720);
+            pushFollow(FOLLOW_rule__Relationship__Group__1__Impl_in_rule__Relationship__Group__11651);
             rule__Relationship__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Relationship__Group__2_in_rule__Relationship__Group__11723);
+            pushFollow(FOLLOW_rule__Relationship__Group__2_in_rule__Relationship__Group__11654);
             rule__Relationship__Group__2();
 
             state._fsp--;
@@ -2357,21 +2288,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:892:1: rule__Relationship__Group__1__Impl : ( '=' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:860:1: rule__Relationship__Group__1__Impl : ( RULE_EQUAL_SIGN ) ;
     public final void rule__Relationship__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:896:1: ( ( '=' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:897:1: ( '=' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:864:1: ( ( RULE_EQUAL_SIGN ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:865:1: ( RULE_EQUAL_SIGN )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:897:1: ( '=' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:898:1: '='
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:865:1: ( RULE_EQUAL_SIGN )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:866:1: RULE_EQUAL_SIGN
             {
-             before(grammarAccess.getRelationshipAccess().getEqualsSignKeyword_1()); 
-            match(input,17,FOLLOW_17_in_rule__Relationship__Group__1__Impl1751); 
-             after(grammarAccess.getRelationshipAccess().getEqualsSignKeyword_1()); 
+             before(grammarAccess.getRelationshipAccess().getEQUAL_SIGNTerminalRuleCall_1()); 
+            match(input,RULE_EQUAL_SIGN,FOLLOW_RULE_EQUAL_SIGN_in_rule__Relationship__Group__1__Impl1681); 
+             after(grammarAccess.getRelationshipAccess().getEQUAL_SIGNTerminalRuleCall_1()); 
 
             }
 
@@ -2394,16 +2325,16 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:911:1: rule__Relationship__Group__2 : rule__Relationship__Group__2__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:877:1: rule__Relationship__Group__2 : rule__Relationship__Group__2__Impl ;
     public final void rule__Relationship__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:915:1: ( rule__Relationship__Group__2__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:916:2: rule__Relationship__Group__2__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:881:1: ( rule__Relationship__Group__2__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:882:2: rule__Relationship__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Relationship__Group__2__Impl_in_rule__Relationship__Group__21782);
+            pushFollow(FOLLOW_rule__Relationship__Group__2__Impl_in_rule__Relationship__Group__21710);
             rule__Relationship__Group__2__Impl();
 
             state._fsp--;
@@ -2427,23 +2358,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__Group__2__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:922:1: rule__Relationship__Group__2__Impl : ( ( rule__Relationship__DestinationAssignment_2 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:888:1: rule__Relationship__Group__2__Impl : ( ( rule__Relationship__DestinationAssignment_2 ) ) ;
     public final void rule__Relationship__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:926:1: ( ( ( rule__Relationship__DestinationAssignment_2 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:927:1: ( ( rule__Relationship__DestinationAssignment_2 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:892:1: ( ( ( rule__Relationship__DestinationAssignment_2 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:893:1: ( ( rule__Relationship__DestinationAssignment_2 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:927:1: ( ( rule__Relationship__DestinationAssignment_2 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:928:1: ( rule__Relationship__DestinationAssignment_2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:893:1: ( ( rule__Relationship__DestinationAssignment_2 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:894:1: ( rule__Relationship__DestinationAssignment_2 )
             {
              before(grammarAccess.getRelationshipAccess().getDestinationAssignment_2()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:929:1: ( rule__Relationship__DestinationAssignment_2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:929:2: rule__Relationship__DestinationAssignment_2
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:895:1: ( rule__Relationship__DestinationAssignment_2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:895:2: rule__Relationship__DestinationAssignment_2
             {
-            pushFollow(FOLLOW_rule__Relationship__DestinationAssignment_2_in_rule__Relationship__Group__2__Impl1809);
+            pushFollow(FOLLOW_rule__Relationship__DestinationAssignment_2_in_rule__Relationship__Group__2__Impl1737);
             rule__Relationship__DestinationAssignment_2();
 
             state._fsp--;
@@ -2474,21 +2405,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:945:1: rule__Concept__Group__0 : rule__Concept__Group__0__Impl rule__Concept__Group__1 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:911:1: rule__Concept__Group__0 : rule__Concept__Group__0__Impl rule__Concept__Group__1 ;
     public final void rule__Concept__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:949:1: ( rule__Concept__Group__0__Impl rule__Concept__Group__1 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:950:2: rule__Concept__Group__0__Impl rule__Concept__Group__1
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:915:1: ( rule__Concept__Group__0__Impl rule__Concept__Group__1 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:916:2: rule__Concept__Group__0__Impl rule__Concept__Group__1
             {
-            pushFollow(FOLLOW_rule__Concept__Group__0__Impl_in_rule__Concept__Group__01845);
+            pushFollow(FOLLOW_rule__Concept__Group__0__Impl_in_rule__Concept__Group__01773);
             rule__Concept__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Concept__Group__1_in_rule__Concept__Group__01848);
+            pushFollow(FOLLOW_rule__Concept__Group__1_in_rule__Concept__Group__01776);
             rule__Concept__Group__1();
 
             state._fsp--;
@@ -2512,23 +2443,23 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__0__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:957:1: rule__Concept__Group__0__Impl : ( ( rule__Concept__IdAssignment_0 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:923:1: rule__Concept__Group__0__Impl : ( ( rule__Concept__IdAssignment_0 ) ) ;
     public final void rule__Concept__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:961:1: ( ( ( rule__Concept__IdAssignment_0 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:962:1: ( ( rule__Concept__IdAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:927:1: ( ( ( rule__Concept__IdAssignment_0 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:928:1: ( ( rule__Concept__IdAssignment_0 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:962:1: ( ( rule__Concept__IdAssignment_0 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:963:1: ( rule__Concept__IdAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:928:1: ( ( rule__Concept__IdAssignment_0 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:929:1: ( rule__Concept__IdAssignment_0 )
             {
              before(grammarAccess.getConceptAccess().getIdAssignment_0()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:964:1: ( rule__Concept__IdAssignment_0 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:964:2: rule__Concept__IdAssignment_0
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:930:1: ( rule__Concept__IdAssignment_0 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:930:2: rule__Concept__IdAssignment_0
             {
-            pushFollow(FOLLOW_rule__Concept__IdAssignment_0_in_rule__Concept__Group__0__Impl1875);
+            pushFollow(FOLLOW_rule__Concept__IdAssignment_0_in_rule__Concept__Group__0__Impl1803);
             rule__Concept__IdAssignment_0();
 
             state._fsp--;
@@ -2559,21 +2490,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:974:1: rule__Concept__Group__1 : rule__Concept__Group__1__Impl rule__Concept__Group__2 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:940:1: rule__Concept__Group__1 : rule__Concept__Group__1__Impl rule__Concept__Group__2 ;
     public final void rule__Concept__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:978:1: ( rule__Concept__Group__1__Impl rule__Concept__Group__2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:979:2: rule__Concept__Group__1__Impl rule__Concept__Group__2
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:944:1: ( rule__Concept__Group__1__Impl rule__Concept__Group__2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:945:2: rule__Concept__Group__1__Impl rule__Concept__Group__2
             {
-            pushFollow(FOLLOW_rule__Concept__Group__1__Impl_in_rule__Concept__Group__11905);
+            pushFollow(FOLLOW_rule__Concept__Group__1__Impl_in_rule__Concept__Group__11833);
             rule__Concept__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Concept__Group__2_in_rule__Concept__Group__11908);
+            pushFollow(FOLLOW_rule__Concept__Group__2_in_rule__Concept__Group__11836);
             rule__Concept__Group__2();
 
             state._fsp--;
@@ -2597,21 +2528,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__1__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:986:1: rule__Concept__Group__1__Impl : ( '|' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:952:1: rule__Concept__Group__1__Impl : ( RULE_PIPE ) ;
     public final void rule__Concept__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:990:1: ( ( '|' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:991:1: ( '|' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:956:1: ( ( RULE_PIPE ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:957:1: ( RULE_PIPE )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:991:1: ( '|' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:992:1: '|'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:957:1: ( RULE_PIPE )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:958:1: RULE_PIPE
             {
-             before(grammarAccess.getConceptAccess().getVerticalLineKeyword_1()); 
-            match(input,18,FOLLOW_18_in_rule__Concept__Group__1__Impl1936); 
-             after(grammarAccess.getConceptAccess().getVerticalLineKeyword_1()); 
+             before(grammarAccess.getConceptAccess().getPIPETerminalRuleCall_1()); 
+            match(input,RULE_PIPE,FOLLOW_RULE_PIPE_in_rule__Concept__Group__1__Impl1863); 
+             after(grammarAccess.getConceptAccess().getPIPETerminalRuleCall_1()); 
 
             }
 
@@ -2634,21 +2565,21 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1005:1: rule__Concept__Group__2 : rule__Concept__Group__2__Impl rule__Concept__Group__3 ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:969:1: rule__Concept__Group__2 : rule__Concept__Group__2__Impl rule__Concept__Group__3 ;
     public final void rule__Concept__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1009:1: ( rule__Concept__Group__2__Impl rule__Concept__Group__3 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1010:2: rule__Concept__Group__2__Impl rule__Concept__Group__3
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:973:1: ( rule__Concept__Group__2__Impl rule__Concept__Group__3 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:974:2: rule__Concept__Group__2__Impl rule__Concept__Group__3
             {
-            pushFollow(FOLLOW_rule__Concept__Group__2__Impl_in_rule__Concept__Group__21967);
+            pushFollow(FOLLOW_rule__Concept__Group__2__Impl_in_rule__Concept__Group__21892);
             rule__Concept__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Concept__Group__3_in_rule__Concept__Group__21970);
+            pushFollow(FOLLOW_rule__Concept__Group__3_in_rule__Concept__Group__21895);
             rule__Concept__Group__3();
 
             state._fsp--;
@@ -2672,31 +2603,45 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__2__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1017:1: rule__Concept__Group__2__Impl : ( ( rule__Concept__TermAssignment_2 ) ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:981:1: rule__Concept__Group__2__Impl : ( ( RULE_WS )* ) ;
     public final void rule__Concept__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1021:1: ( ( ( rule__Concept__TermAssignment_2 ) ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1022:1: ( ( rule__Concept__TermAssignment_2 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:985:1: ( ( ( RULE_WS )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:986:1: ( ( RULE_WS )* )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1022:1: ( ( rule__Concept__TermAssignment_2 ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1023:1: ( rule__Concept__TermAssignment_2 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:986:1: ( ( RULE_WS )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:987:1: ( RULE_WS )*
             {
-             before(grammarAccess.getConceptAccess().getTermAssignment_2()); 
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1024:1: ( rule__Concept__TermAssignment_2 )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1024:2: rule__Concept__TermAssignment_2
-            {
-            pushFollow(FOLLOW_rule__Concept__TermAssignment_2_in_rule__Concept__Group__2__Impl1997);
-            rule__Concept__TermAssignment_2();
+             before(grammarAccess.getConceptAccess().getWSTerminalRuleCall_2()); 
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:988:1: ( RULE_WS )*
+            loop7:
+            do {
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA7_0==RULE_WS) ) {
+                    alt7=1;
+                }
 
 
-            }
+                switch (alt7) {
+            	case 1 :
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:988:3: RULE_WS
+            	    {
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__Concept__Group__2__Impl1923); 
 
-             after(grammarAccess.getConceptAccess().getTermAssignment_2()); 
+            	    }
+            	    break;
+
+            	default :
+            	    break loop7;
+                }
+            } while (true);
+
+             after(grammarAccess.getConceptAccess().getWSTerminalRuleCall_2()); 
 
             }
 
@@ -2719,17 +2664,22 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__3"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1034:1: rule__Concept__Group__3 : rule__Concept__Group__3__Impl ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:998:1: rule__Concept__Group__3 : rule__Concept__Group__3__Impl rule__Concept__Group__4 ;
     public final void rule__Concept__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1038:1: ( rule__Concept__Group__3__Impl )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1039:2: rule__Concept__Group__3__Impl
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1002:1: ( rule__Concept__Group__3__Impl rule__Concept__Group__4 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1003:2: rule__Concept__Group__3__Impl rule__Concept__Group__4
             {
-            pushFollow(FOLLOW_rule__Concept__Group__3__Impl_in_rule__Concept__Group__32027);
+            pushFollow(FOLLOW_rule__Concept__Group__3__Impl_in_rule__Concept__Group__31954);
             rule__Concept__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__Concept__Group__4_in_rule__Concept__Group__31957);
+            rule__Concept__Group__4();
 
             state._fsp--;
 
@@ -2752,21 +2702,31 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__Group__3__Impl"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1045:1: rule__Concept__Group__3__Impl : ( '|' ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1010:1: rule__Concept__Group__3__Impl : ( ( rule__Concept__TermAssignment_3 ) ) ;
     public final void rule__Concept__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1049:1: ( ( '|' ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1050:1: ( '|' )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1014:1: ( ( ( rule__Concept__TermAssignment_3 ) ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1015:1: ( ( rule__Concept__TermAssignment_3 ) )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1050:1: ( '|' )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1051:1: '|'
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1015:1: ( ( rule__Concept__TermAssignment_3 ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1016:1: ( rule__Concept__TermAssignment_3 )
             {
-             before(grammarAccess.getConceptAccess().getVerticalLineKeyword_3()); 
-            match(input,18,FOLLOW_18_in_rule__Concept__Group__3__Impl2055); 
-             after(grammarAccess.getConceptAccess().getVerticalLineKeyword_3()); 
+             before(grammarAccess.getConceptAccess().getTermAssignment_3()); 
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1017:1: ( rule__Concept__TermAssignment_3 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1017:2: rule__Concept__TermAssignment_3
+            {
+            pushFollow(FOLLOW_rule__Concept__TermAssignment_3_in_rule__Concept__Group__3__Impl1984);
+            rule__Concept__TermAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getConceptAccess().getTermAssignment_3()); 
 
             }
 
@@ -2788,26 +2748,60 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
     // $ANTLR end "rule__Concept__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Model__ExpressionAssignment"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1073:1: rule__Model__ExpressionAssignment : ( ruleExpression ) ;
-    public final void rule__Model__ExpressionAssignment() throws RecognitionException {
+    // $ANTLR start "rule__Concept__Group__4"
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1027:1: rule__Concept__Group__4 : rule__Concept__Group__4__Impl rule__Concept__Group__5 ;
+    public final void rule__Concept__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1077:1: ( ( ruleExpression ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1078:1: ( ruleExpression )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1031:1: ( rule__Concept__Group__4__Impl rule__Concept__Group__5 )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1032:2: rule__Concept__Group__4__Impl rule__Concept__Group__5
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1078:1: ( ruleExpression )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1079:1: ruleExpression
-            {
-             before(grammarAccess.getModelAccess().getExpressionExpressionParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleExpression_in_rule__Model__ExpressionAssignment2099);
-            ruleExpression();
+            pushFollow(FOLLOW_rule__Concept__Group__4__Impl_in_rule__Concept__Group__42014);
+            rule__Concept__Group__4__Impl();
 
             state._fsp--;
 
-             after(grammarAccess.getModelAccess().getExpressionExpressionParserRuleCall_0()); 
+            pushFollow(FOLLOW_rule__Concept__Group__5_in_rule__Concept__Group__42017);
+            rule__Concept__Group__5();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Concept__Group__4"
+
+
+    // $ANTLR start "rule__Concept__Group__4__Impl"
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1039:1: rule__Concept__Group__4__Impl : ( RULE_PIPE ) ;
+    public final void rule__Concept__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1043:1: ( ( RULE_PIPE ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1044:1: ( RULE_PIPE )
+            {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1044:1: ( RULE_PIPE )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1045:1: RULE_PIPE
+            {
+             before(grammarAccess.getConceptAccess().getPIPETerminalRuleCall_4()); 
+            match(input,RULE_PIPE,FOLLOW_RULE_PIPE_in_rule__Concept__Group__4__Impl2044); 
+             after(grammarAccess.getConceptAccess().getPIPETerminalRuleCall_4()); 
 
             }
 
@@ -2826,24 +2820,118 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
         }
         return ;
     }
-    // $ANTLR end "rule__Model__ExpressionAssignment"
+    // $ANTLR end "rule__Concept__Group__4__Impl"
+
+
+    // $ANTLR start "rule__Concept__Group__5"
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1056:1: rule__Concept__Group__5 : rule__Concept__Group__5__Impl ;
+    public final void rule__Concept__Group__5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1060:1: ( rule__Concept__Group__5__Impl )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1061:2: rule__Concept__Group__5__Impl
+            {
+            pushFollow(FOLLOW_rule__Concept__Group__5__Impl_in_rule__Concept__Group__52073);
+            rule__Concept__Group__5__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Concept__Group__5"
+
+
+    // $ANTLR start "rule__Concept__Group__5__Impl"
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1067:1: rule__Concept__Group__5__Impl : ( ( RULE_WS )* ) ;
+    public final void rule__Concept__Group__5__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1071:1: ( ( ( RULE_WS )* ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1072:1: ( ( RULE_WS )* )
+            {
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1072:1: ( ( RULE_WS )* )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1073:1: ( RULE_WS )*
+            {
+             before(grammarAccess.getConceptAccess().getWSTerminalRuleCall_5()); 
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1074:1: ( RULE_WS )*
+            loop8:
+            do {
+                int alt8=2;
+                int LA8_0 = input.LA(1);
+
+                if ( (LA8_0==RULE_WS) ) {
+                    alt8=1;
+                }
+
+
+                switch (alt8) {
+            	case 1 :
+            	    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1074:3: RULE_WS
+            	    {
+            	    match(input,RULE_WS,FOLLOW_RULE_WS_in_rule__Concept__Group__5__Impl2101); 
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop8;
+                }
+            } while (true);
+
+             after(grammarAccess.getConceptAccess().getWSTerminalRuleCall_5()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Concept__Group__5__Impl"
 
 
     // $ANTLR start "rule__Expression__IsaRelationshipsAssignment_0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1088:1: rule__Expression__IsaRelationshipsAssignment_0 : ( ruleIsaRelationships ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1097:1: rule__Expression__IsaRelationshipsAssignment_0 : ( ruleIsaRelationships ) ;
     public final void rule__Expression__IsaRelationshipsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1092:1: ( ( ruleIsaRelationships ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1093:1: ( ruleIsaRelationships )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1101:1: ( ( ruleIsaRelationships ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1102:1: ( ruleIsaRelationships )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1093:1: ( ruleIsaRelationships )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1094:1: ruleIsaRelationships
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1102:1: ( ruleIsaRelationships )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1103:1: ruleIsaRelationships
             {
              before(grammarAccess.getExpressionAccess().getIsaRelationshipsIsaRelationshipsParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleIsaRelationships_in_rule__Expression__IsaRelationshipsAssignment_02130);
+            pushFollow(FOLLOW_ruleIsaRelationships_in_rule__Expression__IsaRelationshipsAssignment_02149);
             ruleIsaRelationships();
 
             state._fsp--;
@@ -2871,20 +2959,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__UngroupedRelationshipsAssignment_1_1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1103:1: rule__Expression__UngroupedRelationshipsAssignment_1_1 : ( ruleRelationships ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1112:1: rule__Expression__UngroupedRelationshipsAssignment_1_1 : ( ruleRelationships ) ;
     public final void rule__Expression__UngroupedRelationshipsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1107:1: ( ( ruleRelationships ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1108:1: ( ruleRelationships )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1116:1: ( ( ruleRelationships ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1117:1: ( ruleRelationships )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1108:1: ( ruleRelationships )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1109:1: ruleRelationships
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1117:1: ( ruleRelationships )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1118:1: ruleRelationships
             {
              before(grammarAccess.getExpressionAccess().getUngroupedRelationshipsRelationshipsParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleRelationships_in_rule__Expression__UngroupedRelationshipsAssignment_1_12161);
+            pushFollow(FOLLOW_ruleRelationships_in_rule__Expression__UngroupedRelationshipsAssignment_1_12180);
             ruleRelationships();
 
             state._fsp--;
@@ -2912,20 +3000,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Expression__GroupedRelationshipsAssignment_1_2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1118:1: rule__Expression__GroupedRelationshipsAssignment_1_2 : ( ruleRelationshipGroup ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1127:1: rule__Expression__GroupedRelationshipsAssignment_1_2 : ( ruleRelationshipGroup ) ;
     public final void rule__Expression__GroupedRelationshipsAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1122:1: ( ( ruleRelationshipGroup ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1123:1: ( ruleRelationshipGroup )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1131:1: ( ( ruleRelationshipGroup ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1132:1: ( ruleRelationshipGroup )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1123:1: ( ruleRelationshipGroup )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1124:1: ruleRelationshipGroup
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1132:1: ( ruleRelationshipGroup )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1133:1: ruleRelationshipGroup
             {
              before(grammarAccess.getExpressionAccess().getGroupedRelationshipsRelationshipGroupParserRuleCall_1_2_0()); 
-            pushFollow(FOLLOW_ruleRelationshipGroup_in_rule__Expression__GroupedRelationshipsAssignment_1_22192);
+            pushFollow(FOLLOW_ruleRelationshipGroup_in_rule__Expression__GroupedRelationshipsAssignment_1_22211);
             ruleRelationshipGroup();
 
             state._fsp--;
@@ -2953,20 +3041,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__RelationshipsAssignment_0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1133:1: rule__IsaRelationships__RelationshipsAssignment_0 : ( ruleConcept ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1142:1: rule__IsaRelationships__RelationshipsAssignment_0 : ( ruleConcept ) ;
     public final void rule__IsaRelationships__RelationshipsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1137:1: ( ( ruleConcept ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1138:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1146:1: ( ( ruleConcept ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1147:1: ( ruleConcept )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1138:1: ( ruleConcept )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1139:1: ruleConcept
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1147:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1148:1: ruleConcept
             {
              before(grammarAccess.getIsaRelationshipsAccess().getRelationshipsConceptParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_02223);
+            pushFollow(FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_02242);
             ruleConcept();
 
             state._fsp--;
@@ -2994,20 +3082,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__IsaRelationships__RelationshipsAssignment_1_1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1148:1: rule__IsaRelationships__RelationshipsAssignment_1_1 : ( ruleConcept ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1157:1: rule__IsaRelationships__RelationshipsAssignment_1_1 : ( ruleConcept ) ;
     public final void rule__IsaRelationships__RelationshipsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1152:1: ( ( ruleConcept ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1153:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1161:1: ( ( ruleConcept ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1162:1: ( ruleConcept )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1153:1: ( ruleConcept )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1154:1: ruleConcept
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1162:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1163:1: ruleConcept
             {
              before(grammarAccess.getIsaRelationshipsAccess().getRelationshipsConceptParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_1_12254);
+            pushFollow(FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_1_12273);
             ruleConcept();
 
             state._fsp--;
@@ -3035,20 +3123,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__RelationshipsAssignment_1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1163:1: rule__RelationshipGroup__RelationshipsAssignment_1 : ( ruleRelationship ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1172:1: rule__RelationshipGroup__RelationshipsAssignment_1 : ( ruleRelationship ) ;
     public final void rule__RelationshipGroup__RelationshipsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1167:1: ( ( ruleRelationship ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1168:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1176:1: ( ( ruleRelationship ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1177:1: ( ruleRelationship )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1168:1: ( ruleRelationship )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1169:1: ruleRelationship
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1177:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1178:1: ruleRelationship
             {
              before(grammarAccess.getRelationshipGroupAccess().getRelationshipsRelationshipParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_12285);
+            pushFollow(FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_12304);
             ruleRelationship();
 
             state._fsp--;
@@ -3076,20 +3164,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__RelationshipGroup__RelationshipsAssignment_2_1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1178:1: rule__RelationshipGroup__RelationshipsAssignment_2_1 : ( ruleRelationship ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1187:1: rule__RelationshipGroup__RelationshipsAssignment_2_1 : ( ruleRelationship ) ;
     public final void rule__RelationshipGroup__RelationshipsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1182:1: ( ( ruleRelationship ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1183:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1191:1: ( ( ruleRelationship ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1192:1: ( ruleRelationship )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1183:1: ( ruleRelationship )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1184:1: ruleRelationship
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1192:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1193:1: ruleRelationship
             {
              before(grammarAccess.getRelationshipGroupAccess().getRelationshipsRelationshipParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_2_12316);
+            pushFollow(FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_2_12335);
             ruleRelationship();
 
             state._fsp--;
@@ -3117,20 +3205,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__RelationshipsAssignment_0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1193:1: rule__Relationships__RelationshipsAssignment_0 : ( ruleRelationship ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1202:1: rule__Relationships__RelationshipsAssignment_0 : ( ruleRelationship ) ;
     public final void rule__Relationships__RelationshipsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1197:1: ( ( ruleRelationship ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1198:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1206:1: ( ( ruleRelationship ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1207:1: ( ruleRelationship )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1198:1: ( ruleRelationship )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1199:1: ruleRelationship
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1207:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1208:1: ruleRelationship
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsRelationshipParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_02347);
+            pushFollow(FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_02366);
             ruleRelationship();
 
             state._fsp--;
@@ -3158,20 +3246,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationships__RelationshipsAssignment_1_1"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1208:1: rule__Relationships__RelationshipsAssignment_1_1 : ( ruleRelationship ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1217:1: rule__Relationships__RelationshipsAssignment_1_1 : ( ruleRelationship ) ;
     public final void rule__Relationships__RelationshipsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1212:1: ( ( ruleRelationship ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1213:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1221:1: ( ( ruleRelationship ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1222:1: ( ruleRelationship )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1213:1: ( ruleRelationship )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1214:1: ruleRelationship
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1222:1: ( ruleRelationship )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1223:1: ruleRelationship
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsRelationshipParserRuleCall_1_1_0()); 
-            pushFollow(FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_1_12378);
+            pushFollow(FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_1_12397);
             ruleRelationship();
 
             state._fsp--;
@@ -3199,20 +3287,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__TypeAssignment_0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1223:1: rule__Relationship__TypeAssignment_0 : ( ruleConcept ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1232:1: rule__Relationship__TypeAssignment_0 : ( ruleConcept ) ;
     public final void rule__Relationship__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1227:1: ( ( ruleConcept ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1228:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1236:1: ( ( ruleConcept ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1237:1: ( ruleConcept )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1228:1: ( ruleConcept )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1229:1: ruleConcept
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1237:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1238:1: ruleConcept
             {
              before(grammarAccess.getRelationshipAccess().getTypeConceptParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleConcept_in_rule__Relationship__TypeAssignment_02409);
+            pushFollow(FOLLOW_ruleConcept_in_rule__Relationship__TypeAssignment_02428);
             ruleConcept();
 
             state._fsp--;
@@ -3240,20 +3328,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Relationship__DestinationAssignment_2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1238:1: rule__Relationship__DestinationAssignment_2 : ( ruleConcept ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1247:1: rule__Relationship__DestinationAssignment_2 : ( ruleConcept ) ;
     public final void rule__Relationship__DestinationAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1242:1: ( ( ruleConcept ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1243:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1251:1: ( ( ruleConcept ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1252:1: ( ruleConcept )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1243:1: ( ruleConcept )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1244:1: ruleConcept
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1252:1: ( ruleConcept )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1253:1: ruleConcept
             {
              before(grammarAccess.getRelationshipAccess().getDestinationConceptParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleConcept_in_rule__Relationship__DestinationAssignment_22440);
+            pushFollow(FOLLOW_ruleConcept_in_rule__Relationship__DestinationAssignment_22459);
             ruleConcept();
 
             state._fsp--;
@@ -3281,20 +3369,20 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
 
 
     // $ANTLR start "rule__Concept__IdAssignment_0"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1253:1: rule__Concept__IdAssignment_0 : ( RULE_ID ) ;
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1262:1: rule__Concept__IdAssignment_0 : ( RULE_ID ) ;
     public final void rule__Concept__IdAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1257:1: ( ( RULE_ID ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1258:1: ( RULE_ID )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1266:1: ( ( RULE_ID ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1267:1: ( RULE_ID )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1258:1: ( RULE_ID )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1259:1: RULE_ID
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1267:1: ( RULE_ID )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1268:1: RULE_ID
             {
              before(grammarAccess.getConceptAccess().getIdIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Concept__IdAssignment_02471); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Concept__IdAssignment_02490); 
              after(grammarAccess.getConceptAccess().getIdIDTerminalRuleCall_0_0()); 
 
             }
@@ -3317,22 +3405,22 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
     // $ANTLR end "rule__Concept__IdAssignment_0"
 
 
-    // $ANTLR start "rule__Concept__TermAssignment_2"
-    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1268:1: rule__Concept__TermAssignment_2 : ( RULE_TERM ) ;
-    public final void rule__Concept__TermAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Concept__TermAssignment_3"
+    // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1277:1: rule__Concept__TermAssignment_3 : ( RULE_TERM ) ;
+    public final void rule__Concept__TermAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1272:1: ( ( RULE_TERM ) )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1273:1: ( RULE_TERM )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1281:1: ( ( RULE_TERM ) )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1282:1: ( RULE_TERM )
             {
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1273:1: ( RULE_TERM )
-            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1274:1: RULE_TERM
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1282:1: ( RULE_TERM )
+            // ../snomed.visualization.dsl.ui/src-gen/snomed/visualization/dsl/ui/contentassist/antlr/internal/InternalVisualizationDsl.g:1283:1: RULE_TERM
             {
-             before(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_2_0()); 
-            match(input,RULE_TERM,FOLLOW_RULE_TERM_in_rule__Concept__TermAssignment_22502); 
-             after(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_2_0()); 
+             before(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_3_0()); 
+            match(input,RULE_TERM,FOLLOW_RULE_TERM_in_rule__Concept__TermAssignment_32521); 
+             after(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_3_0()); 
 
             }
 
@@ -3351,115 +3439,117 @@ public class InternalVisualizationDslParser extends AbstractInternalContentAssis
         }
         return ;
     }
-    // $ANTLR end "rule__Concept__TermAssignment_2"
+    // $ANTLR end "rule__Concept__TermAssignment_3"
 
     // Delegated rules
 
 
  
 
-    public static final BitSet FOLLOW_ruleModel_in_entryRuleModel61 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModel68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__ExpressionAssignment_in_ruleModel94 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression121 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleExpression128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group__0_in_ruleExpression154 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIsaRelationships_in_entryRuleIsaRelationships181 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIsaRelationships188 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group__0_in_ruleIsaRelationships214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationshipGroup_in_entryRuleRelationshipGroup241 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRelationshipGroup248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__0_in_ruleRelationshipGroup274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationships_in_entryRuleRelationships301 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRelationships308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group__0_in_ruleRelationships334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationship_in_entryRuleRelationship361 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRelationship368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__0_in_ruleRelationship394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConcept_in_entryRuleConcept421 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConcept428 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__Group__0_in_ruleConcept454 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group__0__Impl_in_rule__Expression__Group__0488 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_rule__Expression__Group__1_in_rule__Expression__Group__0491 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__IsaRelationshipsAssignment_0_in_rule__Expression__Group__0__Impl518 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group__1__Impl_in_rule__Expression__Group__1548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__0_in_rule__Expression__Group__1__Impl575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__0__Impl_in_rule__Expression__Group_1__0610 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__1_in_rule__Expression__Group_1__0613 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__Expression__Group_1__0__Impl641 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__1__Impl_in_rule__Expression__Group_1__1672 = new BitSet(new long[]{0x0000000000004010L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__2_in_rule__Expression__Group_1__1675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__UngroupedRelationshipsAssignment_1_1_in_rule__Expression__Group_1__1__Impl702 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Expression__Group_1__2__Impl_in_rule__Expression__Group_1__2733 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Expression__GroupedRelationshipsAssignment_1_2_in_rule__Expression__Group_1__2__Impl760 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group__0__Impl_in_rule__IsaRelationships__Group__0797 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group__1_in_rule__IsaRelationships__Group__0800 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__RelationshipsAssignment_0_in_rule__IsaRelationships__Group__0__Impl827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group__1__Impl_in_rule__IsaRelationships__Group__1857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__0_in_rule__IsaRelationships__Group__1__Impl884 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__0__Impl_in_rule__IsaRelationships__Group_1__0919 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__1_in_rule__IsaRelationships__Group_1__0922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__IsaRelationships__Group_1__0__Impl950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__1__Impl_in_rule__IsaRelationships__Group_1__1981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IsaRelationships__RelationshipsAssignment_1_1_in_rule__IsaRelationships__Group_1__1__Impl1008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__0__Impl_in_rule__RelationshipGroup__Group__01042 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__1_in_rule__RelationshipGroup__Group__01045 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__RelationshipGroup__Group__0__Impl1073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__1__Impl_in_rule__RelationshipGroup__Group__11104 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__2_in_rule__RelationshipGroup__Group__11107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_1_in_rule__RelationshipGroup__Group__1__Impl1134 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__2__Impl_in_rule__RelationshipGroup__Group__21164 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__3_in_rule__RelationshipGroup__Group__21167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__0_in_rule__RelationshipGroup__Group__2__Impl1194 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__3__Impl_in_rule__RelationshipGroup__Group__31225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__RelationshipGroup__Group__3__Impl1253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__0__Impl_in_rule__RelationshipGroup__Group_2__01292 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__1_in_rule__RelationshipGroup__Group_2__01295 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__RelationshipGroup__Group_2__0__Impl1323 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__1__Impl_in_rule__RelationshipGroup__Group_2__11354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_2_1_in_rule__RelationshipGroup__Group_2__1__Impl1381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group__0__Impl_in_rule__Relationships__Group__01415 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Relationships__Group__1_in_rule__Relationships__Group__01418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__RelationshipsAssignment_0_in_rule__Relationships__Group__0__Impl1445 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group__1__Impl_in_rule__Relationships__Group__11475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group_1__0_in_rule__Relationships__Group__1__Impl1502 = new BitSet(new long[]{0x0000000000010002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group_1__0__Impl_in_rule__Relationships__Group_1__01537 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Relationships__Group_1__1_in_rule__Relationships__Group_1__01540 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Relationships__Group_1__0__Impl1568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__Group_1__1__Impl_in_rule__Relationships__Group_1__11599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationships__RelationshipsAssignment_1_1_in_rule__Relationships__Group_1__1__Impl1626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__0__Impl_in_rule__Relationship__Group__01660 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__1_in_rule__Relationship__Group__01663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__TypeAssignment_0_in_rule__Relationship__Group__0__Impl1690 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__1__Impl_in_rule__Relationship__Group__11720 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__2_in_rule__Relationship__Group__11723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Relationship__Group__1__Impl1751 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__Group__2__Impl_in_rule__Relationship__Group__21782 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Relationship__DestinationAssignment_2_in_rule__Relationship__Group__2__Impl1809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__Group__0__Impl_in_rule__Concept__Group__01845 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_rule__Concept__Group__1_in_rule__Concept__Group__01848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__IdAssignment_0_in_rule__Concept__Group__0__Impl1875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__Group__1__Impl_in_rule__Concept__Group__11905 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Concept__Group__2_in_rule__Concept__Group__11908 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Concept__Group__1__Impl1936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__Group__2__Impl_in_rule__Concept__Group__21967 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_rule__Concept__Group__3_in_rule__Concept__Group__21970 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__TermAssignment_2_in_rule__Concept__Group__2__Impl1997 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Concept__Group__3__Impl_in_rule__Concept__Group__32027 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Concept__Group__3__Impl2055 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_rule__Model__ExpressionAssignment2099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIsaRelationships_in_rule__Expression__IsaRelationshipsAssignment_02130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationships_in_rule__Expression__UngroupedRelationshipsAssignment_1_12161 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationshipGroup_in_rule__Expression__GroupedRelationshipsAssignment_1_22192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_02223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_1_12254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_12285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_2_12316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_02347 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_1_12378 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConcept_in_rule__Relationship__TypeAssignment_02409 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConcept_in_rule__Relationship__DestinationAssignment_22440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Concept__IdAssignment_02471 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_TERM_in_rule__Concept__TermAssignment_22502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression66 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleExpression73 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group__0_in_ruleExpression103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIsaRelationships_in_entryRuleIsaRelationships130 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIsaRelationships137 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group__0_in_ruleIsaRelationships163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationshipGroup_in_entryRuleRelationshipGroup190 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRelationshipGroup197 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__0_in_ruleRelationshipGroup223 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationships_in_entryRuleRelationships250 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRelationships257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__Group__0_in_ruleRelationships283 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationship_in_entryRuleRelationship310 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRelationship317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__0_in_ruleRelationship343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConcept_in_entryRuleConcept370 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConcept377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__0_in_ruleConcept403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group__0__Impl_in_rule__Expression__Group__0437 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Expression__Group__1_in_rule__Expression__Group__0440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__IsaRelationshipsAssignment_0_in_rule__Expression__Group__0__Impl467 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group__1__Impl_in_rule__Expression__Group__1497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__0_in_rule__Expression__Group__1__Impl524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__0__Impl_in_rule__Expression__Group_1__0559 = new BitSet(new long[]{0x0000000000001040L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__1_in_rule__Expression__Group_1__0562 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_COLON_in_rule__Expression__Group_1__0__Impl589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__1__Impl_in_rule__Expression__Group_1__1618 = new BitSet(new long[]{0x0000000000001040L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__2_in_rule__Expression__Group_1__1621 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__UngroupedRelationshipsAssignment_1_1_in_rule__Expression__Group_1__1__Impl648 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_rule__Expression__Group_1__2__Impl_in_rule__Expression__Group_1__2679 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Expression__GroupedRelationshipsAssignment_1_2_in_rule__Expression__Group_1__2__Impl706 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group__0__Impl_in_rule__IsaRelationships__Group__0743 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group__1_in_rule__IsaRelationships__Group__0746 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__RelationshipsAssignment_0_in_rule__IsaRelationships__Group__0__Impl773 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group__1__Impl_in_rule__IsaRelationships__Group__1803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__0_in_rule__IsaRelationships__Group__1__Impl830 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__0__Impl_in_rule__IsaRelationships__Group_1__0865 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__1_in_rule__IsaRelationships__Group_1__0868 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PLUS_SIGN_in_rule__IsaRelationships__Group_1__0__Impl895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__Group_1__1__Impl_in_rule__IsaRelationships__Group_1__1924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__IsaRelationships__RelationshipsAssignment_1_1_in_rule__IsaRelationships__Group_1__1__Impl951 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__0__Impl_in_rule__RelationshipGroup__Group__0985 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__1_in_rule__RelationshipGroup__Group__0988 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_OPENING_CURLY_BRACKET_in_rule__RelationshipGroup__Group__0__Impl1015 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__1__Impl_in_rule__RelationshipGroup__Group__11044 = new BitSet(new long[]{0x0000000000000180L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__2_in_rule__RelationshipGroup__Group__11047 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_1_in_rule__RelationshipGroup__Group__1__Impl1074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__2__Impl_in_rule__RelationshipGroup__Group__21104 = new BitSet(new long[]{0x0000000000000180L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__3_in_rule__RelationshipGroup__Group__21107 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__0_in_rule__RelationshipGroup__Group__2__Impl1134 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group__3__Impl_in_rule__RelationshipGroup__Group__31165 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_CLOSING_CURLY_BRACKET_in_rule__RelationshipGroup__Group__3__Impl1192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__0__Impl_in_rule__RelationshipGroup__Group_2__01229 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__1_in_rule__RelationshipGroup__Group_2__01232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_COMMA_in_rule__RelationshipGroup__Group_2__0__Impl1259 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__Group_2__1__Impl_in_rule__RelationshipGroup__Group_2__11288 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RelationshipGroup__RelationshipsAssignment_2_1_in_rule__RelationshipGroup__Group_2__1__Impl1315 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__Group__0__Impl_in_rule__Relationships__Group__01349 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_rule__Relationships__Group__1_in_rule__Relationships__Group__01352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__RelationshipsAssignment_0_in_rule__Relationships__Group__0__Impl1379 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__Group__1__Impl_in_rule__Relationships__Group__11409 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__Group_1__0_in_rule__Relationships__Group__1__Impl1436 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_rule__Relationships__Group_1__0__Impl_in_rule__Relationships__Group_1__01471 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__Relationships__Group_1__1_in_rule__Relationships__Group_1__01474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_COMMA_in_rule__Relationships__Group_1__0__Impl1501 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__Group_1__1__Impl_in_rule__Relationships__Group_1__11530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationships__RelationshipsAssignment_1_1_in_rule__Relationships__Group_1__1__Impl1557 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__0__Impl_in_rule__Relationship__Group__01591 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__1_in_rule__Relationship__Group__01594 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__TypeAssignment_0_in_rule__Relationship__Group__0__Impl1621 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__1__Impl_in_rule__Relationship__Group__11651 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__2_in_rule__Relationship__Group__11654 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_EQUAL_SIGN_in_rule__Relationship__Group__1__Impl1681 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__Group__2__Impl_in_rule__Relationship__Group__21710 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Relationship__DestinationAssignment_2_in_rule__Relationship__Group__2__Impl1737 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__0__Impl_in_rule__Concept__Group__01773 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_rule__Concept__Group__1_in_rule__Concept__Group__01776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__IdAssignment_0_in_rule__Concept__Group__0__Impl1803 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__1__Impl_in_rule__Concept__Group__11833 = new BitSet(new long[]{0x0000000000002800L});
+    public static final BitSet FOLLOW_rule__Concept__Group__2_in_rule__Concept__Group__11836 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PIPE_in_rule__Concept__Group__1__Impl1863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__2__Impl_in_rule__Concept__Group__21892 = new BitSet(new long[]{0x0000000000002800L});
+    public static final BitSet FOLLOW_rule__Concept__Group__3_in_rule__Concept__Group__21895 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__Concept__Group__2__Impl1923 = new BitSet(new long[]{0x0000000000000802L});
+    public static final BitSet FOLLOW_rule__Concept__Group__3__Impl_in_rule__Concept__Group__31954 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_rule__Concept__Group__4_in_rule__Concept__Group__31957 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__TermAssignment_3_in_rule__Concept__Group__3__Impl1984 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__4__Impl_in_rule__Concept__Group__42014 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_rule__Concept__Group__5_in_rule__Concept__Group__42017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_PIPE_in_rule__Concept__Group__4__Impl2044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Concept__Group__5__Impl_in_rule__Concept__Group__52073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_WS_in_rule__Concept__Group__5__Impl2101 = new BitSet(new long[]{0x0000000000000802L});
+    public static final BitSet FOLLOW_ruleIsaRelationships_in_rule__Expression__IsaRelationshipsAssignment_02149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationships_in_rule__Expression__UngroupedRelationshipsAssignment_1_12180 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationshipGroup_in_rule__Expression__GroupedRelationshipsAssignment_1_22211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_02242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConcept_in_rule__IsaRelationships__RelationshipsAssignment_1_12273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_12304 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationship_in_rule__RelationshipGroup__RelationshipsAssignment_2_12335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_02366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRelationship_in_rule__Relationships__RelationshipsAssignment_1_12397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConcept_in_rule__Relationship__TypeAssignment_02428 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConcept_in_rule__Relationship__DestinationAssignment_22459 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Concept__IdAssignment_02490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_TERM_in_rule__Concept__TermAssignment_32521 = new BitSet(new long[]{0x0000000000000002L});
 
 }

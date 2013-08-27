@@ -57,34 +57,6 @@ public interface VisualizationDslPackage extends EPackage
   VisualizationDslPackage eINSTANCE = snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link snomed.visualization.dsl.visualizationDsl.impl.ModelImpl <em>Model</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see snomed.visualization.dsl.visualizationDsl.impl.ModelImpl
-   * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getModel()
-   * @generated
-   */
-  int MODEL = 0;
-
-  /**
-   * The feature id for the '<em><b>Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__EXPRESSION = 0;
-
-  /**
-   * The number of structural features of the '<em>Model</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -92,7 +64,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 1;
+  int EXPRESSION = 0;
 
   /**
    * The feature id for the '<em><b>Isa Relationships</b></em>' containment reference.
@@ -138,7 +110,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getIsaRelationships()
    * @generated
    */
-  int ISA_RELATIONSHIPS = 2;
+  int ISA_RELATIONSHIPS = 1;
 
   /**
    * The feature id for the '<em><b>Relationships</b></em>' containment reference list.
@@ -166,7 +138,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getRelationshipGroup()
    * @generated
    */
-  int RELATIONSHIP_GROUP = 3;
+  int RELATIONSHIP_GROUP = 2;
 
   /**
    * The feature id for the '<em><b>Relationships</b></em>' containment reference list.
@@ -194,7 +166,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getRelationships()
    * @generated
    */
-  int RELATIONSHIPS = 4;
+  int RELATIONSHIPS = 3;
 
   /**
    * The feature id for the '<em><b>Relationships</b></em>' containment reference list.
@@ -222,7 +194,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getRelationship()
    * @generated
    */
-  int RELATIONSHIP = 5;
+  int RELATIONSHIP = 4;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -259,7 +231,7 @@ public interface VisualizationDslPackage extends EPackage
    * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getConcept()
    * @generated
    */
-  int CONCEPT = 6;
+  int CONCEPT = 5;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -288,27 +260,6 @@ public interface VisualizationDslPackage extends EPackage
    */
   int CONCEPT_FEATURE_COUNT = 2;
 
-
-  /**
-   * Returns the meta object for class '{@link snomed.visualization.dsl.visualizationDsl.Model <em>Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see snomed.visualization.dsl.visualizationDsl.Model
-   * @generated
-   */
-  EClass getModel();
-
-  /**
-   * Returns the meta object for the containment reference '{@link snomed.visualization.dsl.visualizationDsl.Model#getExpression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see snomed.visualization.dsl.visualizationDsl.Model#getExpression()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Expression();
 
   /**
    * Returns the meta object for class '{@link snomed.visualization.dsl.visualizationDsl.Expression <em>Expression</em>}'.
@@ -503,24 +454,6 @@ public interface VisualizationDslPackage extends EPackage
    */
   interface Literals
   {
-    /**
-     * The meta object literal for the '{@link snomed.visualization.dsl.visualizationDsl.impl.ModelImpl <em>Model</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see snomed.visualization.dsl.visualizationDsl.impl.ModelImpl
-     * @see snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslPackageImpl#getModel()
-     * @generated
-     */
-    EClass MODEL = eINSTANCE.getModel();
-
-    /**
-     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__EXPRESSION = eINSTANCE.getModel_Expression();
-
     /**
      * The meta object literal for the '{@link snomed.visualization.dsl.visualizationDsl.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->

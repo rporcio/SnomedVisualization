@@ -23,15 +23,6 @@ public interface VisualizationDslFactory extends EFactory
   VisualizationDslFactory eINSTANCE = snomed.visualization.dsl.visualizationDsl.impl.VisualizationDslFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
-   * @generated
-   */
-  Model createModel();
-
-  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -17,7 +17,6 @@ import snomed.visualization.dsl.services.VisualizationDslGrammarAccess;
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.IsaRelationships;
-import snomed.visualization.dsl.visualizationDsl.Model;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.Relationships;
@@ -46,12 +45,6 @@ public class VisualizationDslSemanticSequencer extends AbstractDelegatingSemanti
 			case VisualizationDslPackage.ISA_RELATIONSHIPS:
 				if(context == grammarAccess.getIsaRelationshipsRule()) {
 					sequence_IsaRelationships(context, (IsaRelationships) semanticObject); 
-					return; 
-				}
-				else break;
-			case VisualizationDslPackage.MODEL:
-				if(context == grammarAccess.getModelRule()) {
-					sequence_Model(context, (Model) semanticObject); 
 					return; 
 				}
 				else break;
@@ -91,7 +84,7 @@ public class VisualizationDslSemanticSequencer extends AbstractDelegatingSemanti
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getConceptAccess().getIdIDTerminalRuleCall_0_0(), semanticObject.getId());
-		feeder.accept(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_2_0(), semanticObject.getTerm());
+		feeder.accept(grammarAccess.getConceptAccess().getTermTERMTerminalRuleCall_3_0(), semanticObject.getTerm());
 		feeder.finish();
 	}
 	
@@ -111,22 +104,6 @@ public class VisualizationDslSemanticSequencer extends AbstractDelegatingSemanti
 	 */
 	protected void sequence_IsaRelationships(EObject context, IsaRelationships semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     expression=Expression
-	 */
-	protected void sequence_Model(EObject context, Model semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, VisualizationDslPackage.Literals.MODEL__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VisualizationDslPackage.Literals.MODEL__EXPRESSION));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getModelAccess().getExpressionExpressionParserRuleCall_0(), semanticObject.getExpression());
-		feeder.finish();
 	}
 	
 	

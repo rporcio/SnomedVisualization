@@ -2,37 +2,39 @@ grammar snomed.visualization.dsl.VisualizationDsl with org.eclipse.xtext.common.
 
 generate visualizationDsl "http://www.visualization.snomed/dsl/VisualizationDsl"
 
-Model:
-	expression = Expression;
-
-Expression:
-	isaRelationships = IsaRelationships (':' ungroupedRelationships = Relationships* groupedRelationships += RelationshipGroup*)?
+Expression hidden(WS, SL_COMMENT, ML_COMMENT):
+	isaRelationships = IsaRelationships (COLON ungroupedRelationships = Relationships* groupedRelationships += RelationshipGroup*)?
 ;
 
 IsaRelationships:
-	relationships += Concept ('+' relationships += Concept)*
+	relationships += Concept (PLUS_SIGN relationships += Concept)*
 ;
 
 RelationshipGroup:
-	'{' relationships += Relationship (',' relationships += Relationship)* '}'
+	OPENING_CURLY_BRACKET relationships += Relationship (COMMA relationships += Relationship)* CLOSING_CURLY_BRACKET
 ;	
 
 Relationships:
-	relationships += Relationship (',' relationships += Relationship)*
+	relationships += Relationship (COMMA relationships += Relationship)*
 ;
 
 Relationship:
-	type = Concept '=' destination = Concept
+	type = Concept EQUAL_SIGN destination = Concept
 ;
 
 Concept:
-	id = ID '|' term = TERM '|'
+	id = ID PIPE WS* term = TERM PIPE WS*
 ;
 
-terminal ID:
-	'1'..'9' ('0'..'9')*
-;
-
-terminal TERM:
-	('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|' ')*
-;
+terminal ID: '1'..'9' ('0'..'9')*;
+terminal TERM: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|' ')*;
+terminal WS : (' '|'\t'|'\n'|'\r');
+terminal ML_COMMENT	: '/*' -> '*/';
+terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+terminal PIPE : '|';
+terminal COLON : ':';
+terminal OPENING_CURLY_BRACKET : '{';
+terminal CLOSING_CURLY_BRACKET: '}';
+terminal EQUAL_SIGN: '=';
+terminal COMMA: ',';
+terminal PLUS_SIGN : '+';
