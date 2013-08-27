@@ -86,12 +86,12 @@ public class VisualizationDiagramElementFigure extends Figure {
 				Rectangle clientArea = innerShape.getClientArea();
 				
 				int width = clientArea.x + clientArea.width - 16;
-				int height = clientArea.y + clientArea.height;
-				
+				int height = clientArea.y + clientArea.height/2;
+
 				if (me.x > width) {
-					if (me.y > height - 16) {
+					if (me.y > height && me.y < height + 16) {
 						firePropertyChange("characteristic", null, null);
-					} else if (me.y < height - 16 && me.y > height - 32 && !diagramElement.isMainConcept()) {
+					} else if (me.y < height && me.y > height - 16) {
 						firePropertyChange("deletion", null, null);
 					}
 				}
@@ -160,8 +160,8 @@ public class VisualizationDiagramElementFigure extends Figure {
 			
 			if (mouseOver) {
 				if (!diagramElement.isMainConcept()) {
-					setConstraint(deletionIcon, new Rectangle(0, 0, rectangle.width, rectangle.height-10));
-					setConstraint(characteristicIcon, new Rectangle(0, 0, rectangle.width, rectangle.height+30));
+					setConstraint(deletionIcon, new Rectangle(0, 0, rectangle.width, rectangle.height-15));
+					setConstraint(characteristicIcon, new Rectangle(0, 0, rectangle.width, rectangle.height+15));
 				}
 			}
 		} 
