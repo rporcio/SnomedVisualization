@@ -5,58 +5,53 @@ import java.util.Iterator;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.xtext.nodemodel.INode;
 
+import snomed.visualization.vaadin.VisualizationDsl;
+import snomed.visualization.vaadin.VisualizationDslModifyEvent;
+import snomed.visualization.vaadin.listener.IVisualizationDslModifyListener;
 import snomed.visualization.vaadin.util.VisualizationDslUtil;
 
 import com.vaadin.server.Page;
 import com.vaadin.shared.Position;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Notification.Type;
-import com.vaadin.ui.RichTextArea;
+import com.vaadin.ui.VerticalLayout;
 
 /**
- * Represents a {@link RichTextArea} which contains the dsl of the expression.
+ * View to show the dsl representation of the expression. 
  * 
  * @author rporcio
  */
-public class VisualizationDslView extends RichTextArea {
+public class VisualizationDslView extends VerticalLayout implements IVisualizationDslModifyListener {
 
-	private static final long serialVersionUID = -3033591980219753855L;
-	
-	private VisualizationView visualizationView;
-	private Notification warningNotification;
+	private static final long serialVersionUID = -2580308559244447759L;
+	private VisualizationDsl visualizationDsl;
 	private VisualizationDslUtil dslUtil;
+	private Notification warningNotification;
+	private VisualizationView visualizationView;
 	private boolean containsErrors;
 	
-	private ValueChangeListener valueChangeListener = new ValueChangeListener() {
-
-		private static final long serialVersionUID = 3987421243182063521L;
-
-		@Override
-		public void valueChange(com.vaadin.data.Property.ValueChangeEvent event) {
-			handleValueChange(true);
-		}
-	};
-
 	public VisualizationDslView(VisualizationView visualizationView) {
 		this.visualizationView = visualizationView;
-		this.dslUtil = new VisualizationDslUtil();
-		this.warningNotification = new Notification("Errors in the expression", "", Type.ERROR_MESSAGE);
-		this.warningNotification.setPosition(Position.BOTTOM_RIGHT);
-		this.containsErrors = false;
-		
-		setImmediate(true);
-		setDescription("The grammar of the expression.");
 		setSizeFull();
-	}
+		visualizationDsl = new VisualizationDsl();
+		
+		dslUtil = new VisualizationDslUtil();
+		
+		visualizationDsl.setSizeFull();
+		visualizationDsl.addModifyListener(this);
+		visualizationDsl.setImmediate(false);
 
+		addComponent(visualizationDsl);
+		
+		warningNotification = new Notification("Errors in the expression", "", Type.ERROR_MESSAGE);
+		warningNotification.setPosition(Position.BOTTOM_RIGHT);
+	}
+	
 	/**
 	 * Visualize the grammar in text format.
 	 */
 	public void visualizeGrammar() {
-		removeValueChangeListener(valueChangeListener);
-		setValue(dslUtil.convertToPresentation(visualizationView.getExpression()));
-		handleValueChange(false);
-		addValueChangeListener(valueChangeListener);
+		visualizationDsl.setState(dslUtil.addHtmlFormatters(dslUtil.convertToPresentation(visualizationView.getExpression())));
 	}
 
 	/**
@@ -67,21 +62,17 @@ public class VisualizationDslView extends RichTextArea {
 	public boolean isContainsErrors() {
 		return containsErrors;
 	}
-	
-	private void handleValueChange(final boolean updateDiagram) {
-		String dsl = dslUtil.removeHtmlFormatters(getValue());
+
+	@Override
+	public void handleModify(VisualizationDslModifyEvent event) {
+		String dsl = dslUtil.removeHtmlFormatters(event.getDsl());
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;
 			warningNotification.setDelayMsec(0);
-			
-			if (updateDiagram) {
-				visualizationView.updateDiagram(dslUtil.updatePreviousExpression(visualizationView.getExpression(), dsl));
-			}
-			
-			removeValueChangeListener(valueChangeListener);
-			setValue(dslUtil.addHtmlFormatters(dsl));
-			addValueChangeListener(valueChangeListener);
+
+			visualizationView.updateDiagram(dslUtil.updatePreviousExpression(visualizationView.getExpression(), dsl));
+			visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl));
 		} else {
 			containsErrors = true;
 			
@@ -111,9 +102,7 @@ public class VisualizationDslView extends RichTextArea {
 				}
 			}
 			
-			removeValueChangeListener(valueChangeListener);
-			setValue(dslUtil.addHtmlFormatters(errorMarkedDsl));
-			addValueChangeListener(valueChangeListener);
+			visualizationDsl.getState().setText(dslUtil.addHtmlFormatters(errorMarkedDsl));
 			
 			warningNotification.setDescription(builder.toString());
 			warningNotification.setDelayMsec(5000);

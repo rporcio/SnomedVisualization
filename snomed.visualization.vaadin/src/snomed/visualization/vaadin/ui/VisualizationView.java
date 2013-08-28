@@ -65,7 +65,8 @@ public class VisualizationView extends VerticalLayout {
 	private final VerticalSplitPanel visualizationPanel;
 	private final HorizontalSplitPanel expressionPanel;
 	private final VisualizationDiagramView diagramView;
-//	private final VisualizationDslView dslView;
+//	private final VisualizationDslViewOld dslView;
+	private VisualizationDslView dslView;
 	
 	private Button zoomInButton;
 	private Button zoomOutButton;
@@ -78,7 +79,6 @@ public class VisualizationView extends VerticalLayout {
 
 	private Label titleLabel;
 
-	private VisualizationDslView2 dslView;
 	
 	public VisualizationView(final VisualizationUI visualizationUI) {
 		setSizeFull();
@@ -87,13 +87,13 @@ public class VisualizationView extends VerticalLayout {
 		this.visualizationPanel = new VerticalSplitPanel();
 		this.expressionPanel = new HorizontalSplitPanel();
 		diagramView = new VisualizationDiagramView(this);
-//		dslView = new VisualizationDslView(this);
+//		dslView = new VisualizationDslViewOld(this);
+		dslView = new VisualizationDslView(this);
 		
-//		expressionPanel.setFirstComponent(dslView);
+		expressionPanel.setFirstComponent(dslView);
 		expressionPanel.setSecondComponent(diagramView);
 		expressionPanel.setSplitPosition(45.0f);
 		
-		dslView = new VisualizationDslView2(this);
 		expressionPanel.setFirstComponent(dslView);
 		
 		visualizationPanel.setFirstComponent(createToolBar());
