@@ -27,6 +27,23 @@
 		display: none;
 	}
 	
+	.gwt-RichTextArea {
+		width: 100%;
+		height: 100%;
+		
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     	box-sizing: border-box;  		/* Opera/IE 8+ */
+     
+     	background-color:white;	
+	}
+	
+	.disable-scroll {
+		overflow:hidden;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	
 	.v-caption {
 		overflow: hidden;
 		white-space: nowrap;
@@ -36,7 +53,4 @@
 		margin-left:10px;
 	}
 	
-	.disable-scroll {
-		overflow:hidden;
-	}
 }
