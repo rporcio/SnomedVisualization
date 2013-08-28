@@ -65,6 +65,8 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 
 	@Override
 	public void handleModify(VisualizationDslModifyEvent event) {
+		// TODO add schedule because of gwt-richtextarea bug(?)
+		
 		String dsl = dslUtil.removeHtmlFormatters(event.getDsl());
 		
 		if (dslUtil.isValid(dsl)) {
