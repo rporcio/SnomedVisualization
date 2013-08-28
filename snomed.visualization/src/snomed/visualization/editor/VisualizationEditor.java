@@ -475,14 +475,28 @@ public class VisualizationEditor extends GraphicalEditor {
 	
 	private void addContentAdapter() {
 		// TODO
-		expression.eAdapters().add(adapter);
-		expression.getConcept().eAdapters().add(adapter);
-		expression.getIsaRelationships().eAdapters().add(adapter);
-		if (null != expression.getUngroupedRelationships()) {
-			expression.getUngroupedRelationships().eAdapters().add(adapter);
+		if (!expression.eAdapters().contains(adapter)) {
+			expression.eAdapters().add(adapter);
 		}
+		
+		if (!expression.getConcept().eAdapters().contains(adapter)) {
+			expression.getConcept().eAdapters().add(adapter);
+		}
+		
+		if (!expression.getIsaRelationships().eAdapters().contains(adapter)) {
+			expression.getIsaRelationships().eAdapters().add(adapter);
+		}
+		
+		if (null != expression.getUngroupedRelationships()) {
+			if (!expression.getUngroupedRelationships().eAdapters().contains(adapter)) {
+				expression.getUngroupedRelationships().eAdapters().add(adapter);
+			}
+		}
+		
 		for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
-			relationshipGroup.eAdapters().add(adapter);
+			if (!relationshipGroup.eAdapters().contains(adapter)) {
+				relationshipGroup.eAdapters().add(adapter);
+			}
 		}
 	}
 }
