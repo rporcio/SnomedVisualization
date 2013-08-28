@@ -1,6 +1,8 @@
-package snomed.visualization.vaadin;
+package snomed.visualization.vaadin.listener;
 
 import java.lang.reflect.Method;
+
+import snomed.visualization.vaadin.VisualizationModifyEvent;
 
 import com.vaadin.util.ReflectTools;
 

@@ -1,5 +1,7 @@
 package snomed.visualization.vaadin.listener;
 
+import java.io.Serializable;
+
 import org.eclipse.emf.ecore.EObject;
 
 import com.vaadin.ui.Notification;
@@ -9,7 +11,6 @@ import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.vaadin.VisualizationModifyEvent;
-import snomed.visualization.vaadin.IVisualizationModifyListener;
 import snomed.visualization.vaadin.client.model.VisualizationModifyType;
 import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
 
@@ -18,7 +19,9 @@ import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
  * 
  * @author rporcio
  */
-public class VisualizationModifyListener implements IVisualizationModifyListener {
+public class VisualizationModifyListener implements IVisualizationModifyListener, Serializable {
+
+	private static final long serialVersionUID = -6149699223399112396L;
 
 	private VisualizationDiagramUtil diagramUtil;
 

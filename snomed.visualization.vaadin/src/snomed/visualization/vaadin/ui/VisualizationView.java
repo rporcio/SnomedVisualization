@@ -3,19 +3,22 @@ package snomed.visualization.vaadin.ui;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
+import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.vaadin.wizard.VisualizationRelationshipWizard;
 
-import com.vaadin.event.MouseEvents;
-import com.vaadin.event.MouseEvents.ClickListener;
 import com.vaadin.server.ThemeResource;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.HorizontalSplitPanel;
-import com.vaadin.ui.Image;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.VerticalSplitPanel;
+import com.vaadin.ui.themes.BaseTheme;
 
 /**
  * Visualization view that contains the diagram and the dsl view.
@@ -34,25 +37,24 @@ public class VisualizationView extends VerticalLayout {
 		}
 	};
 	
-	ClickListener clickListener = new MouseEvents.ClickListener() {
-		
-		private static final long serialVersionUID = -2673250217901428705L;
+	com.vaadin.ui.Button.ClickListener clickListener = new Button.ClickListener() {
+		private static final long serialVersionUID = -4187681077603713464L;
 
 		@Override
-		public void click(com.vaadin.event.MouseEvents.ClickEvent event) {
-			if (event.getSource().equals(zoomInImage)) {
+		public void buttonClick(ClickEvent event) {
+			if (event.getSource().equals(zoomInButton)) {
 				if (size < 150) {
 					size += 5;
 					diagramView.zoomDiagram(size);
 				}
-			} else if (event.getSource().equals(zoomOutImage)) {
+			} else if (event.getSource().equals(zoomOutButton)) {
 				if (size > 70) {
 					size -= 5;
 					diagramView.zoomDiagram(size);
 				}
-			} else if (event.getSource().equals(newRelationshipImage)) {
+			} else if (event.getSource().equals(newRelationshipButton)) {
 				visualizationUI.addWindow(new VisualizationRelationshipWizard(VisualizationView.this));
-			} else if (event.getSource().equals(changeDiagramTypeImage)) {
+			} else if (event.getSource().equals(changeDiagramTypeButton)) {
 				diagramView.changeDiagramTpye();
 				diagramView.visualizeDiagram();
 			}
@@ -65,14 +67,16 @@ public class VisualizationView extends VerticalLayout {
 	private final VisualizationDiagramView diagramView;
 	private final VisualizationDslView dslView;
 	
-	private Image zoomInImage;
-	private Image zoomOutImage;
-	private Image newRelationshipImage;
-	private Image changeDiagramTypeImage;
-
+	private Button zoomInButton;
+	private Button zoomOutButton;
+	private Button newRelationshipButton;
+	private Button changeDiagramTypeButton;
+	
 	private int size = 100;
 	
 	private Expression expression;
+
+	private Label titleLabel;
 	
 	public VisualizationView(final VisualizationUI visualizationUI) {
 		setSizeFull();
@@ -83,9 +87,9 @@ public class VisualizationView extends VerticalLayout {
 		diagramView = new VisualizationDiagramView(this);
 		dslView = new VisualizationDslView(this);
 		
-		expressionPanel.setFirstComponent(diagramView);
-		expressionPanel.setSecondComponent(dslView);
-		expressionPanel.setSplitPosition(67.5f);
+		expressionPanel.setFirstComponent(dslView);
+		expressionPanel.setSecondComponent(diagramView);
+		expressionPanel.setSplitPosition(45.0f);
 		
 		visualizationPanel.setFirstComponent(createToolBar());
 		visualizationPanel.setSecondComponent(expressionPanel);
@@ -118,6 +122,10 @@ public class VisualizationView extends VerticalLayout {
 		diagramView.visualizeDiagram();
 		dslView.visualizeGrammar();
 		addContentAdapter();
+		
+		Concept concept = expression.getConcept();
+		String title = concept.getId() + "|" + concept.getTerm() + "|";
+		titleLabel.setCaption(title);
 	}
 
 	/**
@@ -143,25 +151,41 @@ public class VisualizationView extends VerticalLayout {
 	private Component createToolBar() {
 		HorizontalLayout layout = new HorizontalLayout();
 		layout.setSpacing(true);
+		layout.setSizeFull();
+		layout.setStyleName("disable-scroll");
 		
-		zoomInImage = new Image(null, new ThemeResource("icons/zoom-in.png"));
-		zoomInImage.addClickListener(clickListener);
-		zoomInImage.setDescription("Zoom in to the diagram");
-		zoomOutImage = new Image(null, new ThemeResource("icons/zoom-out.png"));
-		zoomOutImage.addClickListener(clickListener);
-		zoomOutImage.setDescription("Zoom out from the diagram");
-		newRelationshipImage = new Image(null, new ThemeResource("icons/new-relationship.png"));
-		newRelationshipImage.addClickListener(clickListener);
-		newRelationshipImage.setDescription("Add a new relationship to the expression");
-		changeDiagramTypeImage = new Image(null, new ThemeResource("icons/change-diagram-type.png"));
-		changeDiagramTypeImage.addClickListener(clickListener);
-		changeDiagramTypeImage.setDescription("Change the type of the diagram");
+		zoomInButton = new Button();
+		zoomInButton.setIcon(new ThemeResource("icons/zoom-in.png"), "Zoom in");
+		zoomInButton.setDescription("Zoom in to the diagram");
+		zoomInButton.setStyleName(BaseTheme.BUTTON_LINK);
+		zoomInButton.addClickListener(clickListener);
+		zoomOutButton = new Button();
+		zoomOutButton.setIcon(new ThemeResource("icons/zoom-out.png"), "Zoom out");
+		zoomOutButton.setDescription("Zoom out from the diagram");
+		zoomOutButton.setStyleName(BaseTheme.BUTTON_LINK);
+		zoomOutButton.addClickListener(clickListener);
+		newRelationshipButton = new Button();
+		newRelationshipButton.setIcon(new ThemeResource("icons/new-relationship.png"), "New relationship");
+		newRelationshipButton.setDescription("Add a new relationship to the expression");
+		newRelationshipButton.setStyleName(BaseTheme.BUTTON_LINK);
+		newRelationshipButton.addClickListener(clickListener);
+		changeDiagramTypeButton = new Button();
+		changeDiagramTypeButton.setIcon(new ThemeResource("icons/change-diagram-type.png"), "Change diagram type");
+		changeDiagramTypeButton.setDescription("Change the type of the diagram");
+		changeDiagramTypeButton.setStyleName(BaseTheme.BUTTON_LINK);
+		changeDiagramTypeButton.addClickListener(clickListener);
 		
-		layout.addComponent(zoomInImage);
-		layout.addComponent(zoomOutImage);
-		layout.addComponent(newRelationshipImage);
-		layout.addComponent(changeDiagramTypeImage);
+		titleLabel = new Label();
+		titleLabel.setSizeFull();
+
+		layout.addComponents(titleLabel, zoomInButton, zoomOutButton, newRelationshipButton, changeDiagramTypeButton);
 		
+		layout.setExpandRatio(titleLabel, 1.0f);
+		layout.setComponentAlignment(zoomInButton, Alignment.MIDDLE_RIGHT);
+		layout.setComponentAlignment(zoomOutButton, Alignment.MIDDLE_RIGHT);
+		layout.setComponentAlignment(newRelationshipButton, Alignment.MIDDLE_RIGHT);
+		layout.setComponentAlignment(changeDiagramTypeButton, Alignment.MIDDLE_RIGHT);
+
 		return layout;
 	}
 	

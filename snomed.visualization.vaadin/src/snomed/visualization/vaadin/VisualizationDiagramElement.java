@@ -7,6 +7,7 @@ import snomed.visualization.vaadin.client.diagramelement.VisualizationDiagramEle
 import snomed.visualization.vaadin.client.model.VisualizationModifyType;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
+import snomed.visualization.vaadin.listener.IVisualizationModifyListener;
 
 public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent {
 

@@ -1,5 +1,6 @@
 package snomed.visualization.vaadin.util;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -27,8 +28,10 @@ import com.vaadin.server.ThemeResource;
  * 
  * @author rporcio
  */
-public class VisualizationDiagramUtil {
+public class VisualizationDiagramUtil implements Serializable {
 	
+	private static final long serialVersionUID = 70837089898207387L;
+
 	private int zoom;
 	private int depth;
 	private Map<String, VisualizationDiagramElement> diagramElements;
