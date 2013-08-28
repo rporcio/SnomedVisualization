@@ -2,8 +2,6 @@ package snomed.visualization.vaadin.client.diagramconnection;
 
 import java.util.List;
 
-import com.vaadin.shared.AbstractComponentState;
-
 import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinate;
 
 /**

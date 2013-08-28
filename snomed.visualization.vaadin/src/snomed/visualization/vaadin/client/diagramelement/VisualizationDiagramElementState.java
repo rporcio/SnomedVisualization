@@ -1,9 +1,8 @@
 package snomed.visualization.vaadin.client.diagramelement;
 
-import com.vaadin.shared.AbstractComponentState;
-import com.vaadin.shared.communication.URLReference;
-
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
+
+import com.vaadin.shared.communication.URLReference;
 
 /**
  * State class for the diagram elements.
