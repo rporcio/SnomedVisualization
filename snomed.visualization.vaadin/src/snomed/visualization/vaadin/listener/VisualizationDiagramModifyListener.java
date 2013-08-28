@@ -10,7 +10,7 @@ import com.vaadin.ui.Notification.Type;
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
-import snomed.visualization.vaadin.VisualizationModifyEvent;
+import snomed.visualization.vaadin.VisualizationDiagramModifyEvent;
 import snomed.visualization.vaadin.client.model.VisualizationModifyType;
 import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
 
@@ -19,18 +19,18 @@ import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
  * 
  * @author rporcio
  */
-public class VisualizationModifyListener implements IVisualizationModifyListener, Serializable {
+public class VisualizationDiagramModifyListener implements IVisualizationDiagramModifyListener, Serializable {
 
 	private static final long serialVersionUID = -6149699223399112396L;
 
 	private VisualizationDiagramUtil diagramUtil;
 
-	public VisualizationModifyListener(VisualizationDiagramUtil visualizationDiagramUtil) {
+	public VisualizationDiagramModifyListener(VisualizationDiagramUtil visualizationDiagramUtil) {
 		this.diagramUtil = visualizationDiagramUtil;
 	}
 
 	@Override
-	public void handleModify(VisualizationModifyEvent event) {
+	public void handleModify(VisualizationDiagramModifyEvent event) {
 		if (diagramUtil.canEdit()) {
 			if (event.getModifyType().equals(VisualizationModifyType.CHARACTERISTIC_TYPE)) {
 				EObject object = changeCharacteristicType(event);
@@ -47,7 +47,7 @@ public class VisualizationModifyListener implements IVisualizationModifyListener
 		}
 	}
 	
-	private EObject changeCharacteristicType(VisualizationModifyEvent event) {
+	private EObject changeCharacteristicType(VisualizationDiagramModifyEvent event) {
 		String id = event.getId();
 		
 		if (diagramUtil.getExpression().getConcept().getId().equals(id)) {
@@ -93,7 +93,7 @@ public class VisualizationModifyListener implements IVisualizationModifyListener
 		return null;
 	}
 
-	private void deleteDiagramElement(VisualizationModifyEvent event) {
+	private void deleteDiagramElement(VisualizationDiagramModifyEvent event) {
 		String id = event.getId();
 		
 		if (diagramUtil.getExpression().getConcept().getId().equals(id)) {

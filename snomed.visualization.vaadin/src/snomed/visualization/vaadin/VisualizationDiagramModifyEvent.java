@@ -6,7 +6,7 @@ import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Component.Event;
 
-public class VisualizationModifyEvent extends Event {
+public class VisualizationDiagramModifyEvent extends Event {
 
 	private static final long serialVersionUID = 477159734457000106L;
 	
@@ -14,7 +14,7 @@ public class VisualizationModifyEvent extends Event {
 	private final VisualizationComponentType componentType;
 	private final VisualizationModifyType modifyType;
 	
-	public VisualizationModifyEvent(Component component, VisualizationComponentType componentType, VisualizationModifyType modifyType, String id) {
+	public VisualizationDiagramModifyEvent(Component component, VisualizationComponentType componentType, VisualizationModifyType modifyType, String id) {
 		super(component);
 		this.componentType = componentType;
 		this.modifyType = modifyType;

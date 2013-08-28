@@ -57,6 +57,10 @@ public class VisualizationDiagramElementWidget extends Composite {
 		setStyleName(CLASSNAME);
 
 	}
+	
+	public void setRpc(VisualizationDiagramElementServerRpc rpc) {
+		this.rpc = rpc;
+	}
 
 	public void visualize(final VisualizationDiagramElementState state) {
 		if (null != canvas) {
@@ -271,10 +275,6 @@ public class VisualizationDiagramElementWidget extends Composite {
 			context.fillText(term.substring(term.length() / 2), 3 + componentWidth / 2 - position, 7 + componentHeight / 1.5);
 		}
 		context.restore();
-	}
-
-	public void setRpc(VisualizationDiagramElementServerRpc rpc) {
-		this.rpc = rpc;
 	}
 
 }

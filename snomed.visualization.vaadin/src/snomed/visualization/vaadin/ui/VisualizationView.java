@@ -65,7 +65,7 @@ public class VisualizationView extends VerticalLayout {
 	private final VerticalSplitPanel visualizationPanel;
 	private final HorizontalSplitPanel expressionPanel;
 	private final VisualizationDiagramView diagramView;
-	private final VisualizationDslView dslView;
+//	private final VisualizationDslView dslView;
 	
 	private Button zoomInButton;
 	private Button zoomOutButton;
@@ -77,6 +77,8 @@ public class VisualizationView extends VerticalLayout {
 	private Expression expression;
 
 	private Label titleLabel;
+
+	private VisualizationDslView2 dslView;
 	
 	public VisualizationView(final VisualizationUI visualizationUI) {
 		setSizeFull();
@@ -85,11 +87,14 @@ public class VisualizationView extends VerticalLayout {
 		this.visualizationPanel = new VerticalSplitPanel();
 		this.expressionPanel = new HorizontalSplitPanel();
 		diagramView = new VisualizationDiagramView(this);
-		dslView = new VisualizationDslView(this);
+//		dslView = new VisualizationDslView(this);
 		
-		expressionPanel.setFirstComponent(dslView);
+//		expressionPanel.setFirstComponent(dslView);
 		expressionPanel.setSecondComponent(diagramView);
 		expressionPanel.setSplitPosition(45.0f);
+		
+		dslView = new VisualizationDslView2(this);
+		expressionPanel.setFirstComponent(dslView);
 		
 		visualizationPanel.setFirstComponent(createToolBar());
 		visualizationPanel.setSecondComponent(expressionPanel);
@@ -154,41 +159,34 @@ public class VisualizationView extends VerticalLayout {
 		layout.setSizeFull();
 		layout.setStyleName("disable-scroll");
 		
-		zoomInButton = new Button();
-		zoomInButton.setIcon(new ThemeResource("icons/zoom-in.png"), "Zoom in");
-		zoomInButton.setDescription("Zoom in to the diagram");
-		zoomInButton.setStyleName(BaseTheme.BUTTON_LINK);
-		zoomInButton.addClickListener(clickListener);
-		zoomOutButton = new Button();
-		zoomOutButton.setIcon(new ThemeResource("icons/zoom-out.png"), "Zoom out");
-		zoomOutButton.setDescription("Zoom out from the diagram");
-		zoomOutButton.setStyleName(BaseTheme.BUTTON_LINK);
-		zoomOutButton.addClickListener(clickListener);
-		newRelationshipButton = new Button();
-		newRelationshipButton.setIcon(new ThemeResource("icons/new-relationship.png"), "New relationship");
-		newRelationshipButton.setDescription("Add a new relationship to the expression");
-		newRelationshipButton.setStyleName(BaseTheme.BUTTON_LINK);
-		newRelationshipButton.addClickListener(clickListener);
-		changeDiagramTypeButton = new Button();
-		changeDiagramTypeButton.setIcon(new ThemeResource("icons/change-diagram-type.png"), "Change diagram type");
-		changeDiagramTypeButton.setDescription("Change the type of the diagram");
-		changeDiagramTypeButton.setStyleName(BaseTheme.BUTTON_LINK);
-		changeDiagramTypeButton.addClickListener(clickListener);
+		zoomInButton = createToolbarButton("icons/zoom-in.png", "Zoom in", "Zoom in to the diagram");
+		zoomOutButton = createToolbarButton("icons/zoom-out.png", "Zoom out", "Zoom out from the diagram");
+		newRelationshipButton = createToolbarButton("icons/new-relationship.png", "New relationship", "Add a new relationship to the expression");
+		changeDiagramTypeButton = createToolbarButton("icons/change-diagram-type.png", "Change diagram type", "Change the type of the diagram");
 		
 		titleLabel = new Label();
 		titleLabel.setSizeFull();
 
 		layout.addComponents(titleLabel, zoomInButton, zoomOutButton, newRelationshipButton, changeDiagramTypeButton);
-		
 		layout.setExpandRatio(titleLabel, 1.0f);
-		layout.setComponentAlignment(zoomInButton, Alignment.MIDDLE_RIGHT);
-		layout.setComponentAlignment(zoomOutButton, Alignment.MIDDLE_RIGHT);
-		layout.setComponentAlignment(newRelationshipButton, Alignment.MIDDLE_RIGHT);
-		layout.setComponentAlignment(changeDiagramTypeButton, Alignment.MIDDLE_RIGHT);
+		layout.setComponentAlignment(zoomInButton, Alignment.TOP_RIGHT);
+		layout.setComponentAlignment(zoomOutButton, Alignment.TOP_RIGHT);
+		layout.setComponentAlignment(newRelationshipButton, Alignment.TOP_RIGHT);
+		layout.setComponentAlignment(changeDiagramTypeButton, Alignment.TOP_RIGHT);
 
 		return layout;
 	}
 	
+	private Button createToolbarButton(String resourcePath, String altText, String description) {
+		Button button = new Button();
+		button.setIcon(new ThemeResource(resourcePath), altText);
+		button.setDescription(description);
+		button.setStyleName(BaseTheme.BUTTON_LINK);
+		button.addClickListener(clickListener);
+		
+		return button;
+	}
+
 	private void addContentAdapter() {
 		// TODO
 		expression.eAdapters().add(adapter);

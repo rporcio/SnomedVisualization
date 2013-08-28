@@ -14,7 +14,7 @@ import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinat
 import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinate.ConnectionType;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
-import snomed.visualization.vaadin.listener.VisualizationModifyListener;
+import snomed.visualization.vaadin.listener.VisualizationDiagramModifyListener;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView.DiagramType;
 
@@ -39,14 +39,14 @@ public class VisualizationDiagramUtil implements Serializable {
 	private final VisualizationDiagramView diagramView;
 	private ResourceReference characteristicIcon;
 	private ResourceReference deletionIcon;
-	private VisualizationModifyListener modifyListener;
+	private VisualizationDiagramModifyListener modifyListener;
 	
 	public VisualizationDiagramUtil(VisualizationDiagramView diagramView) {
 		this.diagramView = diagramView;
 		this.zoom = 100;
 		this.characteristicIcon = new ResourceReference(new ThemeResource("icons/changetype.png"), null, "");
 		this.deletionIcon = new ResourceReference(new ThemeResource("icons/trash.png"), null, "");
-		this.modifyListener = new VisualizationModifyListener(this);
+		this.modifyListener = new VisualizationDiagramModifyListener(this);
 	}
 
 	/**

@@ -2,13 +2,13 @@ package snomed.visualization.vaadin.listener;
 
 import java.lang.reflect.Method;
 
-import snomed.visualization.vaadin.VisualizationModifyEvent;
+import snomed.visualization.vaadin.VisualizationDiagramModifyEvent;
 
 import com.vaadin.util.ReflectTools;
 
-public interface IVisualizationModifyListener {
-	static Method METHOD = ReflectTools.findMethod(IVisualizationModifyListener.class,
-            "handleModify", VisualizationModifyEvent.class);
+public interface IVisualizationDiagramModifyListener {
+	static Method METHOD = ReflectTools.findMethod(IVisualizationDiagramModifyListener.class,
+            "handleModify", VisualizationDiagramModifyEvent.class);
 	
-	void handleModify(VisualizationModifyEvent event);
+	void handleModify(VisualizationDiagramModifyEvent event);
 }

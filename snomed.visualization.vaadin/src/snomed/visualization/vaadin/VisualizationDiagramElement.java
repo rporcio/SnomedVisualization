@@ -7,7 +7,7 @@ import snomed.visualization.vaadin.client.diagramelement.VisualizationDiagramEle
 import snomed.visualization.vaadin.client.model.VisualizationModifyType;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
-import snomed.visualization.vaadin.listener.IVisualizationModifyListener;
+import snomed.visualization.vaadin.listener.IVisualizationDiagramModifyListener;
 
 public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent {
 
@@ -19,7 +19,7 @@ public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent
 
 		@Override
 		public void handleModify(VisualizationComponentType componentType, VisualizationModifyType modifyType, String conceptId) {
-			fireEvent(new VisualizationModifyEvent(VisualizationDiagramElement.this, componentType, modifyType,conceptId));
+			fireEvent(new VisualizationDiagramModifyEvent(VisualizationDiagramElement.this, componentType, modifyType,conceptId));
 		}
 	};  
 
@@ -40,11 +40,11 @@ public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent
 		markAsDirty();
 	}
 	
-	public void addModifyListener(IVisualizationModifyListener listener) {
-		super.addListener(VisualizationModifyEvent.class, listener, IVisualizationModifyListener.METHOD);
+	public void addModifyListener(IVisualizationDiagramModifyListener listener) {
+		super.addListener(VisualizationDiagramModifyEvent.class, listener, IVisualizationDiagramModifyListener.METHOD);
 	}
 	
-	public void removeModifyListener(IVisualizationModifyListener listener) {
-		super.removeListener(VisualizationModifyEvent.class, listener, IVisualizationModifyListener.METHOD);
+	public void removeModifyListener(IVisualizationDiagramModifyListener listener) {
+		super.removeListener(VisualizationDiagramModifyEvent.class, listener, IVisualizationDiagramModifyListener.METHOD);
 	}
 }
