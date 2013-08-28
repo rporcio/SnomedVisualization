@@ -4,6 +4,11 @@ import snomed.visualization.vaadin.client.visualizationdsl.VisualizationDslServe
 import snomed.visualization.vaadin.client.visualizationdsl.VisualizationDslState;
 import snomed.visualization.vaadin.listener.IVisualizationDslModifyListener;
 
+/**
+ * Custom UI component for the dsl editor.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDsl extends com.vaadin.ui.AbstractComponent {
 
 	private static final long serialVersionUID = 8677951025462863646L;

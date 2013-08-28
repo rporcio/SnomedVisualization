@@ -6,6 +6,11 @@ import snomed.visualization.vaadin.client.diagramconnection.VisualizationDiagram
 import snomed.visualization.vaadin.client.diagramconnection.VisualizationDiagramConnectionState;
 import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinate;
 
+/**
+ * Custom UI component for the diagram connections.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramConnection extends com.vaadin.ui.AbstractComponent {
 
 	private static final long serialVersionUID = 2950352399861196384L;

@@ -3,6 +3,8 @@ package snomed.visualization.vaadin.client.model;
 import java.io.Serializable;
 
 /**
+ * Represents an element of the diagram.
+ * 
  * @author rporcio
  */
 public class VisualizationDiagramElementModel implements Serializable {

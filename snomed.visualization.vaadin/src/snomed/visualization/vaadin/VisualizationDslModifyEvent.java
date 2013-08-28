@@ -3,6 +3,11 @@ package snomed.visualization.vaadin;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Component.Event;
 
+/**
+ * Event class for the dsl modifies.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDslModifyEvent extends Event {
 
 	private static final long serialVersionUID = 2315379834622475397L;

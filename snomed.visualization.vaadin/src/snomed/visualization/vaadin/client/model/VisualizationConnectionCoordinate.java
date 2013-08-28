@@ -3,6 +3,8 @@ package snomed.visualization.vaadin.client.model;
 import java.io.Serializable;
 
 /**
+ * Container class to contain all the connections of the diagram.
+ * 
  * @author rporcio
  */
 public class VisualizationConnectionCoordinate implements Serializable {

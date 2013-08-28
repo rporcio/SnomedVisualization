@@ -1,9 +1,15 @@
 package snomed.visualization.vaadin.client.diagramelement;
 
+import com.vaadin.shared.AbstractComponentState;
 import com.vaadin.shared.communication.URLReference;
 
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 
+/**
+ * State class for the diagram elements.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramElementState extends com.vaadin.shared.AbstractComponentState {
 
 	private static final long serialVersionUID = -558532425400561338L;

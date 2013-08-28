@@ -6,6 +6,11 @@ import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Component.Event;
 
+/**
+ * Event class for the diagram modifies.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramModifyEvent extends Event {
 
 	private static final long serialVersionUID = 477159734457000106L;

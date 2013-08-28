@@ -1,11 +1,18 @@
 package snomed.visualization.vaadin.example;
 
+import java.util.Random;
+
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
 import snomed.visualization.dsl.visualizationDsl.VisualizationDslFactory;
 
+/**
+ * Class to create the Tetralogy of fallot expression for the application.
+ * 
+ * @author rporcio
+ */
 public class TetralogyOfFallotExample {
 
 	public static Expression createTetralogyOfFallotExample() {
@@ -71,7 +78,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("0");
+		relationship.setId(generateId());
 		expression.getUngroupedRelationships().getRelationships().add(relationship);
 
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
@@ -93,7 +100,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("1");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -112,12 +119,12 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("2");
+		relationship.setId(generateId());
 		
 		relationshipGroup.getRelationships().add(relationship);
 
 		expression.getGroupedRelationships().add(relationshipGroup);
-		
+
 		relationshipGroup = VisualizationDslFactory.eINSTANCE.createRelationshipGroup();
 		relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 
@@ -134,7 +141,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("3");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -153,7 +160,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("4");
+		relationship.setId(generateId());
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -175,7 +182,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("5");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -194,7 +201,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("6");
+		relationship.setId(generateId());
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -216,7 +223,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("7");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -235,7 +242,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("8");
+		relationship.setId(generateId());
 		
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -257,7 +264,7 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("9");
+		relationship.setId(generateId());
 
 		relationshipGroup.getRelationships().add(relationship);
 
@@ -276,12 +283,20 @@ public class TetralogyOfFallotExample {
 		relationship.setDestination(concept);
 		relationship.setDefined(true);
 		relationship.setGroup(0);
-		relationship.setId("10");
+		relationship.setId(generateId());
 		
 		relationshipGroup.getRelationships().add(relationship);
 
 		expression.getGroupedRelationships().add(relationshipGroup);
 
 		return expression;
+	}
+	
+	// TODO remove
+	private static String generateId() {
+		Random random = new Random();
+		// nextInt excludes top value, add 1 to make it inclusive
+		int randomNum = random.nextInt(99999999 - 100 + 1) + 100;
+		return Integer.toString(randomNum);
 	}
 }

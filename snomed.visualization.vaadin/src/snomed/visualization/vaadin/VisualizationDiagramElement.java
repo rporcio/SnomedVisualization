@@ -9,6 +9,11 @@ import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
 import snomed.visualization.vaadin.listener.IVisualizationDiagramModifyListener;
 
+/**
+ * Custom UI component for the diagram elements.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramElement extends com.vaadin.ui.AbstractComponent {
 
 	private static final long serialVersionUID = -3943891804120919075L;

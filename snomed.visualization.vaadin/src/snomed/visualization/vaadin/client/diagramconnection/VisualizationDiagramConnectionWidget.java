@@ -9,6 +9,11 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+/**
+ * Custom widget for the diagram connections.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramConnectionWidget extends Composite {
 
 	public static final String CLASSNAME = "visualizationdiagramconnection";

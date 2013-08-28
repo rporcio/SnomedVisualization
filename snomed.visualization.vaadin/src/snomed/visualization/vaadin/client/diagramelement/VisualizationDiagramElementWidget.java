@@ -19,6 +19,11 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+/**
+ * Custom widget for the diagram elements.
+ * 
+ * @author rporcio
+ */
 public class VisualizationDiagramElementWidget extends Composite {
 
 	public static final String CLASSNAME = "visualizationdiagramelement";
