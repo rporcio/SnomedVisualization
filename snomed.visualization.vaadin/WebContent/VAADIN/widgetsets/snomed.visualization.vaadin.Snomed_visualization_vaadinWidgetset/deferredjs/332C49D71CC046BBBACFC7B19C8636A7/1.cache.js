@@ -1,1 +1,0 @@
-$wnd.snomed_visualization_vaadin_Snomed_visualization_vaadinWidgetset.runAsyncCallback1('AJb(2756,1,VHf);_.Hc=function j7d(){_lc((!Wlc&&(Wlc=new bmc),Wlc),this.b.e)};TIf(ul)(1);\n//@ sourceURL=1.js\n')

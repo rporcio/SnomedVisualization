@@ -33,8 +33,6 @@ public class VisualizationDslView2 extends VerticalLayout implements IVisualizat
 		dslUtil = new VisualizationDslUtil();
 		
 		visualizationDsl.setSizeFull();
-		float height = visualizationDsl.getHeight();
-		float width = visualizationDsl.getWidth();
 		visualizationDsl.addModifyListener(this);
 		addComponent(visualizationDsl);
 		
