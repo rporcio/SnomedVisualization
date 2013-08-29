@@ -112,14 +112,14 @@ public class VisualizationRelationshipWizard extends Window {
 	public VisualizationRelationshipWizard(VisualizationView visualizationView) {
 		this.visualizationView = visualizationView;
 		validatorGrouper = new VisualizationWizardValidatorGrouper();
-		
 		layout = new VerticalLayout();
 		
+		setCaption("New relationship");
 		setContent(layout);
 		setModal(true);
 		center();
 		setWidth("600");
-		setHeight("400");
+		setHeight("500");
 		
 		layout.setMargin(true);
 		
@@ -130,66 +130,34 @@ public class VisualizationRelationshipWizard extends Window {
 		return defined;
 	}
 
-	public void setDefined(ComboBox defined) {
-		this.defined = defined;
-	}
-
 	public ComboBox getRelationshipType() {
 		return relationshipType;
-	}
-
-	public void setRelationshipTypes(ComboBox relationshipType) {
-		this.relationshipType = relationshipType;
 	}
 
 	public ComboBox getRelationshipGroup() {
 		return relationshipGroup;
 	}
 
-	public void setRelationshipGroup(ComboBox relationshipGroup) {
-		this.relationshipGroup = relationshipGroup;
-	}
-
 	public Field<?> getDestinationDefined() {
 		return destinationDefined;
-	}
-
-	public void setDestinationDefined(ComboBox destinationDefined) {
-		this.destinationDefined = destinationDefined;
 	}
 
 	public Field<?> getDestinationId() {
 		return destinationId;
 	}
 
-	public void setDestinationId(TextField destinationId) {
-		this.destinationId = destinationId;
-	}
-
 	public Field<?> getDestinationTerm() {
 		return destinationTerm;
-	}
-
-	public void setDestinationTerm(TextField destinationTerm) {
-		this.destinationTerm = destinationTerm;
 	}
 
 	public VisualizationView getVisualizationView() {
 		return visualizationView;
 	}
 
-	public void setVisualizationView(VisualizationView visualizationView) {
-		this.visualizationView = visualizationView;
-	}
-
 	public BeanFieldGroup<Relationship> getBinder() {
 		return binder;
 	}
 
-	public void setBinder(BeanFieldGroup<Relationship> binder) {
-		this.binder = binder;
-	}
-	
 	private void createContent() {
 		Relationship relationship = VisualizationDslFactory.eINSTANCE.createRelationship();
 		Concept destination = VisualizationDslFactory.eINSTANCE.createConcept();
