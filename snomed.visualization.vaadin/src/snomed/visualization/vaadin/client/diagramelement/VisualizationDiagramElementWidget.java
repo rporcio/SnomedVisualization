@@ -241,7 +241,7 @@ public class VisualizationDiagramElementWidget extends Composite {
 
 	private void drawNonDefiningRelationship(final int x, final int y, final String term) {
 		context.save();
-		context.setFillStyle(CssColor.make(204, 204, 99));
+		context.setFillStyle(CssColor.make(204, 204, 153));
 		roundRect(x, y, componentWidth, componentHeight);
 		context.stroke();
 		roundRect(x, y, componentWidth, componentHeight);
