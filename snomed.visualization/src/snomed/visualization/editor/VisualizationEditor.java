@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.print.PrintGraphicalViewerOperation;
 import org.eclipse.gef.ui.parts.GraphicalEditor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -25,6 +26,9 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.printing.PrintDialog;
+import org.eclipse.swt.printing.Printer;
+import org.eclipse.swt.printing.PrinterData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -142,6 +146,12 @@ public class VisualizationEditor extends GraphicalEditor {
 		}
 	};
 	
+	private Action printAction = new Action("Print diagram to file", IAction.AS_PUSH_BUTTON) {
+		public void run() {
+			printDiagram();
+		};
+	};
+	
 	private Action newRelationshipAction = new Action("New relationship", IAction.AS_PUSH_BUTTON) {
 		@Override
 		public void run() {
@@ -216,11 +226,13 @@ public class VisualizationEditor extends GraphicalEditor {
 		zoomInAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-in.png"));
 		zoomOutAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/zoom-out.png"));
 		newRelationshipAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/new-relationship.png"));
+		printAction.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin("snomed.visualization", "icons/printer.png"));
 		
 		form.getToolBarManager().add(zoomInAction);
 		form.getToolBarManager().add(zoomOutAction);
 		form.getToolBarManager().add(newRelationshipAction);
 		form.getToolBarManager().add(changeDiagramTypeAction);
+		form.getToolBarManager().add(printAction);
 		form.getToolBarManager().update(true);
 		
 		getToolkit().getHyperlinkGroup().setHyperlinkUnderlineMode(HyperlinkSettings.UNDERLINE_HOVER);
@@ -260,7 +272,26 @@ public class VisualizationEditor extends GraphicalEditor {
 		}
 	}
 	
-
+	public void printDiagram() {
+		PrintDialog printDialog = new PrintDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), SWT.NONE);
+		PrinterData data = printDialog.open();
+		
+		if (null != data) {
+			// portrait 90
+			// landscape 130
+			
+			data.startPage = 1;
+			data.endPage = 1;
+//			diagramUtil.setZoomBeforePrint();
+//			refreshDiagram();
+			final PrintGraphicalViewerOperation operation = new PrintGraphicalViewerOperation(new Printer(data), getGraphicalViewer());
+			String title = expression.getConcept().getId() + "_" + expression.getConcept().getTerm() + "_diagram"; 
+			operation.run(title);
+//			diagramUtil.setZoomAfterPrint();
+//			refreshDiagram();
+		}
+	}
+	
 	public VisualizationDiagramUtil getDiagramUtil() {
 		return diagramUtil;
 	}
@@ -328,7 +359,12 @@ public class VisualizationEditor extends GraphicalEditor {
 		styledText.removeModifyListener(dslEditorModifyListener);
 		
 		if (diagramToDslChange) {
-			styledText.setText(dslUtil.convertToPresentation(expression));
+			if (null != expression.getIsaRelationships() && !expression.getIsaRelationships().getRelationships().isEmpty()) {
+				styledText.setText(dslUtil.convertToPresentation(expression));
+			} else {
+				String dsl = styledText.getText();
+				styledText.setText(dsl.substring(dsl.indexOf(":")));
+			}
 		}
 		
 		if (dslUtil.isValid(styledText.getText())) {
@@ -473,8 +509,8 @@ public class VisualizationEditor extends GraphicalEditor {
 		}
 	}
 	
+	// TODO
 	private void addContentAdapter() {
-		// TODO
 		if (!expression.eAdapters().contains(adapter)) {
 			expression.eAdapters().add(adapter);
 		}
