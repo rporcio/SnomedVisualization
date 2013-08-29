@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
+
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
+import snomed.visualization.dsl.visualizationDsl.IsaRelationships;
 import snomed.visualization.dsl.visualizationDsl.Relationship;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
+import snomed.visualization.dsl.visualizationDsl.Relationships;
 import snomed.visualization.vaadin.VisualizationDiagramConnection;
 import snomed.visualization.vaadin.VisualizationDiagramElement;
 import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinate;
@@ -91,6 +95,18 @@ public class VisualizationDiagramUtil implements Serializable {
 	public boolean canEdit() {
 		return diagramView.canEdit();
 	}
+	
+	public boolean isEmpty(EObject eObject) {
+		if (null == eObject) {
+			return true;
+		} else  if (eObject instanceof IsaRelationships) {
+			return ((IsaRelationships) eObject).getRelationships().isEmpty();
+		} else if (eObject instanceof Relationships) {
+			return ((Relationships) eObject).getRelationships().isEmpty();
+		}
+		
+		return false;
+	}
 
 	private void visualizeConcept() {
 		if (null != getExpression().getConcept()) {
@@ -104,9 +120,7 @@ public class VisualizationDiagramUtil implements Serializable {
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 			}
 
-			
-			if (getExpression().getIsaRelationships().getRelationships().size() > 0 || getExpression().getGroupedRelationships().size() > 0 || getExpression().getUngroupedRelationships().getRelationships().size() > 0) {
-				
+			if (!isEmpty(getExpression().getIsaRelationships()) || !getExpression().getGroupedRelationships().isEmpty() || !isEmpty(getExpression().getUngroupedRelationships())) {
 				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					component = new VisualizationDiagramElement();
 					component.setState(new VisualizationDiagramElementModel(false, null, "=", VisualizationComponentType.GROUP, zoom), characteristicIcon, deletionIcon);
@@ -135,34 +149,38 @@ public class VisualizationDiagramUtil implements Serializable {
 		int x = 0;
 		int y = 0;
 		
-		for (Concept concept : getExpression().getIsaRelationships().getRelationships()) {
-			VisualizationDiagramElement component = new VisualizationDiagramElement();
-			
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
-				x = (int) (zoom * 2.5);
-			} else {
-				x = (int) (zoom * 1.5);
+		if (!isEmpty(getExpression().getIsaRelationships())) {
+			for (Concept concept : getExpression().getIsaRelationships().getRelationships()) {
+				VisualizationDiagramElement component = new VisualizationDiagramElement();
+				
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+					x = (int) (zoom * 2.5);
+				} else {
+					x = (int) (zoom * 1.5);
+				}
+				y = zoom * depth / 100;
+				
+				component.setState(new VisualizationDiagramElementModel(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
+				diagramView.addComponent(component, getCssCoordinates(x, y));
+				
+				component.addModifyListener(modifyListener);
+				diagramElements.put(component.getState().getComponentModel().getId(), component);
+				
+				
+				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+					addNewConnection(ConnectionType.ISA, zoom * 2, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
+				} else {
+					addNewConnection(ConnectionType.ISA, zoom, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
+				}
+				
+				depth += 70;
 			}
-			y = zoom * depth / 100;
-			
-			component.setState(new VisualizationDiagramElementModel(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
-			diagramView.addComponent(component, getCssCoordinates(x, y));
-
-			component.addModifyListener(modifyListener);
-			diagramElements.put(component.getState().getComponentModel().getId(), component);
-			
-			
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
-				addNewConnection(ConnectionType.ISA, zoom * 2, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
-			} else {
-				addNewConnection(ConnectionType.ISA, zoom, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
-			}
-			
-			depth += 70;
 		}
 		
-		if (!getExpression().getIsaRelationships().getRelationships().isEmpty() && getExpression().getGroupedRelationships().isEmpty() 
-				&& (null == getExpression().getUngroupedRelationships() || getExpression().getUngroupedRelationships().getRelationships().isEmpty())) {
+		/*
+		 * if the are no more relationships, we draw the vertical connection 
+		 */
+		if (!isEmpty(getExpression().getIsaRelationships()) && getExpression().getGroupedRelationships().isEmpty() && isEmpty(getExpression().getUngroupedRelationships())) { 
 			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int)(zoom * 0.95), zoom * 2, y + (int)(zoom * 0.25));
 			} else {
@@ -236,7 +254,10 @@ public class VisualizationDiagramUtil implements Serializable {
 			}
 		}
 		
-		if ((null == getExpression().getUngroupedRelationships() || getExpression().getUngroupedRelationships().getRelationships().isEmpty()) && !getExpression().getGroupedRelationships().isEmpty()) {
+		/*
+		 * if the are no more relationships, we draw the vertical connection 
+		 */
+		if (isEmpty(getExpression().getUngroupedRelationships()) && !getExpression().getGroupedRelationships().isEmpty()) {
 			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
 			} else {
@@ -250,7 +271,7 @@ public class VisualizationDiagramUtil implements Serializable {
 		int xDestination;
 		int y = 0;
 		
-		if (null != getExpression().getUngroupedRelationships()) {
+		if (!isEmpty(getExpression().getUngroupedRelationships())) {
 			for (Relationship relationship : getExpression().getUngroupedRelationships().getRelationships()) {
 				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 2.5);
@@ -285,12 +306,10 @@ public class VisualizationDiagramUtil implements Serializable {
 				depth += 70;
 			}
 			
-			if (!getExpression().getUngroupedRelationships().getRelationships().isEmpty()) {
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
-					addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
-				} else {
-					addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + zoom / 4);
-				}
+			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
+			} else {
+				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + zoom / 4);
 			}
 		}
 		

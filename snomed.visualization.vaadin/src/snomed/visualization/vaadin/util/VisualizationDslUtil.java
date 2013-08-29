@@ -1,13 +1,11 @@
 package snomed.visualization.vaadin.util;
 
 import java.io.Serializable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.parser.IParseResult;
-import org.eclipse.xtext.validation.IConcreteSyntaxValidator.InvalidConcreteSyntaxException;
 
 import snomed.visualization.dsl.VisualizationDslStandaloneSetup;
 import snomed.visualization.dsl.parser.antlr.VisualizationDslParser;
@@ -51,18 +49,26 @@ public class VisualizationDslUtil implements Serializable {
 	 * @return the created string representation of the expression.
 	 */
 	public String convertToPresentation(Expression expression) {
-		String dsl = "";
 		org.eclipse.xtext.serializer.impl.Serializer serializer = VisualizationDslStandaloneSetup.getInstance().getSerializer();
 
-		try {
-			dsl = serializer.serialize(expression);
-			return dsl;
-		} catch (InvalidConcreteSyntaxException e) {
-			// the serializer cannot create the string presentation if one of the elements is empty, therefore the old mechanism is required
-			dsl = createOldPresentation(expression);
+		if (null != expression.getUngroupedRelationships() && 0 == expression.getUngroupedRelationships().getRelationships().size()) {
+			expression.setUngroupedRelationships(null);
 		}
 		
-		return dsl;
+		if (null != expression.getGroupedRelationships()) {
+			int i = 0;
+			for (RelationshipGroup relationshipGroup : expression.getGroupedRelationships()) {
+				if (null != relationshipGroup && 0 == relationshipGroup.getRelationships().size()) {
+					expression.getGroupedRelationships().remove(i);
+					
+					break;
+				}
+				
+				i++;
+			}
+		}
+		
+		return serializer.serialize(expression);
 	}
 	
 	/**
@@ -200,64 +206,6 @@ public class VisualizationDslUtil implements Serializable {
 			newRelationship.getType().setDefined(oldRelationship.getType().isDefined());
 			newRelationship.getDestination().setDefined(oldRelationship.getDestination().isDefined());
 		}
-	}
-	
-	private String createOldPresentation(Expression expression) {
-		StringBuilder sb = new StringBuilder();
-		Iterator<Concept> isaIterator = expression.getIsaRelationships().getRelationships().iterator();
-		while (isaIterator.hasNext()) {
-			Concept concept = isaIterator.next();
-			sb.append(concept.getId() + "|" + concept.getTerm() + "|");
-			if (isaIterator.hasNext()) {
-				sb.append(" + ");
-			}
-		}
-		
-		if ((null != expression.getUngroupedRelationships() && expression.getUngroupedRelationships().getRelationships().size() > 0) || !expression.getGroupedRelationships().isEmpty()) {
-			sb.append(":");
-		}
-
-		if (null != expression.getUngroupedRelationships()) {
-			Iterator<Relationship> relationshipIterator = expression.getUngroupedRelationships().getRelationships().iterator();
-			while (relationshipIterator.hasNext()) {
-				Relationship relationship = relationshipIterator.next();
-				sb.append(relationship.getType().getId() + "|" + relationship.getType().getTerm() + "|");
-				sb.append(" = ");
-				sb.append(relationship.getDestination().getId() + "|" + relationship.getDestination().getTerm() + "|");
-				if (relationshipIterator.hasNext()) {
-					sb.append(",");
-				}
-			}
-		}
-
-		Iterator<RelationshipGroup> groupsIterator = expression.getGroupedRelationships().iterator();
-		while (groupsIterator.hasNext()) {
-			Iterator<Relationship> groupIterator = groupsIterator.next().getRelationships().iterator();
-			boolean notEmpty = false;
-			if (groupIterator.hasNext()) {
-				notEmpty = true;
-			}
-			
-			// necessary because during the deletion of the relationship group members, the expression can be in a state,
-			// where the deleted relationship group exist but with no members 
-			if (notEmpty) {
-				sb.append("{");
-			}
-			while (groupIterator.hasNext()) {
-				Relationship relationship = groupIterator.next();
-				sb.append(relationship.getType().getId() + "| " + relationship.getType().getTerm() + "|");
-				sb.append(" = ");
-				sb.append(relationship.getDestination().getId() + "|" + relationship.getDestination().getTerm() + "|");
-				if (groupIterator.hasNext()) {
-					sb.append(",");
-				}
-			}
-			if (notEmpty) {
-				sb.append("}");
-			}
-		}
-
-		return addHtmlFormatters(sb.toString());
 	}
 	
 	// TODO remove

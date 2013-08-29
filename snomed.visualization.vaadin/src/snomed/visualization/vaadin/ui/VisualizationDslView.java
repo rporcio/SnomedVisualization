@@ -29,6 +29,7 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	private Notification errorNotification;
 	private VisualizationView visualizationView;
 	private boolean containsErrors;
+	private String dsl;
 	
 	public VisualizationDslView(VisualizationView visualizationView) {
 		this.visualizationView = visualizationView;
@@ -51,7 +52,14 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	 * Visualize the grammar in text format.
 	 */
 	public void visualizeGrammar() {
-		visualizationDsl.setState(dslUtil.addHtmlFormatters(dslUtil.convertToPresentation(visualizationView.getExpression())));
+		if (null != visualizationView.getExpression().getIsaRelationships() && !visualizationView.getExpression().getIsaRelationships().getRelationships().isEmpty()) {
+			dsl = dslUtil.convertToPresentation(visualizationView.getExpression());
+			visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl));
+		} else {
+			if (null != dsl && dsl.contains(":")) {
+				visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl.substring(dsl.indexOf(":"))));
+			}
+		}
 	}
 
 	/**
@@ -67,7 +75,7 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	public void handleModify(VisualizationDslModifyEvent event) {
 		// TODO add schedule because of gwt-richtextarea bug(?)
 		
-		String dsl = dslUtil.removeHtmlFormatters(event.getDsl());
+		dsl = dslUtil.removeHtmlFormatters(event.getDsl());
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;

@@ -100,19 +100,23 @@ public class VisualizationDiagramModifyListener implements IVisualizationDiagram
 			// TODO cannot delete
 		}
 		
-		for (Concept concept : diagramUtil.getExpression().getIsaRelationships().getRelationships()) {
-			if (concept.getId().equals(id)) {
-				diagramUtil.getExpression().getIsaRelationships().getRelationships().remove(concept);
-				
-				return;
+		if (!diagramUtil.isEmpty(diagramUtil.getExpression().getIsaRelationships())) {
+			for (Concept concept : diagramUtil.getExpression().getIsaRelationships().getRelationships()) {
+				if (concept.getId().equals(id)) {
+					diagramUtil.getExpression().getIsaRelationships().getRelationships().remove(concept);
+					
+					return;
+				}
 			}
 		}
 		
-		for (Relationship relationship : diagramUtil.getExpression().getUngroupedRelationships().getRelationships()) {
-			if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
-				diagramUtil.getExpression().getUngroupedRelationships().getRelationships().remove(relationship);
-				
-				return;
+		if (!diagramUtil.isEmpty(diagramUtil.getExpression().getUngroupedRelationships())) {
+			for (Relationship relationship : diagramUtil.getExpression().getUngroupedRelationships().getRelationships()) {
+				if (relationship.getDestination().getId().equals(id) || relationship.getId().equals(id)) {
+					diagramUtil.getExpression().getUngroupedRelationships().getRelationships().remove(relationship);
+					
+					return;
+				}
 			}
 		}
 		
