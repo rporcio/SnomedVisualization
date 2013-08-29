@@ -40,7 +40,7 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 		
 		visualizationDsl.setSizeFull();
 		visualizationDsl.addModifyListener(this);
-		visualizationDsl.setImmediate(false);
+		visualizationDsl.setImmediate(true);
 
 		addComponent(visualizationDsl);
 		
@@ -54,10 +54,10 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	public void visualizeGrammar() {
 		if (null != visualizationView.getExpression().getIsaRelationships() && !visualizationView.getExpression().getIsaRelationships().getRelationships().isEmpty()) {
 			dsl = dslUtil.convertToPresentation(visualizationView.getExpression());
-			visualizationDsl.setState(dslUtil.addHtmlTags(dsl));
+			visualizationDsl.getState().setText(dslUtil.addHtmlTags(dsl));
 		} else {
 			if (null != dsl && dsl.contains(":")) {
-				visualizationDsl.setState(dslUtil.addHtmlTags(dsl.substring(dsl.indexOf(":"))));
+				visualizationDsl.getState().setText(dslUtil.addHtmlTags(dsl.substring(dsl.indexOf(":"))));
 			}
 		}
 	}
@@ -73,15 +73,13 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 
 	@Override
 	public void handleModify(VisualizationDslModifyEvent event) {
-		// TODO add schedule because of gwt-richtextarea bug(?)
-		
 		dsl = dslUtil.removeHtmlTags(event.getDsl());
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;
 
 			visualizationView.updateDiagram(dslUtil.updatePreviousExpression(visualizationView.getExpression(), dsl));
-			visualizationDsl.setState(dslUtil.addHtmlTags(dsl));
+			visualizationDsl.getState().setText(dslUtil.addHtmlTags(dsl));
 		} else {
 			containsErrors = true;
 			
