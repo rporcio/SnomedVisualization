@@ -178,9 +178,9 @@ public class VisualizationDiagramElementFigure extends Figure {
 		outerShape = new RectangleFigure();
 		
 		if (diagramElement.isDefined()) {
-			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(153,204,255));
-		} else {
 			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(204,204,255));
+		} else {
+			innerShape.setBackgroundColor(VisualizationDiagramUtil.getColor(153,204,255));
 		}
 		
 		addToCanvas();
