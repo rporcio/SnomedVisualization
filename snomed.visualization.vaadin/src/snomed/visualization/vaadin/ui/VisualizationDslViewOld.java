@@ -69,7 +69,7 @@ public class VisualizationDslViewOld extends RichTextArea {
 	}
 	
 	private void handleValueChange(final boolean updateDiagram) {
-		String dsl = dslUtil.removeHtmlFormatters(getValue());
+		String dsl = dslUtil.removeHtmlTags(getValue());
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;
@@ -80,7 +80,7 @@ public class VisualizationDslViewOld extends RichTextArea {
 			}
 			
 			removeValueChangeListener(valueChangeListener);
-			setValue(dslUtil.addHtmlFormatters(dsl));
+			setValue(dslUtil.addHtmlTags(dsl));
 			addValueChangeListener(valueChangeListener);
 		} else {
 			containsErrors = true;
@@ -112,7 +112,7 @@ public class VisualizationDslViewOld extends RichTextArea {
 			}
 			
 			removeValueChangeListener(valueChangeListener);
-			setValue(dslUtil.addHtmlFormatters(errorMarkedDsl));
+			setValue(dslUtil.addHtmlTags(errorMarkedDsl));
 			addValueChangeListener(valueChangeListener);
 			
 			warningNotification.setDescription(builder.toString());

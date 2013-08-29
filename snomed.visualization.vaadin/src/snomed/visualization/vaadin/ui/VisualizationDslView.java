@@ -54,10 +54,10 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	public void visualizeGrammar() {
 		if (null != visualizationView.getExpression().getIsaRelationships() && !visualizationView.getExpression().getIsaRelationships().getRelationships().isEmpty()) {
 			dsl = dslUtil.convertToPresentation(visualizationView.getExpression());
-			visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl));
+			visualizationDsl.setState(dslUtil.addHtmlTags(dsl));
 		} else {
 			if (null != dsl && dsl.contains(":")) {
-				visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl.substring(dsl.indexOf(":"))));
+				visualizationDsl.setState(dslUtil.addHtmlTags(dsl.substring(dsl.indexOf(":"))));
 			}
 		}
 	}
@@ -75,13 +75,13 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	public void handleModify(VisualizationDslModifyEvent event) {
 		// TODO add schedule because of gwt-richtextarea bug(?)
 		
-		dsl = dslUtil.removeHtmlFormatters(event.getDsl());
+		dsl = dslUtil.removeHtmlTags(event.getDsl());
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;
 
 			visualizationView.updateDiagram(dslUtil.updatePreviousExpression(visualizationView.getExpression(), dsl));
-			visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl));
+			visualizationDsl.setState(dslUtil.addHtmlTags(dsl));
 		} else {
 			containsErrors = true;
 			
@@ -111,7 +111,7 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 				}
 			}
 			
-			visualizationDsl.getState().setText(dslUtil.addHtmlFormatters(errorMarkedDsl));
+			visualizationDsl.getState().setText(dslUtil.addHtmlTags(errorMarkedDsl));
 			
 			errorNotification.setDescription(builder.toString());
 			errorNotification.show(Page.getCurrent());

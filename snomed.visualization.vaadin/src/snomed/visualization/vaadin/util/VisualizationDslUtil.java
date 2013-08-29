@@ -25,12 +25,6 @@ public class VisualizationDslUtil implements Serializable {
 
 	private static final long serialVersionUID = 5592163341926073094L;
 	
-	private enum FormatterState {
-		ISAREALATIONSHIP,
-		RELATIONSHIPGROUP,
-		STANDALONERELATIONSHIP
-	}
-	
 	/**
 	 * Converts the given dsl from String format to {@link Expression} format.
 	 * 
@@ -77,33 +71,8 @@ public class VisualizationDslUtil implements Serializable {
 	 * @param dsl the string to be extended.
 	 * @return the extended string with html tags.
 	 */
-	public String addHtmlFormatters(String dsl) {
-		String formattedDsl = "";
-		
-		FormatterState state = FormatterState.ISAREALATIONSHIP;
-		
-		for (char c : dsl.toCharArray()) {
-			if (c == ':') {
-				formattedDsl = formattedDsl.concat(":<br>&nbsp;");
-				state = FormatterState.STANDALONERELATIONSHIP;
-			} else if (c == ',') {
-				formattedDsl = formattedDsl.concat(",<br>");
-				if (state.equals(FormatterState.STANDALONERELATIONSHIP)) {
-					formattedDsl = formattedDsl.concat("&nbsp;");
-				} else if (state.equals(FormatterState.RELATIONSHIPGROUP)) {
-					formattedDsl = formattedDsl.concat("&nbsp;&nbsp;&nbsp;");
-				}
-			} else if (c == '{') {
-				formattedDsl = formattedDsl.concat("<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;");
-				state = FormatterState.RELATIONSHIPGROUP;
-			} else if (c == '}') {
-				formattedDsl = formattedDsl.concat("<br>&nbsp;}");
-			} else {
-				formattedDsl = formattedDsl + c;
-			}
-		}
-		
-		return formattedDsl;
+	public String addHtmlTags(String dsl) {
+		return dsl.replaceAll("\r\n", "<br>").replaceAll("\n", "<br>").replaceAll("\r", "<br>").replaceAll("  ", "&nbsp;&nbsp;");
 	}
 	
 	/**
@@ -112,8 +81,8 @@ public class VisualizationDslUtil implements Serializable {
 	 * @param dsl a string which contains html tags.
 	 * @return the truncated dsl.
 	 */
-	public String removeHtmlFormatters(String dsl) {
-		return dsl.replaceAll("\\<[^>]*>","").replaceAll("\t", "").replaceAll("&nbsp;", "");
+	public String removeHtmlTags(String dsl) {
+		return dsl.replaceAll("<br>", "\r\n").replaceAll("\\<[^>]*>","").replaceAll("\t", "").replaceAll("&nbsp;", " ");
 	}
 	
 	/**
