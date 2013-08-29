@@ -26,7 +26,7 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 	private static final long serialVersionUID = -2580308559244447759L;
 	private VisualizationDsl visualizationDsl;
 	private VisualizationDslUtil dslUtil;
-	private Notification warningNotification;
+	private Notification errorNotification;
 	private VisualizationView visualizationView;
 	private boolean containsErrors;
 	
@@ -43,8 +43,8 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 
 		addComponent(visualizationDsl);
 		
-		warningNotification = new Notification("Errors in the expression", "", Type.ERROR_MESSAGE);
-		warningNotification.setPosition(Position.BOTTOM_RIGHT);
+		errorNotification = new Notification("Errors in the expression", "", Type.WARNING_MESSAGE);
+		errorNotification.setPosition(Position.BOTTOM_RIGHT);
 	}
 	
 	/**
@@ -71,7 +71,6 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 		
 		if (dslUtil.isValid(dsl)) {
 			containsErrors = false;
-			warningNotification.setDelayMsec(0);
 
 			visualizationView.updateDiagram(dslUtil.updatePreviousExpression(visualizationView.getExpression(), dsl));
 			visualizationDsl.setState(dslUtil.addHtmlFormatters(dsl));
@@ -106,9 +105,9 @@ public class VisualizationDslView extends VerticalLayout implements IVisualizati
 			
 			visualizationDsl.getState().setText(dslUtil.addHtmlFormatters(errorMarkedDsl));
 			
-			warningNotification.setDescription(builder.toString());
-			warningNotification.setDelayMsec(5000);
-			warningNotification.show(Page.getCurrent());
+			errorNotification.setDescription(builder.toString());
+			errorNotification.show(Page.getCurrent());
+			errorNotification.setStyleName("error-notification-style");
 		}
 	}
 
