@@ -8,12 +8,14 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
+import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
@@ -121,8 +123,26 @@ public class VisualizationDiagramElementFigure extends Figure {
 		} else if (diagramElement.getType() == VisualizationComponentType.GROUP) {
 			innerShape = new Ellipse();
 			innerShape.setAntialias(5);
-			
 			add(innerShape);
+			
+			if (null != diagramElement.getTerm()) {
+				Rectangle constraint = diagramElement.getConstraint();
+				int x = constraint.x;
+				int y = constraint.y;
+				int width = constraint.width;
+				int height = constraint.height;
+				
+				PolylineConnection connection = new PolylineConnection();
+				connection.setEndpoints(new Point(x + width/3, y + height/10*4), new Point(x + width/3*2, y + height/10*4));
+				add(connection);
+				connection = new PolylineConnection();
+				connection.setEndpoints(new Point(x + width/3, y + height/10*5), new Point(x + width/3*2, y + height/10*5));
+				add(connection);
+				connection = new PolylineConnection();
+				connection.setEndpoints(new Point(x + width/3, y + height/10*6), new Point(x + width/3*2, y + height/10*6));
+				add(connection);
+			}
+			
 		} else if (diagramElement.getType() == VisualizationComponentType.CONJUCTION) {
 			innerShape = new Ellipse();
 			innerShape.setAntialias(5);

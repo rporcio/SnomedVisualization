@@ -220,7 +220,7 @@ public class VisualizationDiagramUtil {
 		// if there are other elements, draw the based elements
 		if (!isEmpty(expression.getIsaRelationships()) || !expression.getGroupedRelationships().isEmpty() || !isEmpty(expression.getUngroupedRelationships())) { 
 			if (diagramType == DiagramType.DEFINITION) {
-				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
+				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, "=", VisualizationComponentType.GROUP, new Rectangle((int) (zoom * 0.6), (int) (zoom * 0.75), (int) (zoom / 2.5),
 						(int) (zoom / 2.5)), zoom));
 				diagramElements.add(new VisualizationDiagramElement(false, false, null, null, null, VisualizationComponentType.CONJUCTION, new Rectangle((int) (zoom * 1.5), (int) (zoom * depth / 100 + zoom * 0.25 - 5), 10,
 						10), zoom));
