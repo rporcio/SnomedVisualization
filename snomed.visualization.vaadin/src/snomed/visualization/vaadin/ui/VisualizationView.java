@@ -189,7 +189,7 @@ public class VisualizationView extends VerticalLayout {
 	
 	private void createPrinter() {
 		BrowserWindowOpener opener = new BrowserWindowOpener(PrintUI.class);
-		opener.setFeatures("height=200,width=400,resizable");
+		opener.setFeatures("height=600,width=800,resizable");
 		opener.setWindowName("print");
 		opener.extend(printButton);
 	}
