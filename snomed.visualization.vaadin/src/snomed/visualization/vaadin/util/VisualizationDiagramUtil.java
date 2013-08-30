@@ -19,6 +19,7 @@ import snomed.visualization.vaadin.client.model.VisualizationConnectionCoordinat
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel;
 import snomed.visualization.vaadin.client.model.VisualizationDiagramElementModel.VisualizationComponentType;
 import snomed.visualization.vaadin.listener.VisualizationDiagramModifyListener;
+import snomed.visualization.vaadin.ui.AbstractVisualizationDiagramView;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView;
 import snomed.visualization.vaadin.ui.VisualizationDiagramView.DiagramType;
 
@@ -40,13 +41,14 @@ public class VisualizationDiagramUtil implements Serializable {
 	private int depth;
 	private Map<String, VisualizationDiagramElement> diagramElements;
 	private List<VisualizationConnectionCoordinate> coordinates;
-	private final VisualizationDiagramView diagramView;
 	private ResourceReference characteristicIcon;
 	private ResourceReference deletionIcon;
 	private VisualizationDiagramModifyListener modifyListener;
+
+	private AbstractVisualizationDiagramView abstractDiagramView;
 	
-	public VisualizationDiagramUtil(VisualizationDiagramView diagramView) {
-		this.diagramView = diagramView;
+	public VisualizationDiagramUtil(AbstractVisualizationDiagramView abstractDiagramView) {
+		this.abstractDiagramView = abstractDiagramView;
 		this.zoom = 100;
 		this.characteristicIcon = new ResourceReference(new ThemeResource("icons/changetype.png"), null, "");
 		this.deletionIcon = new ResourceReference(new ThemeResource("icons/trash.png"), null, "");
@@ -60,7 +62,7 @@ public class VisualizationDiagramUtil implements Serializable {
 		diagramElements = Maps.newHashMap();
 		coordinates = Lists.newArrayList();
 		
-		if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 			depth = 70;
 		} else {
 			depth = 5;
@@ -72,28 +74,29 @@ public class VisualizationDiagramUtil implements Serializable {
 		visualizeUngroupedRelationships();
 		
 		VisualizationDiagramConnection diagramConnection = new VisualizationDiagramConnection();
-		if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 			diagramConnection.setState(zoom, zoom * depth / 100, zoom * 8, coordinates);
 		} else {
-			diagramConnection.setState(zoom, zoom * depth / 100, zoom * 7, coordinates);
+			diagramConnection.setState(  zoom, zoom * depth / 100, zoom * 7, coordinates);
 		}
-		diagramView.addComponent(diagramConnection, "left:0px;top:0px;z-index:0");
+		
+		abstractDiagramView.addComponent(diagramConnection, "left:0px;top:0px;z-index:0");
 	}
 	
 	public void setDiagramZoom(int zoom) {
 		this.zoom = zoom;
 	}
 
-	public Expression getExpression() {
-		return diagramView.getExpression();
-	}
-	
 	public Map<String, VisualizationDiagramElement> getDiagramElements() {
 		return diagramElements;
 	}
 	
 	public boolean canEdit() {
-		return diagramView.canEdit();
+		if (abstractDiagramView instanceof VisualizationDiagramView) {
+			return ((VisualizationDiagramView) abstractDiagramView).canEdit();
+		} else {
+			return false;
+		}
 	}
 	
 	public boolean isEmpty(EObject eObject) {
@@ -107,38 +110,42 @@ public class VisualizationDiagramUtil implements Serializable {
 		
 		return false;
 	}
+	
+	public Expression getExpression() {
+		return abstractDiagramView.getExpression();
+	}
 
 	private void visualizeConcept() {
-		if (null != getExpression().getConcept()) {
+		if (null != abstractDiagramView.getExpression().getConcept()) {
 			VisualizationDiagramElement component = new VisualizationDiagramElement();
 
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
-				component.setState(new VisualizationDiagramElementModel(getExpression().getConcept().isDefined(), getExpression().getConcept().getId(), getExpression().getConcept().getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(5, 5));
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
+				component.setState(new VisualizationDiagramElementModel(abstractDiagramView.getExpression().getConcept().isDefined(), abstractDiagramView.getExpression().getConcept().getId(), abstractDiagramView.getExpression().getConcept().getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
+				abstractDiagramView.addComponent(component, getCssCoordinates(5, 5));
 				
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 			}
 
-			if (!isEmpty(getExpression().getIsaRelationships()) || !getExpression().getGroupedRelationships().isEmpty() || !isEmpty(getExpression().getUngroupedRelationships())) {
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+			if (!isEmpty(abstractDiagramView.getExpression().getIsaRelationships()) || !abstractDiagramView.getExpression().getGroupedRelationships().isEmpty() || !isEmpty(abstractDiagramView.getExpression().getUngroupedRelationships())) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					component = new VisualizationDiagramElement();
 					component.setState(new VisualizationDiagramElementModel(false, null, "=", VisualizationComponentType.GROUP, zoom), characteristicIcon, deletionIcon);
-					diagramView.addComponent(component, getCssCoordinates(zoom * 0.6, zoom * 0.75));
+					abstractDiagramView.addComponent(component, getCssCoordinates(zoom * 0.6, zoom * 0.75));
 				}
 				
 				component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(false, null, null, VisualizationComponentType.CONJUCTION, zoom), characteristicIcon, deletionIcon);
 
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
-					diagramView.addComponent(component, getCssCoordinates(zoom * 1.5, zoom * depth / 100 + zoom * 0.25 - 10));
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
+					abstractDiagramView.addComponent(component, getCssCoordinates(zoom * 1.5, zoom * depth / 100 + zoom * 0.25 - 10));
 					
 					addNewConnection(null, zoom / 5, (int) (zoom * 0.55), zoom / 5, (int) (zoom * 0.95));
 					addNewConnection(ConnectionType.REGULAR, zoom / 5, (int) (zoom * 0.95),	(int) (zoom * 0.6), (int) (zoom * 0.95));
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 0.6) + zoom / 5 * 2, (int) (zoom * 0.95), (int) (zoom * 1.5), (int) (zoom * 0.95));
 					addNewConnection(null, (int) (zoom * 1.5), (int) (zoom * 0.95), zoom * 2, (int) (zoom * 0.95));
 				} else {
-					diagramView.addComponent(component, getCssCoordinates(zoom * 0.5, zoom * depth / 100 + zoom * 0.25 - 10));
+					abstractDiagramView.addComponent(component, getCssCoordinates(zoom * 0.5, zoom * depth / 100 + zoom * 0.25 - 10));
 					addNewConnection(null, (int) (zoom * 0.5), zoom * depth / 100 + (int)(zoom * 0.25), zoom, zoom * depth / 100 + (int)(zoom * 0.25));
 				}
 			}
@@ -149,11 +156,11 @@ public class VisualizationDiagramUtil implements Serializable {
 		int x = 0;
 		int y = 0;
 		
-		if (!isEmpty(getExpression().getIsaRelationships())) {
-			for (Concept concept : getExpression().getIsaRelationships().getRelationships()) {
+		if (!isEmpty(abstractDiagramView.getExpression().getIsaRelationships())) {
+			for (Concept concept : abstractDiagramView.getExpression().getIsaRelationships().getRelationships()) {
 				VisualizationDiagramElement component = new VisualizationDiagramElement();
 				
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					x = (int) (zoom * 2.5);
 				} else {
 					x = (int) (zoom * 1.5);
@@ -161,13 +168,13 @@ public class VisualizationDiagramUtil implements Serializable {
 				y = zoom * depth / 100;
 				
 				component.setState(new VisualizationDiagramElementModel(concept.isDefined(), concept.getId(), concept.getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(x, y));
+				abstractDiagramView.addComponent(component, getCssCoordinates(x, y));
 				
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
 				
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(ConnectionType.ISA, zoom * 2, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
 				} else {
 					addNewConnection(ConnectionType.ISA, zoom, y + (int)(zoom * 0.25), x, y + (int)(zoom * 0.25));
@@ -180,8 +187,8 @@ public class VisualizationDiagramUtil implements Serializable {
 		/*
 		 * if the are no more relationships, we draw the vertical connection 
 		 */
-		if (!isEmpty(getExpression().getIsaRelationships()) && getExpression().getGroupedRelationships().isEmpty() && isEmpty(getExpression().getUngroupedRelationships())) { 
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		if (!isEmpty(abstractDiagramView.getExpression().getIsaRelationships()) && abstractDiagramView.getExpression().getGroupedRelationships().isEmpty() && isEmpty(abstractDiagramView.getExpression().getUngroupedRelationships())) { 
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int)(zoom * 0.95), zoom * 2, y + (int)(zoom * 0.25));
 			} else {
 				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + (int)(zoom * 0.25));
@@ -196,8 +203,8 @@ public class VisualizationDiagramUtil implements Serializable {
 		int xType;
 		int xDestination;
 		
-		for (RelationshipGroup relationshipGroup : getExpression().getGroupedRelationships()) {
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		for (RelationshipGroup relationshipGroup : abstractDiagramView.getExpression().getGroupedRelationships()) {
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 				xGroup = (int) (zoom * 2.5);
 			} else {
 				xGroup = (int) (zoom * 1.5);
@@ -207,9 +214,9 @@ public class VisualizationDiagramUtil implements Serializable {
 			
 			VisualizationDiagramElement component = new VisualizationDiagramElement();
 			component.setState(new VisualizationDiagramElementModel(false, null, null, VisualizationComponentType.GROUP, zoom), characteristicIcon, deletionIcon);
-			diagramView.addComponent(component, getCssCoordinates(xGroup, y + zoom / 20));
+			abstractDiagramView.addComponent(component, getCssCoordinates(xGroup, y + zoom / 20));
 			
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xGroup, y + zoom / 4);
 				addNewConnection(null, zoom * 2 + (int)(zoom * 0.9), y + zoom / 4, zoom * 3, y + zoom / 4);
 			} else {
@@ -218,7 +225,7 @@ public class VisualizationDiagramUtil implements Serializable {
 			}
 			
 			for (Relationship relationship : relationshipGroup.getRelationships()) {
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 3.5);
 					xDestination = zoom * 6;
 				} else {
@@ -230,17 +237,17 @@ public class VisualizationDiagramUtil implements Serializable {
 				
 				component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(xType, y));
+				abstractDiagramView.addComponent(component, getCssCoordinates(xType, y));
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
 				component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(xDestination, y));
+				abstractDiagramView.addComponent(component, getCssCoordinates(xDestination, y));
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(ConnectionType.REGULAR, zoom * 3, y + zoom / 4, xType, y + zoom / 4);
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 5.5), y + zoom / 4, xDestination, y + zoom / 4);
 					addNewConnection(null, zoom * 3, yStart, zoom * 3, y + zoom / 4);
@@ -257,8 +264,8 @@ public class VisualizationDiagramUtil implements Serializable {
 		/*
 		 * if the are no more relationships, we draw the vertical connection 
 		 */
-		if (isEmpty(getExpression().getUngroupedRelationships()) && !getExpression().getGroupedRelationships().isEmpty()) {
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		if (isEmpty(abstractDiagramView.getExpression().getUngroupedRelationships()) && !abstractDiagramView.getExpression().getGroupedRelationships().isEmpty()) {
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, yStart);
 			} else {
 				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, yStart);
@@ -271,9 +278,9 @@ public class VisualizationDiagramUtil implements Serializable {
 		int xDestination;
 		int y = 0;
 		
-		if (!isEmpty(getExpression().getUngroupedRelationships())) {
-			for (Relationship relationship : getExpression().getUngroupedRelationships().getRelationships()) {
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+		if (!isEmpty(abstractDiagramView.getExpression().getUngroupedRelationships())) {
+			for (Relationship relationship : abstractDiagramView.getExpression().getUngroupedRelationships().getRelationships()) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					xType = (int) (zoom * 2.5);
 					xDestination = zoom * 5;
 				} else {
@@ -285,17 +292,17 @@ public class VisualizationDiagramUtil implements Serializable {
 				
 				VisualizationDiagramElement component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(relationship.isDefined(), relationship.getId(), relationship.getType().getTerm(), VisualizationComponentType.RELATIONSHIP, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(xType, y));
+				abstractDiagramView.addComponent(component, getCssCoordinates(xType, y));
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
 				component = new VisualizationDiagramElement();
 				component.setState(new VisualizationDiagramElementModel(relationship.getDestination().isDefined(), relationship.getDestination().getId(), relationship.getDestination().getTerm(), VisualizationComponentType.CONCEPT, zoom), characteristicIcon, deletionIcon);
-				diagramView.addComponent(component, getCssCoordinates(xDestination, y));
+				abstractDiagramView.addComponent(component, getCssCoordinates(xDestination, y));
 				component.addModifyListener(modifyListener);
 				diagramElements.put(component.getState().getComponentModel().getId(), component);
 				
-				if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+				if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 					addNewConnection(ConnectionType.REGULAR, zoom * 2, y + zoom / 4, xType, y+ zoom / 4);
 					addNewConnection(ConnectionType.REGULAR, (int) (zoom * 4.5), y + zoom / 4, xDestination, y + zoom / 4);
 				} else {
@@ -306,13 +313,12 @@ public class VisualizationDiagramUtil implements Serializable {
 				depth += 70;
 			}
 			
-			if (diagramView.getDiagramType() == DiagramType.DEFINITION) {
+			if (abstractDiagramView.getDiagramType() == DiagramType.DEFINITION) {
 				addNewConnection(null, zoom * 2, (int) (zoom * 0.95), zoom * 2, y + zoom / 4);
 			} else {
 				addNewConnection(null, zoom, (int) (zoom * 0.3), zoom, y + zoom / 4);
 			}
 		}
-		
 	}
 	
 	private void addNewConnection(ConnectionType connectionType, int beginX, int beginY, int endX, int endY) {
@@ -322,5 +328,4 @@ public class VisualizationDiagramUtil implements Serializable {
 	private String getCssCoordinates(double left, double top) {
 		return "left:" + left + "px; top:" + top +"px;z-index:1";
 	}
-
 }

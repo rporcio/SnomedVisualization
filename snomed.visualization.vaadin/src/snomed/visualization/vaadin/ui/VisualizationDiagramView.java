@@ -3,14 +3,12 @@ package snomed.visualization.vaadin.ui;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.vaadin.util.VisualizationDiagramUtil;
 
-import com.vaadin.ui.AbsoluteLayout;
-
 /**
  * View that show the diagram format of the expression.
  * 
  * @author rporcio
  */
-public class VisualizationDiagramView extends AbsoluteLayout {
+public class VisualizationDiagramView extends AbstractVisualizationDiagramView  {
 
 	private static final long serialVersionUID = 6094847127344543759L;
 	
@@ -85,5 +83,9 @@ public class VisualizationDiagramView extends AbsoluteLayout {
 	 */
 	public boolean canEdit() {
 		return visualizationView.canEdit();
+	}
+
+	public int getDiagramZoom() {
+		return visualizationView.getDiagramZoom();
 	}
 }

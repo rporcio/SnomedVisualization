@@ -6,8 +6,10 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import snomed.visualization.dsl.visualizationDsl.Concept;
 import snomed.visualization.dsl.visualizationDsl.Expression;
 import snomed.visualization.dsl.visualizationDsl.RelationshipGroup;
+import snomed.visualization.vaadin.client.model.VisualizationDiagramPrinter.PrintUI;
 import snomed.visualization.vaadin.wizard.VisualizationRelationshipWizard;
 
+import com.vaadin.server.BrowserWindowOpener;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -26,7 +28,7 @@ import com.vaadin.ui.themes.BaseTheme;
  * @author rporcio
  */
 public class VisualizationView extends VerticalLayout {
-
+	
 	private static final long serialVersionUID = -4649786377322008264L;
 	
 	private EContentAdapter adapter = new EContentAdapter() {
@@ -43,20 +45,22 @@ public class VisualizationView extends VerticalLayout {
 		@Override
 		public void buttonClick(ClickEvent event) {
 			if (event.getSource().equals(zoomInButton)) {
-				if (size < 150) {
-					size += 5;
-					diagramView.zoomDiagram(size);
+				if (zoom < 150) {
+					zoom += 5;
+					diagramView.zoomDiagram(zoom);
 				}
 			} else if (event.getSource().equals(zoomOutButton)) {
-				if (size > 70) {
-					size -= 5;
-					diagramView.zoomDiagram(size);
+				if (zoom > 70) {
+					zoom -= 5;
+					diagramView.zoomDiagram(zoom);
 				}
 			} else if (event.getSource().equals(newRelationshipButton)) {
 				visualizationUI.addWindow(new VisualizationRelationshipWizard(VisualizationView.this));
 			} else if (event.getSource().equals(changeDiagramTypeButton)) {
 				diagramView.changeDiagramTpye();
 				diagramView.visualizeDiagram();
+			} else if (event.getSource().equals(printButton)) {
+				PrintUI.setDiagramView(diagramView);
 			}
 		}
 	};
@@ -64,7 +68,7 @@ public class VisualizationView extends VerticalLayout {
 	private final VisualizationUI visualizationUI;
 	private final VerticalSplitPanel visualizationPanel;
 	private final HorizontalSplitPanel expressionPanel;
-	private final VisualizationDiagramView diagramView;
+	private VisualizationDiagramView diagramView;
 //	private final VisualizationDslViewOld dslView;
 	private VisualizationDslView dslView;
 	
@@ -72,20 +76,18 @@ public class VisualizationView extends VerticalLayout {
 	private Button zoomOutButton;
 	private Button newRelationshipButton;
 	private Button changeDiagramTypeButton;
+	private Button printButton;
 	
-	private int size = 100;
-	
+	private int zoom = 100;
 	private Expression expression;
-
 	private Label titleLabel;
-
 	
 	public VisualizationView(final VisualizationUI visualizationUI) {
 		setSizeFull();
 		
 		this.visualizationUI = visualizationUI;
-		this.visualizationPanel = new VerticalSplitPanel();
-		this.expressionPanel = new HorizontalSplitPanel();
+		visualizationPanel = new VerticalSplitPanel();
+		expressionPanel = new HorizontalSplitPanel();
 		diagramView = new VisualizationDiagramView(this);
 //		dslView = new VisualizationDslViewOld(this);
 		dslView = new VisualizationDslView(this);
@@ -101,6 +103,8 @@ public class VisualizationView extends VerticalLayout {
 		visualizationPanel.setSplitPosition(2f);
 		visualizationPanel.setLocked(true);
 		
+		createPrinter();
+		
 		addComponent(visualizationPanel);
 	}
 	
@@ -114,6 +118,10 @@ public class VisualizationView extends VerticalLayout {
 
 	public VisualizationUI getVisualizationUI() {
 		return visualizationUI;
+	}
+	
+	public int getDiagramZoom() {
+		return zoom;
 	}
 
 	/**
@@ -163,18 +171,27 @@ public class VisualizationView extends VerticalLayout {
 		zoomOutButton = createToolbarButton("icons/zoom-out.png", "Zoom out", "Zoom out from the diagram");
 		newRelationshipButton = createToolbarButton("icons/new-relationship.png", "New relationship", "Add a new relationship to the expression");
 		changeDiagramTypeButton = createToolbarButton("icons/change-diagram-type.png", "Change diagram type", "Change the type of the diagram");
+		printButton = createToolbarButton("icons/printer.png", "Print diagram", "Print the diagram");
 		
 		titleLabel = new Label();
 		titleLabel.setSizeFull();
 
-		layout.addComponents(titleLabel, zoomInButton, zoomOutButton, newRelationshipButton, changeDiagramTypeButton);
+		layout.addComponents(titleLabel, zoomInButton, zoomOutButton, newRelationshipButton, changeDiagramTypeButton, printButton);
 		layout.setExpandRatio(titleLabel, 1.0f);
 		layout.setComponentAlignment(zoomInButton, Alignment.TOP_RIGHT);
 		layout.setComponentAlignment(zoomOutButton, Alignment.TOP_RIGHT);
 		layout.setComponentAlignment(newRelationshipButton, Alignment.TOP_RIGHT);
 		layout.setComponentAlignment(changeDiagramTypeButton, Alignment.TOP_RIGHT);
+		layout.setComponentAlignment(printButton, Alignment.TOP_RIGHT);
 
 		return layout;
+	}
+	
+	private void createPrinter() {
+		BrowserWindowOpener opener = new BrowserWindowOpener(PrintUI.class);
+		opener.setFeatures("height=200,width=400,resizable");
+		opener.setWindowName("print");
+		opener.extend(printButton);
 	}
 	
 	private Button createToolbarButton(String resourcePath, String altText, String description) {
