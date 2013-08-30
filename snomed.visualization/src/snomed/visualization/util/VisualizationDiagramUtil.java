@@ -34,7 +34,6 @@ public class VisualizationDiagramUtil {
 	
 	private int zoom;
 	private int depth;
-	private int zoomBeforePrint;
 
 	private List<VisualizationConnection> diagramConnections;
 	private List<Object> diagramElements;
@@ -209,15 +208,6 @@ public class VisualizationDiagramUtil {
 		} else {
 			diagramType = DiagramType.DEFINITION;
 		}
-	}
-	
-	public void setZoomBeforePrint() {
-		zoomBeforePrint = zoom;
-		zoom = 90;
-	}
-
-	public void setZoomAfterPrint() {
-		zoom = zoomBeforePrint;
 	}
 	
 	private void createConceptElement(Expression expression) {

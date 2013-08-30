@@ -280,15 +280,9 @@ public class VisualizationEditor extends GraphicalEditor {
 			// portrait 90
 			// landscape 130
 			
-			data.startPage = 1;
-			data.endPage = 1;
-//			diagramUtil.setZoomBeforePrint();
-//			refreshDiagram();
 			final PrintGraphicalViewerOperation operation = new PrintGraphicalViewerOperation(new Printer(data), getGraphicalViewer());
 			String title = expression.getConcept().getId() + "_" + expression.getConcept().getTerm() + "_diagram"; 
 			operation.run(title);
-//			diagramUtil.setZoomAfterPrint();
-//			refreshDiagram();
 		}
 	}
 	
